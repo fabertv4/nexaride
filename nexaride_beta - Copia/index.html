@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaRide - Servizio NCC Premium</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f2135;
+            --secondary-color: #c8a97e;
+            --light-color: #f5f5f5;
+            --dark-color: #0a1827;
+            --text-color: #333333;
+            --gold-gradient: linear-gradient(135deg, #c8a97e 0%, #e2c9a0 50%, #c8a97e 100%);
+            --marble-bg: linear-gradient(135deg, #f5f5f5 0%, #e6e6e6 50%, #f5f5f5 100%);
+        }
+
+```
+    body {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-color);
+        background-color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .text-gold {
+        color: var(--secondary-color);
+    }
+
+    .gold-gradient {
+        background: var(--gold-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .premium-btn {
+        background: var(--gold-gradient);
+        color: var(--primary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+
+    .premium-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(200, 169, 126, 0.2);
+    }
+
+    .secondary-btn {
+        background: transparent;
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .secondary-btn:hover {
+        background: var(--secondary-color);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .gradient-overlay {
+        background: linear-gradient(to bottom, rgba(15, 33, 53, 0.7), rgba(15, 33, 53, 0.9));
+    }
+
+    .marble-bg {
+        background-image: var(--marble-bg);
+    }
+
+    .section-heading {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .section-heading::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 2px;
+        background: var(--secondary-color);
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .hero-section {
+        height: 100vh;
+        min-height: 700px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .vehicle-card {
+        transition: all 0.5s ease;
+        border: 1px solid #e6e6e6;
+        overflow: hidden;
+    }
+
+    .vehicle-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .vehicle-card img {
+        transition: all 0.5s ease;
+    }
+
+    .vehicle-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gold-gradient);
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--secondary-color);
+    }
+
+    .quote-form {
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-input {
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        border-color: var(--secondary-color);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(200, 169, 126, 0.2);
+    }
+
+    .blog-card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-img {
+        height: 200px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+
+    .blog-card:hover .blog-img {
+        transform: scale(1.05);
+    }
+
+    .footer {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .footer-heading {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .footer-link {
+        color: #e6e6e6;
+        transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .social-icon:hover {
+        background: var(--secondary-color);
+        transform: translateY(-3px);
+    }
+
+    /* Language Selector */
+    .lang-selector {
+        position: relative;
+    }
+
+    .lang-options {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+        min-width: 150px;
+        z-index: 100;
+        display: none;
+    }
+
+    .lang-selector:hover .lang-options {
+        display: block;
+    }
+
+    .lang-option {
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .lang-option:hover {
+        background-color: #f5f5f5;
+        color: var(--secondary-color);
+    }
+
+    /* Quote Form Map */
+    #route-map {
+        height: 300px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Vehicle 360 View */
+    .vehicle-360-view {
+        position: relative;
+        height: 300px;
+        background: #f5f5f5;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .vehicle-360-controls {
+        position: absolute;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .control-btn {
+        background: white;
+        color: var(--primary-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .control-btn:hover {
+        background: var(--secondary-color);
+        color: white;
+    }
+
+    /* Animation & Interactivity */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .hero-section {
+            height: auto;
+            padding: 100px 0;
+        }
+    }
+
+    /* Additional Premium Elements */
+    .divider {
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+        margin: 2rem 0;
+    }
+
+    .premium-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e6e6e6;
+        transition: all 0.3s ease;
+    }
+
+    .premium-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .premium-card-header {
+        background: var(--primary-color);
+        color: white;
+        padding: 1.5rem;
+        border-bottom: 3px solid var(--secondary-color);
+    }
+
+    .premium-card-body {
+        padding: 1.5rem;
+    }
+
+    .premium-tag {
+        background: var(--gold-gradient);
+        color: var(--primary-color);
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        display: inline-block;
+    }
+
+    /* Stop Points Interface */
+    .stop-point {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .stop-point::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        width: 1px;
+        height: calc(100% + 1rem);
+        background-color: var(--secondary-color);
+        z-index: 1;
+    }
+
+    .stop-point:last-child::before {
+        display: none;
+    }
+
+    .stop-point-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        background: white;
+        border: 2px solid var(--secondary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        z-index: 2;
+    }
+
+    .stop-point-input {
+        flex-grow: 1;
+    }
+
+    /* Price Breakdown */
+    .price-breakdown {
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .price-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .price-item:last-child {
+        border-bottom: none;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        padding-top: 1rem;
+    }
+
+    /* Business Area */
+    .business-feature {
+        border-left: 3px solid var(--secondary-color);
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Blog Interactive Elements */
+    .tag {
+        background: #f5f5f5;
+        color: var(--text-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+        background: var(--secondary-color);
+        color: white;
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50 px-4 py-3">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gold-gradient">NexaRide</a>
+
+```
+        <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="hover:text-gold transition-all">Home</a>
+            <a href="#fleet" class="hover:text-gold transition-all">Flotta</a>
+            <a href="#quote" class="hover:text-gold transition-all">Preventivo</a>
+            <a href="#services" class="hover:text-gold transition-all">Servizi</a>
+            <a href="#blog" class="hover:text-gold transition-all">Blog</a>
+            <a href="#business" class="hover:text-gold transition-all">Business</a>
+            <a href="#contact" class="hover:text-gold transition-all">Contatti</a>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <div class="lang-selector">
+                <button class="flex items-center space-x-1 text-sm">
+                    <span>IT</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="lang-options">
+                    <div class="lang-option">Italiano</div>
+                    <div class="lang-option">English</div>
+                    <div class="lang-option">日本語</div>
+                    <div class="lang-option">中文</div>
+                </div>
+            </div>
+            
+            <a href="#quote" class="premium-btn px-4 py-2 rounded-full hidden md:block">Richiedi Preventivo</a>
+            
+            <button class="md:hidden text-primary-color focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section relative flex items-center" style="background-image: url('https://images.unsplash.com/photo-1549194898-60fd050cd3b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+    <div class="gradient-overlay absolute inset-0"></div>
+    <div class="container mx-auto px-4 z-10">
+        <div class="max-w-xl reveal">
+            <h5 class="text-gold text-lg mb-3 font-medium">Servizio NCC Premium</h5>
+            <h1 class="text-white text-5xl md:text-6xl font-bold mb-6">Viaggia con stile e comfort ineguagliabili</h1>
+            <p class="text-gray-200 text-lg mb-8">Scopri l'esperienza di viaggio definitiva con NexaRide. La nostra flotta di veicoli premium e i nostri autisti professionisti garantiscono trasferimenti impeccabili per ogni occasione.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#quote" class="premium-btn px-6 py-3 rounded-full">Richiedi Preventivo</a>
+                <a href="#fleet" class="secondary-btn px-6 py-3 rounded-full">Scopri la Flotta</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h5 class="text-gold text-lg mb-3">I Nostri Servizi</h5>
+            <h2 class="text-4xl font-bold mb-4">Trasporto executive su misura</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">NexaRide offre servizi di trasporto di alta classe per soddisfare ogni esigenza dei nostri clienti più esigenti.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center p-8 premium-card reveal">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Trasferimenti Aeroportuali</h3>
+                <p class="text-gray-600">Puntualità garantita, monitoraggio voli e assistenza bagagli. Il tuo viaggio inizia e termina nel massimo comfort.</p>
+            </div>
+            
+            <div class="text-center p-8 premium-card reveal">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Business Travel</h3>
+                <p class="text-gray-600">Servizi dedicati alle aziende, con fatturazione elettronica, reportistica e possibilità di convenzioni personalizzate.</p>
+            </div>
+            
+            <div class="text-center p-8 premium-card reveal">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Eventi Speciali</h3>
+                <p class="text-gray-600">Matrimoni, cerimonie, eventi esclusivi. Arriva in grande stile con i nostri veicoli di lusso e servizi dedicati.</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div class="text-center p-8 premium-card reveal">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Tour Privati</h3>
+                <p class="text-gray-600">Esplora la città e i dintorni con autisti esperti che conoscono le migliori destinazioni e percorsi panoramici.</p>
+            </div>
+            
+            <div class="text-center p-8 premium-card reveal">
+                <div class="feature-icon mx-auto">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Servizio Orario</h3>
+                <p class="text-gray-600">Noleggia un veicolo con autista a ore per i tuoi impegni in città. Massima flessibilità per le tue esigenze.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fleet Section -->
+<section id="fleet" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h5 class="text-gold text-lg mb-3">La Nostra Flotta</h5>
+            <h2 class="text-4xl font-bold mb-4">Veicoli premium per ogni esigenza</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Una selezione di automobili di lusso curate nei minimi dettagli per offrirti il massimo comfort e stile.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Economy Vehicle -->
+            <div class="vehicle-card bg-white rounded-lg overflow-hidden reveal">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHRveW90YSUyMHJhdjR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Toyota RAV4 Hybrid" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 m-3">
+                        <span class="premium-tag">Economy</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Toyota RAV4 Hybrid</h3>
+                    <p class="text-gray-600 mb-4">Il nostro SUV ibrido unisce comodità, ampio spazio per i bagagli e consumi ridotti: ideale per trasferimenti pratici e sostenibili, senza rinunciare allo stile.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-friends mr-2 text-gold"></i>
+                            <span>Fino a 4 passeggeri</span>
+                        </div>
+                        <button class="text-gold hover:underline">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Vehicle -->
+            <div class="vehicle-card bg-white rounded-lg overflow-hidden reveal">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1563720223468-6d56e1b98234?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyY2VkZXMlMjBlJTIwY2xhc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Mercedes Classe E" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 m-3">
+                        <span class="premium-tag">Business</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mercedes Classe E</h3>
+                    <p class="text-gray-600 mb-4">La berlina ideale per i tuoi spostamenti aziendali: interni raffinati, comfort acustico e dotazioni executive per lavorare in viaggio senza distrazioni.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-friends mr-2 text-gold"></i>
+                            <span>Fino a 3 passeggeri</span>
+                        </div>
+                        <button class="text-gold hover:underline">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- First Class Vehicle -->
+            <div class="vehicle-card bg-white rounded-lg overflow-hidden reveal">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1626023772800-eadff10c2f9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVyY2VkZXMlMjBzJTIwY2xhc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Mercedes Classe S" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 m-3">
+                        <span class="premium-tag">First Class</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mercedes Classe S</h3>
+                    <p class="text-gray-600 mb-4">Un’icona del lusso per chi cerca il massimo: sedili massaggianti in pelle Nappa, climatizzazione su misura e un viaggio da prima classe in ogni dettaglio.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-friends mr-2 text-gold"></i>
+                            <span>Fino a 3 passeggeri</span>
+                        </div>
+                        <button class="text-gold hover:underline">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Group Vehicle -->
+            <div class="vehicle-card bg-white rounded-lg overflow-hidden reveal">
+                <div class="relative overflow-hidden h-48">
+                    <img src="https://images.unsplash.com/photo-1687136747599-e95bb4c5a412?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVyY2VkZXMlMjB2JTIwY2xhc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Mercedes Classe V" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 m-3">
+                        <span class="premium-tag">Group</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mercedes Classe V</h3>
+                   <p class="text-gray-600 mb-4">Perfetto per famiglie e piccoli gruppi: fino a 7 posti in un ambiente elegante e silenzioso, con spazio per ogni bagaglio e comfort da prima classe.</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-friends mr-2 text-gold"></i>
+                            <span>Fino a 7 passeggeri</span>
+                        </div>
+                        <button class="text-gold hover:underline">Dettagli</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vehicle Details Modal/Showcase -->
+                        <div class="grid grid-cols-3 gap-2">
+                            <img src="https://images.unsplash.com/photo-1635672508584-da83739797a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWVyY2VkZXMlMjBzJTIwY2xhc3MlMjBpbnRlcmlvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Interior" class="w-full h-24 object-cover rounded">
+                            <img src="https://images.unsplash.com/photo-1616455263449-0bd3aac07e83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVyY2VkZXMlMjBzJTIwY2xhc3MlMjBpbnRlcmlvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Detail" class="w-full h-24 object-cover rounded">
+                            <img src="https://images.unsplash.com/photo-1626023772800-eadff10c2f9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVyY2VkZXMlMjBzJTIwY2xhc3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Exterior" class="w-full h-24 object-cover rounded">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-3">Caratteristiche Premium</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Interni in pelle Nappa di alta qualità</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Sistema di climatizzazione a 4 zone</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Sedili massaggianti con regolazione elettrica</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Sistema audio Burmester surround</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Connettività Wi-Fi ad alta velocità</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-gold mt-1 mr-2"></i>
+                                    <span>Minibar personalizzabile su richiesta</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">Specifiche Tecniche</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-gray-600 text-sm">Motore</p>
+                                    <p class="font-medium">3.0L 6 cilindri</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Potenza</p>
+                                    <p class="font-medium">435 CV</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Accelerazione</p>
+                                    <p class="font-medium">0-100 km/h in 4.9s</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Lunghezza</p>
+                                    <p class="font-medium">5.3 metri</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#quote" class="premium-btn px-6 py-3 rounded-full inline-block">Prenota Ora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section -->
+<section id="quote" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h5 class="text-gold text-lg mb-3">Richiedi Preventivo</h5>
+            <h2 class="text-4xl font-bold mb-4">Calcola il tuo viaggio</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Ottieni un preventivo immediato per il tuo trasferimento e prenota il veicolo più adatto alle tue esigenze.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div class="lg:col-span-3 quote-form reveal">
+                <h3 class="text-2xl font-bold mb-6">Dettagli del Viaggio</h3>
+                
+                <div class="mb-6">
+                    <div class="stop-point">
+                        <div class="stop-point-icon">
+                            <i class="fas fa-map-marker-alt text-gold"></i>
+                        </div>
+                        <div class="stop-point-input">
+                            <label class="block text-gray-700 mb-2">Partenza</label>
+                            <input type="text" class="form-input" placeholder="Indirizzo di partenza">
+                        </div>
+                    </div>
+                    
+                    <div id="stop-points-container">
+                        <!-- Additional stop points will be added here -->
+                    </div>
+                    
+                    <div class="stop-point">
+                        <div class="stop-point-icon">
+                            <i class="fas fa-flag-checkered text-gold"></i>
+                        </div>
+                        <div class="stop-point-input">
+                            <label class="block text-gray-700 mb-2">Destinazione</label>
+                            <input type="text" class="form-input" placeholder="Indirizzo di arrivo">
+                        </div>
+                    </div>
+                    
+                    <div class="ml-16 mt-4">
+                        <button id="add-stop" class="flex items-center text-sm text-gold hover:underline">
+                            <i class="fas fa-plus-circle mr-2"></i>
+                            <span>Aggiungi una fermata</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Data</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Ora</label>
+                        <input type="time" class="form-input">
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Tipo di Veicolo</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <input type="radio" id="economy" name="vehicle-type" class="hidden peer">
+                            <label for="economy" class="block p-4 border rounded-lg text-center cursor-pointer transition-all peer-checked:border-secondary-color peer-checked:bg-gray-50">
+                                <i class="fas fa-car text-2xl mb-2 text-gold"></i>
+                                <p class="font-medium">Economy</p>
+                                <p class="text-sm text-gray-600">Toyota RAV4</p>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="business" name="vehicle-type" class="hidden peer" checked>
+                            <label for="business" class="block p-4 border rounded-lg text-center cursor-pointer transition-all peer-checked:border-secondary-color peer-checked:bg-gray-50">
+                                <i class="fas fa-car-side text-2xl mb-2 text-gold"></i>
+                                <p class="font-medium">Business</p>
+                                <p class="text-sm text-gray-600">Mercedes Classe E</p>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="first-class" name="vehicle-type" class="hidden peer">
+                            <label for="first-class" class="block p-4 border rounded-lg text-center cursor-pointer transition-all peer-checked:border-secondary-color peer-checked:bg-gray-50">
+                                <i class="fas fa-car-alt text-2xl mb-2 text-gold"></i>
+                                <p class="font-medium">First Class</p>
+                                <p class="text-sm text-gray-600">Mercedes Classe S</p>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="group" name="vehicle-type" class="hidden peer">
+                            <label for="group" class="block p-4 border rounded-lg text-center cursor-pointer transition-all peer-checked:border-secondary-color peer-checked:bg-gray-50">
+                                <i class="fas fa-shuttle-van text-2xl mb-2 text-gold"></i>
+                                <p class="font-medium">Group</p>
+                                <p class="text-sm text-gray-600">Mercedes Classe V</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Note Aggiuntive</label>
+                    <textarea class="form-input" rows="3" placeholder="Dettagli, richieste speciali o altre informazioni..."></textarea>
+                </div>
+                
+                <div id="route-map" class="mb-6"></div>
+            </div>
+            
+            <div class="lg:col-span-2 reveal">
+                <div class="premium-card sticky top-24">
+                    <div class="premium-card-header">
+                        <h3 class="text-2xl font-bold mb-2">Riepilogo Preventivo</h3>
+                        <p class="text-gray-300">Dettagli del tuo viaggio e costi stimati</p>
+                    </div>
+                    <div class="premium-card-body">
+                        <div class="mb-6">
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-route text-gold text-xl mr-3"></i>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Percorso</p>
+                                    <p class="font-medium" id="route-summary">Milano Centro → Aeroporto Malpensa</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-calendar-alt text-gold text-xl mr-3"></i>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Data e Ora</p>
+                                    <p class="font-medium" id="datetime-summary">15 Ottobre 2023, 14:30</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-car-side text-gold text-xl mr-3"></i>
+                                <div>
+                                    <p class="text-gray-600 text-sm">Veicolo</p>
+                                    <p class="font-medium" id="vehicle-summary">Mercedes Classe E (Business)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="price-breakdown">
+                            <div class="price-item">
+                                <span>Tariffa Base</span>
+                                <span>€ 25.00</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Distanza (45 km)</span>
+                                <span>€ 81.00</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Supplemento Aeroporto</span>
+                                <span>€ 10.00</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Totale</span>
+                                <span>€ 116.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-sm text-gray-600">
+                            <p class="flex items-start mb-2">
+                                <i class="fas fa-info-circle text-gold mt-1 mr-2"></i>
+                                <span>Policy di cancellazione: addebito totale per cancellazioni entro 2 ore dalla partenza.</span>
+                            </p>
+                            <p class="flex items-start">
+                                <i class="fas fa-shield-alt text-gold mt-1 mr-2"></i>
+                                <span>Prezzo garantito. Nessun costo nascosto o supplementi imprevisti.</span>
+                            </p>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <button class="premium-btn w-full py-3 rounded-full text-center">Conferma Prenotazione</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h5 class="text-gold text-lg mb-3">Feedback dei Clienti</h5>
+            <h2 class="text-4xl font-bold mb-4">Cosa dicono di noi</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Le opinioni di chi ha già scelto NexaRide per i propri trasferimenti premium.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="testimonial-card reveal">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGUlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Cliente" class="testimonial-img mr-4">
+                    <div>
+                        <h4 class="font-bold">Roberto Bianchi</h4>
+                        <p class="text-gray-600">CEO, Innovatech</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">"Utilizzo regolarmente NexaRide per i miei spostamenti di lavoro. Servizio impeccabile, autisti professionali e veicoli sempre in perfette condizioni. La puntualità è garantita."</p>
+                <div class="flex text-gold">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBob3RvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Cliente" class="testimonial-img mr-4">
+                    <div>
+                        <h4 class="font-bold">Laura Rossi</h4>
+                        <p class="text-gray-600">Event Manager</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">"Ho organizzato il trasporto per un evento aziendale con NexaRide. Il servizio è stato eccellente e tutti gli ospiti sono rimasti impressionati dalla qualità e professionalità."</p>
+                <div class="flex text-gold">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGUlMjBwaG90b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Cliente" class="testimonial-img mr-4">
+                    <div>
+                        <h4 class="font-bold">Marco Verdi</h4>
+                        <p class="text-gray-600">International Consultant</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">"Viaggio frequentemente per lavoro e NexaRide è diventato il mio partner di fiducia. Gli autisti conoscono perfettamente la città e il servizio è sempre all'altezza delle aspettative."</p>
+                <div class="flex text-gold">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Business Section -->
+<section id="business" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h5 class="text-gold text-lg mb-3">Business Solutions</h5>
+                <h2 class="text-4xl font-bold mb-6">Servizi dedicati alle aziende</h2>
+                <p class="text-gray-600 mb-8">NexaRide offre soluzioni su misura per le esigenze di mobilità delle aziende, con convenzioni personalizzate e servizi esclusivi.</p>
+                
+                <div class="space-y-6">
+                    <div class="business-feature">
+                        <h4 class="text-xl font-bold mb-2">Convenzioni Aziendali</h4>
+                        <p class="text-gray-600">Tariffe preferenziali, fatturazione elettronica e reportistica dettagliata per le tue trasferte aziendali.</p>
+                    </div>
+                    <div class="business-feature">
+                        <h4 class="text-xl font-bold mb-2">Account Dedicato</h4>
+                        <p class="text-gray-600">Un account manager dedicato e un portale personalizzato per gestire tutte le prenotazioni della tua azienda.</p>
+                    </div>
+                    <div class="business-feature">
+                        <h4 class="text-xl font-bold mb-2">Servizi per Executive</h4>
+                        <p class="text-gray-600">Veicoli di alta gamma con servizi aggiuntivi per i tuoi dirigenti e ospiti importanti.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <a href="#" class="premium-btn px-6 py-3 rounded-full">Richiedi Informazioni</a>
+                </div>
+            </div>
+            
+            <div class="premium-card reveal">
+                <div class="premium-card-header">
+                    <h3 class="text-2xl font-bold mb-2">Registrazione Business</h3>
+                    <p class="text-gray-300">Accedi ai vantaggi esclusivi per aziende</p>
+                </div>
+                <div class="premium-card-body">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Ragione Sociale</label>
+                                <input type="text" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Partita IVA</label>
+                                <input type="text" class="form-input">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Indirizzo</label>
+                            <input type="text" class="form-input">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Codice SDI</label>
+                                <input type="text" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">PEC</label>
+                                <input type="email" class="form-input">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Nome Referente</label>
+                                <input type="text" class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Email Referente</label>
+                                <input type="email" class="form-input">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Telefono</label>
+                            <input type="tel" class="form-input">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Note e Richieste</label>
+                            <textarea class="form-input" rows="3"></textarea>
+                        </div>
+                        <button class="premium-btn w-full py-3 rounded-full text-center">Invia Richiesta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 reveal">
+            <h5 class="text-gold text-lg mb-3">Il Nostro Blog</h5>
+            <h2 class="text-4xl font-bold mb-4">Novità e approfondimenti</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Scopri gli ultimi articoli, consigli di viaggio e novità dal mondo NexaRide.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="blog-card bg-white reveal">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJpdmluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Blog Post" class="blog-img w-full">
+                    <div class="absolute top-0 left-0 m-4">
+                        <span class="premium-tag">Business Travel</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">Come ottimizzare i tuoi trasferimenti aziendali</h3>
+                    <p class="text-gray-600 mb-4">Strategie e consigli per rendere più efficienti i viaggi d'affari e ridurre i costi per la tua azienda.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">15 Settembre 2023</span>
+                        <a href="#" class="text-gold hover:underline">Leggi di più</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-card bg-white reveal">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bHV4dXJ5JTIwY2FyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Blog Post" class="blog-img w-full">
+                    <div class="absolute top-0 left-0 m-4">
+                        <span class="premium-tag">Flotta</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">Nuovi veicoli nella nostra flotta premium</h3>
+                    <p class="text-gray-600 mb-4">Scopri i nuovi modelli Mercedes che abbiamo aggiunto alla nostra flotta per offrirti un'esperienza ancora più esclusiva.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">2 Ottobre 2023</span>
+                        <a href="#" class="text-gold hover:underline">Leggi di più</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-card bg-white reveal">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWlsYW4lMjBjaXR5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Blog Post" class="blog-img w-full">
+                    <div class="absolute top-0 left-0 m-4">
+                        <span class="premium-tag">Destinazioni</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3">Le migliori destinazioni business in Italia</h3>
+                    <p class="text-gray-600 mb-4">Una guida alle principali città italiane per i tuoi viaggi d'affari, con consigli su hotel, ristoranti e luoghi di interesse.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">21 Settembre 2023</span>
+                        <a href="#" class="text-gold hover:underline">Leggi di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12 reveal">
+            <a href="#" class="secondary-btn px-6 py-3 rounded-full">Vedi tutti gli articoli</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="reveal">
+                <h5 class="text-gold text-lg mb-3">Contattaci</h5>
+                <h2 class="text-4xl font-bold mb-6">Siamo qui per te</h2>
+                <p class="text-gray-600 mb-8">Hai domande, richieste particolari o desideri maggiori informazioni? Contattaci e ti risponderemo nel minor tempo possibile.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="feature-icon mr-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Sede Principale</h4>
+                            <p class="text-gray-600">Via Roma 123, 20100 Milano, Italia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="feature-icon mr-4">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Telefono</h4>
+                            <p class="text-gray-600">+39 02 1234567</p>
+                            <p class="text-gray-600">+39 333 1234567 (Emergenze)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="feature-icon mr-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Email</h4>
+                            <p class="text-gray-600">nexaridesrl@gmail.com</p>
+                            <p class="text-gray-600">info@nexaride.it</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="feature-icon mr-4">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Orari</h4>
+                            <p class="text-gray-600">Servizio disponibile 24/7</p>
+                            <p class="text-gray-600">Ufficio: Lun-Ven 9:00-18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex space-x-4">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="premium-card reveal">
+                <div class="premium-card-header">
+                    <h3 class="text-2xl font-bold mb-2">Inviaci un Messaggio</h3>
+                    <p class="text-gray-300">Ti risponderemo al più presto</p>
+                </div>
+                <div class="premium-card-body">
+                    <form action="https://formspree.io/f/mldbbdlv" method="POST">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div>
+      <label class="block text-gray-700 mb-2">Nome</label>
+      <input type="text" name="nome" class="form-input" required>
+    </div>
+    <div>
+      <label class="block text-gray-700 mb-2">Cognome</label>
+      <input type="text" name="cognome" class="form-input" required>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div>
+      <label class="block text-gray-700 mb-2">Email</label>
+      <input type="email" name="email" class="form-input" required>
+    </div>
+    <div>
+      <label class="block text-gray-700 mb-2">Telefono</label>
+      <input type="tel" name="telefono" class="form-input">
+    </div>
+  </div>
+  <div class="mb-4">
+    <label class="block text-gray-700 mb-2">Oggetto</label>
+    <input type="text" name="oggetto" class="form-input">
+  </div>
+  <div class="mb-6">
+    <label class="block text-gray-700 mb-2">Messaggio</label>
+    <textarea name="messaggio" class="form-input" rows="4" required></textarea>
+  </div>
+  <button type="submit" class="premium-btn w-full py-3 rounded-full text-center">Invia Messaggio</button>
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-6">NexaRide</h3>
+                <p class="text-gray-400 mb-6">Servizio NCC premium con una flotta di veicoli di lusso e autisti professionisti per ogni tua esigenza di trasporto.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="footer-heading">Servizi</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="footer-link">Trasferimenti Aeroportuali</a></li>
+                    <li><a href="#" class="footer-link">Business Travel</a></li>
+                    <li><a href="#" class="footer-link">Eventi Speciali</a></li>
+                    <li><a href="#" class="footer-link">Tour Privati</a></li>
+                    <li><a href="#" class="footer-link">Servizio Orario</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-heading">Link Utili</h4>
+                <ul class="space-y-3">
+                    <li><a href="#" class="footer-link">Chi Siamo</a></li>
+                    <li><a href="#" class="footer-link">Termini e Condizioni</a></li>
+                    <li><a href="#" class="footer-link">Policy di Cancellazione</a></li>
+                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-link">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="footer-heading">Contatti</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gold mt-1 mr-2"></i>
+                        <span class="footer-link">Via Roma 123, 20100 Milano, Italia</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-phone-alt text-gold mt-1 mr-2"></i>
+                        <span class="footer-link">+39 02 1234567</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope text-gold mt-1 mr-2"></i>
+                        <span class="footer-link">nexaridesrl@gmail.com</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-clock text-gold mt-1 mr-2"></i>
+                        <span class="footer-link">Servizio disponibile 24/7</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="divider my-8"></div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 mb-4 md:mb-0">© 2023 NexaRide. Tutti i diritti riservati.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-gold">Termini</a>
+                <a href="#" class="text-gray-400 hover:text-gold">Privacy</a>
+                <a href="#" class="text-gray-400 hover:text-gold">Cookie</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+    // Reveal animations on scroll
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialize reveal elements
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        // Initial check
+        checkReveal();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkReveal);
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        
+        function checkNavbar() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+        
+        // Initial check
+        checkNavbar();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkNavbar);
+        
+        // Add stop point functionality
+        const addStopButton = document.getElementById('add-stop');
+        const stopPointsContainer = document.getElementById('stop-points-container');
+        let stopCount = 0;
+        
+        if (addStopButton) {
+            addStopButton.addEventListener('click', function() {
+                if (stopCount < 3) {
+                    stopCount++;
+                    
+                    const stopPoint = document.createElement('div');
+                    stopPoint.className = 'stop-point';
+                    stopPoint.innerHTML = `
+                        <div class="stop-point-icon">
+                            <i class="fas fa-map-pin text-gold"></i>
+                        </div>
+                        <div class="stop-point-input">
+                            <label class="block text-gray-700 mb-2">Fermata ${stopCount}</label>
+                            <input type="text" class="form-input" placeholder="Indirizzo fermata ${stopCount}">
+                        </div>
+                        <button type="button" class="ml-2 text-red-500 remove-stop">
+                            <i class="fas fa-times-circle"></i>
+                        </button>
+                    `;
+                    
+                    stopPointsContainer.appendChild(stopPoint);
+                    
+                    // Add remove functionality
+                    const removeButton = stopPoint.querySelector('.remove-stop');
+                    removeButton.addEventListener('click', function() {
+                        stopPointsContainer.removeChild(stopPoint);
+                        stopCount--;
+                        
+                        // Rename remaining stop points
+                        const stopPoints = stopPointsContainer.querySelectorAll('.stop-point');
+                        stopPoints.forEach((point, index) => {
+                            const label = point.querySelector('label');
+                            const input = point.querySelector('input');
+                            label.textContent = `Fermata ${index + 1}`;
+                            input.placeholder = `Indirizzo fermata ${index + 1}`;
+                        });
+                    });
+                } else {
+                    alert('Puoi aggiungere al massimo 3 fermate intermedie.');
+                }
+            });
+        }
+        
+        // Vehicle type selection
+        const vehicleTypes = document.querySelectorAll('input[name="vehicle-type"]');
+        const vehicleSummary = document.getElementById('vehicle-summary');
+        
+        if (vehicleTypes.length > 0 && vehicleSummary) {
+            vehicleTypes.forEach(type => {
+                type.addEventListener('change', function() {
+                    let vehicleName = '';
+                    let vehicleClass = '';
+                    
+                    switch(this.id) {
+                        case 'economy':
+                            vehicleName = 'Toyota RAV4 Hybrid';
+                            vehicleClass = 'Economy';
+                            break;
+                        case 'business':
+                            vehicleName = 'Mercedes Classe E';
+                            vehicleClass = 'Business';
+                            break;
+                        case 'first-class':
+                            vehicleName = 'Mercedes Classe S';
+                            vehicleClass = 'First Class';
+                            break;
+                        case 'group':
+                            vehicleName = 'Mercedes Classe V';
+                            vehicleClass = 'Group';
+                            break;
+                    }
+                    
+                    vehicleSummary.textContent = `${vehicleName} (${vehicleClass})`;
+                });
+            });
+        }
+        
+        // Simulate map functionality (in a real implementation, this would use Google Maps API)
+        const mapElement = document.getElementById('route-map');
+        if (mapElement) {
+            mapElement.style.background = "url('https://images.unsplash.com/photo-1569336415962-a4bd9f69c07b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z29vZ2xlJTIwbWFwfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60')";
+            mapElement.style.backgroundSize = "cover";
+            mapElement.style.backgroundPosition = "center";
+        }
+    });
+</script>
+```
+
+</body>
+</html>
