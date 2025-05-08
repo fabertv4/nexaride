@@ -791,7 +791,6 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-            margin-bottom: 1.5rem;
         }
         
         .vehicle-option {
@@ -1176,6 +1175,169 @@
             transform: translateX(5px);
         }
 
+        /* Blog Post Page */
+        .blog-post {
+            background: rgba(22, 27, 37, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post-header {
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.2;
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .blog-post-date {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-post-date i {
+            margin-right: 0.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .blog-post-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-post-author i {
+            margin-right: 0.5rem;
+            color: var(--accent-primary);
+        }
+        
+        .blog-post-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post-content {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .blog-post-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.5rem;
+            color: #fff;
+        }
+        
+        .blog-post-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #fff;
+        }
+        
+        .blog-post-content ul,
+        .blog-post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-post-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-post-content a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post-content a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+        
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-post-tag {
+            background: rgba(0, 200, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-post-tag:hover {
+            background: rgba(0, 200, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .blog-post-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .blog-post-nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            max-width: 45%;
+        }
+        
+        .blog-post-nav-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .blog-post-nav-link.prev i {
+            margin-right: 0.5rem;
+        }
+        
+        .blog-post-nav-link.next {
+            text-align: right;
+            margin-left: auto;
+        }
+        
+        .blog-post-nav-link.next i {
+            margin-left: 0.5rem;
+        }
+        
+        .blog-post-nav-title {
+            font-weight: 500;
+        }
+
         /* Contact Section */
         .contact-section {
             position: relative;
@@ -1515,6 +1677,41 @@
             color: var(--text-primary);
         }
 
+        /* Tariff Table Modal */
+        .tariff-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            color: var(--text-secondary);
+        }
+        
+        .tariff-table th,
+        .tariff-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tariff-table th {
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .tariff-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .tariff-section {
+            margin-bottom: 2rem;
+        }
+        
+        .tariff-section-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
         /* Scroll to Top */
         .scroll-to-top {
             position: fixed;
@@ -1696,6 +1893,45 @@
             .modal-title {
                 font-size: 1.5rem;
             }
+        }
+
+        /* Google Places Autocomplete customization */
+        .pac-container {
+            background-color: var(--secondary-bg);
+            border-radius: 0 0 8px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        
+        .pac-item {
+            padding: 8px 12px;
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .pac-item:hover {
+            background-color: rgba(0, 200, 255, 0.1);
+        }
+        
+        .pac-item-selected {
+            background-color: rgba(0, 200, 255, 0.2);
+        }
+        
+        .pac-icon {
+            filter: invert(1);
+        }
+        
+        .pac-item-query {
+            color: var(--text-primary);
+        }
+        
+        .pac-matched {
+            color: var(--accent-primary);
+        }
+        
+        .pac-item-query .pac-matched {
+            color: var(--accent-primary);
         }
     </style>
 </head>
@@ -2084,10 +2320,10 @@
                         <img src="https://images.unsplash.com/photo-1516733968668-dbdce39c4651?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <div class="blog-date">18 Luglio 2023</div>
+                        <div class="blog-date">18 Ottobre 2023</div>
                         <h3 class="blog-title">Nuove normative per il settore NCC: cosa cambia nel 2023</h3>
                         <p class="blog-excerpt">Le recenti modifiche alla regolamentazione del settore Noleggio Con Conducente stanno cambiando il panorama dei servizi di trasporto privato.</p>
-                        <a href="#" class="blog-link">
+                        <a href="blog-1.html" class="blog-link">
                             Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
@@ -2097,10 +2333,10 @@
                         <img src="https://images.unsplash.com/photo-1626194801804-579dfe441d36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <div class="blog-date">3 Agosto 2023</div>
+                        <div class="blog-date">5 Novembre 2023</div>
                         <h3 class="blog-title">L'evoluzione dei servizi NCC nell'era della mobilità sostenibile</h3>
                         <p class="blog-excerpt">Come i servizi di Noleggio Con Conducente si stanno adattando alle nuove esigenze di sostenibilità ambientale e digitalizzazione.</p>
-                        <a href="#" class="blog-link">
+                        <a href="blog-2.html" class="blog-link">
                             Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
@@ -2110,10 +2346,10 @@
                         <img src="https://images.unsplash.com/photo-1550347175-c3ecff174554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
                     </div>
                     <div class="blog-content">
-                        <div class="blog-date">22 Settembre 2023</div>
+                        <div class="blog-date">20 Novembre 2023</div>
                         <h3 class="blog-title">NCC vs. Ride-sharing: le differenze che fanno la qualità</h3>
                         <p class="blog-excerpt">Un'analisi approfondita delle differenze tra il servizio di Noleggio Con Conducente tradizionale e le moderne piattaforme di ride-sharing.</p>
-                        <a href="#" class="blog-link">
+                        <a href="blog-3.html" class="blog-link">
                             Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
@@ -2230,9 +2466,9 @@
                     <h4 class="footer-heading">Info</h4>
                     <ul class="footer-links">
                         <li class="footer-link"><a href="#" onclick="openPolicyModal(); return false;">Policy di Cancellazione</a></li>
+                        <li class="footer-link"><a href="#" onclick="openTariffModal(); return false;">Tariffe</a></li>
                         <li class="footer-link"><a href="#">Termini e Condizioni</a></li>
                         <li class="footer-link"><a href="#">Privacy Policy</a></li>
-                        <li class="footer-link"><a href="#">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
@@ -2286,10 +2522,238 @@
         </div>
     </div>
 
+    <!-- Tariff Modal -->
+    <div id="tariffModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Le Nostre Tariffe</h2>
+                <div class="modal-close" onclick="closeTariffModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="tariff-section">
+                    <h3 class="tariff-section-title">Tariffe Aeroportuali</h3>
+                    <p>Prezzi fissi per trasferimenti da/per Milano:</p>
+                    <table class="tariff-table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Malpensa</th>
+                                <th>Orio al Serio</th>
+                                <th>Linate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Economy (Toyota RAV4)</td>
+                                <td>€110</td>
+                                <td>€110</td>
+                                <td>€55</td>
+                            </tr>
+                            <tr>
+                                <td>Business (Mercedes Classe E)</td>
+                                <td>€140</td>
+                                <td>€140</td>
+                                <td>€70</td>
+                            </tr>
+                            <tr>
+                                <td>First Class (Mercedes Classe S)</td>
+                                <td>€200</td>
+                                <td>€200</td>
+                                <td>€100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-2">* Prezzi validi per trasferimenti tra il comune di Milano e gli aeroporti, e viceversa.</p>
+                </div>
+                
+                <div class="tariff-section">
+                    <h3 class="tariff-section-title">Tariffe Zone Centrali</h3>
+                    <table class="tariff-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tariffa Minima</th>
+                                <th>Tariffa Base</th>
+                                <th>Tariffa al km</th>
+                                <th>Tariffa al minuto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Notte infrasettimanale</td>
+                                <td>€10.00</td>
+                                <td>€7.74</td>
+                                <td>€1.35</td>
+                                <td>€0.20</td>
+                            </tr>
+                            <tr>
+                                <td>Mattina infrasettimanale</td>
+                                <td>€10.00</td>
+                                <td>€8.43</td>
+                                <td>€1.47</td>
+                                <td>€0.21</td>
+                            </tr>
+                            <tr>
+                                <td>9-17 Infrasettimanale</td>
+                                <td>€10.00</td>
+                                <td>€8.75</td>
+                                <td>€1.31</td>
+                                <td>€0.18</td>
+                            </tr>
+                            <tr>
+                                <td>17-19 Infrasettimanale</td>
+                                <td>€10.00</td>
+                                <td>€7.83</td>
+                                <td>€1.36</td>
+                                <td>€0.21</td>
+                            </tr>
+                            <tr>
+                                <td>Notte fine settimana</td>
+                                <td>€10.00</td>
+                                <td>€7.99</td>
+                                <td>€1.40</td>
+                                <td>€0.20</td>
+                            </tr>
+                            <tr>
+                                <td>Giorno fine settimana</td>
+                                <td>€10.00</td>
+                                <td>€8.66</td>
+                                <td>€1.30</td>
+                                <td>€0.20</td>
+                            </tr>
+                            <tr>
+                                <td>Notturno</td>
+                                <td>€10.00</td>
+                                <td>€7.70</td>
+                                <td>€1.35</td>
+                                <td>€0.21</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <table class="tariff-table mt-4">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tariffa Minima</th>
+                                <th>Tariffa Base</th>
+                                <th>Tariffa al km</th>
+                                <th>Tariffa al minuto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Van Lux</td>
+                                <td>€14.00</td>
+                                <td>€12.24</td>
+                                <td>€2.06</td>
+                                <td>€0.30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="tariff-section">
+                    <h3 class="tariff-section-title">Tariffe Zone Non Centrali</h3>
+                    <table class="tariff-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tariffa Minima</th>
+                                <th>Tariffa Base</th>
+                                <th>Tariffa al km</th>
+                                <th>Tariffa al minuto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Notte infrasettimanale</td>
+                                <td>€12.00</td>
+                                <td>€10.07</td>
+                                <td>€1.73</td>
+                                <td>€0.26</td>
+                            </tr>
+                            <tr>
+                                <td>Mattina infrasettimanale</td>
+                                <td>€12.00</td>
+                                <td>€11.00</td>
+                                <td>€1.91</td>
+                                <td>€0.27</td>
+                            </tr>
+                            <tr>
+                                <td>9-17 Infrasettimanale</td>
+                                <td>€12.00</td>
+                                <td>€9.88</td>
+                                <td>€1.70</td>
+                                <td>€0.25</td>
+                            </tr>
+                            <tr>
+                                <td>17-19 Infrasettimanale</td>
+                                <td>€12.00</td>
+                                <td>€11.08</td>
+                                <td>€1.92</td>
+                                <td>€0.29</td>
+                            </tr>
+                            <tr>
+                                <td>Notte fine settimana</td>
+                                <td>€12.00</td>
+                                <td>€11.96</td>
+                                <td>€2.07</td>
+                                <td>€0.30</td>
+                            </tr>
+                            <tr>
+                                <td>Giorno fine settimana</td>
+                                <td>€12.00</td>
+                                <td>€10.63</td>
+                                <td>€1.84</td>
+                                <td>€0.27</td>
+                            </tr>
+                            <tr>
+                                <td>Notturno</td>
+                                <td>€12.00</td>
+                                <td>€10.90</td>
+                                <td>€1.89</td>
+                                <td>€0.27</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <table class="tariff-table mt-4">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tariffa Minima</th>
+                                <th>Tariffa Base</th>
+                                <th>Tariffa al km</th>
+                                <th>Tariffa al minuto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Van Lux</td>
+                                <td>€16.80</td>
+                                <td>€16.74</td>
+                                <td>€2.90</td>
+                                <td>€0.42</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p class="mt-4">Per maggiori informazioni o preventivi personalizzati, contattaci al <strong>+39 345 3449775</strong> o via email a <strong>nexaridesrl@gmail.com</strong>.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Scroll to Top -->
     <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-chevron-up"></i>
     </div>
+
+    <!-- Google Maps API (Add your API key here) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places" async defer></script>
 
     <!-- Scripts -->
     <script>
@@ -2436,9 +2900,47 @@
             const timeString = now.toTimeString().slice(0, 5);
             document.getElementById('pickupTime').value = timeString;
             
+            // Initialize Google Places Autocomplete
+            initializeAutocomplete();
+            
             // Initial quote update
             setTimeout(updateQuote, 500);
         });
+        
+        // Initialize Google Places Autocomplete
+        function initializeAutocomplete() {
+            if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+                // Autocomplete for pickup location
+                const pickupInput = document.getElementById('pickupLocation');
+                const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput);
+                pickupAutocomplete.addListener('place_changed', function() {
+                    updateQuote();
+                });
+                
+                // Autocomplete for dropoff location
+                const dropoffInput = document.getElementById('dropoffLocation');
+                const dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput);
+                dropoffAutocomplete.addListener('place_changed', function() {
+                    updateQuote();
+                });
+            }
+        }
+        
+        // Add autocomplete to new stop inputs
+        function addAutocompleteToStops() {
+            if (typeof google !== 'undefined' && google.maps && google.maps.places) {
+                const stopInputs = document.querySelectorAll('.stop-input .form-control');
+                stopInputs.forEach(input => {
+                    if (!input.autocomplete) {
+                        const autocomplete = new google.maps.places.Autocomplete(input);
+                        autocomplete.addListener('place_changed', function() {
+                            updateQuote();
+                        });
+                        input.autocomplete = autocomplete;
+                    }
+                });
+            }
+        }
         
         // Initialize Animations
         function initializeAnimations() {
@@ -2465,31 +2967,33 @@
             });
             
             // Animate sections on scroll
-            gsap.registerPlugin(ScrollTrigger);
-            
-            gsap.utils.toArray('.section').forEach(section => {
-                gsap.from(section.querySelectorAll('.section-title, .section-subtitle'), {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 80%'
-                    },
-                    opacity: 0,
-                    y: 50,
-                    stagger: 0.2,
-                    duration: 1
-                });
+            if (typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
                 
-                gsap.from(section.querySelectorAll('.card, .vehicle-card, .blog-card'), {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 70%'
-                    },
-                    opacity: 0,
-                    y: 50,
-                    stagger: 0.1,
-                    duration: 0.8
+                gsap.utils.toArray('.section').forEach(section => {
+                    gsap.from(section.querySelectorAll('.section-title, .section-subtitle'), {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%'
+                        },
+                        opacity: 0,
+                        y: 50,
+                        stagger: 0.2,
+                        duration: 1
+                    });
+                    
+                    gsap.from(section.querySelectorAll('.card, .vehicle-card, .blog-card'), {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 70%'
+                        },
+                        opacity: 0,
+                        y: 50,
+                        stagger: 0.1,
+                        duration: 0.8
+                    });
                 });
-            });
+            }
         }
         
         // Navbar Scroll Effect
@@ -2580,6 +3084,9 @@
             `;
             stopsContainer.appendChild(stopDiv);
             
+            // Add autocomplete to the new stop input
+            addAutocompleteToStops();
+            
             // Update the summary
             updateStopsSummary();
         }
@@ -2597,7 +3104,7 @@
         
         // Update stops summary
         function updateStopsSummary() {
-            const stopInputs = document.querySelectorAll('.stop-input');
+            const stopInputs = document.querySelectorAll('.stop-input-container .form-control');
             const summaryStopsContainer = document.getElementById('summaryStopsContainer');
             const summaryStops = document.getElementById('summaryStops');
             
@@ -2684,246 +3191,92 @@
             }
         }
         
+        // Check if a location is an airport
+        function isAirport(location) {
+            const airports = [
+                'malpensa', 'orio al serio', 'linate', 
+                'aeroporto', 'airport', 'aereoporto',
+                'aeroporto di milano', 'milano malpensa', 'milano linate',
+                'bergamo orio', 'orio al serio'
+            ];
+            
+            location = location.toLowerCase();
+            
+            return airports.some(airport => location.includes(airport));
+        }
+        
+        // Identify specific airport
+        function identifyAirport(location) {
+            location = location.toLowerCase();
+            
+            if (location.includes('malpensa')) return 'malpensa';
+            if (location.includes('orio') || location.includes('bergamo')) return 'orio';
+            if (location.includes('linate')) return 'linate';
+            
+            return null;
+        }
+        
+        // Check if location is in Milan
+        function isInMilan(location) {
+            const milanKeywords = [
+                'milano', 'milan', 'mi, italia', 'milan, italy',
+                'milano centro', 'duomo di milano', 'centrale milano'
+            ];
+            
+            location = location.toLowerCase();
+            
+            return milanKeywords.some(keyword => location.includes(keyword));
+        }
+        
+        // Get airport fixed price
+        function getAirportPrice(airport, vehicleType) {
+            const prices = {
+                'malpensa': {
+                    'economy': 110,
+                    'business': 140,
+                    'first-class': 200,
+                    'group': 200  // Assuming same as first class
+                },
+                'orio': {
+                    'economy': 110,
+                    'business': 140,
+                    'first-class': 200,
+                    'group': 200  // Assuming same as first class
+                },
+                'linate': {
+                    'economy': 55,
+                    'business': 70,
+                    'first-class': 100,
+                    'group': 100  // Assuming same as first class
+                }
+            };
+            
+            return prices[airport][vehicleType] || null;
+        }
+        
         // Calculate distance, duration and price estimate
         function calculateEstimate(pickup, dropoff) {
-            // In a real implementation, this would use Google Maps Distance Matrix API
-            // For this demo, we'll use a simplified simulation
-            
-            // Simulate API call with loading state
+            // Show loading indicators
             document.getElementById('summaryDistance').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             document.getElementById('summaryDuration').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             document.getElementById('summaryPrice').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             
             setTimeout(() => {
-                // Generate realistic but random values
-                const baseDistance = Math.floor(Math.random() * 20) + 10; // 10-30 km
-                const stopFactor = document.querySelectorAll('.stop-input').length * 2; // Extra 2km per stop
-                const distance = baseDistance + stopFactor;
+                // Check for airport fixed prices first
+                const pickupAirport = identifyAirport(pickup);
+                const dropoffAirport = identifyAirport(dropoff);
                 
-                const baseDuration = Math.floor(distance * 1.5); // Roughly 1.5 min per km
-                const stopTimeFactor = document.querySelectorAll('.stop-input').length * 5; // Extra 5min per stop
-                const duration = baseDuration + stopTimeFactor;
+                let isAirportTransfer = false;
+                let fixedPrice = null;
                 
-                // Calculate price based on vehicle type
-                let pricePerKm;
-                switch(selectedVehicle) {
-                    case 'economy':
-                        pricePerKm = 1.8;
-                        break;
-                    case 'business':
-                        pricePerKm = 2.5;
-                        break;
-                    case 'first-class':
-                        pricePerKm = 3.5;
-                        break;
-                    case 'group':
-                        pricePerKm = 3.0;
-                        break;
-                    default:
-                        pricePerKm = 2.0;
-                }
-                
-                // Base price plus distance charge
-                let price = 10 + (distance * pricePerKm);
-                
-                // Add stop fee
-                price += document.querySelectorAll('.stop-input').length * 5;
-                
-                // Format duration into hours and minutes
-                const hours = Math.floor(duration / 60);
-                const minutes = duration % 60;
-                const durationText = hours > 0 ? 
-                    `${hours} ora${hours > 1 ? 'e' : ''} ${minutes} min` : 
-                    `${minutes} min`;
-                
-                // Update the summary with calculated values
-                document.getElementById('summaryDistance').textContent = `${distance} km`;
-                document.getElementById('summaryDuration').textContent = durationText;
-                document.getElementById('summaryPrice').textContent = `€${price.toFixed(0)}`;
-                
-                // Animate the price change
-                gsap.from('#summaryPrice', {
-                    textShadow: '0 0 20px var(--accent-primary)',
-                    duration: 1.5
-                });
-            }, 1000);
-        }
-        
-        // Submit quote form
-        function submitQuoteForm(event) {
-            event.preventDefault();
-            
-            // Check if policy is accepted
-            if (!document.getElementById('policyAccepted').checked) {
-                alert('Per procedere è necessario accettare la policy di cancellazione.');
-                return;
-            }
-            
-            // Check required fields
-            const pickup = document.getElementById('pickupLocation').value;
-            const dropoff = document.getElementById('dropoffLocation').value;
-            const date = document.getElementById('pickupDate').value;
-            const time = document.getElementById('pickupTime').value;
-            
-            if (!pickup || !dropoff || !date || !time || !selectedVehicle) {
-                alert('Per favore compila tutti i campi obbligatori.');
-                return;
-            }
-            
-            // In a real implementation, this would send data to server
-            // For this demo, we'll show a success message
-            
-            // Simulate API call with loading state
-            const submitButton = document.querySelector('#quoteForm .btn-submit');
-            const originalText = submitButton.textContent;
-            submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Invio in corso...';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                // Show success message
-                document.getElementById('successMessage').style.display = 'block';
-                
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                
-                // Animate success message
-                gsap.from('#successMessage', {
-                    y: 20,
-                    opacity: 0,
-                    duration: 0.5
-                });
-                
-                // Scroll to success message
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // In a real implementation, this would send an email to nexaridesrl@gmail.com
-                console.log('Quote request sent:', {
-                    pickup,
-                    dropoff,
-                    stops: Array.from(document.querySelectorAll('.stop-input')).map(input => input.value),
-                    datetime: date + 'T' + time,
-                    vehicle: selectedVehicle,
-                    notes: document.getElementById('notes').value
-                });
-            }, 1500);
-        }
-        
-        // Submit contact form
-        function submitContactForm(event) {
-            event.preventDefault();
-            
-            // In a real implementation, this would send data to server
-            // For this demo, we'll show an alert
-            alert('Messaggio inviato con successo! Ti risponderemo il prima possibile.');
-            
-            // Reset form
-            document.getElementById('contactForm').reset();
-        }
-        
-        // Policy modal functions
-        function openPolicyModal() {
-            document.getElementById('policyModal').style.display = 'block';
-            
-            // Animate modal opening
-            gsap.from('.modal-content', {
-                y: -50,
-                opacity: 0,
-                duration: 0.5
-            });
-        }
-        
-        function closePolicyModal() {
-            document.getElementById('policyModal').style.display = 'none';
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('policyModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-        
-        // Scroll to top function
-        document.getElementById('scrollToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const target = document.querySelector(targetId);
-                if (target) {
-                    // Close mobile menu if open
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        navMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                // If one location is an airport and the other is in Milan, use fixed price
+                if ((pickupAirport && isInMilan(dropoff)) || (dropoffAirport && isInMilan(pickup))) {
+                    isAirportTransfer = true;
+                    const airport = pickupAirport || dropoffAirport;
+                    
+                    if (selectedVehicle) {
+                        fixedPrice = getAirportPrice(airport, selectedVehicle);
                     }
-                    
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
                 }
-            });
-        });
-        
-        // Active navigation highlighting based on scroll position
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id') || '';
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href');
-                
-                if (href === '#' + current || (href === '#' && current === '')) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Typed.js for dynamic text
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof Typed !== 'undefined') {
-                new Typed('.hero-subtitle', {
-                    strings: [
-                        'Viaggia con stile e comfort.',
-                        'Servizio di Noleggio Con Conducente professionale.',
-                        'La tua esperienza di viaggio superiore.'
-                    ],
-                    typeSpeed: 50,
-                    backSpeed: 30,
-                    backDelay: 2000,
-                    startDelay: 1000,
-                    loop: true
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+                // Generate realistic
