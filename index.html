@@ -3,522 +3,1936 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexaRide - Servizio NCC Premium</title>
+    <title>NexaRide - Esperienza di Trasporto Futuristica</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
     <style>
         :root {
-            --primary: #0F1923;
-            --secondary: #1A2A36;
-            --accent: #D4AF37;
-            --text: #F5F5F5;
-            --text-dark: #333333;
-            --text-muted: #AAAAAA;
+            --primary-bg: #0a0d12;
+            --secondary-bg: #161b25;
+            --accent-primary: #00c8ff;
+            --accent-secondary: #b742ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b7c3;
+            --neon-glow: 0 0 10px rgba(0, 200, 255, 0.7), 0 0 20px rgba(0, 200, 255, 0.5), 0 0 30px rgba(0, 200, 255, 0.3);
+            --purple-glow: 0 0 10px rgba(183, 66, 255, 0.7), 0 0 20px rgba(183, 66, 255, 0.5), 0 0 30px rgba(183, 66, 255, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
             overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10,13,18,1) 0%, rgba(16,24,40,1) 100%);
         }
         
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--primary);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Exo 2', sans-serif;
             font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.25rem;
         }
         
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(212, 175, 55, 0.3);
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(16, 20, 30, 0.8);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 3px;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .loader-logo::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+            animation: lineGrow 2s ease-in-out infinite;
+        }
+        
+        @keyframes lineGrow {
+            0% { width: 0%; }
+            50% { width: 80%; }
+            100% { width: 0%; }
+        }
+        
+        .progress-bar {
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* Navigation */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(10, 13, 18, 0.8);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-item {
+            margin-left: 2.5rem;
+            position: relative;
         }
         
         .nav-link {
-            position: relative;
-            padding-bottom: 5px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
         }
         
-        .nav-link:after {
+        .nav-link::before {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: all 0.3s ease;
         }
         
-        .nav-link:hover:after,
-        .nav-link.active:after {
+        .nav-link:hover {
+            color: var(--accent-primary);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
             width: 100%;
         }
         
-        .nav-link:hover,
         .nav-link.active {
-            color: var(--accent);
+            color: var(--accent-primary);
         }
         
-        .hero {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  z-index: 1;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 200%; height: 200%;
-  background: linear-gradient(60deg, #1a1a1a, #2a2a2a, #0f2135, #1a1a1a);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  z-index: -2;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
-  background-size: 20px 20px;
-  animation: moveStars 60s linear infinite;
-  z-index: -1;
-  opacity: 0.3;
-}
-
-@keyframes gradientShift {
-  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
-  50%  { transform: translate(-25%, -25%) scale(1.2) rotate(10deg); }
-  100% { transform: translate(0,0) scale(1) rotate(0deg); }
-}
-
-@keyframes moveStars {
-  from { transform: translate(0,0) }
-  to   { transform: translate(50%,50%) }
-}
-
-
+        .nav-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 101;
+        }
         
-        .section-title {
+        .language-selector {
+            margin-left: 2.5rem;
             position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
         }
         
-        .section-title:after {
+        .language-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .language-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            width: 150px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .language-options.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-option:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-icon-small {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 800px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+        }
+        
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            border: none;
+        }
+        
+        .btn-primary::before {
             content: '';
             position: absolute;
-            width: 50%;
-            height: 3px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-primary));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .btn-icon {
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        /* About Section */
+        .section {
+            position: relative;
+            padding: 8rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             bottom: -10px;
             left: 0;
-            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 800px;
+        }
+        
+        .card {
+            background: var(--secondary-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.2), rgba(183, 66, 255, 0.2));
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            position: relative;
+        }
+        
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Fleet Section */
+        .fleet-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, var(--primary-bg), rgba(16, 24, 40, 0.9));
+        }
+        
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
         }
         
         .vehicle-card {
-            background-color: var(--secondary);
-            border-radius: 8px;
+            position: relative;
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            background: rgba(22, 27, 37, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             height: 100%;
         }
         
         .vehicle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .vehicle-card.selected {
-            border: 2px solid var(--accent);
-            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.3);
+        .vehicle-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
         }
         
         .vehicle-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .quote-form input,
-        .quote-form select,
-        .quote-form textarea {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text);
-            padding: 0.75rem;
-            border-radius: 4px;
-        }
-        
-        .quote-form input:focus,
-        .quote-form select:focus,
-        .quote-form textarea:focus {
-            border-color: var(--accent);
-            outline: none;
-        }
-        
-        .quote-form ::placeholder {
-            color: var(--text-muted);
-        }
-        
-        .blog-card {
-            background-color: var(--secondary);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .blog-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .contact-info i {
-            color: var(--accent);
-            width: 24px;
-            text-align: center;
-            margin-right: 10px;
-        }
-        
-        .footer {
-            background-color: var(--secondary);
-        }
-        
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            color: var(--accent);
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 50;
-            left: 0;
-            top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: brightness(0.8) contrast(1.1);
         }
         
-        .modal-content {
-            background-color: var(--secondary);
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 600px;
+        .vehicle-card:hover .vehicle-image {
+            transform: scale(1.05);
+            filter: brightness(1) contrast(1.1);
         }
         
-        .close {
-            color: var(--text-muted);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+        .vehicle-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(10, 13, 18, 1) 0%, rgba(10, 13, 18, 0) 50%);
+            z-index: 1;
         }
         
-        .close:hover {
-            color: var(--accent);
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero {
-                background-attachment: scroll;
-            }
-            .navbar-menu {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                background-color: var(--primary);
-                width: 100%;
-                padding: 1rem;
-                z-index: 40;
-            }
-            .navbar-menu.active {
-                display: block;
-            }
-            .modal-content {
-                width: 95%;
-                margin: 20% auto;
-            }
-        }
-        
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .slide-in {
-            animation: slideIn 1s ease-in-out;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .loading-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid var(--accent);
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .pac-container {
-            background-color: var(--secondary);
-            color: var(--text);
-            border: 1px solid var(--accent);
-            border-radius: 0 0 8px 8px;
-        }
-        
-        .pac-item {
-            padding: 8px;
-            color: var(--text);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .pac-item:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-        }
-        
-        .pac-item-selected {
-            background-color: rgba(212, 175, 55, 0.3);
-        }
-        
-        .pac-icon, .pac-item-query {
-            color: var(--text);
-        }
-
-        /* Policy Modal */
-        #policyModal {
-            z-index: 60;
-        }
-
-        /* Language Selector */
-        .lang-selector {
+        .vehicle-content {
+            padding: 1.5rem;
+            z-index: 2;
             position: relative;
         }
         
-        .lang-dropdown {
-            display: none;
+        .vehicle-category {
             position: absolute;
-            background-color: var(--secondary);
-            min-width: 120px;
-            border-radius: 4px;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            text-transform: uppercase;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .vehicle-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .vehicle-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .vehicle-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .vehicle-feature {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .feature-icon {
+            color: var(--accent-primary);
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .vehicle-action {
+            margin-top: 1.5rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .btn-outline:hover {
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .glow-effect {
+            position: absolute;
+            width: 60%;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            filter: blur(15px);
+            opacity: 0.3;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 13, 18, 0.95) 0%, rgba(16, 24, 40, 0.95) 100%);
             overflow: hidden;
-            z-index: 40;
-            right: 0;
-            top: 100%;
-            margin-top: 10px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
         
-        .lang-dropdown.show {
+        .quote-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .quote-form-container {
+            background: rgba(22, 27, 37, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .quote-form {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
             display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
         
-        .lang-option {
-            padding: 10px;
-            cursor: pointer;
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
         
-        .lang-option:hover {
-            background-color: rgba(212, 175, 55, 0.2);
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(0, 200, 255, 0.2);
         }
-
-        /* Success Message */
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .stops-container {
+            margin-bottom: 1rem;
+        }
+        
+        .stop-input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stop-input {
+            flex-grow: 1;
+        }
+        
+        .btn-remove-stop {
+            background: none;
+            border: none;
+            color: #ff5555;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-remove-stop:hover {
+            transform: scale(1.1);
+        }
+        
+        .btn-add-stop {
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-add-stop:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .btn-add-stop-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .datetime-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .vehicle-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .vehicle-option {
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .vehicle-option.selected {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+        }
+        
+        .vehicle-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vehicle-option-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .vehicle-option-image {
+            width: 50px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 1rem;
+        }
+        
+        .vehicle-option-info h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0;
+            color: var(--text-primary);
+        }
+        
+        .vehicle-option-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkbox-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            margin-right: 0.75rem;
+            position: relative;
+        }
+        
+        .checkbox-input:checked {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+        
+        .checkbox-input:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+        }
+        
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .policy-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .policy-link:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
         .success-message {
             display: none;
-            background-color: rgba(39, 174, 96, 0.2);
+            background: rgba(39, 174, 96, 0.1);
             border-left: 4px solid #27ae60;
-            padding: 20px;
-            border-radius: 4px;
-            margin-top: 20px;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .success-message i {
+            color: #27ae60;
+            margin-right: 0.5rem;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
+        /* Quote Summary */
+        .quote-summary {
+            background: rgba(22, 27, 37, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            position: relative;
+        }
+        
+        .quote-summary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .summary-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .summary-item {
+            margin-bottom: 1.2rem;
+        }
+        
+        .summary-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .summary-value {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .summary-route {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .route-line {
+            margin: 0 1rem;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .route-line::before,
+        .route-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             width: 10px;
+            height: 10px;
+            border-radius: 50%;
         }
         
-        ::-webkit-scrollbar-track {
-            background: var(--primary);
+        .route-line::before {
+            top: 0;
+            background: var(--accent-primary);
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 5px;
+        .route-line::after {
+            bottom: 0;
+            background: var(--accent-secondary);
         }
         
-        ::-webkit-scrollbar-thumb:hover {
-            background: #b39429;
+        .route-info {
+            flex-grow: 1;
+        }
+        
+        .summary-stops {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-stop {
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        
+        .summary-stop::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+        }
+        
+        .summary-details {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-label {
+            color: var(--text-secondary);
+        }
+        
+        .detail-value {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .summary-total {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .total-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .total-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .summary-note {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(16, 24, 40, 0.9), var(--primary-bg));
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(22, 27, 37, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-date {
+            color: var(--accent-primary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .blog-link:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .blog-link-icon {
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-link:hover .blog-link-icon {
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, rgba(16, 24, 40, 0.9) 100%);
+            overflow: hidden;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            position: relative;
+        }
+        
+        .contact-items {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 50%;
+            background: rgba(0, 200, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .contact-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 200, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .contact-text h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            transform: translateY(-5px);
+        }
+        
+        .contact-form-container {
+            background: rgba(22, 27, 37, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .contact-form {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-bg);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-link a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-link a::before {
+            content: '\f105';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link a:hover {
+            color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .footer-contact-icon {
+            color: var(--accent-primary);
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .copyright a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        
+        .copyright a:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 13, 18, 0.9);
+            z-index: 1000;
+            overflow: auto;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .modal-content {
+            position: relative;
+            background: var(--secondary-bg);
+            margin: 10% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .modal-body h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-body ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-body strong {
+            color: var(--text-primary);
+        }
+
+        /* Scroll to Top */
+        .scroll-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: var(--neon-glow);
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Background Elements */
+        .bg-gradient {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .bg-gradient-1 {
+            top: -300px;
+            right: -300px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.2) 0%, rgba(0, 200, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .bg-gradient-2 {
+            bottom: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(183, 66, 255, 0.2) 0%, rgba(183, 66, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .quote-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 400px;
+                background: rgba(16, 24, 40, 0.98);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 100;
+                transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+                padding: 2rem;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            .nav-menu-btn {
+                display: block;
+            }
+            
+            .nav-item {
+                margin: 1.5rem 0;
+            }
+            
+            .vehicle-options,
+            .form-row,
+            .datetime-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-selector {
+                margin-left: 0;
+                margin-top: 1.5rem;
+            }
+            
+            .language-options {
+                right: 50%;
+                transform: translateX(50%) translateY(-10px);
+            }
+            
+            .language-options.show {
+                transform: translateX(50%) translateY(0);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .modal-content {
+                margin: 20% auto;
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-opacity-90 bg-black z-50 py-4">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#" class="flex items-center">
-                <h1 class="text-2xl font-bold text-white">Nexa<span class="text-yellow-500">Ride</span></h1>
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#services" class="nav-link">Servizi</a>
-                <a href="#fleet" class="nav-link">Flotta</a>
-                <a href="#quote" class="nav-link">Preventivo</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contatti</a>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">NexaRide</div>
+            <p>Caricamento dell'esperienza futuristica...</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
             </div>
-            <div class="flex items-center space-x-4">
-                <div class="lang-selector">
-                    <button class="flex items-center space-x-1" onclick="toggleLangDropdown()">
-                        <span>IT</span>
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div class="lang-dropdown">
-                        <div class="lang-option" onclick="changeLanguage('it')">Italiano</div>
-                        <div class="lang-option" onclick="changeLanguage('en')">English</div>
-                        <div class="lang-option" onclick="changeLanguage('ja')">日本語</div>
-                        <div class="lang-option" onclick="changeLanguage('zh')">中文</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-wrapper" id="navbar">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="navbar-brand">NexaRide</a>
+                <div class="nav-menu" id="navMenu">
+                    <div class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-home nav-icon"></i>Home
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#services" class="nav-link">
+                            <i class="fas fa-concierge-bell nav-icon"></i>Servizi
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#fleet" class="nav-link">
+                            <i class="fas fa-car nav-icon"></i>Flotta
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#quote" class="nav-link">
+                            <i class="fas fa-calculator nav-icon"></i>Preventivo
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#blog" class="nav-link">
+                            <i class="fas fa-newspaper nav-icon"></i>Blog
+                        </a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="#contact" class="nav-link">
+                            <i class="fas fa-phone-alt nav-icon"></i>Contatti
+                        </a>
+                    </div>
+                    <div class="language-selector">
+                        <button class="language-btn" onclick="toggleLanguageMenu()">
+                            <i class="fas fa-globe language-icon"></i>
+                            <span id="currentLanguage">IT</span>
+                            <i class="fas fa-chevron-down ml-1"></i>
+                        </button>
+                        <div class="language-options" id="languageOptions">
+                            <div class="language-option" onclick="changeLanguage('it')">
+                                <span class="language-icon-small">🇮🇹</span>Italiano
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('en')">
+                                <span class="language-icon-small">🇬🇧</span>English
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('ja')">
+                                <span class="language-icon-small">🇯🇵</span>日本語
+                            </div>
+                            <div class="language-option" onclick="changeLanguage('zh')">
+                                <span class="language-icon-small">🇨🇳</span>中文
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button class="md:hidden" onclick="toggleMenu()">
+                <button class="nav-menu-btn" id="navMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
-            </div>
+            </nav>
         </div>
-        <div class="navbar-menu md:hidden">
-            <div class="flex flex-col space-y-4 p-4">
-                <a href="#" class="nav-link active">Home</a>
-                <a href="#services" class="nav-link">Servizi</a>
-                <a href="#fleet" class="nav-link">Flotta</a>
-                <a href="#quote" class="nav-link">Preventivo</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contatti</a>
-            </div>
-        </div>
-    </nav>
+    </div>
 
     <!-- Hero Section -->
-    <section class="hero flex items-center justify-center">
-        <div class="container mx-auto px-4 py-20 mt-16 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate__animated animate__fadeInDown">Servizio NCC Premium</h1>
-            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate__animated animate__fadeInUp">Viaggia con stile e comfort. Servizio di Noleggio Con Conducente professionale per ogni tua esigenza.</p>
-            <a href="#quote" class="btn-primary animate__animated animate__fadeInUp">Richiedi Preventivo</a>
+    <section class="hero" id="hero">
+        <div id="particles-js"></div>
+        <div class="bg-gradient bg-gradient-1"></div>
+        <div class="bg-gradient bg-gradient-2"></div>
+        <div class="grid-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Servizio NCC Premium</h1>
+            <p class="hero-subtitle">Viaggia con stile e comfort. Servizio di Noleggio Con Conducente professionale per ogni tua esigenza.</p>
+            <a href="#quote" class="btn btn-primary">
+                Richiedi Preventivo <i class="fas fa-arrow-right btn-icon"></i>
+            </a>
         </div>
+        <a href="#services" class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl md:text-4xl font-bold">I Nostri Servizi</h2>
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">I Nostri Servizi</h2>
+            <p class="section-subtitle">Offriamo soluzioni di trasporto di alta qualità, personalizzate per soddisfare le tue specifiche esigenze.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-plane text-2xl text-gray-900"></i>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-plane"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Transfer Aeroportuali</h3>
-                    <p class="text-gray-400">Servizio puntuale ed efficiente per i tuoi trasferimenti da e verso gli aeroporti. Autisti professionisti ti accoglieranno all'arrivo.</p>
+                    <h3 class="card-title">Transfer Aeroportuali</h3>
+                    <p class="card-text">Servizio puntuale ed efficiente per i tuoi trasferimenti da e verso gli aeroporti. Autisti professionisti ti accoglieranno all'arrivo.</p>
                 </div>
-                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-suitcase-rolling text-2xl text-gray-900"></i>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-suitcase-rolling"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Viaggi Business</h3>
-                    <p class="text-gray-400">Trasporto executive per professionisti. Puntualità, discrezione e massima professionalità per i tuoi impegni di lavoro.</p>
+                    <h3 class="card-title">Viaggi Business</h3>
+                    <p class="card-text">Trasporto executive per professionisti. Puntualità, discrezione e massima professionalità per i tuoi impegni di lavoro.</p>
                 </div>
-                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-glass-cheers text-2xl text-gray-900"></i>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-glass-cheers"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Eventi Speciali</h3>
-                    <p class="text-gray-400">Servizio personalizzato per matrimoni, cerimonie e occasioni speciali. Trasforma il tuo evento con un trasporto di classe.</p>
+                    <h3 class="card-title">Eventi Speciali</h3>
+                    <p class="card-text">Servizio personalizzato per matrimoni, cerimonie e occasioni speciali. Trasforma il tuo evento con un trasporto di classe.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Fleet Section -->
-    <section id="fleet" class="py-20 bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl md:text-4xl font-bold">La Nostra Flotta</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+    <section id="fleet" class="section fleet-section">
+        <div class="container">
+            <h2 class="section-title">La Nostra Flotta</h2>
+            <p class="section-subtitle">Scopri la nostra selezione di veicoli premium per un'esperienza di viaggio superiore.</p>
+            <div class="fleet-grid">
                 <div class="vehicle-card">
-                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Toyota RAV4 Hybrid</h3>
-                        <p class="text-sm text-gray-400 mb-4">Economy</p>
-                        <p class="text-gray-300">Comfort ed efficienza per i tuoi spostamenti quotidiani. Sedili in pelle e autisti professionisti.</p>
+                    <div class="vehicle-image-container">
+                        <img src="https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4" alt="Toyota RAV4 Hybrid" class="vehicle-image">
+                        <div class="vehicle-image-overlay"></div>
+                    </div>
+                    <div class="vehicle-content">
+                        <span class="vehicle-category">Economy</span>
+                        <h3 class="vehicle-title">Toyota RAV4 Hybrid</h3>
+                        <p class="vehicle-description">Comfort ed efficienza per i tuoi spostamenti quotidiani. Sedili in pelle e autisti professionisti.</p>
+                        <div class="vehicle-features">
+                            <span class="vehicle-feature">
+                                <i class="fas fa-user feature-icon"></i> 4 passeggeri
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-suitcase feature-icon"></i> 3 valigie
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-leaf feature-icon"></i> Ibrido
+                            </span>
+                        </div>
+                        <div class="vehicle-action">
+                            <a href="#quote" class="btn btn-outline">Richiedi preventivo</a>
+                        </div>
+                        <div class="glow-effect"></div>
                     </div>
                 </div>
                 <div class="vehicle-card">
-                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Mercedes Classe E</h3>
-                        <p class="text-sm text-gray-400 mb-4">Business</p>
-                        <p class="text-gray-300">L'equilibrio perfetto tra eleganza e performance per i tuoi viaggi di lavoro.</p>
+                    <div class="vehicle-image-container">
+                        <img src="https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe" alt="Mercedes Classe E" class="vehicle-image">
+                        <div class="vehicle-image-overlay"></div>
+                    </div>
+                    <div class="vehicle-content">
+                        <span class="vehicle-category">Business</span>
+                        <h3 class="vehicle-title">Mercedes Classe E</h3>
+                        <p class="vehicle-description">L'equilibrio perfetto tra eleganza e performance per i tuoi viaggi di lavoro.</p>
+                        <div class="vehicle-features">
+                            <span class="vehicle-feature">
+                                <i class="fas fa-user feature-icon"></i> 3 passeggeri
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-suitcase feature-icon"></i> 3 valigie
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-wifi feature-icon"></i> Wi-Fi
+                            </span>
+                        </div>
+                        <div class="vehicle-action">
+                            <a href="#quote" class="btn btn-outline">Richiedi preventivo</a>
+                        </div>
+                        <div class="glow-effect"></div>
                     </div>
                 </div>
                 <div class="vehicle-card">
-                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Mercedes Classe S</h3>
-                        <p class="text-sm text-gray-400 mb-4">First Class</p>
-                        <p class="text-gray-300">Il massimo del lusso per chi non accetta compromessi. Un'esperienza di viaggio superiore.</p>
+                    <div class="vehicle-image-container">
+                        <img src="https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837" alt="Mercedes Classe S" class="vehicle-image">
+                        <div class="vehicle-image-overlay"></div>
+                    </div>
+                    <div class="vehicle-content">
+                        <span class="vehicle-category">First Class</span>
+                        <h3 class="vehicle-title">Mercedes Classe S</h3>
+                        <p class="vehicle-description">Il massimo del lusso per chi non accetta compromessi. Un'esperienza di viaggio superiore.</p>
+                        <div class="vehicle-features">
+                            <span class="vehicle-feature">
+                                <i class="fas fa-user feature-icon"></i> 3 passeggeri
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-suitcase feature-icon"></i> 3 valigie
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-glass-whiskey feature-icon"></i> Minibar
+                            </span>
+                        </div>
+                        <div class="vehicle-action">
+                            <a href="#quote" class="btn btn-outline">Richiedi preventivo</a>
+                        </div>
+                        <div class="glow-effect"></div>
                     </div>
                 </div>
                 <div class="vehicle-card">
-                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0');"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Mercedes Classe V</h3>
-                        <p class="text-sm text-gray-400 mb-4">Group</p>
-                        <p class="text-gray-300">Spazio e comfort per gruppi fino a 7 persone. L'opzione ideale per viaggi collettivi.</p>
+                    <div class="vehicle-image-container">
+                        <img src="https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0" alt="Mercedes Classe V" class="vehicle-image">
+                        <div class="vehicle-image-overlay"></div>
+                    </div>
+                    <div class="vehicle-content">
+                        <span class="vehicle-category">Group</span>
+                        <h3 class="vehicle-title">Mercedes Classe V</h3>
+                        <p class="vehicle-description">Spazio e comfort per gruppi fino a 7 persone. L'opzione ideale per viaggi collettivi.</p>
+                        <div class="vehicle-features">
+                            <span class="vehicle-feature">
+                                <i class="fas fa-user feature-icon"></i> 7 passeggeri
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-suitcase feature-icon"></i> 7 valigie
+                            </span>
+                            <span class="vehicle-feature">
+                                <i class="fas fa-wifi feature-icon"></i> Wi-Fi
+                            </span>
+                        </div>
+                        <div class="vehicle-action">
+                            <a href="#quote" class="btn btn-outline">Richiedi preventivo</a>
+                        </div>
+                        <div class="glow-effect"></div>
                     </div>
                 </div>
             </div>
@@ -526,174 +1940,181 @@
     </section>
 
     <!-- Quote Section -->
-    <section id="quote" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl md:text-4xl font-bold">Richiedi un Preventivo</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-                <div class="quote-form">
-                    <form id="quoteForm" onsubmit="submitQuoteForm(event)">
-                        <div class="mb-6">
-                            <label class="block mb-2">Punto di partenza</label>
-                            <input type="text" id="pickupLocation" class="w-full" placeholder="Inserisci indirizzo di partenza" onchange="updateQuote()">
+    <section id="quote" class="section quote-section">
+        <div class="container">
+            <h2 class="section-title">Richiedi un Preventivo</h2>
+            <p class="section-subtitle">Compila il form per ricevere un preventivo personalizzato per il tuo trasferimento.</p>
+            <div class="quote-container">
+                <div class="quote-form-container">
+                    <form class="quote-form" id="quoteForm" onsubmit="submitQuoteForm(event)">
+                        <div class="form-group">
+                            <label class="form-label">Punto di partenza</label>
+                            <input type="text" id="pickupLocation" class="form-control" placeholder="Inserisci indirizzo di partenza" onchange="updateQuote()">
                         </div>
-                        <div id="stopsContainer"></div>
-                        <div class="mb-2">
-                            <button type="button" class="text-yellow-500 flex items-center" onclick="addStop()">
-                                <i class="fas fa-plus-circle mr-2"></i> Aggiungi fermata
-                            </button>
+                        <div class="stops-container" id="stopsContainer"></div>
+                        <button type="button" class="btn-add-stop" onclick="addStop()">
+                            <i class="fas fa-plus-circle btn-add-stop-icon"></i> Aggiungi fermata
+                        </button>
+                        <div class="form-group">
+                            <label class="form-label">Destinazione</label>
+                            <input type="text" id="dropoffLocation" class="form-control" placeholder="Inserisci indirizzo di destinazione" onchange="updateQuote()">
                         </div>
-                        <div class="mb-6">
-                            <label class="block mb-2">Destinazione</label>
-                            <input type="text" id="dropoffLocation" class="w-full" placeholder="Inserisci indirizzo di destinazione" onchange="updateQuote()">
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label class="block mb-2">Data</label>
-                                <input type="date" id="pickupDate" class="w-full" min="" onchange="updateQuote()">
+                        <div class="datetime-row">
+                            <div class="form-group">
+                                <label class="form-label">Data</label>
+                                <input type="date" id="pickupDate" class="form-control" min="" onchange="updateQuote()">
                             </div>
-                            <div>
-                                <label class="block mb-2">Orario</label>
-                                <input type="time" id="pickupTime" class="w-full" onchange="updateQuote()">
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <label class="block mb-2">Seleziona veicolo</label>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('economy')" id="economy-vehicle">
-                                    <div class="flex items-center">
-                                        <img src="https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4" alt="Toyota RAV4" class="w-20 h-16 object-cover rounded mr-4">
-                                        <div>
-                                            <h4 class="font-bold">Economy</h4>
-                                            <p class="text-sm text-gray-400">Toyota RAV4 Hybrid</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('business')" id="business-vehicle">
-                                    <div class="flex items-center">
-                                        <img src="https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe" alt="Mercedes Classe E" class="w-20 h-16 object-cover rounded mr-4">
-                                        <div>
-                                            <h4 class="font-bold">Business</h4>
-                                            <p class="text-sm text-gray-400">Mercedes Classe E</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('first-class')" id="first-class-vehicle">
-                                    <div class="flex items-center">
-                                        <img src="https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837" alt="Mercedes Classe S" class="w-20 h-16 object-cover rounded mr-4">
-                                        <div>
-                                            <h4 class="font-bold">First Class</h4>
-                                            <p class="text-sm text-gray-400">Mercedes Classe S</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('group')" id="group-vehicle">
-                                    <div class="flex items-center">
-                                        <img src="https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0" alt="Mercedes Classe V" class="w-20 h-16 object-cover rounded mr-4">
-                                        <div>
-                                            <h4 class="font-bold">Group</h4>
-                                            <p class="text-sm text-gray-400">Mercedes Classe V</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label class="form-label">Orario</label>
+                                <input type="time" id="pickupTime" class="form-control" onchange="updateQuote()">
                             </div>
                         </div>
-                        <div class="mb-6">
-                            <label class="block mb-2">Note aggiuntive</label>
-                            <textarea id="notes" class="w-full" rows="3" placeholder="Informazioni aggiuntive, richieste speciali..."></textarea>
+                        <div class="form-group">
+                            <label class="form-label">Seleziona veicolo</label>
+                            <div class="vehicle-options">
+                                <div class="vehicle-option" id="economy-vehicle" onclick="selectVehicle('economy')">
+                                    <div class="vehicle-option-content">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4" alt="Toyota RAV4" class="vehicle-option-image">
+                                        <div class="vehicle-option-info">
+                                            <h4>Economy</h4>
+                                            <p>Toyota RAV4 Hybrid</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-option" id="business-vehicle" onclick="selectVehicle('business')">
+                                    <div class="vehicle-option-content">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe" alt="Mercedes Classe E" class="vehicle-option-image">
+                                        <div class="vehicle-option-info">
+                                            <h4>Business</h4>
+                                            <p>Mercedes Classe E</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-option" id="first-class-vehicle" onclick="selectVehicle('first-class')">
+                                    <div class="vehicle-option-content">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837" alt="Mercedes Classe S" class="vehicle-option-image">
+                                        <div class="vehicle-option-info">
+                                            <h4>First Class</h4>
+                                            <p>Mercedes Classe S</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-option" id="group-vehicle" onclick="selectVehicle('group')">
+                                    <div class="vehicle-option-content">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0" alt="Mercedes Classe V" class="vehicle-option-image">
+                                        <div class="vehicle-option-info">
+                                            <h4>Group</h4>
+                                            <p>Mercedes Classe V</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-6 flex items-center">
-                            <input type="checkbox" id="policyAccepted" class="mr-2">
-                            <label for="policyAccepted">
-                                Accetto la <a href="#" class="text-yellow-500" onclick="openPolicyModal(); return false;">policy di cancellazione</a>
+                        <div class="form-group">
+                            <label class="form-label">Note aggiuntive</label>
+                            <textarea id="notes" class="form-control" rows="3" placeholder="Informazioni aggiuntive, richieste speciali..."></textarea>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="policyAccepted" class="checkbox-input">
+                            <label for="policyAccepted" class="checkbox-label">
+                                Accetto la <a href="#" class="policy-link" onclick="openPolicyModal(); return false;">policy di cancellazione</a>
                             </label>
                         </div>
-                        <button type="submit" class="btn-primary w-full">Richiedi Preventivo</button>
-                        <div id="successMessage" class="success-message">
-                            <p><i class="fas fa-check-circle mr-2"></i> La tua richiesta di preventivo è stata inviata con successo! Ti contatteremo al più presto.</p>
+                        <button type="submit" class="btn btn-primary btn-submit">Richiedi Preventivo</button>
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> La tua richiesta di preventivo è stata inviata con successo! Ti contatteremo al più presto.
                         </div>
                     </form>
                 </div>
-                <div class="bg-gray-800 p-8 rounded">
-                    <h3 class="text-2xl font-bold mb-4">Dettagli Preventivo</h3>
-                    <div id="quoteDetails">
-                        <div class="mb-4">
-                            <span class="text-gray-400">Partenza:</span>
-                            <p id="summaryPickup" class="font-semibold">-</p>
-                        </div>
-                        <div id="summaryStopsContainer" class="mb-4 hidden">
-                            <span class="text-gray-400">Fermate intermedie:</span>
-                            <div id="summaryStops"></div>
-                        </div>
-                        <div class="mb-4">
-                            <span class="text-gray-400">Destinazione:</span>
-                            <p id="summaryDropoff" class="font-semibold">-</p>
-                        </div>
-                        <div class="mb-4">
-                            <span class="text-gray-400">Data e ora:</span>
-                            <p id="summaryDateTime" class="font-semibold">-</p>
-                        </div>
-                        <div class="mb-4">
-                            <span class="text-gray-400">Veicolo:</span>
-                            <p id="summaryVehicle" class="font-semibold">-</p>
-                        </div>
-                        <div class="mb-4 border-t border-gray-700 pt-4">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-gray-400">Distanza stimata:</span>
-                                <p id="summaryDistance" class="font-semibold">-</p>
+                <div class="quote-summary">
+                    <h3 class="summary-title">Dettagli Preventivo</h3>
+                    <div class="summary-route">
+                        <div class="route-info">
+                            <div class="summary-item">
+                                <div class="summary-label">Partenza</div>
+                                <div class="summary-value" id="summaryPickup">-</div>
                             </div>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-gray-400">Tempo stimato:</span>
-                                <p id="summaryDuration" class="font-semibold">-</p>
+                            <div class="summary-stops" id="summaryStopsContainer" style="display: none;">
+                                <div class="summary-label">Fermate intermedie</div>
+                                <div id="summaryStops"></div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-label">Destinazione</div>
+                                <div class="summary-value" id="summaryDropoff">-</div>
                             </div>
                         </div>
-                        <div class="border-t border-gray-700 pt-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-xl">Prezzo stimato:</span>
-                                <p id="summaryPrice" class="text-2xl font-bold text-yellow-500">-</p>
-                            </div>
-                            <p class="text-sm text-gray-400 mt-2">* Il preventivo è indicativo e soggetto a conferma</p>
+                        <div class="route-line"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Data e ora</div>
+                        <div class="summary-value" id="summaryDateTime">-</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Veicolo</div>
+                        <div class="summary-value" id="summaryVehicle">-</div>
+                    </div>
+                    <div class="summary-details">
+                        <div class="detail-row">
+                            <div class="detail-label">Distanza stimata</div>
+                            <div class="detail-value" id="summaryDistance">-</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Tempo stimato</div>
+                            <div class="detail-value" id="summaryDuration">-</div>
                         </div>
                     </div>
+                    <div class="summary-total">
+                        <div class="total-label">Prezzo stimato</div>
+                        <div class="total-value" id="summaryPrice">-</div>
+                    </div>
+                    <p class="summary-note">* Il preventivo è indicativo e soggetto a conferma</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="py-20 bg-gray-800">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl md:text-4xl font-bold">News & Blog</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+    <section id="blog" class="section blog-section">
+        <div class="container">
+            <h2 class="section-title">News & Blog</h2>
+            <p class="section-subtitle">Leggi le ultime notizie e articoli sul mondo dei trasporti NCC.</p>
+            <div class="blog-grid">
                 <div class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1516733968668-dbdce39c4651?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="p-6">
-                        <span class="text-xs text-yellow-500 mb-2 block">18 Luglio 2023</span>
-                        <h3 class="text-xl font-bold mb-3">Nuove normative per il settore NCC: cosa cambia nel 2023</h3>
-                        <p class="text-gray-400 mb-4">Le recenti modifiche alla regolamentazione del settore Noleggio Con Conducente stanno cambiando il panorama dei servizi di trasporto privato.</p>
-                        <a href="#" class="text-yellow-500 inline-flex items-center">
-                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="blog-image-container">
+                        <img src="https://images.unsplash.com/photo-1516733968668-dbdce39c4651?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">18 Luglio 2023</div>
+                        <h3 class="blog-title">Nuove normative per il settore NCC: cosa cambia nel 2023</h3>
+                        <p class="blog-excerpt">Le recenti modifiche alla regolamentazione del settore Noleggio Con Conducente stanno cambiando il panorama dei servizi di trasporto privato.</p>
+                        <a href="#" class="blog-link">
+                            Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
                 </div>
                 <div class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1626194801804-579dfe441d36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="p-6">
-                        <span class="text-xs text-yellow-500 mb-2 block">3 Agosto 2023</span>
-                        <h3 class="text-xl font-bold mb-3">L'evoluzione dei servizi NCC nell'era della mobilità sostenibile</h3>
-                        <p class="text-gray-400 mb-4">Come i servizi di Noleggio Con Conducente si stanno adattando alle nuove esigenze di sostenibilità ambientale e digitalizzazione.</p>
-                        <a href="#" class="text-yellow-500 inline-flex items-center">
-                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="blog-image-container">
+                        <img src="https://images.unsplash.com/photo-1626194801804-579dfe441d36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">3 Agosto 2023</div>
+                        <h3 class="blog-title">L'evoluzione dei servizi NCC nell'era della mobilità sostenibile</h3>
+                        <p class="blog-excerpt">Come i servizi di Noleggio Con Conducente si stanno adattando alle nuove esigenze di sostenibilità ambientale e digitalizzazione.</p>
+                        <a href="#" class="blog-link">
+                            Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
                 </div>
                 <div class="blog-card">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1550347175-c3ecff174554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
-                    <div class="p-6">
-                        <span class="text-xs text-yellow-500 mb-2 block">22 Settembre 2023</span>
-                        <h3 class="text-xl font-bold mb-3">NCC vs. Ride-sharing: le differenze che fanno la qualità</h3>
-                        <p class="text-gray-400 mb-4">Un'analisi approfondita delle differenze tra il servizio di Noleggio Con Conducente tradizionale e le moderne piattaforme di ride-sharing.</p>
-                        <a href="#" class="text-yellow-500 inline-flex items-center">
-                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                    <div class="blog-image-container">
+                        <img src="https://images.unsplash.com/photo-1550347175-c3ecff174554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Blog Image" class="blog-image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">22 Settembre 2023</div>
+                        <h3 class="blog-title">NCC vs. Ride-sharing: le differenze che fanno la qualità</h3>
+                        <p class="blog-excerpt">Un'analisi approfondita delle differenze tra il servizio di Noleggio Con Conducente tradizionale e le moderne piattaforme di ride-sharing.</p>
+                        <a href="#" class="blog-link">
+                            Leggi di più <i class="fas fa-arrow-right blog-link-icon"></i>
                         </a>
                     </div>
                 </div>
@@ -702,119 +2123,137 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl md:text-4xl font-bold">Contattaci</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-                <div>
-                    <p class="mb-6">Per informazioni, prenotazioni o assistenza non esitare a contattarci. Il nostro team è a tua disposizione 24/7.</p>
-                    <div class="contact-info space-y-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1"></i>
-                            <p>Via Dante 49, Sesto San Giovanni, Milano, Italia</p>
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Contattaci</h2>
+            <p class="section-subtitle">Per informazioni, prenotazioni o assistenza non esitare a contattarci.</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Sede</h4>
+                                <p>Via Dante 49, Sesto San Giovanni, Milano, Italia</p>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone"></i>
-                            <p>+39 345 3449775</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefono</h4>
+                                <p>+39 345 3449775</p>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope"></i>
-                            <p>nexaridesrl@gmail.com</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>nexaridesrl@gmail.com</p>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-clock"></i>
-                            <p>Servizio disponibile 24/7</p>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Orari</h4>
+                                <p>Servizio disponibile 24/7</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-8 flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
-                            <i class="fab fa-facebook-f text-xl"></i>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
-                            <i class="fab fa-linkedin-in text-xl"></i>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
-                            <i class="fab fa-whatsapp text-xl"></i>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
-                <div>
-                    <div class="bg-gray-800 p-6 rounded-lg h-full">
-                        <form id="contactForm">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <div>
-                                    <label class="block mb-2">Nome</label>
-                                    <input type="text" class="w-full" placeholder="Il tuo nome">
-                                </div>
-                                <div>
-                                    <label class="block mb-2">Email</label>
-                                    <input type="email" class="w-full" placeholder="La tua email">
-                                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Nome</label>
+                                <input type="text" class="form-control" placeholder="Il tuo nome" required>
                             </div>
-                            <div class="mb-4">
-                                <label class="block mb-2">Telefono</label>
-                                <input type="tel" class="w-full" placeholder="Il tuo numero di telefono">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="La tua email" required>
                             </div>
-                            <div class="mb-4">
-                                <label class="block mb-2">Messaggio</label>
-                                <textarea class="w-full" rows="4" placeholder="Il tuo messaggio"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary w-full">Invia Messaggio</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Telefono</label>
+                            <input type="tel" class="form-control" placeholder="Il tuo numero di telefono">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Messaggio</label>
+                            <textarea class="form-control" rows="4" placeholder="Il tuo messaggio" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">NexaRide</h3>
-                    <p class="text-gray-400">Servizio di Noleggio Con Conducente premium per viaggi business, trasferimenti aeroportuali ed eventi speciali.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>NexaRide</h3>
+                    <p>Servizio di Noleggio Con Conducente premium per viaggi business, trasferimenti aeroportuali ed eventi speciali.</p>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="footer-link">Home</a></li>
-                        <li><a href="#services" class="footer-link">Servizi</a></li>
-                        <li><a href="#fleet" class="footer-link">Flotta</a></li>
-                        <li><a href="#quote" class="footer-link">Preventivo</a></li>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Home</a></li>
+                        <li class="footer-link"><a href="#services">Servizi</a></li>
+                        <li class="footer-link"><a href="#fleet">Flotta</a></li>
+                        <li class="footer-link"><a href="#quote">Preventivo</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Info</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="footer-link" onclick="openPolicyModal(); return false;">Policy di Cancellazione</a></li>
-                        <li><a href="#" class="footer-link">Termini e Condizioni</a></li>
-                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    <h4 class="footer-heading">Info</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" onclick="openPolicyModal(); return false;">Policy di Cancellazione</a></li>
+                        <li class="footer-link"><a href="#">Termini e Condizioni</a></li>
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-link"><a href="#">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Contatti</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-yellow-500 mr-2"></i>
+                    <h4 class="footer-heading">Contatti</h4>
+                    <ul class="footer-contact">
+                        <li class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt footer-contact-icon"></i>
                             <span>Via Dante 49, Sesto San Giovanni</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone text-yellow-500 mr-2"></i>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-phone footer-contact-icon"></i>
                             <span>+39 345 3449775</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope text-yellow-500 mr-2"></i>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-envelope footer-contact-icon"></i>
                             <span>nexaridesrl@gmail.com</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-700 pt-8 mt-8 text-center">
+            <div class="copyright">
                 <p>© 2023 NexaRide. Tutti i diritti riservati.</p>
             </div>
         </div>
@@ -823,25 +2262,169 @@
     <!-- Policy Modal -->
     <div id="policyModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closePolicyModal()">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Policy di Cancellazione</h2>
-            <div class="text-gray-300">
-                <p class="mb-4">NexaRide si impegna ad offrire un servizio flessibile ai propri clienti, tuttavia è necessaria una policy di cancellazione per garantire l'efficienza del servizio:</p>
-                <ul class="list-disc pl-5 mb-4 space-y-2">
+            <div class="modal-header">
+                <h2 class="modal-title">Policy di Cancellazione</h2>
+                <div class="modal-close" onclick="closePolicyModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>NexaRide si impegna ad offrire un servizio flessibile ai propri clienti, tuttavia è necessaria una policy di cancellazione per garantire l'efficienza del servizio:</p>
+                
+                <h3>Condizioni di cancellazione</h3>
+                <ul>
                     <li><strong>Cancellazione standard:</strong> Nessun addebito se la cancellazione avviene almeno 2 ore prima dell'orario di partenza previsto.</li>
                     <li><strong>Cancellazione tardiva:</strong> Verrà addebitato l'intero importo del servizio per cancellazioni effettuate meno di 2 ore prima dell'orario di partenza previsto.</li>
                     <li><strong>No-show:</strong> In caso di mancata presentazione del cliente senza preavviso, verrà addebitato l'intero importo del servizio.</li>
                 </ul>
-                <p class="mb-4"><strong>Eccezioni:</strong> In circostanze eccezionali (emergenze mediche, cancellazioni di voli con breve preavviso, ecc.) la policy di cancellazione può essere valutata caso per caso. Ti invitiamo a contattarci immediatamente.</p>
-                <p>Per qualsiasi chiarimento o circostanza speciale, contatta il nostro team al +39 345 3449775.</p>
+                
+                <h3>Eccezioni</h3>
+                <p>In circostanze eccezionali (emergenze mediche, cancellazioni di voli con breve preavviso, ecc.) la policy di cancellazione può essere valutata caso per caso. Ti invitiamo a contattarci immediatamente.</p>
+                
+                <p>Per qualsiasi chiarimento o circostanza speciale, contatta il nostro team al <strong>+39 345 3449775</strong>.</p>
             </div>
         </div>
     </div>
 
+    <!-- Scroll to Top -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- Scripts -->
     <script>
-        // Set today as minimum date for pickup
+        // Simulated Loading Progress
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+        const loader = document.getElementById('loader');
+        
+        const interval = setInterval(() => {
+            progress += Math.random() * 10;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.visibility = 'hidden';
+                        
+                        // Initialize animations after loading
+                        initializeAnimations();
+                    }, 800);
+                }, 500);
+            }
+            progressBar.style.width = progress + '%';
+        }, 200);
+        
+        // Initialize Particles.js
         document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#00c8ff'
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        },
+                        polygon: {
+                            nb_sides: 5
+                        }
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 2,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#00c8ff',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: 'none',
+                        random: true,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: true,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 200,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+            
+            // Set today as minimum date for pickup
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('pickupDate').setAttribute('min', today);
             document.getElementById('pickupDate').value = today;
@@ -857,33 +2440,122 @@
             setTimeout(updateQuote, 500);
         });
         
-        // Mobile menu toggle
-        function toggleMenu() {
-            document.querySelector('.navbar-menu').classList.toggle('active');
+        // Initialize Animations
+        function initializeAnimations() {
+            // Custom animations using GSAP
+            gsap.from('.hero-title', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.2
+            });
+            
+            gsap.from('.hero-subtitle', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.5
+            });
+            
+            gsap.from('.btn-primary', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.8
+            });
+            
+            // Animate sections on scroll
+            gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.utils.toArray('.section').forEach(section => {
+                gsap.from(section.querySelectorAll('.section-title, .section-subtitle'), {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%'
+                    },
+                    opacity: 0,
+                    y: 50,
+                    stagger: 0.2,
+                    duration: 1
+                });
+                
+                gsap.from(section.querySelectorAll('.card, .vehicle-card, .blog-card'), {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 70%'
+                    },
+                    opacity: 0,
+                    y: 50,
+                    stagger: 0.1,
+                    duration: 0.8
+                });
+            });
         }
         
-        // Language dropdown toggle
-        function toggleLangDropdown() {
-            document.querySelector('.lang-dropdown').classList.toggle('show');
-        }
-        
-        // Close language dropdown when clicking outside
-        window.onclick = function(event) {
-            if (!event.target.matches('.lang-selector button') && !event.target.matches('.lang-selector button *')) {
-                var dropdowns = document.getElementsByClassName("lang-dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 13, 18, 0.95)';
+                navbar.style.boxShadow = '0 10px 30px -10px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(10, 13, 18, 0.8)';
+                navbar.style.boxShadow = 'none';
             }
+            
+            // Show/hide scroll to top button
+            const scrollToTop = document.getElementById('scrollToTop');
+            if (window.scrollY > 300) {
+                scrollToTop.classList.add('show');
+            } else {
+                scrollToTop.classList.remove('show');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const navMenuBtn = document.getElementById('navMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        navMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : 
+                '<i class="fas fa-bars"></i>';
+        });
+        
+        // Language Menu Toggle
+        function toggleLanguageMenu() {
+            const languageOptions = document.getElementById('languageOptions');
+            languageOptions.classList.toggle('show');
         }
         
-        // Language change
+        // Close menus when clicking outside
+        document.addEventListener('click', function(e) {
+            const languageOptions = document.getElementById('languageOptions');
+            const languageBtn = document.querySelector('.language-btn');
+            
+            if (languageOptions.classList.contains('show') && 
+                !e.target.closest('.language-selector')) {
+                languageOptions.classList.remove('show');
+            }
+        });
+        
+        // Change Language
         function changeLanguage(lang) {
-            alert('Cambio lingua a: ' + lang + '\nQuesta funzionalità sarà implementata completamente nella versione finale.');
-            document.querySelector('.lang-dropdown').classList.remove('show');
+            const currentLanguage = document.getElementById('currentLanguage');
+            const languages = {
+                'it': 'IT',
+                'en': 'EN',
+                'ja': 'JP',
+                'zh': 'CN'
+            };
+            
+            currentLanguage.textContent = languages[lang];
+            
+            // In a real implementation, this would change the site language
+            alert(`Cambio lingua a: ${lang}\nQuesta funzionalità sarà implementata completamente nella versione finale.`);
+            
+            document.getElementById('languageOptions').classList.remove('show');
         }
         
         // Stop counter
@@ -899,15 +2571,12 @@
             stopCounter++;
             const stopsContainer = document.getElementById('stopsContainer');
             const stopDiv = document.createElement('div');
-            stopDiv.className = 'mb-6 relative';
+            stopDiv.className = 'stop-input-container';
             stopDiv.innerHTML = `
-                <label class="block mb-2">Fermata ${stopCounter}</label>
-                <div class="flex">
-                    <input type="text" class="w-full stop-input" placeholder="Inserisci indirizzo della fermata" onchange="updateQuote()">
-                    <button type="button" class="ml-2 text-red-500" onclick="removeStop(this)">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+                <input type="text" class="form-control stop-input" placeholder="Fermata ${stopCounter}" onchange="updateQuote()">
+                <button type="button" class="btn-remove-stop" onclick="removeStop(this)">
+                    <i class="fas fa-times"></i>
+                </button>
             `;
             stopsContainer.appendChild(stopDiv);
             
@@ -917,15 +2586,9 @@
         
         // Remove stop field
         function removeStop(button) {
-            const stopDiv = button.closest('.mb-6');
+            const stopDiv = button.closest('.stop-input-container');
             stopDiv.remove();
             stopCounter--;
-            
-            // Rename the remaining stops
-            const stopLabels = document.querySelectorAll('#stopsContainer label');
-            for (let i = 0; i < stopLabels.length; i++) {
-                stopLabels[i].textContent = `Fermata ${i + 1}`;
-            }
             
             // Update the summary
             updateStopsSummary();
@@ -939,15 +2602,15 @@
             const summaryStops = document.getElementById('summaryStops');
             
             if (stopInputs.length > 0) {
-                summaryStopsContainer.classList.remove('hidden');
+                summaryStopsContainer.style.display = 'block';
                 let stopsHtml = '';
                 stopInputs.forEach((input, index) => {
                     const stopValue = input.value || '-';
-                    stopsHtml += `<p class="font-semibold">${index + 1}. ${stopValue}</p>`;
+                    stopsHtml += `<div class="summary-stop">${stopValue}</div>`;
                 });
                 summaryStops.innerHTML = stopsHtml;
             } else {
-                summaryStopsContainer.classList.add('hidden');
+                summaryStopsContainer.style.display = 'none';
             }
         }
         
@@ -956,16 +2619,14 @@
         
         function selectVehicle(vehicleType) {
             // Remove selected class from all vehicles
-            const vehicleCards = document.querySelectorAll('.vehicle-select-card');
-            vehicleCards.forEach(card => {
-                card.classList.remove('selected');
-                card.style.borderColor = 'transparent';
+            const vehicleOptions = document.querySelectorAll('.vehicle-option');
+            vehicleOptions.forEach(option => {
+                option.classList.remove('selected');
             });
             
             // Add selected class to the clicked vehicle
-            const selectedCard = document.getElementById(vehicleType + '-vehicle');
-            selectedCard.classList.add('selected');
-            selectedCard.style.borderColor = '#D4AF37';
+            const selectedOption = document.getElementById(vehicleType + '-vehicle');
+            selectedOption.classList.add('selected');
             
             // Update selected vehicle
             selectedVehicle = vehicleType;
@@ -1029,9 +2690,9 @@
             // For this demo, we'll use a simplified simulation
             
             // Simulate API call with loading state
-            document.getElementById('summaryDistance').innerHTML = '<div class="loading-spinner"></div>';
-            document.getElementById('summaryDuration').innerHTML = '<div class="loading-spinner"></div>';
-            document.getElementById('summaryPrice').innerHTML = '<div class="loading-spinner"></div>';
+            document.getElementById('summaryDistance').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            document.getElementById('summaryDuration').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            document.getElementById('summaryPrice').innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             
             setTimeout(() => {
                 // Generate realistic but random values
@@ -1079,6 +2740,12 @@
                 document.getElementById('summaryDistance').textContent = `${distance} km`;
                 document.getElementById('summaryDuration').textContent = durationText;
                 document.getElementById('summaryPrice').textContent = `€${price.toFixed(0)}`;
+                
+                // Animate the price change
+                gsap.from('#summaryPrice', {
+                    textShadow: '0 0 20px var(--accent-primary)',
+                    duration: 1.5
+                });
             }, 1000);
         }
         
@@ -1107,9 +2774,9 @@
             // For this demo, we'll show a success message
             
             // Simulate API call with loading state
-            const submitButton = document.querySelector('#quoteForm button[type="submit"]');
+            const submitButton = document.querySelector('#quoteForm .btn-submit');
             const originalText = submitButton.textContent;
-            submitButton.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+            submitButton.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Invio in corso...';
             submitButton.disabled = true;
             
             setTimeout(() => {
@@ -1119,6 +2786,13 @@
                 // Reset button
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
+                
+                // Animate success message
+                gsap.from('#successMessage', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.5
+                });
                 
                 // Scroll to success message
                 document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1135,36 +2809,53 @@
             }, 1500);
         }
         
+        // Submit contact form
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // In a real implementation, this would send data to server
+            // For this demo, we'll show an alert
+            alert('Messaggio inviato con successo! Ti risponderemo il prima possibile.');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        }
+        
         // Policy modal functions
         function openPolicyModal() {
             document.getElementById('policyModal').style.display = 'block';
+            
+            // Animate modal opening
+            gsap.from('.modal-content', {
+                y: -50,
+                opacity: 0,
+                duration: 0.5
+            });
         }
         
         function closePolicyModal() {
             document.getElementById('policyModal').style.display = 'none';
         }
         
-        // Close modals when clicking outside
+        // Close modal when clicking outside
         window.onclick = function(event) {
-            const policyModal = document.getElementById('policyModal');
-            if (event.target === policyModal) {
-                policyModal.style.display = 'none';
-            }
-            
-            if (!event.target.matches('.lang-selector button') && !event.target.matches('.lang-selector button *')) {
-                var dropdowns = document.getElementsByClassName("lang-dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+            const modal = document.getElementById('policyModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
         }
         
+        // Scroll to top function
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -1172,6 +2863,12 @@
                 
                 const target = document.querySelector(targetId);
                 if (target) {
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
                     const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1180,15 +2877,12 @@
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    document.querySelector('.navbar-menu').classList.remove('active');
                 }
             });
         });
         
         // Active navigation highlighting based on scroll position
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
             
@@ -1197,19 +2891,38 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
+                
                 if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
+                    current = section.getAttribute('id') || '';
                 }
             });
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                } else if (current === '' && link.getAttribute('href') === '#') {
+                const href = link.getAttribute('href');
+                
+                if (href === '#' + current || (href === '#' && current === '')) {
                     link.classList.add('active');
                 }
             });
+        });
+        
+        // Typed.js for dynamic text
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Typed !== 'undefined') {
+                new Typed('.hero-subtitle', {
+                    strings: [
+                        'Viaggia con stile e comfort.',
+                        'Servizio di Noleggio Con Conducente professionale.',
+                        'La tua esperienza di viaggio superiore.'
+                    ],
+                    typeSpeed: 50,
+                    backSpeed: 30,
+                    backDelay: 2000,
+                    startDelay: 1000,
+                    loop: true
+                });
+            }
         });
     </script>
 </body>
