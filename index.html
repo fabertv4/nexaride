@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaRide - Servizio NCC Premium</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F1923;
+            --secondary: #1A2A36;
+            --accent: #D4AF37;
+            --text: #F5F5F5;
+            --text-dark: #333333;
+            --text-muted: #AAAAAA;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(212, 175, 55, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(15, 25, 35, 0.7), rgba(15, 25, 35, 0.9)), url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: var(--accent);
+        }
+        
+        .vehicle-card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            height: 100%;
+        }
+        
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .vehicle-card.selected {
+            border: 2px solid var(--accent);
+            box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.3);
+        }
+        
+        .vehicle-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .quote-form input,
+        .quote-form select,
+        .quote-form textarea {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+        
+        .quote-form input:focus,
+        .quote-form select:focus,
+        .quote-form textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .quote-form ::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .blog-card {
+            background-color: var(--secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .contact-info i {
+            color: var(--accent);
+            width: 24px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            background-color: var(--secondary);
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: var(--secondary);
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+        
+        .close {
+            color: var(--text-muted);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+            .navbar-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background-color: var(--primary);
+                width: 100%;
+                padding: 1rem;
+                z-index: 40;
+            }
+            .navbar-menu.active {
+                display: block;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slide-in {
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .pac-container {
+            background-color: var(--secondary);
+            color: var(--text);
+            border: 1px solid var(--accent);
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .pac-item {
+            padding: 8px;
+            color: var(--text);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .pac-item:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+        
+        .pac-item-selected {
+            background-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        .pac-icon, .pac-item-query {
+            color: var(--text);
+        }
+
+        /* Policy Modal */
+        #policyModal {
+            z-index: 60;
+        }
+
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+        }
+        
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary);
+            min-width: 120px;
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 40;
+            right: 0;
+            top: 100%;
+            margin-top: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .lang-dropdown.show {
+            display: block;
+        }
+        
+        .lang-option {
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-option:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: rgba(39, 174, 96, 0.2);
+            border-left: 4px solid #27ae60;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b39429;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-opacity-90 bg-black z-50 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <h1 class="text-2xl font-bold text-white">Nexa<span class="text-yellow-500">Ride</span></h1>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Servizi</a>
+                <a href="#fleet" class="nav-link">Flotta</a>
+                <a href="#quote" class="nav-link">Preventivo</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contatti</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="lang-selector">
+                    <button class="flex items-center space-x-1" onclick="toggleLangDropdown()">
+                        <span>IT</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="lang-dropdown">
+                        <div class="lang-option" onclick="changeLanguage('it')">Italiano</div>
+                        <div class="lang-option" onclick="changeLanguage('en')">English</div>
+                        <div class="lang-option" onclick="changeLanguage('ja')">日本語</div>
+                        <div class="lang-option" onclick="changeLanguage('zh')">中文</div>
+                    </div>
+                </div>
+                <button class="md:hidden" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div class="navbar-menu md:hidden">
+            <div class="flex flex-col space-y-4 p-4">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Servizi</a>
+                <a href="#fleet" class="nav-link">Flotta</a>
+                <a href="#quote" class="nav-link">Preventivo</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center">
+        <div class="container mx-auto px-4 py-20 mt-16 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate__animated animate__fadeInDown">Servizio NCC Premium</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto animate__animated animate__fadeInUp">Viaggia con stile e comfort. Servizio di Noleggio Con Conducente professionale per ogni tua esigenza.</p>
+            <a href="#quote" class="btn-primary animate__animated animate__fadeInUp">Richiedi Preventivo</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">I Nostri Servizi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-plane text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Transfer Aeroportuali</h3>
+                    <p class="text-gray-400">Servizio puntuale ed efficiente per i tuoi trasferimenti da e verso gli aeroporti. Autisti professionisti ti accoglieranno all'arrivo.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-suitcase-rolling text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Viaggi Business</h3>
+                    <p class="text-gray-400">Trasporto executive per professionisti. Puntualità, discrezione e massima professionalità per i tuoi impegni di lavoro.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center hover:transform hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-glass-cheers text-2xl text-gray-900"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Eventi Speciali</h3>
+                    <p class="text-gray-400">Servizio personalizzato per matrimoni, cerimonie e occasioni speciali. Trasforma il tuo evento con un trasporto di classe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">La Nostra Flotta</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                <div class="vehicle-card">
+                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Toyota RAV4 Hybrid</h3>
+                        <p class="text-sm text-gray-400 mb-4">Economy</p>
+                        <p class="text-gray-300">Comfort ed efficienza per i tuoi spostamenti quotidiani. Sedili in pelle e autisti professionisti.</p>
+                    </div>
+                </div>
+                <div class="vehicle-card">
+                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mercedes Classe E</h3>
+                        <p class="text-sm text-gray-400 mb-4">Business</p>
+                        <p class="text-gray-300">L'equilibrio perfetto tra eleganza e performance per i tuoi viaggi di lavoro.</p>
+                    </div>
+                </div>
+                <div class="vehicle-card">
+                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mercedes Classe S</h3>
+                        <p class="text-sm text-gray-400 mb-4">First Class</p>
+                        <p class="text-gray-300">Il massimo del lusso per chi non accetta compromessi. Un'esperienza di viaggio superiore.</p>
+                    </div>
+                </div>
+                <div class="vehicle-card">
+                    <div class="vehicle-image" style="background-image: url('https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mercedes Classe V</h3>
+                        <p class="text-sm text-gray-400 mb-4">Group</p>
+                        <p class="text-gray-300">Spazio e comfort per gruppi fino a 7 persone. L'opzione ideale per viaggi collettivi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section id="quote" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Richiedi un Preventivo</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+                <div class="quote-form">
+                    <form id="quoteForm" onsubmit="submitQuoteForm(event)">
+                        <div class="mb-6">
+                            <label class="block mb-2">Punto di partenza</label>
+                            <input type="text" id="pickupLocation" class="w-full" placeholder="Inserisci indirizzo di partenza" onchange="updateQuote()">
+                        </div>
+                        <div id="stopsContainer"></div>
+                        <div class="mb-2">
+                            <button type="button" class="text-yellow-500 flex items-center" onclick="addStop()">
+                                <i class="fas fa-plus-circle mr-2"></i> Aggiungi fermata
+                            </button>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2">Destinazione</label>
+                            <input type="text" id="dropoffLocation" class="w-full" placeholder="Inserisci indirizzo di destinazione" onchange="updateQuote()">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block mb-2">Data</label>
+                                <input type="date" id="pickupDate" class="w-full" min="" onchange="updateQuote()">
+                            </div>
+                            <div>
+                                <label class="block mb-2">Orario</label>
+                                <input type="time" id="pickupTime" class="w-full" onchange="updateQuote()">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2">Seleziona veicolo</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('economy')" id="economy-vehicle">
+                                    <div class="flex items-center">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/835b4c66124a131c5bd67414f4215ce4" alt="Toyota RAV4" class="w-20 h-16 object-cover rounded mr-4">
+                                        <div>
+                                            <h4 class="font-bold">Economy</h4>
+                                            <p class="text-sm text-gray-400">Toyota RAV4 Hybrid</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('business')" id="business-vehicle">
+                                    <div class="flex items-center">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/ea90835481a1c577c2389fb24478dfbe" alt="Mercedes Classe E" class="w-20 h-16 object-cover rounded mr-4">
+                                        <div>
+                                            <h4 class="font-bold">Business</h4>
+                                            <p class="text-sm text-gray-400">Mercedes Classe E</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('first-class')" id="first-class-vehicle">
+                                    <div class="flex items-center">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/c1934f6470dd85a001e154cdb5c9a837" alt="Mercedes Classe S" class="w-20 h-16 object-cover rounded mr-4">
+                                        <div>
+                                            <h4 class="font-bold">First Class</h4>
+                                            <p class="text-sm text-gray-400">Mercedes Classe S</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vehicle-select-card bg-gray-800 p-4 rounded cursor-pointer" onclick="selectVehicle('group')" id="group-vehicle">
+                                    <div class="flex items-center">
+                                        <img src="https://page1.genspark.site/v1/base64_upload/bca3c2b83bdfcecb5ebd45f5fad7b5b0" alt="Mercedes Classe V" class="w-20 h-16 object-cover rounded mr-4">
+                                        <div>
+                                            <h4 class="font-bold">Group</h4>
+                                            <p class="text-sm text-gray-400">Mercedes Classe V</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2">Note aggiuntive</label>
+                            <textarea id="notes" class="w-full" rows="3" placeholder="Informazioni aggiuntive, richieste speciali..."></textarea>
+                        </div>
+                        <div class="mb-6 flex items-center">
+                            <input type="checkbox" id="policyAccepted" class="mr-2">
+                            <label for="policyAccepted">
+                                Accetto la <a href="#" class="text-yellow-500" onclick="openPolicyModal(); return false;">policy di cancellazione</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">Richiedi Preventivo</button>
+                        <div id="successMessage" class="success-message">
+                            <p><i class="fas fa-check-circle mr-2"></i> La tua richiesta di preventivo è stata inviata con successo! Ti contatteremo al più presto.</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="bg-gray-800 p-8 rounded">
+                    <h3 class="text-2xl font-bold mb-4">Dettagli Preventivo</h3>
+                    <div id="quoteDetails">
+                        <div class="mb-4">
+                            <span class="text-gray-400">Partenza:</span>
+                            <p id="summaryPickup" class="font-semibold">-</p>
+                        </div>
+                        <div id="summaryStopsContainer" class="mb-4 hidden">
+                            <span class="text-gray-400">Fermate intermedie:</span>
+                            <div id="summaryStops"></div>
+                        </div>
+                        <div class="mb-4">
+                            <span class="text-gray-400">Destinazione:</span>
+                            <p id="summaryDropoff" class="font-semibold">-</p>
+                        </div>
+                        <div class="mb-4">
+                            <span class="text-gray-400">Data e ora:</span>
+                            <p id="summaryDateTime" class="font-semibold">-</p>
+                        </div>
+                        <div class="mb-4">
+                            <span class="text-gray-400">Veicolo:</span>
+                            <p id="summaryVehicle" class="font-semibold">-</p>
+                        </div>
+                        <div class="mb-4 border-t border-gray-700 pt-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-400">Distanza stimata:</span>
+                                <p id="summaryDistance" class="font-semibold">-</p>
+                            </div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-400">Tempo stimato:</span>
+                                <p id="summaryDuration" class="font-semibold">-</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-700 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl">Prezzo stimato:</span>
+                                <p id="summaryPrice" class="text-2xl font-bold text-yellow-500">-</p>
+                            </div>
+                            <p class="text-sm text-gray-400 mt-2">* Il preventivo è indicativo e soggetto a conferma</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">News & Blog</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="blog-card">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1516733968668-dbdce39c4651?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="p-6">
+                        <span class="text-xs text-yellow-500 mb-2 block">18 Luglio 2023</span>
+                        <h3 class="text-xl font-bold mb-3">Nuove normative per il settore NCC: cosa cambia nel 2023</h3>
+                        <p class="text-gray-400 mb-4">Le recenti modifiche alla regolamentazione del settore Noleggio Con Conducente stanno cambiando il panorama dei servizi di trasporto privato.</p>
+                        <a href="#" class="text-yellow-500 inline-flex items-center">
+                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1626194801804-579dfe441d36?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="p-6">
+                        <span class="text-xs text-yellow-500 mb-2 block">3 Agosto 2023</span>
+                        <h3 class="text-xl font-bold mb-3">L'evoluzione dei servizi NCC nell'era della mobilità sostenibile</h3>
+                        <p class="text-gray-400 mb-4">Come i servizi di Noleggio Con Conducente si stanno adattando alle nuove esigenze di sostenibilità ambientale e digitalizzazione.</p>
+                        <a href="#" class="text-yellow-500 inline-flex items-center">
+                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1550347175-c3ecff174554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="p-6">
+                        <span class="text-xs text-yellow-500 mb-2 block">22 Settembre 2023</span>
+                        <h3 class="text-xl font-bold mb-3">NCC vs. Ride-sharing: le differenze che fanno la qualità</h3>
+                        <p class="text-gray-400 mb-4">Un'analisi approfondita delle differenze tra il servizio di Noleggio Con Conducente tradizionale e le moderne piattaforme di ride-sharing.</p>
+                        <a href="#" class="text-yellow-500 inline-flex items-center">
+                            Leggi di più <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Contattaci</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                <div>
+                    <p class="mb-6">Per informazioni, prenotazioni o assistenza non esitare a contattarci. Il nostro team è a tua disposizione 24/7.</p>
+                    <div class="contact-info space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <p>Via Dante 49, Sesto San Giovanni, Milano, Italia</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone"></i>
+                            <p>+39 345 3449775</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope"></i>
+                            <p>nexaridesrl@gmail.com</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock"></i>
+                            <p>Servizio disponibile 24/7</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-gray-800 p-6 rounded-lg h-full">
+                        <form id="contactForm">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block mb-2">Nome</label>
+                                    <input type="text" class="w-full" placeholder="Il tuo nome">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Email</label>
+                                    <input type="email" class="w-full" placeholder="La tua email">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Telefono</label>
+                                <input type="tel" class="w-full" placeholder="Il tuo numero di telefono">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block mb-2">Messaggio</label>
+                                <textarea class="w-full" rows="4" placeholder="Il tuo messaggio"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">Invia Messaggio</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">NexaRide</h3>
+                    <p class="text-gray-400">Servizio di Noleggio Con Conducente premium per viaggi business, trasferimenti aeroportuali ed eventi speciali.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="#services" class="footer-link">Servizi</a></li>
+                        <li><a href="#fleet" class="footer-link">Flotta</a></li>
+                        <li><a href="#quote" class="footer-link">Preventivo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link" onclick="openPolicyModal(); return false;">Policy di Cancellazione</a></li>
+                        <li><a href="#" class="footer-link">Termini e Condizioni</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contatti</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-yellow-500 mr-2"></i>
+                            <span>Via Dante 49, Sesto San Giovanni</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-yellow-500 mr-2"></i>
+                            <span>+39 345 3449775</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-yellow-500 mr-2"></i>
+                            <span>nexaridesrl@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 mt-8 text-center">
+                <p>© 2023 NexaRide. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Policy Modal -->
+    <div id="policyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePolicyModal()">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Policy di Cancellazione</h2>
+            <div class="text-gray-300">
+                <p class="mb-4">NexaRide si impegna ad offrire un servizio flessibile ai propri clienti, tuttavia è necessaria una policy di cancellazione per garantire l'efficienza del servizio:</p>
+                <ul class="list-disc pl-5 mb-4 space-y-2">
+                    <li><strong>Cancellazione standard:</strong> Nessun addebito se la cancellazione avviene almeno 2 ore prima dell'orario di partenza previsto.</li>
+                    <li><strong>Cancellazione tardiva:</strong> Verrà addebitato l'intero importo del servizio per cancellazioni effettuate meno di 2 ore prima dell'orario di partenza previsto.</li>
+                    <li><strong>No-show:</strong> In caso di mancata presentazione del cliente senza preavviso, verrà addebitato l'intero importo del servizio.</li>
+                </ul>
+                <p class="mb-4"><strong>Eccezioni:</strong> In circostanze eccezionali (emergenze mediche, cancellazioni di voli con breve preavviso, ecc.) la policy di cancellazione può essere valutata caso per caso. Ti invitiamo a contattarci immediatamente.</p>
+                <p>Per qualsiasi chiarimento o circostanza speciale, contatta il nostro team al +39 345 3449775.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Set today as minimum date for pickup
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickupDate').setAttribute('min', today);
+            document.getElementById('pickupDate').value = today;
+            
+            // Initialize with the current time + 2 hours (rounded to nearest hour)
+            const now = new Date();
+            now.setHours(now.getHours() + 2);
+            now.setMinutes(0);
+            const timeString = now.toTimeString().slice(0, 5);
+            document.getElementById('pickupTime').value = timeString;
+            
+            // Initial quote update
+            setTimeout(updateQuote, 500);
+        });
+        
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        }
+        
+        // Language dropdown toggle
+        function toggleLangDropdown() {
+            document.querySelector('.lang-dropdown').classList.toggle('show');
+        }
+        
+        // Close language dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.lang-selector button') && !event.target.matches('.lang-selector button *')) {
+                var dropdowns = document.getElementsByClassName("lang-dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        
+        // Language change
+        function changeLanguage(lang) {
+            alert('Cambio lingua a: ' + lang + '\nQuesta funzionalità sarà implementata completamente nella versione finale.');
+            document.querySelector('.lang-dropdown').classList.remove('show');
+        }
+        
+        // Stop counter
+        let stopCounter = 0;
+        
+        // Add stop field
+        function addStop() {
+            if (stopCounter >= 3) {
+                alert('È possibile aggiungere un massimo di 3 fermate intermedie.');
+                return;
+            }
+            
+            stopCounter++;
+            const stopsContainer = document.getElementById('stopsContainer');
+            const stopDiv = document.createElement('div');
+            stopDiv.className = 'mb-6 relative';
+            stopDiv.innerHTML = `
+                <label class="block mb-2">Fermata ${stopCounter}</label>
+                <div class="flex">
+                    <input type="text" class="w-full stop-input" placeholder="Inserisci indirizzo della fermata" onchange="updateQuote()">
+                    <button type="button" class="ml-2 text-red-500" onclick="removeStop(this)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            stopsContainer.appendChild(stopDiv);
+            
+            // Update the summary
+            updateStopsSummary();
+        }
+        
+        // Remove stop field
+        function removeStop(button) {
+            const stopDiv = button.closest('.mb-6');
+            stopDiv.remove();
+            stopCounter--;
+            
+            // Rename the remaining stops
+            const stopLabels = document.querySelectorAll('#stopsContainer label');
+            for (let i = 0; i < stopLabels.length; i++) {
+                stopLabels[i].textContent = `Fermata ${i + 1}`;
+            }
+            
+            // Update the summary
+            updateStopsSummary();
+            updateQuote();
+        }
+        
+        // Update stops summary
+        function updateStopsSummary() {
+            const stopInputs = document.querySelectorAll('.stop-input');
+            const summaryStopsContainer = document.getElementById('summaryStopsContainer');
+            const summaryStops = document.getElementById('summaryStops');
+            
+            if (stopInputs.length > 0) {
+                summaryStopsContainer.classList.remove('hidden');
+                let stopsHtml = '';
+                stopInputs.forEach((input, index) => {
+                    const stopValue = input.value || '-';
+                    stopsHtml += `<p class="font-semibold">${index + 1}. ${stopValue}</p>`;
+                });
+                summaryStops.innerHTML = stopsHtml;
+            } else {
+                summaryStopsContainer.classList.add('hidden');
+            }
+        }
+        
+        // Vehicle selection
+        let selectedVehicle = null;
+        
+        function selectVehicle(vehicleType) {
+            // Remove selected class from all vehicles
+            const vehicleCards = document.querySelectorAll('.vehicle-select-card');
+            vehicleCards.forEach(card => {
+                card.classList.remove('selected');
+                card.style.borderColor = 'transparent';
+            });
+            
+            // Add selected class to the clicked vehicle
+            const selectedCard = document.getElementById(vehicleType + '-vehicle');
+            selectedCard.classList.add('selected');
+            selectedCard.style.borderColor = '#D4AF37';
+            
+            // Update selected vehicle
+            selectedVehicle = vehicleType;
+            
+            // Update quote
+            updateQuote();
+        }
+        
+        // Update quote details
+        function updateQuote() {
+            const pickup = document.getElementById('pickupLocation').value;
+            const dropoff = document.getElementById('dropoffLocation').value;
+            const date = document.getElementById('pickupDate').value;
+            const time = document.getElementById('pickupTime').value;
+            
+            // Update summary
+            document.getElementById('summaryPickup').textContent = pickup || '-';
+            document.getElementById('summaryDropoff').textContent = dropoff || '-';
+            
+            // Format date and time
+            let dateTimeText = '-';
+            if (date && time) {
+                const dateObj = new Date(date + 'T' + time);
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                dateTimeText = dateObj.toLocaleDateString('it-IT', options);
+            }
+            document.getElementById('summaryDateTime').textContent = dateTimeText;
+            
+            // Update selected vehicle
+            let vehicleText = '-';
+            if (selectedVehicle) {
+                switch(selectedVehicle) {
+                    case 'economy':
+                        vehicleText = 'Economy - Toyota RAV4 Hybrid';
+                        break;
+                    case 'business':
+                        vehicleText = 'Business - Mercedes Classe E';
+                        break;
+                    case 'first-class':
+                        vehicleText = 'First Class - Mercedes Classe S';
+                        break;
+                    case 'group':
+                        vehicleText = 'Group - Mercedes Classe V';
+                        break;
+                }
+            }
+            document.getElementById('summaryVehicle').textContent = vehicleText;
+            
+            // Update stops summary
+            updateStopsSummary();
+            
+            // Calculate estimate if we have both locations
+            if (pickup && dropoff) {
+                calculateEstimate(pickup, dropoff);
+            }
+        }
+        
+        // Calculate distance, duration and price estimate
+        function calculateEstimate(pickup, dropoff) {
+            // In a real implementation, this would use Google Maps Distance Matrix API
+            // For this demo, we'll use a simplified simulation
+            
+            // Simulate API call with loading state
+            document.getElementById('summaryDistance').innerHTML = '<div class="loading-spinner"></div>';
+            document.getElementById('summaryDuration').innerHTML = '<div class="loading-spinner"></div>';
+            document.getElementById('summaryPrice').innerHTML = '<div class="loading-spinner"></div>';
+            
+            setTimeout(() => {
+                // Generate realistic but random values
+                const baseDistance = Math.floor(Math.random() * 20) + 10; // 10-30 km
+                const stopFactor = document.querySelectorAll('.stop-input').length * 2; // Extra 2km per stop
+                const distance = baseDistance + stopFactor;
+                
+                const baseDuration = Math.floor(distance * 1.5); // Roughly 1.5 min per km
+                const stopTimeFactor = document.querySelectorAll('.stop-input').length * 5; // Extra 5min per stop
+                const duration = baseDuration + stopTimeFactor;
+                
+                // Calculate price based on vehicle type
+                let pricePerKm;
+                switch(selectedVehicle) {
+                    case 'economy':
+                        pricePerKm = 1.8;
+                        break;
+                    case 'business':
+                        pricePerKm = 2.5;
+                        break;
+                    case 'first-class':
+                        pricePerKm = 3.5;
+                        break;
+                    case 'group':
+                        pricePerKm = 3.0;
+                        break;
+                    default:
+                        pricePerKm = 2.0;
+                }
+                
+                // Base price plus distance charge
+                let price = 10 + (distance * pricePerKm);
+                
+                // Add stop fee
+                price += document.querySelectorAll('.stop-input').length * 5;
+                
+                // Format duration into hours and minutes
+                const hours = Math.floor(duration / 60);
+                const minutes = duration % 60;
+                const durationText = hours > 0 ? 
+                    `${hours} ora${hours > 1 ? 'e' : ''} ${minutes} min` : 
+                    `${minutes} min`;
+                
+                // Update the summary with calculated values
+                document.getElementById('summaryDistance').textContent = `${distance} km`;
+                document.getElementById('summaryDuration').textContent = durationText;
+                document.getElementById('summaryPrice').textContent = `€${price.toFixed(0)}`;
+            }, 1000);
+        }
+        
+        // Submit quote form
+        function submitQuoteForm(event) {
+            event.preventDefault();
+            
+            // Check if policy is accepted
+            if (!document.getElementById('policyAccepted').checked) {
+                alert('Per procedere è necessario accettare la policy di cancellazione.');
+                return;
+            }
+            
+            // Check required fields
+            const pickup = document.getElementById('pickupLocation').value;
+            const dropoff = document.getElementById('dropoffLocation').value;
+            const date = document.getElementById('pickupDate').value;
+            const time = document.getElementById('pickupTime').value;
+            
+            if (!pickup || !dropoff || !date || !time || !selectedVehicle) {
+                alert('Per favore compila tutti i campi obbligatori.');
+                return;
+            }
+            
+            // In a real implementation, this would send data to server
+            // For this demo, we'll show a success message
+            
+            // Simulate API call with loading state
+            const submitButton = document.querySelector('#quoteForm button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // In a real implementation, this would send an email to nexaridesrl@gmail.com
+                console.log('Quote request sent:', {
+                    pickup,
+                    dropoff,
+                    stops: Array.from(document.querySelectorAll('.stop-input')).map(input => input.value),
+                    datetime: date + 'T' + time,
+                    vehicle: selectedVehicle,
+                    notes: document.getElementById('notes').value
+                });
+            }, 1500);
+        }
+        
+        // Policy modal functions
+        function openPolicyModal() {
+            document.getElementById('policyModal').style.display = 'block';
+        }
+        
+        function closePolicyModal() {
+            document.getElementById('policyModal').style.display = 'none';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const policyModal = document.getElementById('policyModal');
+            if (event.target === policyModal) {
+                policyModal.style.display = 'none';
+            }
+            
+            if (!event.target.matches('.lang-selector button') && !event.target.matches('.lang-selector button *')) {
+                var dropdowns = document.getElementsByClassName("lang-dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.navbar-menu').classList.remove('active');
+                }
+            });
+        });
+        
+        // Active navigation highlighting based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                } else if (current === '' && link.getAttribute('href') === '#') {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
