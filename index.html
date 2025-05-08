@@ -71,13 +71,51 @@
         }
         
         .hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a 25%, #2a2a2a 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%; height: 200%;
+  background: linear-gradient(60deg, #1a1a1a, #2a2a2a, #0f2135, #1a1a1a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -2;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: moveStars 60s linear infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@keyframes gradientShift {
+  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
+  50%  { transform: translate(-25%, -25%) scale(1.2) rotate(10deg); }
+  100% { transform: translate(0,0) scale(1) rotate(0deg); }
+}
+
+@keyframes moveStars {
+  from { transform: translate(0,0) }
+  to   { transform: translate(50%,50%) }
+}
+
 
         
         .section-title {
