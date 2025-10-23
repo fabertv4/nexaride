@@ -2,9 +2,9 @@
   "name": "nexaride",
   "version": "1.0.0",
   "description": "NexaRide - Servizio Taxi Premium",
-  "main": "src/index.tsx",
+  "main": "src/index.js",
   "scripts": {
-    "build": "echo 'No build needed' && mkdir -p dist && cp -r public/* dist/ && cp src/index.tsx dist/_worker.js",
+    "build": "echo 'No build needed' && mkdir -p dist && cp -r public/* dist/ && cp src/index.js dist/_worker.js",
     "deploy": "echo 'Deploy ready'"
   },
   "dependencies": {
