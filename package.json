@@ -1,21 +1,5 @@
-{
-  "name": "nexaride",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "wrangler pages dev dist",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name nexaride"
-  },
-  "dependencies": {
-    "hono": "^4.0.0"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20241106.0",
-    "@hono/vite-cloudflare-pages": "^0.4.2",
-    "vite": "^5.0.0",
-    "wrangler": "^3.78.0",
-    "typescript": "^5.0.0"
-  }
+"scripts": {
+  "dev": "wrangler dev src/index.tsx",
+  "build": "echo 'Build complete'",
+  "deploy": "wrangler deploy src/index.tsx"
 }
