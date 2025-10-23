@@ -2084,10 +2084,134 @@
         });
     </script>
     
-    <!-- Mock placeholder for Google Places API -->
-    <script>
-        // In a real implementation, you would include the Google Places API with your API key
-        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+    <!-- Google Maps API -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-IP1Gz65eKAUTi7-Je-MStJ9nrwxqfQc&libraries=places&callback=initGoogleMaps"></script>
+
+<!-- Google Maps Autocomplete Integration -->
+<script>
+// NexaRide Google Maps Integration
+class NexaRideAutocomplete {
+    constructor() {
+        this.initialized = false;
+        this.autocompleteInstances = {};
+        this.init();
+    }
+
+    init() {
+        if (typeof google === 'undefined' || !google.maps) {
+            console.log('Google Maps not loaded yet, waiting...');
+            setTimeout(() => this.init(), 500);
+            return;
+        }
+
+        this.initialized = true;
+        this.initializeInput('pickupLocation');
+        this.initializeInput('dropoffLocation');
+        console.log('NexaRide Google Maps Autocomplete initialized');
+    }
+
+    initializeInput(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+
+        const autocomplete = new google.maps.places.Autocomplete(input, {
+            types: ['establishment', 'geocode'],
+            componentRestrictions: { country: 'IT' }
+        });
+
+        this.autocompleteInstances[inputId] = autocomplete;
+
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            if (place.formatted_address) {
+                input.value = place.formatted_address;
+                // Trigger existing update functions
+                if (typeof updateQuote === 'function') {
+                    updateQuote();
+                }
+            }
+        });
+    }
+
+    initializeStopInput(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input || this.autocompleteInstances[inputId]) return;
+
+        const autocomplete = new google.maps.places.Autocomplete(input, {
+            types: ['establishment', 'geocode'],
+            componentRestrictions: { country: 'IT' }
+        });
+
+        this.autocompleteInstances[inputId] = autocomplete;
+
+        autocomplete.addListener('place_changed', () => {
+            const place = autocomplete.getPlace();
+            if (place.formatted_address) {
+                input.value = place.formatted_address;
+                if (typeof updateQuote === 'function') {
+                    updateQuote();
+                }
+            }
+        });
+    }
+}
+
+// Global initialization function
+function initGoogleMaps() {
+    console.log('Google Maps loaded, initializing NexaRide Autocomplete...');
+    window.nexaAutocomplete = new NexaRideAutocomplete();
+}
+
+// Fallback initialization
+if (typeof google !== 'undefined' && google.maps) {
+    window.nexaAutocomplete = new NexaRideAutocomplete();
+}
+</script>
+
+<!-- Enhanced Add Stop Function -->
+<script>
+// Override existing addStop function to include Google Maps
+const originalAddStop = window.addStop || addStop;
+
+function addStop() {
+    if (stopCounter >= 3) {
+        alert('Puoi aggiungere un massimo di 3 fermate intermedie.');
+        return;
+    }
+    
+    stopCounter++;
+    
+    const stopsContainer = document.getElementById('stopsContainer');
+    const stopDiv = document.createElement('div');
+    stopDiv.className = 'form-group stop-container';
+    
+    const stopInputId = `stop-location-${stopCounter}`;
+    
+    stopDiv.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+            <label class="form-label">Fermata ${stopCounter}</label>
+            <button type="button" class="text-red-500" onclick="removeStop(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <input type="text" id="${stopInputId}" class="form-control stop-location" 
+               placeholder="Inserisci indirizzo della fermata" onchange="updateQuote()">
+    `;
+    
+    stopsContainer.appendChild(stopDiv);
+    updateStopsSummary();
+    
+    // Initialize Google Maps autocomplete for new stop
+    if (window.nexaAutocomplete && window.nexaAutocomplete.initialized) {
+        setTimeout(() => {
+            window.nexaAutocomplete.initializeStopInput(stopInputId);
+        }, 100);
+    }
+}
+
+// Ensure the function is globally available
+window.addStop = addStop;
+</script>
         
         /* 
         function initAutocomplete() {
