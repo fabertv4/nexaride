@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [pages()],
   build: {
     outDir: 'dist'
+  },
+  esbuild: {
+    target: 'esnext'
   }
 })
