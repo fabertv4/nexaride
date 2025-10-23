@@ -1,9 +1,21 @@
 {
   "name": "nexaride",
-  "version": "1.0.0", 
-  "description": "NexaRide - Servizio Taxi Premium",
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "build": "echo 'Static site ready' && mkdir -p dist && cp -r public/* dist/ && cp index.html dist/",
-    "deploy": "echo 'Deploy ready'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "wrangler pages dev dist",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name nexaride"
+  },
+  "dependencies": {
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "@hono/vite-cloudflare-pages": "^0.4.2",
+    "vite": "^5.0.0",
+    "wrangler": "^3.78.0",
+    "typescript": "^5.0.0"
   }
 }
