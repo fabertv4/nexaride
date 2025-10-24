@@ -270,37 +270,40 @@ console.log('Google Maps services initialized');
      * Search Google Places
      */
     searchGooglePlaces(query) {
-        return new Promise((resolve, reject) => {
-            if (!this.placesService) {
-                resolve([]);
-                return;
-            }
-            
-            const request = {
-                input: query,
-                types: ['establishment', 'geocode'],
-                componentRestrictions: { country: 'IT' },
-                fields: ['place_id', 'name', 'formatted_address', 'geometry']
-            };
-            
-            this.placesService.getQueryPredictions(request, (predictions, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
-                    const results = predictions.map(prediction => ({
-                        description: prediction.description,
-                        place_id: prediction.place_id,
-                        type: 'place',
-                        structured_formatting: prediction.structured_formatting || {
-                            main_text: prediction.description,
-                            secondary_text: ''
-                        }
-                    }));
-                    resolve(results);
-                } else {
-                    resolve([]);
-                }
-            });
-        });
+  return new Promise((resolve) => {
+    if (!this.autocompleteService || !query) {
+      resolve([]);
+      return;
     }
+
+    const request = {
+      input: query,
+      componentRestrictions: { country: 'it' }, // limita all’Italia
+      // types: ['geocode'], // opzionale: solo indirizzi postali
+    };
+
+    this.autocompleteService.getPlacePredictions(
+      request,
+      (predictions, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && predictions?.length) {
+          const results = predictions.map(p => ({
+            description: p.description,
+            place_id: p.place_id,
+            type: 'place',
+            structured_formatting: p.structured_formatting || {
+              main_text: p.description,
+              secondary_text: ''
+            }
+          }));
+          resolve(results);
+        } else {
+          resolve([]);
+        }
+      }
+    );
+  });
+}
+
     
     /**
      * Show suggestions dropdown
