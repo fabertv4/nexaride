@@ -285,7 +285,7 @@ console.log('Google Maps services initialized');
     this.autocompleteService.getPlacePredictions(
       request,
       (predictions, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && predictions?.length) {
+        if (status === google.maps.places.this.placesService.OK && predictions?.length) {
           const results = predictions.map(p => ({
             description: p.description,
             place_id: p.place_id,
