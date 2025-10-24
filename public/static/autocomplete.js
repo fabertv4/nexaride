@@ -5,10 +5,10 @@
 
 class NexaRideAutocomplete {
     constructor() {
-        this.placesService = null;
-        this.directionsService = null;
-        this.geocoder = null;
-        this.initialized = false;
+this.autocompleteService = null;
+this.directionsService = null;
+this.geocoder = null;
+     this.initialized = false;
         
         // Configuration
         this.config = {
