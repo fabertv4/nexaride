@@ -578,9 +578,10 @@ function getMainHTML(googleMapsApiKey: string = 'YOUR_GOOGLE_MAPS_API_KEY') {
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places&callback=initGoogleMaps"></script>
-    <script src="/static/autocomplete.js"></script>
-    <script src="/static/app.js"></script>
+<script src="/static/autocomplete.js"></script>
+<script src="/static/app.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places&callback=initGoogleMaps"></script>
+
 </body>
 </html>`
 }
