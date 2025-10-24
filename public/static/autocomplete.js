@@ -66,14 +66,13 @@ this.geocoder = null;
                 await this.waitForGoogleMaps();
             }
             
-            // Initialize Google Maps services
-            this.placesService = new google.maps.places.PlacesService(
-                document.createElement('div')
-            );
-            this.directionsService = new google.maps.DirectionsService();
-            this.geocoder = new google.maps.Geocoder();
-            
-            console.log('Google Maps services initialized');
+// Initialize Google Maps services
+this.autocompleteService = new google.maps.places.AutocompleteService(); // ← quello giusto per i suggerimenti
+this.directionsService = new google.maps.DirectionsService();
+this.geocoder = new google.maps.Geocoder();
+
+console.log('Google Maps services initialized');
+
             
             // Initialize form inputs
             this.initializeInputs();
