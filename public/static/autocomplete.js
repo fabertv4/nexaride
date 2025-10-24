@@ -67,9 +67,10 @@ this.geocoder = null;
             }
             
 // Initialize Google Maps services
-this.autocompleteService = new google.maps.places.AutocompleteService(); // ← quello giusto per i suggerimenti
+this.autocompleteService = new google.maps.places.AutocompleteService();
 this.directionsService = new google.maps.DirectionsService();
 this.geocoder = new google.maps.Geocoder();
+
 
 console.log('Google Maps services initialized');
 
