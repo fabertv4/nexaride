@@ -1061,11 +1061,12 @@
 
     function buildQuickMessage(contextKey){
       // Quick CTA messages (no form)
-      if (currentLang === "en") {
-        return `Hi! I’d like an NCC quote.\nContext: ${contextKey}\n\nPickup:\nDrop-off:\nDate:\nTime:\nPassengers:\nStops (if any):\nNotes:`;
-      }
-      return `Ciao! Vorrei un preventivo NCC.\nContesto: ${contextKey}\n\nPartenza:\nDestinazione:\nData:\nOra:\nPasseggeri:\nFermate (se presenti):\nNote:`;
-    }
+function buildQuickMessage(){
+  if (currentLang === "en") {
+    return `Hi! I’d like an NCC quote.\n\nPickup:\nDrop-off:\nDate:\nTime:\nPassengers:\nStops (if any):\nNotes:`;
+  }
+  return `Ciao! Vorrei un preventivo NCC.\n\nPartenza:\nDestinazione:\nData:\nOra:\nPasseggeri:\nFermate (se presenti):\nNote:`;
+}
 
     function openWhatsApp(text){
       const errEl = document.getElementById("formError");
