@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>NexaRide — Chauffeur & Private Transfers in Milan</title>
+  <meta name="description" content="Chauffeur service and private transfers in Milan and Lombardy. Airports, city, long distance, groups. Instant WhatsApp reply." />
+
+  <link rel="canonical" href="https://nexaride.it/en/" />
+  <link rel="alternate" hreflang="it" href="https://nexaride.it/" />
+  <link rel="alternate" hreflang="en" href="https://nexaride.it/en/" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { color-scheme: dark; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; }
+    section[id]{scroll-margin-top:90px}
+    .fleet-card{position:relative;cursor:pointer}
+    .fleet-badge{position:absolute;top:14px;right:14px;display:none;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);font-size:12px}
+    .fleet-badge .dot{width:18px;height:18px;border-radius:50%;background:#25D366;color:#0b1a10;font-weight:800;display:grid;place-items:center}
+    .fleet-card.is-selected{outline:2px solid rgba(255,255,255,.9)}
+    .fleet-card.is-selected .fleet-badge{display:flex}
+    .seg{border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 12px;font-weight:600}
+    .seg[aria-pressed="true"]{background:rgba(37,211,102,.15);border-color:#25D366}
+    .stickybar{position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(10,10,10,.8);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.1)}
+  </style>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-0">
+
+<header class="sticky top-0 z-40 bg-neutral-950/80 backdrop-blur border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-white/10 grid place-items-center font-bold">NR</div>
+      <div>
+        <div class="font-semibold">NexaRide</div>
+        <div class="text-xs text-neutral-400">Chauffeur • Milan</div>
+      </div>
+    </div>
+    <div class="flex gap-3 items-center">
+      <a href="/" class="text-sm text-neutral-300 hover:text-white">IT</a>
+      <button id="waTop" class="bg-[#25D366] text-neutral-950 font-semibold px-4 py-2 rounded-2xl">
+        WhatsApp
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,.10),transparent_55%)]"></div>
+  <div class="relative max-w-6xl mx-auto px-4 py-20">
+    <span class="inline-flex items-center gap-2 border border-white/10 bg-white/5 px-4 py-2 rounded-full text-sm">
+      <span class="w-2 h-2 rounded-full bg-green-400"></span>
+      Available 24/7 on request
+    </span>
+
+    <h1 class="mt-6 text-4xl md:text-5xl font-semibold">
+      Chauffeur & Private Transfers<br>Milan & Lombardy
+    </h1>
+
+    <p class="mt-5 text-lg text-neutral-300">
+      Airports · City · Long distance · Groups<br>
+      Instant reply on WhatsApp – real person.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <button id="waHero" class="bg-[#25D366] text-neutral-950 font-semibold px-6 py-3 rounded-2xl">
+        Chat on WhatsApp
+      </button>
+      <button id="scrollForm" class="border border-white/10 px-6 py-3 rounded-2xl">
+        Fill trip details
+      </button>
+    </div>
+
+    <p class="mt-3 text-xs text-neutral-400">
+      Typical reply time: <strong>2–5 minutes</strong> · Free quote · No obligation
+    </p>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section id="fleet" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-semibold">Our fleet</h2>
+  <p class="mt-3 text-neutral-300">
+    Select the category you prefer. You can also choose a Van even for 1–2 passengers if you want more space.
+    </p>
+
+  <div class="mt-10 grid md:grid-cols-3 gap-6">
+    <div class="fleet-card" data-vehicle="Comfort / SUV (Toyota RAV4)">
+      <div class="fleet-badge"><span class="dot">✓</span> Selected</div>
+      <img src="/rav4_industriale.png" class="rounded-3xl mb-4">
+      <h3 class="text-xl font-semibold">Comfort / SUV</h3>
+      <p class="text-neutral-300">Toyota RAV4 · Ideal for city and airport transfers up to 4 passengers.</p>
+    </div>
+
+    <div class="fleet-card" data-vehicle="Executive (Mercedes Classe E)">
+      <div class="fleet-badge"><span class="dot">✓</span> Selected</div>
+      <img src="/classeE_industriale.png" class="rounded-3xl mb-4">
+      <h3 class="text-xl font-semibold">Executive</h3>
+      <p class="text-neutral-300">Mercedes E-Class · Comfort and image for business clients.</p>
+    </div>
+
+    <div class="fleet-card" data-vehicle="Van / Groups (Mercedes Classe V / Vito)">
+      <div class="fleet-badge"><span class="dot">✓</span> Selected</div>
+      <img src="/classeV_industriale.png" class="rounded-3xl mb-4">
+      <h3 class="text-xl font-semibold">Van / Groups</h3>
+      <p class="text-neutral-300">Up to 7 passengers + luggage. Perfect for groups and transfers.</p>
+    </div>
+  </div>
+
+  <div class="mt-10 text-center">
+    <button id="fleetQuote" class="bg-white text-neutral-950 px-8 py-4 rounded-2xl font-semibold">
+      Get a quote
+    </button>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote" class="max-w-6xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-semibold">Get a quote</h2>
+  <p class="mt-2 text-neutral-300">Fill in the details and send via WhatsApp.</p>
+
+  <form id="quoteForm" class="mt-8 grid md:grid-cols-4 gap-4">
+
+    <div class="md:col-span-2">
+      <label>Vehicle category *</label>
+      <select id="vehicle" required class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10">
+        <option value="" disabled selected>Select vehicle</option>
+        <option>Comfort / SUV (Toyota RAV4)</option>
+        <option>Executive (Mercedes Classe E)</option>
+        <option>Van / Groups (Mercedes Classe V / Vito)</option>
+      </select>
+      <p class="text-xs text-neutral-400 mt-1">
+        Van can also be selected for 1–2 passengers if you prefer more space.
+      </p>
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Passengers *</label>
+      <select id="pax" required class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10">
+        <option value="" disabled selected>Select</option>
+        <option>1</option><option>2</option><option>3</option><option>4</option>
+        <option>5</option><option>6</option><option>7</option><option>8</option>
+      </select>
+      <p id="paxHint" class="hidden text-xs text-amber-300 mt-1">
+        For 5+ passengers the Van will be selected automatically.
+      </p>
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Pickup *</label>
+      <input id="from" required class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10">
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Drop-off *</label>
+      <input id="to" required class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10">
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Date & time *</label>
+      <input id="when" type="datetime-local" required class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10">
+      <p id="urgentHint" class="hidden text-xs text-rose-300 mt-1">
+        If within 2 hours, contact us directly on WhatsApp.
+      </p>
+    </div>
+
+    <div class="md:col-span-2">
+      <label>Stops (optional)</label>
+      <input id="stops" class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10" placeholder="Write stops in order">
+    </div>
+
+    <div class="md:col-span-4">
+      <label>Notes (optional)</label>
+      <textarea id="notes" rows="3" class="w-full mt-1 p-3 rounded-2xl bg-neutral-900 border border-white/10"
+        placeholder="Flight number, luggage, invoice, child seat…"></textarea>
+    </div>
+
+    <div class="md:col-span-4">
+      <button type="submit" class="bg-[#25D366] text-neutral-950 px-6 py-3 rounded-2xl font-semibold">
+        Send on WhatsApp
+      </button>
+    </div>
+
+  </form>
+</section>
+
+<!-- STICKY MOBILE -->
+<div class="stickybar md:hidden">
+  <div class="flex gap-2 p-3">
+    <button id="waSticky" class="flex-1 bg-[#25D366] text-neutral-950 font-semibold py-3 rounded-2xl">
+      WhatsApp
+    </button>
+    <button id="quoteSticky" class="flex-1 border border-white/10 py-3 rounded-2xl">
+      Quote
+    </button>
+  </div>
+</div>
+
+<script>
+const WA = "393208784091";
+const msgBase = `Hi! I’d like a quote for a chauffeur service.\n\nPickup:\nDrop-off:\nDate & time:\nPassengers:\nVehicle:\nNotes:`;
+
+function openWA(msg){ window.open(`https://wa.me/${WA}?text=`+encodeURIComponent(msg),'_blank'); }
+
+document.querySelectorAll("#waTop,#waHero,#waSticky").forEach(b=>b.onclick=()=>openWA(msgBase));
+document.getElementById("scrollForm").onclick=()=>document.getElementById("quote").scrollIntoView({behavior:"smooth"});
+document.getElementById("fleetQuote").onclick=()=>document.getElementById("quote").scrollIntoView({behavior:"smooth"});
+document.getElementById("quoteSticky").onclick=()=>document.getElementById("quote").scrollIntoView({behavior:"smooth"});
+
+const vehicleSel=document.getElementById("vehicle");
+const paxSel=document.getElementById("pax");
+const paxHint=document.getElementById("paxHint");
+
+paxSel.onchange=()=>{
+  if(+paxSel.value>=5){
+    vehicleSel.value="Van / Groups (Mercedes Classe V / Vito)";
+    paxHint.classList.remove("hidden");
+  } else paxHint.classList.add("hidden");
+};
+
+document.getElementById("quoteForm").onsubmit=e=>{
+  e.preventDefault();
+  const msg=
+`Hi! I’d like a quote for a chauffeur service.
+
+Vehicle: ${vehicleSel.value}
+Passengers: ${paxSel.value}
+Pickup: ${from.value}
+Drop-off: ${to.value}
+Date & time: ${when.value}
+Stops: ${stops.value}
+Notes: ${notes.value}`;
+  openWA(msg);
+};
+</script>
+
+</body>
+</html>
