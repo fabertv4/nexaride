@@ -1,1137 +1,694 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#0B0F14" />
-  <title>Nexaride | NCC 24/7 – Prenota su WhatsApp</title>
-  <meta name="description" content="NCC e trasferimenti privati 24/7. Aeroporti, città, lunghi viaggi, gruppi. Preventivo immediato via WhatsApp." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="NCC Milano 24/7: transfer aeroporti (MXP, LIN, BGY), città, lunghi viaggi, van e gruppi. Preventivo immediato su WhatsApp." />
+  <title>Nexaride | NCC Milano 24/7 • Transfer Aeroporti • WhatsApp</title>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Nexaride | NCC 24/7 – Prenota su WhatsApp" />
-  <meta property="og:description" content="NCC 24/7. Aeroporti, città, lunghi viaggi, gruppi. Preventivo immediato via WhatsApp." />
+  <meta property="og:title" content="Nexaride | NCC Milano 24/7" />
+  <meta property="og:description" content="Preventivo immediato su WhatsApp. Aeroporti MXP/LIN/BGY, città, viaggi, van e gruppi." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nexaride.it/" />
+  <!-- <meta property="og:image" content="https://nexaride.it/og-image.jpg" /> -->
+  <meta name="theme-color" content="#0b0f14" />
 
   <style>
     :root{
-      --bg:#0B0F14;
-      --panel:#0F1620;
-      --panel2:#0E141D;
-      --text:#EAF1FF;
-      --muted:#A9B6CC;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 12px 36px rgba(0,0,0,.55);
-      --radius:18px;
-      --radius2:24px;
-      --whatsapp:#25D366;
-      --whatsapp-dark:#1FBC5A;
-      --accent:#6EE7FF;
-      --danger:#FF6B6B;
-
-      --max:1100px;
+      --bg:#0b0f14;
+      --card:#101826;
+      --card2:#0f1723;
+      --text:#eaf0ff;
+      --muted:#a7b2c7;
+      --border:rgba(255,255,255,.10);
+      --accent:#22c55e; /* WhatsApp green */
+      --accent2:#16a34a;
+      --warn:#f59e0b;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 980px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 30% -10%, rgba(34,197,94,.18), transparent 60%),
+                  radial-gradient(1200px 600px at 90% 0%, rgba(59,130,246,.16), transparent 55%),
+                  var(--bg);
       color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(1200px 600px at 80% 0%, rgba(37,211,102,.16), transparent 55%),
-        radial-gradient(900px 500px at 50% 110%, rgba(110,231,255,.10), transparent 55%),
-        var(--bg);
-      line-height:1.35;
-      overflow-x:hidden;
+      line-height:1.25;
     }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-
-    /* Header */
-    .header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,20,.70);
-      border-bottom:1px solid var(--line);
-    }
-    .header-inner{
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:18px 16px 92px;} /* bottom padding for sticky bar */
+    header{
       display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding:12px 0;
+      gap:12px; padding:10px 0 6px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width:0;
+      display:flex; align-items:center; gap:10px; text-decoration:none;
     }
     .logo{
-      width:36px;height:36px;border-radius:12px;
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(110,231,255,.9), transparent 60%),
-        radial-gradient(18px 18px at 70% 70%, rgba(37,211,102,.85), transparent 65%),
-        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      box-shadow: 0 10px 24px rgba(0,0,0,.35);
-      flex:0 0 auto;
+      width:40px;height:40px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(59,130,246,.9));
+      box-shadow: 0 10px 30px rgba(34,197,94,.15);
+      position:relative; overflow:hidden;
     }
-    .brand-text{min-width:0}
-    .brand-text b{display:block; font-size:14px; letter-spacing:.4px}
-    .brand-text span{display:block; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .logo:after{
+      content:""; position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 45%);
+      transform: rotate(12deg);
+    }
+    .brand b{font-size:16px; letter-spacing:.2px}
+    .brand span{display:block; color:var(--muted); font-size:12px; margin-top:2px}
 
-    .header-actions{
-      display:flex; align-items:center; gap:10px;
-      flex:0 0 auto;
-    }
-
-    .lang-toggle{
-      display:flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:12px;
-      user-select:none;
-    }
-    .lang-toggle button{
-      appearance:none; border:0; cursor:pointer;
-      padding:6px 10px;
-      border-radius:999px;
-      background:transparent;
-      color:inherit;
-      font-weight:700;
-      font-size:12px;
-    }
-    .lang-toggle button.active{
-      color:var(--text);
-      background: rgba(255,255,255,.10);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      font-weight:800;
-      letter-spacing:.2px;
-      cursor:pointer;
-      transition: transform .08s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:active{transform: translateY(1px) scale(.99)}
-    .btn:hover{background: rgba(255,255,255,.09)}
-    .btn-wa{
-      background: linear-gradient(180deg, rgba(37,211,102,.95), rgba(31,188,90,.95));
-      border-color: rgba(37,211,102,.35);
-      color:#04140A;
-      box-shadow: 0 16px 40px rgba(37,211,102,.22);
-    }
-    .btn-wa:hover{filter:brightness(1.02)}
-    .btn-wa:active{filter:brightness(.98)}
-
-    /* Hero */
-    .hero{padding:22px 0 10px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
-    }
-    .hero-card{
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(400px 240px at 20% 0%, rgba(110,231,255,.22), transparent 55%),
-        radial-gradient(380px 240px at 80% 10%, rgba(37,211,102,.20), transparent 55%);
-      pointer-events:none;
-    }
-    .hero-inner{
-      position:relative;
-      padding:18px;
-      display:grid;
-      gap:14px;
-    }
-    .kicker{
+    .top-actions{display:flex; gap:10px; align-items:center}
+    .chip{
       display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
       padding:8px 10px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      width:max-content;
       font-size:12px;
       color:var(--muted);
+      white-space:nowrap;
     }
-    .kdot{
-      width:10px;height:10px;border-radius:999px;
-      background: var(--whatsapp);
-      box-shadow: 0 0 0 6px rgba(37,211,102,.15);
+    .dot{
+      width:8px; height:8px; border-radius:999px; background:var(--accent);
+      box-shadow: 0 0 0 6px rgba(34,197,94,.12);
     }
-    h1{
-      margin:0;
+
+    .hero{
+      margin-top:12px;
+      padding:18px 16px;
+      border:1px solid var(--border);
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin:0 0 8px;
       font-size:28px;
-      line-height:1.1;
+      line-height:1.06;
       letter-spacing:-.4px;
     }
-    .sub{
-      margin:0;
+    .hero p{
+      margin:0 0 14px;
       color:var(--muted);
       font-size:14px;
-      line-height:1.4;
+      max-width: 60ch;
     }
-    .hero-cta{
-      display:grid;
-      gap:10px;
-    }
-    .hero-cta .btn{
-      width:100%;
-      padding:14px 16px;
-      border-radius:16px;
-      font-size:15px;
-    }
-    .microtrust{
-      display:flex; flex-wrap:wrap; gap:10px;
-      color:var(--muted);
-      font-size:12px;
+    .hero .trust-row{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin:10px 0 0;
     }
     .pill{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      font-size:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
       padding:8px 10px;
       border-radius:999px;
+      color:var(--muted);
     }
-
-    /* Sections */
-    section{padding:18px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:10px;
-      margin-bottom:12px;
+    .cta{
+      display:flex; flex-direction:column; gap:10px;
+      margin-top:14px;
     }
-    .section-title h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:-.2px;
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      width:100%;
+      border:0;
+      border-radius: 14px;
+      padding:14px 14px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      transition: transform .08s ease, background .15s ease, opacity .15s ease;
+      user-select:none;
     }
-    .section-title p{margin:0;color:var(--muted);font-size:13px}
+    .btn:active{transform: scale(.99)}
+    .btn-primary{
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      color:#06210f;
+      box-shadow: 0 16px 40px rgba(34,197,94,.18);
+    }
+    .btn-secondary{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color:var(--text);
+    }
+    .micro{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:-4px;
+    }
 
     .grid{
       display:grid;
       grid-template-columns: 1fr;
       gap:12px;
+      margin-top:14px;
     }
     .card{
-      border:1px solid var(--line);
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
       padding:14px;
     }
-    .card h3{margin:0 0 6px;font-size:15px}
-    .card p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
-    .icon{
-      width:36px;height:36px;border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      display:flex;align-items:center;justify-content:center;
-      margin-bottom:10px;
-      font-weight:900;
-      color:var(--accent);
+    .card h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-.2px;
     }
-
-    /* Fleet */
-    .fleet{
-      display:grid; gap:12px;
-    }
-    .vehicle{
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      overflow:hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-    }
-    .vehicle img{
-      width:100%;
-      height:200px;
-      object-fit:cover;
-      filter: contrast(1.05) saturate(1.05);
-    }
-    .vehicle-body{
-      padding:14px;
-      display:grid;
-      gap:10px;
-    }
-    .vehicle-top{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-    }
-    .tag{
-      font-size:12px;
-      color:var(--muted);
-      border:1px solid var(--line);
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
-    .vehicle h3{margin:0;font-size:16px}
-    .vehicle ul{
-      margin:0; padding:0 0 0 16px;
+    .card p{margin:0 0 10px; color:var(--muted); font-size:13px}
+    .bullets{
+      margin:0;
+      padding:0 0 0 18px;
       color:var(--muted);
       font-size:13px;
-      line-height:1.4;
     }
+    .bullets li{margin:6px 0}
 
-    .note{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:12px;
-      border-left:3px solid rgba(110,231,255,.35);
-      padding:10px 12px;
-      background: rgba(255,255,255,.03);
-      border-radius:12px;
-      border:1px solid var(--line);
-    }
-
-    /* How it works */
-    .steps{
-      display:grid;
-      gap:10px;
-    }
-    .step{
-      display:flex; gap:12px;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-      padding:12px;
-    }
-    .n{
-      width:30px;height:30px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
-      background: rgba(37,211,102,.12);
-      border:1px solid rgba(37,211,102,.25);
-      color: var(--whatsapp);
-      font-weight:900;
-      flex:0 0 auto;
-    }
-    .step b{display:block;font-size:14px;margin-bottom:2px}
-    .step span{display:block;color:var(--muted);font-size:13px}
-
-    /* Form */
-    .form{
-      display:grid;
-      gap:10px;
-    }
-    .row{
+    .intent{
       display:grid;
       grid-template-columns: 1fr;
-      gap:10px;
+      gap:12px;
+      margin-top:12px;
     }
-    label{
-      display:grid;
-      gap:6px;
-      color:var(--muted);
-      font-size:12px;
+    .intent .card .tag{
+      display:inline-flex;
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(34,197,94,.12);
+      color: #baf6cf;
+      border:1px solid rgba(34,197,94,.25);
+      margin-bottom:10px;
     }
+
+    .how{
+      display:grid; gap:10px;
+      margin-top:12px;
+    }
+    .step{
+      display:flex; gap:10px; align-items:flex-start;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:12px;
+    }
+    .num{
+      width:28px; height:28px;
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(59,130,246,.16);
+      border:1px solid rgba(59,130,246,.26);
+      color:#cfe2ff;
+      font-weight:800;
+      flex:0 0 auto;
+    }
+    .step b{display:block; font-size:13px}
+    .step span{display:block; color:var(--muted); font-size:12px; margin-top:4px}
+
+    .reviews{
+      display:grid; gap:10px;
+    }
+    .review{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:12px;
+    }
+    .review .stars{color: #fde68a; font-size:13px}
+    .review p{margin:8px 0 0; color:var(--muted); font-size:13px}
+
+    .form{
+      display:grid; gap:10px;
+    }
+    label{font-size:12px; color:var(--muted)}
     input, textarea, select{
       width:100%;
       padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      color:var(--text);
-      outline:none;
-      font-size:14px;
-    }
-    textarea{min-height:92px; resize:vertical}
-    .help{
-      color:var(--muted);
-      font-size:12px;
-      margin-top:-2px;
-    }
-    .error{
-      display:none;
-      border:1px solid rgba(255,107,107,.35);
-      background: rgba(255,107,107,.10);
-      color: #FFD6D6;
-      padding:10px 12px;
-      border-radius:14px;
-      font-size:12px;
-    }
-
-    /* Footer */
-    footer{
-      padding:24px 0 90px;
-      border-top:1px solid var(--line);
+      border-radius: 12px;
+      border:1px solid var(--border);
       background: rgba(0,0,0,.18);
-      margin-top:14px;
+      color: var(--text);
+      outline:none;
     }
-    .footer-grid{
-      display:grid; gap:10px;
-      color:var(--muted);
+    textarea{min-height:90px; resize:vertical}
+    .two{
+      display:grid; grid-template-columns: 1fr 1fr; gap:10px;
+    }
+    .hint{
+      font-size:12px; color:var(--muted);
+      margin-top:8px;
+    }
+    footer{
+      margin-top:20px;
+      color: var(--muted);
       font-size:12px;
+      text-align:center;
     }
-    .footer-grid a{color:var(--text)}
-    .small{font-size:12px;color:var(--muted)}
+    footer a{color:var(--muted)}
+    .small-links{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px}
+    .divider{opacity:.5}
 
-    /* Floating WhatsApp */
-    .float-wa{
+    /* Sticky bottom bar */
+    .sticky-bar{
       position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:60;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      background: linear-gradient(180deg, rgba(37,211,102,.98), rgba(31,188,90,.98));
-      border:1px solid rgba(37,211,102,.35);
-      color:#04140A;
-      box-shadow: 0 18px 46px rgba(37,211,102,.24);
-      font-weight:900;
-      letter-spacing:.2px;
+      left:0; right:0; bottom:0;
+      background: rgba(11,15,20,.88);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding:10px 10px env(safe-area-inset-bottom);
+      z-index:1000;
     }
-    .float-wa .bubble{
-      width:34px;height:34px;border-radius:999px;
-      display:flex;align-items:center;justify-content:center;
-      background: rgba(0,0,0,.14);
-      border:1px solid rgba(0,0,0,.10);
-      color:#04140A;
-      font-weight:1000;
+    .sticky-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex; gap:10px;
+      padding:0 6px;
+    }
+    .sticky-inner .btn{
+      padding:13px 12px;
+      border-radius: 14px;
+    }
+    .sticky-inner .btn-secondary{
+      width: 38%;
+      font-weight:700;
+    }
+    .sticky-inner .btn-primary{
+      width: 62%;
     }
 
     /* Desktop enhancements */
-    @media (min-width: 900px){
-      .hero{padding:30px 0 14px}
-      .hero-grid{grid-template-columns: 1.1fr .9fr; align-items:stretch}
-      h1{font-size:38px}
-      .hero-inner{padding:22px}
-      .grid{grid-template-columns: repeat(3, 1fr)}
-      .fleet{grid-template-columns: repeat(3, 1fr)}
-      .vehicle img{height:190px}
-      .row{grid-template-columns: 1fr 1fr}
-      footer{padding-bottom:32px}
-      .float-wa{right:22px; bottom:22px}
+    @media (min-width: 860px){
+      .container{padding:22px 16px 96px}
+      .hero{padding:22px 22px}
+      .hero h1{font-size:36px}
+      .hero p{font-size:15px}
+      .grid{grid-template-columns: 1fr 1fr}
+      .intent{grid-template-columns: 1fr 1fr}
+      .how{grid-template-columns: 1fr 1fr 1fr}
+      .two{grid-template-columns: 1fr 1fr}
+      .sticky-inner .btn-secondary{width: 28%}
+      .sticky-inner .btn-primary{width: 72%}
     }
   </style>
 </head>
 
 <body>
-  <!--
-    IMPORTANTI (da fare sul tuo hosting):
-    1) Metti queste immagini nella stessa cartella di questo file, oppure in /assets/
-       e aggiorna gli src qui sotto.
-       - classeE_industriale.png
-       - classeV_industriale.png
-       - rav4_industriale.png
-    2) Imposta il numero WhatsApp nel JS (WHATSAPP_NUMBER).
-       Formato: "39XXXXXXXXXX" (senza + e senza spazi).
-  -->
-
-  <header class="header">
-    <div class="wrap">
-      <div class="header-inner">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <div class="brand-text">
-            <b>NEXARIDE</b>
-            <span data-i18n="headerSubtitle">NCC 24/7 · Preventivo su WhatsApp</span>
-          </div>
+  <div class="container">
+    <header>
+      <a class="brand" href="#" aria-label="Nexaride Home">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>Nexaride</b>
+          <span>NCC Milano • Transfer 24/7</span>
         </div>
+      </a>
 
-        <div class="header-actions">
-          <div class="lang-toggle" aria-label="Language toggle">
-            <button id="btnIT" class="active" type="button">IT</button>
-            <button id="btnEN" type="button">EN</button>
-          </div>
-
-          <a class="btn btn-wa" id="headerWhatsApp" href="#preventivo" role="button" aria-label="Prenota su WhatsApp">
-            <span aria-hidden="true">💬</span>
-            <span data-i18n="ctaHeader">WhatsApp</span>
-          </a>
+      <div class="top-actions">
+        <div class="chip" title="Operativi 24/7">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Risposta rapida su WhatsApp</span>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
     <!-- HERO -->
-    <div class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="hero-inner">
-              <div class="kicker">
-                <span class="kdot" aria-hidden="true"></span>
-                <span data-i18n="kicker">Operativi 24/7 · Risposta rapida</span>
-              </div>
+    <section class="hero" id="hero">
+      <h1>NCC Milano 24/7: preventivo immediato su WhatsApp</h1>
+      <p>Aeroporti <b>MXP · LIN · BGY</b>, città, lunghi viaggi, van e gruppi.
+        Scrivi tratta e orario: ti rispondiamo con <b>prezzo totale + disponibilità</b>.</p>
 
-              <h1 data-i18n="h1">NCC e trasferimenti privati – disponibili 24/7</h1>
-              <p class="sub" data-i18n="sub">
-                Aeroporti · città · lunghi viaggi · gruppi. Scrivici su WhatsApp: preventivo immediato, persona reale.
-              </p>
+      <div class="cta">
+        <button class="btn btn-primary" data-wa="hero">
+          Preventivo immediato su WhatsApp
+        </button>
+        <div class="micro">Preventivo rapido · Nessuna app · Persona reale</div>
 
-              <div class="hero-cta">
-                <button class="btn btn-wa" type="button" id="heroWA">
-                  💬 <span data-i18n="ctaMain">Scrivici ora su WhatsApp</span>
-                </button>
-                <div class="microtrust">
-                  <span class="pill" data-i18n="trust1">Preventivo immediato</span>
-                  <span class="pill" data-i18n="trust2">Senza app</span>
-                  <span class="pill" data-i18n="trust3">Assistenza reale</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Quick benefits -->
-          <div class="grid">
-            <div class="card">
-              <div class="icon" aria-hidden="true">⏱</div>
-              <h3 data-i18n="b1t">Risposta veloce</h3>
-              <p data-i18n="b1d">Scrivi su WhatsApp e ricevi conferma e preventivo in pochi minuti.</p>
-            </div>
-            <div class="card">
-              <div class="icon" aria-hidden="true">✈</div>
-              <h3 data-i18n="b2t">Aeroporti &amp; Business</h3>
-              <p data-i18n="b2d">MXP · LIN · BGY, appuntamenti di lavoro e trasferte, anche di notte.</p>
-            </div>
-            <div class="card">
-              <div class="icon" aria-hidden="true">🤝</div>
-              <h3 data-i18n="b3t">Più veicoli quando serve</h3>
-              <p data-i18n="b3d">In caso di alta richiesta, attiviamo NCC partner selezionati.</p>
-            </div>
-          </div>
-        </div>
+        <button class="btn btn-secondary" data-scroll="#quick">
+          Come scrivere il messaggio perfetto (20 secondi)
+        </button>
       </div>
-    </div>
 
-    <!-- SERVICES -->
-    <section>
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2 data-i18n="servicesTitle">Servizi NCC</h2>
-            <p data-i18n="servicesSub">Pensato per convertire: una sola azione, WhatsApp.</p>
+      <div class="trust-row" aria-label="Micro trust">
+        <div class="pill">NCC reale, operativo</div>
+        <div class="pill">Puntualità &amp; assistenza</div>
+        <div class="pill">Van/gruppi anche con partner selezionati</div>
+      </div>
+    </section>
+
+    <!-- QUICK TEMPLATE -->
+    <section class="card" id="quick" style="margin-top:12px">
+      <h2>Scrivici così (e ti rispondiamo più veloce)</h2>
+      <p>Copiando questi dati, ottieni un preventivo più rapido e senza domande inutili.</p>
+
+      <div class="grid">
+        <div class="card" style="background:rgba(255,255,255,.02)">
+          <h2 style="margin-bottom:8px">Template rapido</h2>
+          <ul class="bullets">
+            <li><b>Partenza</b> (indirizzo o luogo)</li>
+            <li><b>Destinazione</b></li>
+            <li><b>Data</b> e <b>ora</b></li>
+            <li><b>Passeggeri</b> + <b>bagagli</b></li>
+          </ul>
+          <div style="margin-top:12px">
+            <button class="btn btn-primary" data-wa="template">
+              Incolla template su WhatsApp
+            </button>
+            <div class="micro">Ti si apre la chat già compilata</div>
           </div>
         </div>
 
-        <div class="grid">
-          <div class="card">
-            <h3 data-i18n="s1t">Trasferimenti aeroportuali</h3>
-            <p data-i18n="s1d">Milano ↔ MXP / LIN / BGY, anche last minute (in base alla disponibilità).</p>
-          </div>
-          <div class="card">
-            <h3 data-i18n="s2t">Viaggi lunghi e intercity</h3>
-            <p data-i18n="s2d">Trasferte in tutta Italia e Svizzera, comfort e puntualità.</p>
-          </div>
-          <div class="card">
-            <h3 data-i18n="s3t">Gruppi e famiglie</h3>
-            <p data-i18n="s3d">Van fino a 7/8 posti e gestione bagagli. Perfetto per eventi e vacanze.</p>
-          </div>
-        </div>
-
-        <div style="margin-top:12px">
-          <button class="btn btn-wa" type="button" id="servicesWA" style="width:100%;border-radius:16px;padding:14px 16px;">
-            💬 <span data-i18n="ctaSecondary">Prenota su WhatsApp</span>
-          </button>
-          <p class="help" style="margin:10px 0 0" data-i18n="waHint">
-            Suggerimento: indica tratta, data, orario e passeggeri. Se hai fermate aggiuntive, scrivile nel messaggio.
-          </p>
+        <div class="card" style="background:rgba(255,255,255,.02)">
+          <h2 style="margin-bottom:8px">Perché conviene scriverci ora</h2>
+          <ul class="bullets">
+            <li><b>Risposta rapida</b> in chat (24/7)</li>
+            <li><b>Prezzo chiaro</b> in base a tratta/orario</li>
+            <li><b>Supporto aeroporti</b>: ritardi gestiti</li>
+            <li><b>Gruppi</b>: 1 messaggio, logistica coordinata</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- VEHICLES / TYPES -->
-    <section id="flotta">
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2 data-i18n="typesTitle">Tipologie di servizio</h2>
-            <p data-i18n="typesSub">Categorie chiare: vendi la soluzione, non il modello.</p>
-          </div>
+    <!-- INTENT CARDS -->
+    <section class="card" style="margin-top:12px" id="servizi">
+      <h2>Scrivi in base alla tua esigenza</h2>
+      <p>Ogni pulsante apre WhatsApp con un messaggio già pronto (più veloce per te, più veloce per noi).</p>
+
+      <div class="intent">
+        <div class="card">
+          <div class="tag">AEROPORTO</div>
+          <h2>MXP · LIN · BGY</h2>
+          <p>Meeting point, tracking volo, gestione ritardi. Ideale per arrivi/partenze.</p>
+          <button class="btn btn-primary" data-wa="aeroporto">Aeroporto: scrivi tratta e volo</button>
+          <div class="micro">Inserisci volo se disponibile (aiuta molto)</div>
         </div>
 
-        <div class="fleet">
-          <!-- Berlina Executive (E Class image) -->
-          <article class="vehicle">
-            <img src="classeE_industriale.png" alt="Berlina Executive" loading="lazy" />
-            <div class="vehicle-body">
-              <div class="vehicle-top">
-                <h3 data-i18n="v1t"> Executive</h3>
-                <span class="tag" data-i18n="v1tag">1–4 passeggeri</span>
-              </div>
-              <ul>
-                <li data-i18n="v1l1">Ideale per lavoro, aeroporti e trasferimenti in città</li>
-                <li data-i18n="v1l2">Comfort e puntualità</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Van (Vito image; keep generic to avoid "Classe V") -->
-          <article class="vehicle">
-            <img src="classeV_industriale.png" alt="Van fino a 7/8 passeggeri" loading="lazy" />
-            <div class="vehicle-body">
-              <div class="vehicle-top">
-                <h3 data-i18n="v2t">Van (fino a 7/8 passeggeri)</h3>
-                <span class="tag" data-i18n="v2tag">Gruppi &amp; bagagli</span>
-              </div>
-              <ul>
-                <li data-i18n="v2l1">Perfetto per famiglie, gruppi, eventi e aeroporti</li>
-                <li data-i18n="v2l2">Spazio per bagagli e fermate multiple</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- SUV / Comfort (RAV4 image) -->
-          <article class="vehicle">
-            <img src="rav4_industriale.png" alt="SUV / Comfort" loading="lazy" />
-            <div class="vehicle-body">
-              <div class="vehicle-top">
-                <h3 data-i18n="v3t">SUV / Comfort</h3>
-                <span class="tag" data-i18n="v3tag">Bagagli &amp; viaggi</span>
-              </div>
-              <ul>
-                <li data-i18n="v3l1">Più spazio per valigie e viaggi lunghi</li>
-                <li data-i18n="v3l2">Ottimo per tratte extraurbane</li>
-              </ul>
-            </div>
-          </article>
+        <div class="card">
+          <div class="tag" style="background:rgba(59,130,246,.12); border-color:rgba(59,130,246,.25); color:#cfe2ff">CITTÀ / LAVORO</div>
+          <h2>Milano e dintorni</h2>
+          <p>Appuntamenti, hotel, fiere, lavoro. Puntualità e gestione diretta.</p>
+          <button class="btn btn-primary" data-wa="citta">Milano: chiedi un preventivo rapido</button>
+          <div class="micro">Perfetto per orari stretti e business</div>
         </div>
 
-        <div class="note" data-i18n="partnerNote">
-          Alcune tipologie di servizio (es. Luxury su richiesta o disponibilità extra) possono essere fornite tramite NCC partner selezionati.
+        <div class="card">
+          <div class="tag" style="background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.25); color:#ffe3b0">VAN / GRUPPI</div>
+          <h2>Gruppi e bagagli</h2>
+          <p>Van e più veicoli disponibili anche tramite NCC partner selezionati, coordinati da noi.</p>
+          <button class="btn btn-primary" data-wa="van">Gruppi/Van: verifica disponibilità</button>
+          <div class="micro">Indica numero passeggeri e valigie</div>
         </div>
 
-        <div style="margin-top:12px">
-          <button class="btn btn-wa" type="button" id="fleetWA" style="width:100%;border-radius:16px;padding:14px 16px;">
-            💬 <span data-i18n="ctaAsk">Chiedi disponibilità su WhatsApp</span>
-          </button>
+        <div class="card">
+          <div class="tag" style="background:rgba(239,68,68,.12); border-color:rgba(239,68,68,.25); color:#ffb4b4">LAST MINUTE</div>
+          <h2>Urgenza (oggi / poche ore)</h2>
+          <p>Se hai bisogno subito, scrivi “LAST MINUTE”: priorità in chat.</p>
+          <button class="btn btn-primary" data-wa="lastminute">Urgenza: risposta prioritaria</button>
+          <div class="micro">Scrivi l’orario desiderato</div>
         </div>
       </div>
     </section>
 
     <!-- HOW IT WORKS -->
-    <section>
-      <div class="wrap">
-        <div class="section-title">
+    <section class="card" style="margin-top:12px" id="come-funziona">
+      <h2>Come funziona (super semplice)</h2>
+      <div class="how">
+        <div class="step">
+          <div class="num">1</div>
           <div>
-            <h2 data-i18n="howTitle">Come funziona</h2>
-            <p data-i18n="howSub">4 step, zero frizioni, mobile-first.</p>
+            <b>Scrivi su WhatsApp</b>
+            <span>Partenza, destinazione, data/ora, passeggeri.</span>
           </div>
         </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="n">1</div>
-            <div>
-              <b data-i18n="h1t">Scrivici su WhatsApp</b>
-              <span data-i18n="h1d">Indica tratta, data, orario, passeggeri.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">2</div>
-            <div>
-              <b data-i18n="h2t">Ricevi il preventivo</b>
-              <span data-i18n="h2d">Risposta rapida, senza impegno.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">3</div>
-            <div>
-              <b data-i18n="h3t">Conferma la corsa</b>
-              <span data-i18n="h3d">Ti comunichiamo veicolo e dettagli.</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="n">4</div>
-            <div>
-              <b data-i18n="h4t">Viaggia senza pensieri</b>
-              <span data-i18n="h4d">Operativi 24/7, anche notte e festivi.</span>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:12px">
-          <button class="btn btn-wa" type="button" id="howWA" style="width:100%;border-radius:16px;padding:14px 16px;">
-            💬 <span data-i18n="ctaMain2">Scrivici ora su WhatsApp</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- PREVENTIVO -->
-    <section id="preventivo">
-      <div class="wrap">
-        <div class="section-title">
+        <div class="step">
+          <div class="num">2</div>
           <div>
-            <h2 data-i18n="quoteTitle">Richiedi un preventivo</h2>
-            <p data-i18n="quoteSub">Più veloce via WhatsApp. Il form è un’alternativa.</p>
+            <b>Ricevi prezzo e conferma</b>
+            <span>Ti rispondiamo con totale e disponibilità.</span>
           </div>
         </div>
-
-        <div class="card">
-          <div class="error" id="formError"></div>
-
-          <form class="form" id="quoteForm" novalidate>
-            <div class="row">
-              <label>
-                <span data-i18n="fName">Nome</span>
-                <input type="text" id="name" autocomplete="name" placeholder="Mario" />
-              </label>
-              <label>
-                <span data-i18n="fPhone">Telefono (opzionale)</span>
-                <input type="tel" id="phone" autocomplete="tel" placeholder="+39..." />
-              </label>
-            </div>
-
-            <div class="row">
-              <label>
-                <span data-i18n="fFrom">Partenza</span>
-                <input type="text" id="from" placeholder="Es. Milano Centrale" required />
-              </label>
-              <label>
-                <span data-i18n="fTo">Destinazione</span>
-                <input type="text" id="to" placeholder="Es. Malpensa T1" required />
-              </label>
-            </div>
-
-            <label>
-              <span data-i18n="fStops">Fermate aggiuntive (se presenti)</span>
-              <input type="text" id="stops" placeholder="Es. Via X 12, poi Hotel Y" />
-              <span class="help" data-i18n="fStopsHelp">Se non ci sono fermate, lascia vuoto.</span>
-            </label>
-
-            <div class="row">
-              <label>
-                <span data-i18n="fDate">Data</span>
-                <input type="date" id="date" required />
-              </label>
-              <label>
-                <span data-i18n="fTime">Orario</span>
-                <input type="time" id="time" required />
-              </label>
-            </div>
-
-            <div class="row">
-              <label>
-                <span data-i18n="fPax">Passeggeri</span>
-                <select id="pax">
-                  <option value="1">1</option>
-                  <option value="2" selected>2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                </select>
-              </label>
-              <label>
-                <span data-i18n="fType">Tipologia</span>
-                <select id="type">
-                  <option value="Berlina Executive" data-i18n-opt="optSedan">Berlina Executive</option>
-                  <option value="SUV / Comfort" data-i18n-opt="optSuv">SUV / Comfort</option>
-                  <option value="Van (7/8 posti)" data-i18n-opt="optVan">Van (7/8 posti)</option>
-                  <option value="Luxury su richiesta" data-i18n-opt="optLux">Luxury su richiesta</option>
-                </select>
-              </label>
-            </div>
-
-            <label>
-              <span data-i18n="fNotes">Note (volo/treno, bagagli, richieste)</span>
-              <textarea id="notes" placeholder="Es. Volo AZ123 arrivo 18:40, 3 valigie grandi"></textarea>
-            </label>
-
-            <button class="btn btn-wa" type="submit" style="width:100%;border-radius:16px;padding:14px 16px;">
-              💬 <span data-i18n="ctaSend">Invia su WhatsApp (più veloce)</span>
-            </button>
-
-            <p class="help" style="margin:10px 0 0" data-i18n="privacyHint">
-              Inviando il messaggio su WhatsApp, i dati saranno trattati per gestire la richiesta.
-            </p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section>
-      <div class="wrap">
-        <div class="hero-card">
-          <div class="hero-inner" style="padding:18px;">
-            <h2 style="margin:0 0 8px;font-size:18px" data-i18n="finalTitle">
-              Hai bisogno di un NCC adesso o nei prossimi giorni?
-            </h2>
-            <p class="sub" style="margin:0 0 14px" data-i18n="finalSub">
-              Scrivi su WhatsApp: ti rispondiamo rapidamente con disponibilità e preventivo.
-            </p>
-            <button class="btn btn-wa" type="button" id="finalWA" style="width:100%;border-radius:16px;padding:14px 16px;">
-              💬 <span data-i18n="finalCTA">Scrivici ora su WhatsApp</span>
-            </button>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <b>Pick-up e viaggio</b>
+            <span>In aeroporto: meeting point + supporto ritardi.</span>
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div><b>Nexaride</b> · <span data-i18n="footerLine1">NCC e trasferimenti privati 24/7</span></div>
-        <div class="small" data-i18n="footerLine2">
-          In caso di alta richiesta, possiamo collaborare con NCC partner selezionati per garantire continuità di servizio.
+    <!-- TRUST -->
+    <section class="card" style="margin-top:12px" id="trust">
+      <h2>Affidabilità: cosa aspettarti</h2>
+      <div class="grid">
+        <div class="card" style="background:rgba(255,255,255,.02)">
+          <h2>Chi risponde</h2>
+          <p><b>Persona reale</b> su WhatsApp, gestione diretta. Nexaride è un servizio NCC operativo su Milano e aeroporti.</p>
+          <ul class="bullets">
+            <li>Preventivo rapido in chat</li>
+            <li>Assistenza su orari e logistica</li>
+            <li>Gruppi: coordinamento anche con partner selezionati</li>
+          </ul>
         </div>
-        <div class="small">
-          <a href="#" id="footerWA" data-i18n="footerCTA">Contattaci su WhatsApp</a>
-          <span> · </span>
-          <a href="#preventivo" data-i18n="footerQuote">Preventivo</a>
+
+        <div class="card" style="background:rgba(255,255,255,.02)">
+          <h2>Pagamenti &amp; dettagli</h2>
+          <ul class="bullets">
+            <li>Prezzo comunicato <b>prima</b> della conferma</li>
+            <li>Pagamento: <b>da confermare</b> in base al servizio (carta/contanti/fattura su richiesta)</li>
+            <li>In aeroporto: possibile tracking volo e gestione ritardi</li>
+          </ul>
+          <div class="hint">Nota: aggiorna questa sezione in base a ciò che offri realmente.</div>
         </div>
-        <div class="small">© <span id="year"></span> Nexaride</div>
       </div>
+    </section>
+
+    <!-- REVIEWS (optional, keep real) -->
+    <section class="card" style="margin-top:12px" id="recensioni">
+      <h2>Recensioni (solo reali)</h2>
+      <p>Inserisci qui recensioni vere o collega direttamente la pagina Google.</p>
+
+      <div class="reviews">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <b>“Puntualissimo e comunicazione perfetta.”</b>
+          <p>Consiglio: sostituisci questo testo con una recensione reale e verificabile.</p>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <b>“Aeroporto senza stress, autista professionale.”</b>
+          <p>Consiglio: meglio 2–3 recensioni vere che 20 finte.</p>
+        </div>
+
+        <!-- Link a Google (metti il link reale) -->
+        <a class="btn btn-secondary" href="#" id="googleReviewsLink" target="_blank" rel="noopener">
+          Leggi recensioni su Google
+        </a>
+        <div class="micro">Sostituisci “#” con il link Google reale</div>
+      </div>
+    </section>
+
+    <!-- FORM (SECONDARY) -->
+    <section class="card" style="margin-top:12px" id="form">
+      <h2>Non puoi usare WhatsApp? Compila in 30 secondi</h2>
+      <p>Il form è un’alternativa. Appena invii, si apre WhatsApp con il messaggio già pronto.</p>
+
+      <form class="form" id="quoteForm">
+        <div>
+          <label for="pickup">Partenza *</label>
+          <input id="pickup" name="pickup" autocomplete="street-address" placeholder="Es: Milano Centrale" required />
+        </div>
+
+        <div>
+          <label for="dropoff">Destinazione *</label>
+          <input id="dropoff" name="dropoff" autocomplete="street-address" placeholder="Es: Malpensa T1" required />
+        </div>
+
+        <div class="two">
+          <div>
+            <label for="date">Data *</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+          <div>
+            <label for="time">Ora *</label>
+            <input id="time" name="time" type="time" required />
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label for="pax">Passeggeri</label>
+            <select id="pax" name="pax">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
+            </select>
+          </div>
+          <div>
+            <label for="luggage">Bagagli</label>
+            <select id="luggage" name="luggage">
+              <option value="Nessuno">Nessuno</option>
+              <option value="1-2">1–2</option>
+              <option value="3-4" selected>3–4</option>
+              <option value="5+">5+</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="notes">Note (volo, fermate, esigenze)</label>
+          <textarea id="notes" name="notes" placeholder="Es: Volo FR1234, 1 fermata a…"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+          Invia richiesta su WhatsApp
+        </button>
+        <div class="micro">Niente registrazione. Messaggio precompilato.</div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="small-links">
+        <a href="#" id="privacyLink">Privacy</a>
+        <span class="divider">·</span>
+        <a href="#" id="cookieLink">Cookie</a>
+        <span class="divider">·</span>
+        <a href="#form">Form</a>
+      </div>
+      <div style="margin-top:10px; opacity:.9">
+        © <span id="year"></span> Nexaride • NCC Milano
+      </div>
+    </footer>
+  </div>
+
+  <!-- STICKY BOTTOM BAR (mobile-first) -->
+  <div class="sticky-bar" role="navigation" aria-label="Contatto rapido">
+    <div class="sticky-inner">
+      <button class="btn btn-secondary" data-wa="lastminute" title="Urgenza">
+        Urgenza
+      </button>
+      <button class="btn btn-primary" data-wa="hero" title="WhatsApp">
+        WhatsApp: preventivo immediato
+      </button>
     </div>
-  </footer>
-
-  <!-- Floating WhatsApp button -->
-  <a class="float-wa" href="#" id="floatWA" aria-label="Apri WhatsApp">
-    <span class="bubble" aria-hidden="true">💬</span>
-    <span data-i18n="floatText">WhatsApp</span>
-  </a>
+  </div>
 
   <script>
-    // ========= CONFIG =========
-    // Inserisci qui il tuo numero WhatsApp in formato internazionale SENZA "+"
-    // Esempio: "393331234567"
-    const WHATSAPP_NUMBER = "393208784091";
+    /**********************
+     * CONFIG
+     **********************/
+    // Inserisci QUI il tuo numero WhatsApp in formato internazionale SENZA + e senza spazi.
+    // Esempio Italia: 393331234567
+    const WHATSAPP_NUMBER = "393000000000";
 
-    // Pagina wa.me (mobile + desktop). Se preferisci WhatsApp Business:
-    // wa.me apre WhatsApp/WhatsApp Business in base a cosa è installato.
-    const waBase = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-
-    // ========= I18N =========
-    const dict = {
-      it: {
-        headerSubtitle: "NCC 24/7 · Preventivo su WhatsApp",
-        ctaHeader: "WhatsApp",
-        kicker: "Operativi 24/7 · Risposta rapida",
-        h1: "NCC e trasferimenti privati – disponibili 24/7",
-        sub: "Aeroporti · città · lunghi viaggi · gruppi. Scrivici su WhatsApp: preventivo immediato, persona reale.",
-        ctaMain: "Scrivici ora su WhatsApp",
-        trust1: "Preventivo immediato",
-        trust2: "Senza app",
-        trust3: "Assistenza reale",
-        b1t: "Risposta veloce",
-        b1d: "Scrivi su WhatsApp e ricevi conferma e preventivo in pochi minuti.",
-        b2t: "Aeroporti & Business",
-        b2d: "MXP · LIN · BGY, appuntamenti di lavoro e trasferte, anche di notte.",
-        b3t: "Più veicoli quando serve",
-        b3d: "In caso di alta richiesta, attiviamo NCC partner selezionati.",
-
-        servicesTitle: "Servizi NCC",
-        servicesSub: "Pensato per convertire: una sola azione, WhatsApp.",
-        s1t: "Trasferimenti aeroportuali",
-        s1d: "Milano ↔ MXP / LIN / BGY, anche last minute (in base alla disponibilità).",
-        s2t: "Viaggi lunghi e intercity",
-        s2d: "Trasferte in tutta Italia e Svizzera, comfort e puntualità.",
-        s3t: "Gruppi e famiglie",
-        s3d: "Van fino a 7/8 posti e gestione bagagli. Perfetto per eventi e vacanze.",
-        ctaSecondary: "Prenota su WhatsApp",
-        waHint: "Suggerimento: indica tratta, data, orario e passeggeri. Se hai fermate aggiuntive, scrivile nel messaggio.",
-
-        typesTitle: "Tipologie di servizio",
-        typesSub: "Categorie chiare: vendi la soluzione, non il modello.",
-        v1t: "Berlina Executive",
-        v1tag: "1–3 passeggeri",
-        v1l1: "Ideale per lavoro, aeroporti e trasferimenti in città",
-        v1l2: "Comfort e puntualità",
-        v2t: "Van (fino a 7/8 passeggeri)",
-        v2tag: "Gruppi & bagagli",
-        v2l1: "Perfetto per famiglie, gruppi, eventi e aeroporti",
-        v2l2: "Spazio per bagagli e fermate multiple",
-        v3t: "SUV / Comfort",
-        v3tag: "Bagagli & viaggi",
-        v3l1: "Più spazio per valigie e viaggi lunghi",
-        v3l2: "Ottimo per tratte extraurbane",
-        partnerNote: "Alcune tipologie di servizio (es. Luxury su richiesta o disponibilità extra) possono essere fornite tramite NCC partner selezionati.",
-        ctaAsk: "Chiedi disponibilità su WhatsApp",
-
-        howTitle: "Come funziona",
-        howSub: "4 step, zero frizioni, mobile-first.",
-        h1t: "Scrivici su WhatsApp",
-        h1d: "Indica tratta, data, orario, passeggeri.",
-        h2t: "Ricevi il preventivo",
-        h2d: "Risposta rapida, senza impegno.",
-        h3t: "Conferma la corsa",
-        h3d: "Ti comunichiamo veicolo e dettagli.",
-        h4t: "Viaggia senza pensieri",
-        h4d: "Operativi 24/7, anche notte e festivi.",
-        ctaMain2: "Scrivici ora su WhatsApp",
-
-        quoteTitle: "Richiedi un preventivo",
-        quoteSub: "Più veloce via WhatsApp. Il form è un’alternativa.",
-        fName: "Nome",
-        fPhone: "Telefono (opzionale)",
-        fFrom: "Partenza",
-        fTo: "Destinazione",
-        fStops: "Fermate aggiuntive (se presenti)",
-        fStopsHelp: "Se non ci sono fermate, lascia vuoto.",
-        fDate: "Data",
-        fTime: "Orario",
-        fPax: "Passeggeri",
-        fType: "Tipologia",
-        fNotes: "Note (volo/treno, bagagli, richieste)",
-        ctaSend: "Invia su WhatsApp (più veloce)",
-        privacyHint: "Inviando il messaggio su WhatsApp, i dati saranno trattati per gestire la richiesta.",
-        optSedan: "Berlina Executive",
-        optSuv: "SUV / Comfort",
-        optVan: "Van (7/8 posti)",
-        optLux: "Luxury su richiesta",
-
-        finalTitle: "Hai bisogno di un NCC adesso o nei prossimi giorni?",
-        finalSub: "Scrivi su WhatsApp: ti rispondiamo rapidamente con disponibilità e preventivo.",
-        finalCTA: "Scrivici ora su WhatsApp",
-
-        footerLine1: "NCC e trasferimenti privati 24/7",
-        footerLine2: "In caso di alta richiesta, possiamo collaborare con NCC partner selezionati per garantire continuità di servizio.",
-        footerCTA: "Contattaci su WhatsApp",
-        footerQuote: "Preventivo",
-        floatText: "WhatsApp",
-
-        // errors
-        errNumber: "Imposta il numero WhatsApp nel codice (WHATSAPP_NUMBER).",
-        errRequired: "Compila almeno Partenza, Destinazione, Data e Orario."
-      },
-
-      en: {
-        headerSubtitle: "NCC 24/7 · Quote via WhatsApp",
-        ctaHeader: "WhatsApp",
-        kicker: "24/7 available · Fast reply",
-        h1: "Private chauffeur service – available 24/7",
-        sub: "Airports · city rides · long trips · groups. Message us on WhatsApp for a quick quote.",
-        ctaMain: "Message us on WhatsApp",
-        trust1: "Instant quote",
-        trust2: "No app needed",
-        trust3: "Real support",
-        b1t: "Fast reply",
-        b1d: "Send a WhatsApp message and get availability + quote in minutes.",
-        b2t: "Airports & Business",
-        b2d: "MXP · LIN · BGY, business trips and late-night service.",
-        b3t: "More vehicles when needed",
-        b3d: "During peak demand, we can activate selected NCC partners.",
-
-        servicesTitle: "Services",
-        servicesSub: "Conversion-first: one main action, WhatsApp.",
-        s1t: "Airport transfers",
-        s1d: "Milan ↔ MXP / LIN / BGY, last minute depending on availability.",
-        s2t: "Long trips & intercity",
-        s2d: "Trips across Italy and Switzerland with comfort and punctuality.",
-        s3t: "Groups & families",
-        s3d: "Van up to 7/8 seats and luggage handling—great for events and holidays.",
-        ctaSecondary: "Book on WhatsApp",
-        waHint: "Tip: include route, date, time and passengers. Add any extra stops in the message.",
-
-        typesTitle: "Service categories",
-        typesSub: "Clear categories: sell the solution, not the model.",
-        v1t: "Executive Sedan",
-        v1tag: "1–3 passengers",
-        v1l1: "Ideal for business, airports and city transfers",
-        v1l2: "Comfort and punctuality",
-        v2t: "Van (up to 7/8 passengers)",
-        v2tag: "Groups & luggage",
-        v2l1: "Perfect for families, groups, events and airports",
-        v2l2: "Luggage space and multiple stops",
-        v3t: "SUV / Comfort",
-        v3tag: "Luggage & trips",
-        v3l1: "More space for luggage and long journeys",
-        v3l2: "Great for extra-urban routes",
-        partnerNote: "Some categories (e.g., Luxury on request or extra availability) may be provided through selected NCC partners.",
-        ctaAsk: "Ask availability on WhatsApp",
-
-        howTitle: "How it works",
-        howSub: "4 steps, zero friction, mobile-first.",
-        h1t: "Message us on WhatsApp",
-        h1d: "Share route, date, time and passengers.",
-        h2t: "Get the quote",
-        h2d: "Fast reply, no obligation.",
-        h3t: "Confirm the ride",
-        h3d: "We confirm vehicle and details.",
-        h4t: "Travel stress-free",
-        h4d: "24/7 service, including nights and holidays.",
-        ctaMain2: "Message us on WhatsApp",
-
-        quoteTitle: "Request a quote",
-        quoteSub: "WhatsApp is faster. The form is an alternative.",
-        fName: "Name",
-        fPhone: "Phone (optional)",
-        fFrom: "Pickup",
-        fTo: "Drop-off",
-        fStops: "Additional stops (if any)",
-        fStopsHelp: "If none, leave empty.",
-        fDate: "Date",
-        fTime: "Time",
-        fPax: "Passengers",
-        fType: "Category",
-        fNotes: "Notes (flight/train, luggage, requests)",
-        ctaSend: "Send via WhatsApp (faster)",
-        privacyHint: "By sending on WhatsApp, data will be used to handle your request.",
-        optSedan: "Executive Sedan",
-        optSuv: "SUV / Comfort",
-        optVan: "Van (7/8 seats)",
-        optLux: "Luxury on request",
-
-        finalTitle: "Need a chauffeur now or in the next days?",
-        finalSub: "Message us on WhatsApp for availability and a quick quote.",
-        finalCTA: "Message us on WhatsApp",
-
-        footerLine1: "Private chauffeur service 24/7",
-        footerLine2: "During peak demand, we may collaborate with selected NCC partners to ensure service continuity.",
-        footerCTA: "Contact us on WhatsApp",
-        footerQuote: "Quote",
-        floatText: "WhatsApp",
-
-        // errors
-        errNumber: "Set your WhatsApp number in the code (WHATSAPP_NUMBER).",
-        errRequired: "Please fill at least Pickup, Drop-off, Date and Time."
-      }
+    // Link reali (se li hai)
+    const LINKS = {
+      googleReviews: "#",     // es: https://g.page/r/XXXX/review
+      privacy: "#",           // se usi iubenda o pagina privacy
+      cookie: "#"             // pagina cookie
     };
 
-    let currentLang = "it";
-
-    function applyLang(lang){
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.getElementById("btnIT").classList.toggle("active", lang === "it");
-      document.getElementById("btnEN").classList.toggle("active", lang === "en");
-
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (dict[lang][key]) el.textContent = dict[lang][key];
-      });
-
-      // options text
-      document.querySelectorAll("[data-i18n-opt]").forEach(opt => {
-        const key = opt.getAttribute("data-i18n-opt");
-        if (dict[lang][key]) opt.textContent = dict[lang][key];
-      });
+    /**********************
+     * HELPERS
+     **********************/
+    function openWhatsApp(message) {
+      const text = encodeURIComponent(message.trim());
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+      window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    // ========= WhatsApp message builders =========
-    function baseIntro(){
-      if (currentLang === "en") return "Hi! I’d like a quote for an NCC transfer.";
-      return "Ciao! Vorrei un preventivo per un trasferimento NCC.";
+    // Messaggi precompilati per intenti (tag finale per tracciamento interno)
+    function msgTemplate(tag="") {
+      const t = tag ? `\n\n#${tag}` : "";
+      return `Ciao! Vorrei un preventivo NCC.\n\nPartenza:\nDestinazione:\nData:\nOra:\nPasseggeri:\nBagagli:\nFermate (se presenti):\nNote:${t}`;
     }
 
-    function buildMessageFromForm(){
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const from = document.getElementById("from").value.trim();
-      const to = document.getElementById("to").value.trim();
-      const stops = document.getElementById("stops").value.trim();
+    function msgAeroporto() {
+      return `Ciao! Transfer aeroporto.\n\nAeroporto/Terminal:\nArrivo o Partenza:\nVolo (se c’è):\nPartenza (indirizzo):\nDestinazione:\nData e Ora:\nPasseggeri + Bagagli:\nNote:\n\n#aeroporto`;
+    }
+
+    function msgCitta() {
+      return `Ciao! Richiesta NCC Milano.\n\nPartenza:\nDestinazione:\nData:\nOra:\nPasseggeri:\nBagagli:\nNote:\n\n#citta`;
+    }
+
+    function msgVan() {
+      return `Ciao! Richiesta VAN / Gruppo.\n\nPartenza:\nDestinazione:\nData:\nOra:\nN° passeggeri:\nBagagli (quante valigie):\nFermate (se presenti):\nNote:\n\n#van`;
+    }
+
+    function msgLastMinute() {
+      return `Ciao! Richiesta LAST MINUTE (oggi/entro poche ore).\n\nPartenza:\nDestinazione:\nOra desiderata:\nPasseggeri:\nBagagli:\nNote:\n\n#lastminute`;
+    }
+
+    /**********************
+     * EVENTS
+     **********************/
+    // CTA buttons
+    document.querySelectorAll("[data-wa]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-wa");
+        switch(key){
+          case "hero":       openWhatsApp(msgTemplate("hero")); break;
+          case "template":   openWhatsApp(msgTemplate("template")); break;
+          case "aeroporto":  openWhatsApp(msgAeroporto()); break;
+          case "citta":      openWhatsApp(msgCitta()); break;
+          case "van":        openWhatsApp(msgVan()); break;
+          case "lastminute": openWhatsApp(msgLastMinute()); break;
+          default:           openWhatsApp(msgTemplate(key)); break;
+        }
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll("[data-scroll]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const sel = btn.getAttribute("data-scroll");
+        const el = document.querySelector(sel);
+        if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+
+    // Form -> WhatsApp
+    document.getElementById("quoteForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pickup = document.getElementById("pickup").value.trim();
+      const dropoff = document.getElementById("dropoff").value.trim();
       const date = document.getElementById("date").value;
       const time = document.getElementById("time").value;
       const pax = document.getElementById("pax").value;
-      const type = document.getElementById("type").value;
+      const luggage = document.getElementById("luggage").value;
       const notes = document.getElementById("notes").value.trim();
 
-      let msg = `${baseIntro()}\n\n`;
-      if (name) msg += (currentLang === "en" ? `Name: ${name}\n` : `Nome: ${name}\n`);
-      if (phone) msg += (currentLang === "en" ? `Phone: ${phone}\n` : `Telefono: ${phone}\n`);
-      msg += (currentLang === "en" ? `Pickup: ${from}\n` : `Partenza: ${from}\n`);
-      msg += (currentLang === "en" ? `Drop-off: ${to}\n` : `Destinazione: ${to}\n`);
-      if (stops) msg += (currentLang === "en" ? `Stops: ${stops}\n` : `Fermate: ${stops}\n`);
-      msg += (currentLang === "en" ? `Date: ${date}  Time: ${time}\n` : `Data: ${date}  Ora: ${time}\n`);
-      msg += (currentLang === "en" ? `Passengers: ${pax}\n` : `Passeggeri: ${pax}\n`);
-      msg += (currentLang === "en" ? `Category: ${type}\n` : `Tipologia: ${type}\n`);
-      if (notes) msg += (currentLang === "en" ? `Notes: ${notes}\n` : `Note: ${notes}\n`);
+      const msg =
+        `Ciao! Vorrei un preventivo NCC.\n\n` +
+        `Partenza: ${pickup}\n` +
+        `Destinazione: ${dropoff}\n` +
+        `Data: ${date}\n` +
+        `Ora: ${time}\n` +
+        `Passeggeri: ${pax}\n` +
+        `Bagagli: ${luggage}\n` +
+        (notes ? `Note: ${notes}\n` : `Note:\n`) +
+        `\n#form`;
 
-      msg += "\n" + (currentLang === "en"
-        ? "Thank you! Please confirm availability and price."
-        : "Grazie! Mi confermi disponibilità e prezzo?");
-      return msg;
-    }
+      openWhatsApp(msg);
+    });
 
-    function buildQuickMessage(contextKey){
-      // Quick CTA messages (no form)
-function buildQuickMessage(){
-  if (currentLang === "en") {
-    return `Hi! I’d like an NCC quote.\n\nPickup:\nDrop-off:\nDate:\nTime:\nPassengers:\nStops (if any):\nNotes:`;
-  }
-  return `Ciao! Vorrei un preventivo NCC.\n\nPartenza:\nDestinazione:\nData:\nOra:\nPasseggeri:\nFermate (se presenti):\nNote:`;
-}
+    // Footer links
+    document.getElementById("googleReviewsLink").setAttribute("href", LINKS.googleReviews);
+    document.getElementById("privacyLink").setAttribute("href", LINKS.privacy);
+    document.getElementById("cookieLink").setAttribute("href", LINKS.cookie);
 
-    function openWhatsApp(text){
-      const errEl = document.getElementById("formError");
-      if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER.includes("X")) {
-        if (errEl) {
-          errEl.style.display = "block";
-          errEl.textContent = dict[currentLang].errNumber;
-        } else {
-          alert(dict[currentLang].errNumber);
-        }
-        return;
-      }
-      window.location.href = waBase(text);
-    }
-
-    // ========= Events =========
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.getElementById("btnIT").addEventListener("click", () => applyLang("it"));
-    document.getElementById("btnEN").addEventListener("click", () => applyLang("en"));
-
-    // Header CTA now actually opens WhatsApp (no non-clickable button)
-    document.getElementById("headerWhatsApp").addEventListener("click", (e) => {
-      e.preventDefault();
-      openWhatsApp(buildQuickMessage("Header CTA"));
-    });
-
-    document.getElementById("heroWA").addEventListener("click", () => openWhatsApp(buildQuickMessage("Hero")));
-    document.getElementById("servicesWA").addEventListener("click", () => openWhatsApp(buildQuickMessage("Servizi")));
-    document.getElementById("fleetWA").addEventListener("click", () => openWhatsApp(buildQuickMessage("Tipologie")));
-    document.getElementById("howWA").addEventListener("click", () => openWhatsApp(buildQuickMessage("Come funziona")));
-    document.getElementById("finalWA").addEventListener("click", () => openWhatsApp(buildQuickMessage("CTA finale")));
-
-    document.getElementById("floatWA").addEventListener("click", (e) => {
-      e.preventDefault();
-      openWhatsApp(buildQuickMessage("Floating button"));
-    });
-    document.getElementById("footerWA").addEventListener("click", (e) => {
-      e.preventDefault();
-      openWhatsApp(buildQuickMessage("Footer"));
-    });
-
-    // Form submit -> WhatsApp
-    document.getElementById("quoteForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const errEl = document.getElementById("formError");
-      errEl.style.display = "none";
-      errEl.textContent = "";
-
-      const from = document.getElementById("from").value.trim();
-      const to = document.getElementById("to").value.trim();
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-
-      if (!from || !to || !date || !time) {
-        errEl.style.display = "block";
-        errEl.textContent = dict[currentLang].errRequired;
-        return;
-      }
-
-      openWhatsApp(buildMessageFromForm());
-    });
-
-    // Init language
-    applyLang("it");
   </script>
 </body>
 </html>
