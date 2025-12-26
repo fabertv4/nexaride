@@ -2,73 +2,76 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexaRide Srl | Servizio NCC Premium Milano e Nord Italia</title>
-  <meta name="description" content="NexaRide Srl: servizio NCC premium per trasferimenti aeroportuali, business e eventi. Autisti professionisti, puntualità, comfort. Preventivo rapido via WhatsApp." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://www.nexaride.it/" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NexaRide — NCC Milano | Transfer aeroporti • Eventi • Aziende</title>
+  <meta name="description" content="NCC premium a Milano: transfer aeroporti, eventi, business. Prenota su WhatsApp o telefono. Driver professionali, puntualità e comfort." />
+  <link rel="canonical" href="https://nexaride.it/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NexaRide Srl | Servizio NCC Premium" />
-  <meta property="og:description" content="NCC premium per Milano e Nord Italia. Transfer aeroporti, business, eventi. Preventivo rapido via WhatsApp." />
+  <meta property="og:title" content="NexaRide — NCC Milano" />
+  <meta property="og:description" content="Transfer aeroporti • Eventi • Aziende. Prenota in 1 minuto su WhatsApp." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nexaride.it/" />
+  <meta property="og:url" content="https://nexaride.it/" />
+  <!-- Se hai un'immagine: decommenta e metti il path corretto -->
   <!-- <meta property="og:image" content="https://www.nexaride.it/og-image.jpg" /> -->
 
-  <!-- Tailwind CDN (ottimo per landing veloce) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Fonts (optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Micro-ottimizzazioni per feeling premium */
-    .glass { backdrop-filter: blur(10px); background: rgba(255,255,255,0.06); }
-    .shadow-soft { box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+    :root { color-scheme: dark; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
   </style>
 
-  <!-- JSON-LD LocalBusiness -->
+  <!-- LocalBusiness schema -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "NexaRide Srl",
-    "url": "https://www.nexaride.it/",
-   "telephone": "+393208784091",
-    "email": "info@nexaride.it",
-    "areaServed": ["Milano", "Lombardia", "Nord Italia"],
-    "description": "Servizio NCC premium: transfer aeroporti, business, eventi e disposizione oraria. Autisti professionisti e veicoli di fascia alta.",
-    "sameAs": []
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"NexaRide",
+    "url":"https://nexaride.it/",
+    "telephone":"+393208784091",
+    "email":"info@nexaride.it",
+    "areaServed":"Milano e Lombardia",
+    "sameAs":[]
   }
   </script>
 </head>
 
-<body class="bg-neutral-950 text-neutral-100 antialiased">
+<body class="bg-neutral-950 text-neutral-100">
   <!-- Top bar -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/80">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- Logo placeholder -->
-        <div class="h-10 w-10 rounded-2xl bg-white/10 grid place-items-center border border-white/10">
-          <span class="font-semibold">NR</span>
-        </div>
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <a href="/" class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-white/10 ring-1 ring-white/10 grid place-items-center font-bold">NR</div>
         <div class="leading-tight">
-          <div class="font-semibold">NexaRide Srl</div>
-          <div class="text-xs text-neutral-300">Servizio NCC Premium</div>
+          <div class="font-semibold">NexaRide</div>
+          <div class="text-xs text-neutral-400">NCC Milano • Premium transfers</div>
         </div>
-      </div>
+      </a>
 
-      <div class="hidden md:flex items-center gap-2">
-        <a href="#servizi" class="px-3 py-2 text-sm text-neutral-200 hover:text-white">Servizi</a>
-        <a href="#flotta" class="px-3 py-2 text-sm text-neutral-200 hover:text-white">Flotta</a>
-        <a href="#come-funziona" class="px-3 py-2 text-sm text-neutral-200 hover:text-white">Come funziona</a>
-        <a href="#faq" class="px-3 py-2 text-sm text-neutral-200 hover:text-white">FAQ</a>
-      </div>
+      <nav class="hidden items-center gap-6 text-sm text-neutral-300 md:flex">
+        <a href="#servizi" class="hover:text-white">Servizi</a>
+        <a href="#come-funziona" class="hover:text-white">Come funziona</a>
+        <a href="#preventivo" class="hover:text-white">Preventivo</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+      </nav>
 
       <div class="flex items-center gap-2">
-        <a id="ctaCallTop" href="tel:+39XXXXXXXXXX"
-           class="hidden sm:inline-flex items-center justify-center rounded-xl border border-white/15 px-3 py-2 text-sm hover:bg-white/10">
+        <a id="ctaCallTop"
+           href="tel:+393208784091"
+           class="hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 md:inline-flex">
           Chiama
         </a>
-        <a id="ctaWATop" href="https://wa.me/39XXXXXXXXXX?text=Buongiorno%2C%20vorrei%20un%20preventivo%20per%20un%20servizio%20NCC."
-           class="inline-flex items-center justify-center rounded-xl bg-white text-neutral-950 px-3 py-2 text-sm font-semibold hover:bg-neutral-200">
+
+        <a id="ctaWATop"
+           href="https://wa.me/393208784091?text=Buongiorno%2C%20vorrei%20prenotare%20un%20servizio%20NCC%20con%20NexaRide.%20Potete%20aiutarmi%3F"
+           class="inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-200">
           WhatsApp
         </a>
       </div>
@@ -77,91 +80,86 @@
 
   <!-- Hero -->
   <section class="relative overflow-hidden">
-    <div class="absolute inset-0">
-      <!-- Background gradient -->
-      <div class="absolute -top-24 left-1/2 h-96 w-[900px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl"></div>
-      <div class="absolute top-56 left-10 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
-      <div class="absolute top-72 right-10 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
-    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.10),transparent_55%)]"></div>
 
-    <div class="relative mx-auto max-w-6xl px-4 pt-14 pb-10 md:pt-20 md:pb-14">
-      <div class="grid gap-10 md:grid-cols-2 md:items-center">
-        <div>
-          <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
-            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-            Disponibilità su prenotazione • H24
-          </p>
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-2 md:py-20">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          Disponibilità su richiesta • 24/7
+        </div>
 
-          <h1 class="mt-5 text-4xl md:text-5xl font-semibold tracking-tight">
-            NCC premium per Milano, aeroporti ed eventi
-          </h1>
+        <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
+          NCC Milano premium<br class="hidden md:block" />
+          Transfer • Eventi • Aziende
+        </h1>
 
-          <p class="mt-4 text-lg text-neutral-200">
-            NexaRide Srl offre trasferimenti affidabili e confortevoli con autisti professionisti e veicoli di fascia alta.
-            Preventivo rapido e assistenza dedicata.
-          </p>
+        <p class="mt-5 text-lg text-neutral-300">
+          Servizio NCC di fascia alta con driver professionali, puntualità e comfort.
+          Prenota in 1 minuto su WhatsApp o telefono.
+        </p>
 
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a id="ctaWAHero" href="https://wa.me/39XXXXXXXXXX?text=Buongiorno%2C%20vorrei%20un%20preventivo%20NCC.%0A%0A%F0%9F%93%8D%20Tratta%3A%20%0A%F0%9F%93%85%20Data%2FOra%3A%20%0A%F0%9F%91%A5%20Passeggeri%3A%20"
-               class="inline-flex items-center justify-center rounded-2xl bg-white text-neutral-950 px-5 py-3 font-semibold hover:bg-neutral-200">
-              Richiedi preventivo su WhatsApp
-            </a>
-            <a href="#preventivo"
-               class="inline-flex items-center justify-center rounded-2xl border border-white/15 px-5 py-3 font-semibold hover:bg-white/10">
-              Preventivo in 30 secondi
-            </a>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a id="ctaWAHero"
+             href="https://wa.me/393208784091?text=Buongiorno%2C%20vorrei%20un%20preventivo%20per%20un%20servizio%20NCC%20a%20Milano.%20Potete%20aiutarmi%3F"
+             class="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 font-semibold text-neutral-950 hover:bg-neutral-200">
+            Richiedi preventivo su WhatsApp
+          </a>
+
+          <a href="#preventivo"
+             class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3 font-semibold hover:bg-white/10">
+            Compila i dettagli
+          </a>
+        </div>
+
+        <div class="mt-8 grid gap-4 text-sm text-neutral-300 md:grid-cols-2">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div class="font-semibold text-white">Driver dedicato</div>
+            <div class="mt-1">Esperienza premium e massima riservatezza.</div>
           </div>
-
-          <div class="mt-8 grid grid-cols-2 gap-3 text-sm text-neutral-200 md:grid-cols-4">
-            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div class="font-semibold text-white">Puntualità</div>
-              <div class="mt-1 text-neutral-300">Monitoraggio voli</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div class="font-semibold text-white">Comfort</div>
-              <div class="mt-1 text-neutral-300">Veicoli premium</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div class="font-semibold text-white">Business</div>
-              <div class="mt-1 text-neutral-300">Servizio discreto</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-              <div class="font-semibold text-white">Trasparenza</div>
-              <div class="mt-1 text-neutral-300">Preventivi chiari</div>
-            </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div class="font-semibold text-white">Puntualità</div>
+            <div class="mt-1">Monitoraggio voli, attese concordate, zero stress.</div>
           </div>
         </div>
 
-        <!-- Right card -->
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft">
-          <div class="flex items-center justify-between">
+        <div class="mt-8 text-sm text-neutral-400">
+          WhatsApp Business: <span class="text-white font-semibold">+39 320 878 4091</span> • Email: <a class="underline hover:text-white" href="mailto:info@nexaride.it">info@nexaride.it</a>
+        </div>
+      </div>
+
+      <!-- Right card -->
+      <div class="relative">
+        <div class="rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-2xl shadow-black/50">
+          <div class="flex items-start justify-between gap-4">
             <div>
-              <div class="text-sm text-neutral-300">Prenotazioni</div>
-              <div class="mt-1 text-xl font-semibold">Richiesta rapida</div>
+              <div class="text-sm text-neutral-300">Servizi principali</div>
+              <div class="mt-1 text-xl font-semibold">Aeroporti • Eventi • Business</div>
             </div>
-            <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-200">
-              Risposta veloce
-            </span>
+            <div class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
+              Milano & Lombardia
+            </div>
           </div>
 
-          <div class="mt-5 space-y-3 text-sm text-neutral-200">
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 px-4 py-3">
-              <div class="text-neutral-300">Transfer aeroporti</div>
-              <div class="mt-1 text-white font-semibold">Malpensa • Linate • Orio</div>
+          <div class="mt-6 grid gap-4">
+            <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-5">
+              <div class="text-white font-semibold">Transfer aeroporti</div>
+              <div class="mt-1 text-neutral-300">MXP • LIN • BGY • Stazioni • Hotel</div>
             </div>
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 px-4 py-3">
-              <div class="text-neutral-300">Città / Business</div>
-              <div class="mt-1 text-white font-semibold">Milano • Meetings • Hotel</div>
+            <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-5">
+              <div class="text-white font-semibold">Eventi & Fashion</div>
+              <div class="mt-1 text-neutral-300">Milano Fashion Week • fiere • concerti</div>
             </div>
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 px-4 py-3">
-              <div class="text-neutral-300">Eventi e disposizione</div>
-              <div class="mt-1 text-white font-semibold">Ore / giornate • Driver dedicato</div>
+            <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-5">
+              <div class="text-white font-semibold">Aziende</div>
+              <div class="mt-1 text-neutral-300">Ore / giornate • Driver dedicato</div>
             </div>
           </div>
 
           <div class="mt-6">
-            <a id="ctaWACard" href="https://wa.me/39XXXXXXXXXX?text=Buongiorno%2C%20vorrei%20prenotare%20un%20servizio%20NCC.%20Potete%20aiutarmi%3F"
-               class="w-full inline-flex items-center justify-center rounded-2xl bg-emerald-400 text-neutral-950 px-5 py-3 font-semibold hover:bg-emerald-300">
+            <a id="ctaWACard"
+               href="https://wa.me/393208784091?text=Buongiorno%2C%20vorrei%20prenotare%20un%20servizio%20NCC.%20Potete%20aiutarmi%3F"
+               class="w-full inline-flex items-center justify-center rounded-2xl bg-white text-neutral-950 px-5 py-3 font-semibold hover:bg-neutral-200">
               Prenota / Chiedi disponibilità
             </a>
             <p class="mt-3 text-xs text-neutral-400">
@@ -173,151 +171,89 @@
     </div>
   </section>
 
-  <!-- Trust / Logos -->
-  <section class="mx-auto max-w-6xl px-4 pb-10">
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <p class="text-sm text-neutral-300">
-        Collaborazioni e servizi per:
-        <span class="text-neutral-100 font-semibold">aziende, hotel, eventi, privati</span>.
-        (Inserire qui eventuali partner/aree.)
-      </p>
-    </div>
-  </section>
-
-  <!-- Services -->
+  <!-- Servizi -->
   <section id="servizi" class="mx-auto max-w-6xl px-4 py-12">
-    <div class="flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-3xl font-semibold">Servizi</h2>
-        <p class="mt-2 text-neutral-200">Soluzioni NCC chiare, con standard premium.</p>
-      </div>
-      <a href="#preventivo" class="hidden md:inline-flex rounded-2xl border border-white/15 px-5 py-3 font-semibold hover:bg-white/10">
-        Richiedi preventivo
-      </a>
-    </div>
+    <h2 class="text-3xl font-semibold">Servizi</h2>
+    <p class="mt-3 text-neutral-300 max-w-2xl">
+      Soluzioni NCC su misura per privati e aziende. Preventivo rapido e conferma via WhatsApp/telefono.
+    </p>
 
     <div class="mt-8 grid gap-4 md:grid-cols-3">
       <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h3 class="text-xl font-semibold">Transfer aeroporti</h3>
-        <p class="mt-2 text-neutral-200">Pick-up e drop-off con gestione tempi e monitoraggio voli.</p>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
-          <li>• Malpensa, Linate, Orio al Serio</li>
-          <li>• Attesa e meeting point</li>
-          <li>• Bagagli e comfort</li>
-        </ul>
+        <div class="text-lg font-semibold">Transfer aeroporti</div>
+        <p class="mt-2 text-neutral-300">Malpensa, Linate, Bergamo. Monitoraggio voli e attese concordate.</p>
       </div>
 
       <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h3 class="text-xl font-semibold">Business & corporate</h3>
-        <p class="mt-2 text-neutral-200">Servizio discreto, puntuale e coerente con le esigenze aziendali.</p>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
-          <li>• Meeting, fiere, roadshow</li>
-          <li>• Driver dedicati</li>
-          <li>• Prenotazioni programmate</li>
-        </ul>
+        <div class="text-lg font-semibold">Eventi</div>
+        <p class="mt-2 text-neutral-300">Fiere, hotel, meeting, concerti, serate, matrimoni. Driver dedicato.</p>
       </div>
 
       <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <h3 class="text-xl font-semibold">Eventi & disposizione</h3>
-        <p class="mt-2 text-neutral-200">Autista a ore o giornata per eventi, cerimonie e itinerari su misura.</p>
-        <ul class="mt-4 space-y-2 text-sm text-neutral-300">
-          <li>• Fashion week, concerti, matrimoni</li>
-          <li>• Van per gruppi</li>
-          <li>• Itinerari multi-stop</li>
-        </ul>
+        <div class="text-lg font-semibold">Business</div>
+        <p class="mt-2 text-neutral-300">Servizi a ore o giornate. Massima riservatezza e puntualità.</p>
       </div>
     </div>
   </section>
 
-  <!-- Fleet -->
-  <section id="flotta" class="mx-auto max-w-6xl px-4 py-12">
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-      <div class="grid gap-8 md:grid-cols-2 md:items-center">
-        <div>
-          <h2 class="text-3xl font-semibold">Flotta</h2>
-          <p class="mt-2 text-neutral-200">
-            Veicoli selezionati per comfort, sicurezza e immagine. (Inserisci qui i modelli reali.)
-          </p>
+  <!-- Come funziona -->
+  <section id="come-funziona" class="border-t border-white/10 bg-white/5">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <h2 class="text-3xl font-semibold">Come funziona</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-6">
+          <div class="text-sm text-neutral-400">Step 1</div>
+          <div class="mt-1 text-lg font-semibold">Invia i dettagli</div>
+          <p class="mt-2 text-neutral-300">Tratta, data/ora, passeggeri e note (bagagli, seggiolino, ecc.).</p>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-6">
+          <div class="text-sm text-neutral-400">Step 2</div>
+          <div class="mt-1 text-lg font-semibold">Conferma rapida</div>
+          <p class="mt-2 text-neutral-300">Ti rispondiamo su WhatsApp/telefono con disponibilità e preventivo.</p>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-neutral-950/40 p-6">
+          <div class="text-sm text-neutral-400">Step 3</div>
+          <div class="mt-1 text-lg font-semibold">Servizio premium</div>
+          <p class="mt-2 text-neutral-300">Driver professionale, puntualità, comfort e riservatezza.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="mt-6 grid gap-3 sm:grid-cols-2 text-sm text-neutral-200">
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-              <div class="font-semibold text-white">Berlina Premium</div>
-              <div class="mt-1 text-neutral-300">Business e transfer</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-              <div class="font-semibold text-white">Van Executive</div>
-              <div class="mt-1 text-neutral-300">Gruppi e bagagli</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-              <div class="font-semibold text-white">SUV Comfort</div>
-              <div class="mt-1 text-neutral-300">Versatile e spazioso</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-neutral-950/30 p-4">
-              <div class="font-semibold text-white">Servizi su richiesta</div>
-              <div class="mt-1 text-neutral-300">Soluzioni dedicate</div>
-            </div>
+  <!-- Preventivo -->
+  <section id="preventivo" class="mx-auto max-w-6xl px-4 py-12">
+    <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h2 class="text-3xl font-semibold">Richiedi preventivo</h2>
+          <p class="mt-2 text-neutral-300">Compila i dettagli e invia in un click su WhatsApp.</p>
+          <div class="mt-4 text-sm text-neutral-300">
+            WhatsApp Business: <span class="text-white font-semibold">+39 320 878 4091</span> •
+            Email: <a class="underline hover:text-white" href="mailto:info@nexaride.it">info@nexaride.it</a>
           </div>
         </div>
 
-        <div class="rounded-3xl border border-white/10 bg-neutral-950/30 p-6">
-          <p class="text-sm text-neutral-300">Standard NexaRide</p>
-          <ul class="mt-4 space-y-3 text-neutral-200">
-            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400"></span>Autisti professionisti e presentazione curata</li>
-            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400"></span>Acqua a bordo su richiesta (opzionale)</li>
-            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400"></span>Puntualità e comunicazione chiara</li>
-            <li class="flex gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400"></span>Assistenza bagagli</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="flex flex-wrap gap-3">
+          <a href="tel:+393208784091"
+             class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-3 font-semibold hover:bg-white/10">
+            Preferisco chiamare
+          </a>
 
-  <!-- How it works -->
-  <section id="come-funziona" class="mx-auto max-w-6xl px-4 py-12">
-    <h2 class="text-3xl font-semibold">Come funziona</h2>
-    <p class="mt-2 text-neutral-200">Tre step semplici, zero frizione.</p>
-
-    <div class="mt-8 grid gap-4 md:grid-cols-3">
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-sm text-neutral-300">Step 1</div>
-        <div class="mt-1 text-xl font-semibold">Invia la richiesta</div>
-        <p class="mt-2 text-neutral-200">Tratta, data/ora, passeggeri, bagagli.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-sm text-neutral-300">Step 2</div>
-        <div class="mt-1 text-xl font-semibold">Ricevi il preventivo</div>
-        <p class="mt-2 text-neutral-200">Prezzo chiaro e conferma rapida via WhatsApp/telefono.</p>
-      </div>
-      <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div class="text-sm text-neutral-300">Step 3</div>
-        <div class="mt-1 text-xl font-semibold">Viaggia sereno</div>
-        <p class="mt-2 text-neutral-200">Autista puntuale, veicolo premium, servizio dedicato.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quick quote -->
-  <section id="preventivo" class="mx-auto max-w-6xl px-4 py-12">
-    <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-      <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-        <div>
-          <h2 class="text-3xl font-semibold">Preventivo rapido</h2>
-          <p class="mt-2 text-neutral-200">Compila i campi essenziali e invia su WhatsApp (messaggio precompilato).</p>
-        </div>
-        <div class="text-sm text-neutral-300 md:text-right">
-          <div>WhatsApp Business: <span class="text-neutral-100 font-semibold">+39XXXXXXXXXX</span></div>
-          <div>Email: <span class="text-neutral-100 font-semibold">info@nexaride.it</span></div>
+          <a href="https://wa.me/393208784091?text=Buongiorno%2C%20vorrei%20un%20preventivo%20per%20un%20servizio%20NCC.%20Potete%20aiutarmi%3F"
+             class="inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 font-semibold text-neutral-950 hover:bg-neutral-200">
+            Apri WhatsApp
+          </a>
         </div>
       </div>
 
-      <form class="mt-8 grid gap-4 md:grid-cols-4" onsubmit="return sendToWhatsApp(event)">
-        <div class="md:col-span-1">
-          <label class="text-sm text-neutral-300">Da</label>
+      <form id="quoteForm" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <label class="text-sm text-neutral-300">Partenza</label>
           <input id="from" required class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
                  placeholder="Es. Milano Centro" />
         </div>
-        <div class="md:col-span-1">
-          <label class="text-sm text-neutral-300">A</label>
+        <div class="md:col-span-2">
+          <label class="text-sm text-neutral-300">Destinazione</label>
           <input id="to" required class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
                  placeholder="Es. MXP Malpensa" />
         </div>
@@ -331,26 +267,41 @@
           <input id="pax" required class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
                  placeholder="Es. 2" />
         </div>
+        <div class="md:col-span-2">
+          <label class="text-sm text-neutral-300">Nome</label>
+          <input id="name" class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
+                 placeholder="Es. Marco" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm text-neutral-300">Telefono (opzionale)</label>
+          <input id="phoneInput" class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
+                 placeholder="Es. +39 3xx xxx xxxx" />
+        </div>
 
         <div class="md:col-span-4">
           <label class="text-sm text-neutral-300">Note (opzionale)</label>
-          <input id="notes" class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
-                 placeholder="Es. 2 valigie grandi, seggiolino, fattura, attesa 15 min..." />
+          <textarea id="notes" rows="3"
+                    class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
+                    placeholder="Es. 2 valigie grandi, seggiolino, fattura, attesa 15 min..."></textarea>
         </div>
 
         <div class="md:col-span-4 flex flex-wrap gap-3">
+          <!-- Mantengo questo bottone “funzionale” più WhatsApp-like -->
           <button type="submit"
                   class="inline-flex items-center justify-center rounded-2xl bg-emerald-400 px-6 py-3 font-semibold text-neutral-950 hover:bg-emerald-300">
             Invia su WhatsApp
           </button>
-          <a href="tel:+39XXXXXXXXXX"
-             class="inline-flex items-center justify-center rounded-2xl border border-white/15 px-6 py-3 font-semibold hover:bg-white/10">
-            Preferisco chiamare
+
+          <a href="#"
+             id="resetBtn"
+             class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3 font-semibold hover:bg-white/10">
+            Reset
           </a>
         </div>
 
         <p class="md:col-span-4 text-xs text-neutral-400">
-          Inviando il messaggio accetti di essere ricontattato per finalità di preventivazione. <a href="/privacy" class="underline hover:text-neutral-200">Privacy</a>
+          Inviando il messaggio accetti di essere ricontattato/a per la gestione della richiesta.
+          <a href="/privacy" class="underline hover:text-neutral-200">Privacy</a>
         </p>
       </form>
     </div>
@@ -362,74 +313,89 @@
     <div class="mt-8 grid gap-4 md:grid-cols-2">
       <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
         <summary class="cursor-pointer font-semibold">Quanto prima devo prenotare?</summary>
-        <p class="mt-3 text-neutral-200">Consigliamo il prima possibile, soprattutto in alta stagione. In caso di urgenza, contattaci: verifichiamo la disponibilità.</p>
+        <p class="mt-3 text-neutral-200">Consigliamo il prima possibile. In caso di urgenza, contattaci: verifichiamo la disponibilità.</p>
       </details>
 
       <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <summary class="cursor-pointer font-semibold">Gestite ritardi dei voli?</summary>
-        <p class="mt-3 text-neutral-200">Sì: monitoriamo l’operativo e coordiniamo il pick-up in base all’orario reale di arrivo.</p>
+        <summary class="cursor-pointer font-semibold">Accettate pagamenti con carta?</summary>
+        <p class="mt-3 text-neutral-200">Sì, il metodo di pagamento viene concordato in fase di conferma del servizio.</p>
       </details>
 
       <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <summary class="cursor-pointer font-semibold">Posso richiedere fattura o documentazione?</summary>
-        <p class="mt-3 text-neutral-200">Sì. Indicalo nelle note o su WhatsApp e ti guidiamo sulla procedura corretta.</p>
+        <summary class="cursor-pointer font-semibold">Fate attesa in aeroporto?</summary>
+        <p class="mt-3 text-neutral-200">Sì. Monitoriamo il volo e concordiamo l’attesa in base alle necessità.</p>
       </details>
 
       <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <summary class="cursor-pointer font-semibold">Coprite anche tratte extra-regionali?</summary>
-        <p class="mt-3 text-neutral-200">Sì, su richiesta: Nord Italia e trasferte dedicate (hotel, eventi, business).</p>
+        <summary class="cursor-pointer font-semibold">Posso richiedere seggiolino?</summary>
+        <p class="mt-3 text-neutral-200">Certo. Scrivilo nelle note e ti confermiamo disponibilità e dettagli.</p>
       </details>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-white/10">
-    <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-neutral-300">
+  <footer class="border-t border-white/10 bg-neutral-950">
+    <div class="mx-auto max-w-6xl px-4 py-10">
       <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <div class="font-semibold text-neutral-100">NexaRide Srl</div>
-          <div class="mt-1">Servizio NCC premium • Milano e Nord Italia</div>
-          <div class="mt-2">Tel/WhatsApp: +39XXXXXXXXXX • Email: info@nexaride.it</div>
-          <div class="mt-2">P.IVA / REA: (inserire) • Sede: (inserire)</div>
+          <div class="font-semibold">NexaRide</div>
+          <div class="mt-2 text-sm text-neutral-400">
+            Tel/WhatsApp: +39 320 878 4091 • Email: <a class="underline hover:text-white" href="mailto:info@nexaride.it">info@nexaride.it</a>
+          </div>
+          <div class="mt-2 text-xs text-neutral-500">© <span id="y"></span> NexaRide. Tutti i diritti riservati.</div>
         </div>
-        <div class="flex gap-4">
-          <a class="hover:text-white" href="/privacy">Privacy</a>
-          <a class="hover:text-white" href="#preventivo">Preventivo</a>
-          <a class="hover:text-white" href="https://wa.me/39XXXXXXXXXX">WhatsApp</a>
+
+        <div class="flex flex-wrap gap-3 text-sm">
+          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
+             href="https://wa.me/393208784091?text=Buongiorno%2C%20vorrei%20informazioni%20su%20un%20servizio%20NCC%20con%20NexaRide.%20Grazie!"
+             rel="noopener">WhatsApp</a>
+          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
+             href="tel:+393208784091">Chiama</a>
+          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
+             href="/privacy">Privacy</a>
         </div>
-      </div>
-      <div class="mt-8 text-xs text-neutral-500">
-        © <span id="year"></span> NexaRide Srl. Tutti i diritti riservati.
       </div>
     </div>
   </footer>
 
   <script>
-    // Aggiorna anno
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Invio form -> WhatsApp (no backend)
-    function sendToWhatsApp(e) {
+    const form = document.getElementById("quoteForm");
+    const resetBtn = document.getElementById("resetBtn");
+
+    // WhatsApp number (digits only, no "+")
+    const phone = "393208784091";
+
+    form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const from = document.getElementById('from').value.trim();
-      const to = document.getElementById('to').value.trim();
-      const when = document.getElementById('when').value.trim();
-      const pax = document.getElementById('pax').value.trim();
-      const notes = document.getElementById('notes').value.trim();
 
-      const phone = "39XXXXXXXXXX"; // TODO: sostituisci
-      const msg =
-        `Buongiorno, vorrei un preventivo NCC.%0A%0A` +
-        `📍 Da: ${encodeURIComponent(from)}%0A` +
-        `📍 A: ${encodeURIComponent(to)}%0A` +
-        `📅 Data/Ora: ${encodeURIComponent(when)}%0A` +
-        `👥 Passeggeri: ${encodeURIComponent(pax)}%0A` +
-        (notes ? `📝 Note: ${encodeURIComponent(notes)}%0A` : "");
+      const from = document.getElementById("from").value.trim();
+      const to = document.getElementById("to").value.trim();
+      const when = document.getElementById("when").value.trim();
+      const pax = document.getElementById("pax").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const phoneInput = document.getElementById("phoneInput").value.trim();
+      const notes = document.getElementById("notes").value.trim();
+
+      let msg = `Buongiorno, vorrei un preventivo NCC con NexaRide.%0A`;
+      msg += `Partenza: ${encodeURIComponent(from)}%0A`;
+      msg += `Destinazione: ${encodeURIComponent(to)}%0A`;
+      msg += `Data/Ora: ${encodeURIComponent(when)}%0A`;
+      msg += `Passeggeri: ${encodeURIComponent(pax)}%0A`;
+
+      if (name) msg += `Nome: ${encodeURIComponent(name)}%0A`;
+      if (phoneInput) msg += `Telefono: ${encodeURIComponent(phoneInput)}%0A`;
+      if (notes) msg += `Note: ${encodeURIComponent(notes)}%0A`;
 
       const url = `https://wa.me/${phone}?text=${msg}`;
-      window.location.href = url;
-      return false;
-    }
+      window.open(url, "_blank", "noopener");
+    });
+
+    resetBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      form.reset();
+    });
   </script>
 </body>
 </html>
