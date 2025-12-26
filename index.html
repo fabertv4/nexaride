@@ -48,6 +48,7 @@
       font-size: 12px;
       color: #fff;
       user-select: none;
+      z-index: 5;
     }
     .fleet-badge .dot {
       width: 18px;
@@ -62,6 +63,38 @@
     }
     .fleet-card.is-selected { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 0px; }
     .fleet-card.is-selected .fleet-badge { display: inline-flex; }
+
+    /* segmented controls */
+    .seg-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
+    .seg {
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      padding: 10px 12px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      color: rgba(255,255,255,0.9);
+      user-select: none;
+      transition: background .15s ease, border-color .15s ease, transform .05s ease;
+    }
+    .seg:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
+    .seg:active { transform: translateY(1px); }
+    .seg[aria-pressed="true"] { background: rgba(37,211,102,0.14); border-color: rgba(37,211,102,0.55); }
+
+    /* sticky mobile bar */
+    .stickybar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: 10px 12px;
+      background: rgba(10,10,10,0.72);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
   </style>
 
   <!-- LocalBusiness schema -->
@@ -79,7 +112,7 @@
   </script>
 </head>
 
-<body class="bg-neutral-950 text-neutral-100">
+<body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-0">
   <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -148,7 +181,7 @@
           </div>
 
           <div class="mt-3 text-xs text-neutral-400">
-            Preventivo immediato · Senza app · Persona reale
+            Preventivo immediato · Senza app · Persona reale · <span class="text-neutral-200 font-semibold">Risposta tipica: 2–5 min</span>
           </div>
 
           <div class="mt-8 grid gap-4 text-sm text-neutral-300 md:grid-cols-2">
@@ -201,14 +234,18 @@
                 Prenota / Chiedi disponibilità su WhatsApp
               </button>
               <p class="mt-3 text-xs text-neutral-400">
-                Nessun pagamento online richiesto. Conferma e dettagli via WhatsApp/telefono.
+                Preventivo gratuito, nessun impegno. Conferma e dettagli via WhatsApp/telefono.
+              </p>
+              <p class="mt-2 text-xs text-neutral-500">
+                Risposta tipica: 2–5 minuti.
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-       <!-- Come funziona -->
+
+    <!-- Come funziona -->
     <section id="come-funziona" class="border-t border-white/10 bg-white/5">
       <div class="mx-auto max-w-6xl px-4 py-12">
         <h2 class="text-3xl font-semibold">Come funziona</h2>
@@ -240,7 +277,6 @@
       </p>
 
       <div class="mt-10 grid gap-6 md:grid-cols-3">
-
         <!-- COMFORT / SUV -->
         <div id="card-comfort" data-vehicle-key="comfort" data-vehicle-label="Comfort / SUV (Toyota RAV4)"
           class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
@@ -282,7 +318,6 @@
             <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
           </div>
         </div>
-
       </div>
 
       <!-- CTA unico flotta -->
@@ -297,16 +332,31 @@
         Seleziona un veicolo sopra per pre-compilare automaticamente il form.
       </p>
     </section>
-   <!-- Preventivo -->
+
+    <!-- Preventivo -->
     <section id="preventivo" class="mx-auto max-w-6xl px-4 py-12">
       <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8">
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 class="text-3xl font-semibold">Richiedi preventivo</h2>
             <p class="mt-2 text-neutral-300">Compila i dettagli e invia in un click su WhatsApp.</p>
+
+            <!-- (10) label dinamica veicolo selezionato -->
+            <div id="selectedVehicleWrap" class="mt-3 hidden">
+              <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
+                <span class="h-2 w-2 rounded-full bg-[#25D366]"></span>
+                Veicolo selezionato: <span id="selectedVehicleLabel" class="font-semibold text-white"></span>
+              </span>
+            </div>
+
             <div class="mt-4 text-sm text-neutral-300">
               WhatsApp Business: <span class="text-white font-semibold">+39 320 878 4091</span> •
               Email: <a class="underline hover:text-white" href="mailto:info@nexaride.it">info@nexaride.it</a>
+            </div>
+
+            <!-- (7) tempo risposta + (9) anti-paura prezzo -->
+            <div class="mt-2 text-xs text-neutral-400">
+              Preventivo gratuito, nessun impegno · Risposta tipica: <span class="text-neutral-200 font-semibold">2–5 min</span>
             </div>
           </div>
 
@@ -323,7 +373,25 @@
           </div>
         </div>
 
+        <!-- (1) alert campi mancanti -->
+        <div id="formAlert" class="mt-6 hidden rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm text-red-100">
+          <div class="font-semibold">Completa i campi obbligatori</div>
+          <div id="formAlertText" class="mt-1 text-red-100/90"></div>
+        </div>
+
         <form id="quoteForm" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+          <!-- (6) Preferenza contatto -->
+          <div class="md:col-span-4">
+            <label class="text-sm text-neutral-300">Preferenza contatto</label>
+            <div class="mt-2 seg-wrap">
+              <button type="button" class="seg" id="prefWA" aria-pressed="true">WhatsApp</button>
+              <button type="button" class="seg" id="prefCall" aria-pressed="false">Chiamata</button>
+            </div>
+            <p class="mt-2 text-xs text-neutral-400">
+              Se selezioni “Chiamata”, ti richiameremo appena possibile.
+            </p>
+          </div>
+
           <!-- CATEGORIA VEICOLO (OBBLIGATORIA) -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Categoria veicolo</label>
@@ -377,6 +445,9 @@
             <label class="text-sm text-neutral-300">Data / Ora</label>
             <input id="when" required type="datetime-local"
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100" />
+            <p class="mt-2 text-xs text-neutral-400">
+              Suggerimento: abbiamo preimpostato una data/ora indicativa (modificabile).
+            </p>
           </div>
 
           <div class="md:col-span-2">
@@ -393,6 +464,33 @@
               <option value="7">7</option>
               <option value="8">8</option>
             </select>
+          </div>
+
+          <!-- (4) Bagagli (3 opzioni) -->
+          <div class="md:col-span-2">
+            <label class="text-sm text-neutral-300">Bagagli (consigliato)</label>
+            <div class="mt-2 seg-wrap">
+              <button type="button" class="seg" id="lugNone" aria-pressed="true">Nessuno</button>
+              <button type="button" class="seg" id="lugSome" aria-pressed="false">1–2 valigie</button>
+              <button type="button" class="seg" id="lugMany" aria-pressed="false">Molti bagagli</button>
+            </div>
+            <p class="mt-2 text-xs text-neutral-400">
+              Ci aiuta a confermare la categoria migliore e lo spazio necessario.
+            </p>
+          </div>
+
+          <!-- (5) Fattura -->
+          <div class="md:col-span-2">
+            <label class="text-sm text-neutral-300">Fattura</label>
+            <div class="mt-2 rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3">
+              <label class="flex items-center gap-3 text-sm text-neutral-200 cursor-pointer select-none">
+                <input id="invoice" type="checkbox" class="h-5 w-5 accent-[#25D366]" />
+                Serve fattura
+              </label>
+              <p class="mt-2 text-xs text-neutral-400">
+                Se spuntato, ti chiediamo i dati in chat.
+              </p>
+            </div>
           </div>
 
           <div class="md:col-span-2">
@@ -413,11 +511,11 @@
             <label class="text-sm text-neutral-300">Note (opzionale)</label>
             <textarea id="notes" rows="3"
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
-              placeholder="Es. 2 valigie grandi, seggiolino, fattura, attesa 15 min..."></textarea>
+              placeholder="Es. seggiolino, fattura intestata a..., attesa 15 min, fermate..."></textarea>
           </div>
 
           <div class="md:col-span-4 flex flex-wrap gap-3">
-            <button type="submit"
+            <button type="submit" id="submitBtn"
               class="inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-6 py-3 font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
               Invia su WhatsApp
             </button>
@@ -489,6 +587,20 @@
     </div>
   </footer>
 
+  <!-- (8) Sticky CTA mobile -->
+  <div class="stickybar md:hidden">
+    <div class="mx-auto max-w-6xl flex gap-2 px-2">
+      <button id="stickyWA" type="button"
+        class="flex-1 inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
+        WhatsApp
+      </button>
+      <button id="stickyPreventivo" type="button"
+        class="flex-1 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
+        Preventivo
+      </button>
+    </div>
+  </div>
+
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
@@ -518,7 +630,23 @@
       const min = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
       el.min = min;
     }
+
+    // (2) Prefill: adesso + 60 min (se vuoto)
+    function setDefaultDateTimePlus60() {
+      const el = document.getElementById("when");
+      if (!el) return;
+      if (el.value) return;
+
+      const d = new Date();
+      d.setMinutes(d.getMinutes() + 60);
+
+      const pad = (n) => String(n).padStart(2, "0");
+      const val = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      el.value = val;
+    }
+
     setMinDateTimeNow();
+    setDefaultDateTimePlus60();
 
     // YYYY-MM-DDTHH:MM -> DD/MM/YYYY HH:MM
     function formatDateTimeIT(dtLocalValue) {
@@ -529,20 +657,22 @@
       return `${d}/${m}/${y} ${timePart}`;
     }
 
-    // Base message
+    // Base message per CTA generiche (non form)
     const baseMsg = [
       "Ciao! Vorrei un preventivo NCC con NexaRide.",
       "",
-      "Categoria veicolo:",
       "Partenza:",
       "Destinazione:",
-      "Fermate intermedie (se presenti):",
       "Data/Ora:",
       "Passeggeri:",
+      "Categoria veicolo (Comfort / Executive / Van):",
+      "Bagagli:",
+      "Serve fattura (sì/no):",
+      "Preferenza contatto (WhatsApp / Chiamata):",
       "Note:"
     ].join("\n");
 
-    // CTA WhatsApp
+    // CTA WhatsApp (hero/header/card/footer)
     document.getElementById("ctaWATop").addEventListener("click", () => openWhatsAppWithText(baseMsg));
     document.getElementById("ctaWAHero").addEventListener("click", () => openWhatsAppWithText(baseMsg));
     document.getElementById("ctaWACard").addEventListener("click", () => openWhatsAppWithText(baseMsg));
@@ -551,6 +681,10 @@
 
     // CTA "Compila i dettagli"
     document.getElementById("ctaScrollToForm").addEventListener("click", () => scrollToPreventivoAndFocus());
+
+    // Sticky bar actions
+    document.getElementById("stickyWA").addEventListener("click", () => openWhatsAppWithText(baseMsg));
+    document.getElementById("stickyPreventivo").addEventListener("click", () => scrollToPreventivoAndFocus());
 
     // --- Flotta selection + micro-spunta ---
     const vehicleSelect = document.getElementById("vehicle");
@@ -569,8 +703,22 @@
     function setVehicleSelectValue(label) {
       if (!vehicleSelect) return;
       vehicleSelect.value = label;
-      // trigger change for any listeners
       vehicleSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    // (10) label dinamica veicolo selezionato
+    const selectedVehicleWrap = document.getElementById("selectedVehicleWrap");
+    const selectedVehicleLabel = document.getElementById("selectedVehicleLabel");
+
+    function updateSelectedVehicleUI() {
+      const v = (vehicleSelect?.value || "").trim();
+      if (v) {
+        selectedVehicleLabel.textContent = v;
+        selectedVehicleWrap.classList.remove("hidden");
+      } else {
+        selectedVehicleWrap.classList.add("hidden");
+        selectedVehicleLabel.textContent = "";
+      }
     }
 
     // Click su card -> seleziona nel form + spunta
@@ -579,26 +727,80 @@
         const label = card.getAttribute("data-vehicle-label");
         if (label) setVehicleSelectValue(label);
         selectFleetByLabel(label);
+        updateSelectedVehicleUI();
+        // porta al form quando cliccano la flotta? non lo forzo (meno invasivo)
       });
     });
 
-    // Cambio select -> aggiorna spunta card
+    // Cambio select -> aggiorna spunta card + label
     vehicleSelect.addEventListener("change", () => {
       const label = vehicleSelect.value;
       if (label) selectFleetByLabel(label);
+      updateSelectedVehicleUI();
     });
 
-    // CTA flotta -> scroll al form (se non hai scelto veicolo, lo sceglierai nel form)
+    // CTA flotta -> scroll al form
     document.getElementById("ctaFleet").addEventListener("click", () => {
       scrollToPreventivoAndFocus();
     });
 
+    // --- (6) Preferenza contatto (segmented) ---
+    let contactPref = "WhatsApp";
+    const prefWA = document.getElementById("prefWA");
+    const prefCall = document.getElementById("prefCall");
+
+    function setContactPref(v) {
+      contactPref = v;
+      prefWA.setAttribute("aria-pressed", v === "WhatsApp" ? "true" : "false");
+      prefCall.setAttribute("aria-pressed", v === "Chiamata" ? "true" : "false");
+    }
+    prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
+    prefCall.addEventListener("click", () => setContactPref("Chiamata"));
+
+    // --- (4) Bagagli (segmented) ---
+    let luggage = "Nessuno";
+    const lugNone = document.getElementById("lugNone");
+    const lugSome = document.getElementById("lugSome");
+    const lugMany = document.getElementById("lugMany");
+
+    function setLuggage(v) {
+      luggage = v;
+      lugNone.setAttribute("aria-pressed", v === "Nessuno" ? "true" : "false");
+      lugSome.setAttribute("aria-pressed", v === "1–2 valigie" ? "true" : "false");
+      lugMany.setAttribute("aria-pressed", v === "Molti bagagli" ? "true" : "false");
+    }
+    lugNone.addEventListener("click", () => setLuggage("Nessuno"));
+    lugSome.addEventListener("click", () => setLuggage("1–2 valigie"));
+    lugMany.addEventListener("click", () => setLuggage("Molti bagagli"));
+
+    // --- (1) Alert campi mancanti ---
+    const formAlert = document.getElementById("formAlert");
+    const formAlertText = document.getElementById("formAlertText");
+
+    function showFormAlert(missingLabels) {
+      formAlertText.textContent = "Manca: " + missingLabels.join(" · ");
+      formAlert.classList.remove("hidden");
+    }
+    function hideFormAlert() {
+      formAlert.classList.add("hidden");
+      formAlertText.textContent = "";
+    }
+
+    function focusFirstMissing(missingIds) {
+      const first = missingIds[0];
+      if (!first) return;
+      const el = document.getElementById(first);
+      if (el) el.focus({ preventScroll: true });
+    }
+
     // Form submit -> invio WhatsApp strutturato
     const form = document.getElementById("quoteForm");
     const resetBtn = document.getElementById("resetBtn");
+    const invoice = document.getElementById("invoice");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      hideFormAlert();
 
       const vehicle = document.getElementById("vehicle").value.trim();
       const serviceType = document.getElementById("serviceType").value.trim();
@@ -612,6 +814,23 @@
       const phoneInput = document.getElementById("phoneInput").value.trim();
       const notes = document.getElementById("notes").value.trim();
 
+      // (1) validazione esplicita (messaggio chiaro)
+      const missingLabels = [];
+      const missingIds = [];
+
+      if (!vehicle) { missingLabels.push("Categoria veicolo"); missingIds.push("vehicle"); }
+      if (!from) { missingLabels.push("Partenza"); missingIds.push("from"); }
+      if (!to) { missingLabels.push("Destinazione"); missingIds.push("to"); }
+      if (!whenRaw) { missingLabels.push("Data/Ora"); missingIds.push("when"); }
+      if (!pax) { missingLabels.push("Passeggeri"); missingIds.push("pax"); }
+
+      if (missingLabels.length) {
+        showFormAlert(missingLabels);
+        scrollToPreventivoAndFocus();
+        setTimeout(() => focusFirstMissing(missingIds), 420);
+        return;
+      }
+
       let msg = "Ciao! Vorrei un preventivo NCC con NexaRide.\n";
       msg += `Tipo servizio: ${serviceType}\n`;
       msg += `Categoria veicolo: ${vehicle}\n`;
@@ -620,26 +839,49 @@
       if (stops) msg += `Fermate intermedie: ${stops}\n`;
       msg += `Data/Ora: ${when}\n`;
       msg += `Passeggeri: ${pax}\n`;
+      msg += `Bagagli: ${luggage}\n`;
+      msg += `Fattura: ${invoice.checked ? "Sì" : "No"}\n`;
+      msg += `Preferenza contatto: ${contactPref}\n`;
       if (name) msg += `Nome: ${name}\n`;
       if (phoneInput) msg += `Telefono: ${phoneInput}\n`;
       if (notes) msg += `Note: ${notes}\n`;
 
+      // Se preferiscono chiamata, chiedi esplicitamente di richiamare
+      if (contactPref === "Chiamata") {
+        msg += "\nPuoi chiamarmi per confermare disponibilità e prezzo? Grazie.\n";
+      }
+
       openWhatsAppWithText(msg);
     });
+
+    // (2) su input manuale: se cambiano la data, mantieni min aggiornato
+    document.getElementById("when").addEventListener("focus", () => setMinDateTimeNow());
 
     resetBtn.addEventListener("click", () => {
       form.reset();
 
-      // ripristina placeholder disabled su select (alcuni browser lo gestiscono da soli, qui forziamo)
-      const veh = document.getElementById("vehicle");
-      veh.selectedIndex = 0;
-
-      const pax = document.getElementById("pax");
-      pax.selectedIndex = 0;
+      // ripristina placeholder su select
+      document.getElementById("vehicle").selectedIndex = 0;
+      document.getElementById("pax").selectedIndex = 0;
 
       clearFleetSelection();
+      hideFormAlert();
+
+      // reset segmented
+      setContactPref("WhatsApp");
+      setLuggage("Nessuno");
+
+      // reset datetime min + default +60
       setMinDateTimeNow();
+      document.getElementById("when").value = "";
+      setDefaultDateTimePlus60();
+
+      // label veicolo
+      updateSelectedVehicleUI();
     });
+
+    // init label veicolo
+    updateSelectedVehicleUI();
   </script>
 </body>
 </html>
