@@ -361,6 +361,11 @@
               <option value="A/R (andata e ritorno)">A/R (andata e ritorno)</option>
               <option value="Giornata intera">Giornata intera</option>
             </select>
+
+            <!-- (4) Hint A/R -->
+            <div id="arHint" class="mt-2 hidden rounded-2xl border border-sky-500/25 bg-sky-500/10 px-4 py-3 text-xs text-sky-100">
+              Se non sai l’orario del ritorno, scrivi <span class="font-semibold">“da definire”</span> nelle Note.
+            </div>
           </div>
 
           <div class="md:col-span-2">
@@ -377,6 +382,11 @@
               placeholder="Es. MXP Malpensa" />
           </div>
 
+          <!-- (2) Hint volo/treno -->
+          <div id="travelHint" class="md:col-span-4 hidden rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-xs text-emerald-100">
+            Se è aeroporto/stazione, nelle Note scrivi <span class="font-semibold">numero volo</span> o <span class="font-semibold">numero treno</span> (se lo hai): velocizziamo la conferma.
+          </div>
+
           <div class="md:col-span-4">
             <label class="text-sm text-neutral-300">Fermate intermedie (opzionale)</label>
             <input id="stops"
@@ -390,6 +400,17 @@
             <input id="when" required type="datetime-local"
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100" />
             <p class="mt-2 text-xs text-neutral-400">Suggerimento: abbiamo preimpostato una data/ora indicativa (modificabile).</p>
+
+            <!-- (1) Hint urgenza entro 2 ore -->
+            <div id="urgentHint" class="mt-2 hidden rounded-2xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-xs text-rose-100">
+              Se è entro <span class="font-semibold">2 ore</span>, scrivici direttamente su WhatsApp per gestire l’urgenza.
+              <div class="mt-2">
+                <button type="button" id="urgentWA"
+                  class="inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
+                  WhatsApp urgente
+                </button>
+              </div>
+            </div>
           </div>
 
           <div class="md:col-span-2">
@@ -401,7 +422,7 @@
               <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
             </select>
 
-            <!-- Nuovo: avviso capienza -->
+            <!-- 5+ -> forzatura van -->
             <div id="capacityNotice" class="mt-2 hidden rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
               Per <span class="font-semibold">5+ passeggeri</span> selezioniamo automaticamente <span class="font-semibold">Van / Gruppi</span> per garantire spazio e comfort.
             </div>
@@ -415,6 +436,11 @@
               <button type="button" class="seg" id="lugMany" aria-pressed="false">Molti bagagli</button>
             </div>
             <p class="mt-2 text-xs text-neutral-400">Ci aiuta a confermare la categoria migliore e lo spazio necessario.</p>
+
+            <!-- (5) 4 pax + molti bagagli -> suggerisci van -->
+            <div id="luggageVanHint" class="mt-2 hidden rounded-2xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
+              Per <span class="font-semibold">4 passeggeri</span> con <span class="font-semibold">molti bagagli</span> spesso conviene il <span class="font-semibold">Van</span> (più spazio e comfort).
+            </div>
           </div>
 
           <div class="md:col-span-2">
@@ -463,14 +489,29 @@
             </button>
           </div>
 
+          <!-- (7) Conferma solo dopo preventivo -->
+          <div class="md:col-span-4">
+            <p class="text-xs text-neutral-400">
+              Confermi il servizio solo dopo aver ricevuto <span class="text-neutral-200 font-semibold">prezzo</span> e <span class="text-neutral-200 font-semibold">disponibilità</span>.
+            </p>
+          </div>
+
+          <!-- (8) Pagamento -->
+          <div class="md:col-span-4">
+            <p class="text-xs text-neutral-400">
+              Pagamento: <span class="text-neutral-200 font-semibold">carta / contanti / bonifico</span> (si concorda in chat).
+            </p>
+          </div>
+
           <div class="md:col-span-4">
             <p class="text-xs text-neutral-400">
               Ti rispondiamo con: <span class="text-neutral-200 font-semibold">disponibilità + prezzo + dettagli</span> (e tempi di attesa se aeroporto).
             </p>
           </div>
 
+          <!-- (10) Privacy zero spam -->
           <p class="md:col-span-4 text-xs text-neutral-400">
-            Usiamo i tuoi dati solo per rispondere alla richiesta e organizzare il servizio.
+            Usiamo i tuoi dati solo per rispondere alla richiesta e organizzare la corsa. <span class="text-neutral-200 font-semibold">Zero spam.</span>
             <a href="/privacy" class="underline hover:text-neutral-200">Privacy</a>
           </p>
         </form>
@@ -486,7 +527,7 @@
         </details>
         <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
           <summary class="cursor-pointer font-semibold">Accettate pagamenti con carta?</summary>
-          <p class="mt-3 text-neutral-200">Sì, il metodo di pagamento viene concordato in fase di conferma del servizio.</p>
+          <p class="mt-3 text-neutral-200">Sì. Carta/contanti/bonifico: si concorda in fase di conferma del servizio.</p>
         </details>
       </div>
     </section>
@@ -534,6 +575,7 @@
     document.getElementById("y").textContent = new Date().getFullYear();
 
     const WA_PHONE = "393208784091";
+    const VAN_LABEL = "Van / Gruppi (Mercedes Classe V / Vito)";
 
     function openWhatsAppWithText(text) {
       const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
@@ -569,8 +611,11 @@
       el.value = val;
     }
 
-    setMinDateTimeNow();
-    setDefaultDateTimePlus60();
+    function parseDateTimeLocal(value) {
+      if (!value) return null;
+      const d = new Date(value);
+      return isNaN(d.getTime()) ? null : d;
+    }
 
     function formatDateTimeIT(dtLocalValue) {
       if (!dtLocalValue) return "";
@@ -579,6 +624,9 @@
       const [y, m, d] = datePart.split("-");
       return `${d}/${m}/${y} ${timePart}`;
     }
+
+    setMinDateTimeNow();
+    setDefaultDateTimePlus60();
 
     const baseMsg = [
       "Ciao! Vorrei un preventivo NCC con NexaRide.",
@@ -604,18 +652,25 @@
     document.getElementById("stickyWA").addEventListener("click", () => openWhatsAppWithText(baseMsg));
     document.getElementById("stickyPreventivo").addEventListener("click", () => scrollToPreventivoAndFocus());
 
-    // Flotta selection
+    document.getElementById("urgentWA").addEventListener("click", () => openWhatsAppWithText(baseMsg));
+
+    // Elements
     const vehicleSelect = document.getElementById("vehicle");
     const paxSelect = document.getElementById("pax");
+    const whenEl = document.getElementById("when");
+    const fromEl = document.getElementById("from");
+    const toEl = document.getElementById("to");
+    const serviceTypeEl = document.getElementById("serviceType");
+
     const capacityNotice = document.getElementById("capacityNotice");
+    const urgentHint = document.getElementById("urgentHint");
+    const travelHint = document.getElementById("travelHint");
+    const arHint = document.getElementById("arHint");
+    const luggageVanHint = document.getElementById("luggageVanHint");
 
+    // Fleet selection UI
     const fleetCards = Array.from(document.querySelectorAll(".fleet-card"));
-
-    const VAN_LABEL = "Van / Gruppi (Mercedes Classe V / Vito)";
-
-    function clearFleetSelection() {
-      fleetCards.forEach(c => c.classList.remove("is-selected"));
-    }
+    function clearFleetSelection() { fleetCards.forEach(c => c.classList.remove("is-selected")); }
     function selectFleetByLabel(label) {
       clearFleetSelection();
       const card = fleetCards.find(c => c.getAttribute("data-vehicle-label") === label);
@@ -645,20 +700,14 @@
         if (label) setVehicleSelectValue(label);
         selectFleetByLabel(label);
         updateSelectedVehicleUI();
-        enforceCapacityRule(); // NUOVO
+        enforceCapacityRule();
+        updateContextHints();
       });
-    });
-
-    vehicleSelect.addEventListener("change", () => {
-      selectFleetByLabel(vehicleSelect.value);
-      updateSelectedVehicleUI();
-      updateNotesSuggestion();
-      enforceCapacityRule(); // NUOVO
     });
 
     document.getElementById("ctaFleet").addEventListener("click", () => scrollToPreventivoAndFocus());
 
-    // Preferenza contatto
+    // Contact preference
     let contactPref = "WhatsApp";
     const prefWA = document.getElementById("prefWA");
     const prefCall = document.getElementById("prefCall");
@@ -670,7 +719,7 @@
     prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
     prefCall.addEventListener("click", () => setContactPref("Chiamata"));
 
-    // Bagagli
+    // Luggage segmented
     let luggage = "Nessuno";
     const lugNone = document.getElementById("lugNone");
     const lugSome = document.getElementById("lugSome");
@@ -681,39 +730,21 @@
       lugSome.setAttribute("aria-pressed", v === "1–2 valigie" ? "true" : "false");
       lugMany.setAttribute("aria-pressed", v === "Molti bagagli" ? "true" : "false");
       updateNotesSuggestion();
+      updateContextHints();
     }
     lugNone.addEventListener("click", () => setLuggage("Nessuno"));
     lugSome.addEventListener("click", () => setLuggage("1–2 valigie"));
     lugMany.addEventListener("click", () => setLuggage("Molti bagagli"));
 
-    // Alert campi mancanti
-    const formAlert = document.getElementById("formAlert");
-    const formAlertText = document.getElementById("formAlertText");
-    function showFormAlert(missingLabels) {
-      formAlertText.textContent = "Manca: " + missingLabels.join(" · ");
-      formAlert.classList.remove("hidden");
-    }
-    function hideFormAlert() {
-      formAlert.classList.add("hidden");
-      formAlertText.textContent = "";
-    }
-    function focusFirstMissing(missingIds) {
-      const first = missingIds[0];
-      if (!first) return;
-      const el = document.getElementById(first);
-      if (el) el.focus({ preventScroll: true });
-    }
-
-    // NOTE suggestions (già)
+    // Notes suggestions (existing logic)
     const notesEl = document.getElementById("notes");
     const notesHintEl = document.getElementById("notesHint");
-    const serviceTypeEl = document.getElementById("serviceType");
 
     function buildNotesSuggestion() {
       const vehicle = (vehicleSelect.value || "");
       const service = (serviceTypeEl.value || "");
-
       const tips = [];
+
       if (vehicle.includes("Van")) tips.push("Bagagli/valigie (quantità e dimensione)");
       if (service.includes("A/R")) tips.push("Orario del ritorno (se già noto)");
       if (service.includes("A ore")) tips.push("Numero ore / fascia oraria (es. 3 ore, 18:00–21:00)");
@@ -735,53 +766,123 @@
       if (!notesEl.value.trim()) notesEl.placeholder = hint + " (opzionale)";
     }
 
-    serviceTypeEl.addEventListener("change", () => {
-      updateNotesSuggestion();
-      enforceCapacityRule();
-    });
-
-    // === NUOVO: Regola capienza passeggeri ===
+    // === Capacity rule (5+ => van) ===
     function getPaxNumber() {
       const v = (paxSelect.value || "").trim();
       const n = parseInt(v, 10);
       return Number.isFinite(n) ? n : null;
     }
-
     function isVanSelected() {
       return (vehicleSelect.value || "") === VAN_LABEL;
     }
-
     function enforceCapacityRule() {
       const paxN = getPaxNumber();
-
-      // Se non hanno scelto passeggeri, nascondi notice
       if (!paxN) {
         capacityNotice.classList.add("hidden");
         return;
       }
 
       if (paxN >= 5) {
-        // mostra avviso
         capacityNotice.classList.remove("hidden");
-
-        // se non è van, forza van
         if (!isVanSelected()) {
           setVehicleSelectValue(VAN_LABEL);
           selectFleetByLabel(VAN_LABEL);
           updateSelectedVehicleUI();
         }
       } else {
-        // pax <= 4: nascondi avviso
         capacityNotice.classList.add("hidden");
       }
     }
 
+    // === NEW: Context hints (1,2,4,5) ===
+    function isAirportOrStationText(text) {
+      const t = (text || "").toLowerCase();
+
+      const airportKeys = [
+        "mxp","malpensa","lin","linate","bgy","orio","orio al serio","bergamo aeroporto","aeroporto",
+        "airport","terminal","arrivi","partenze"
+      ];
+
+      const stationKeys = [
+        "stazione","station","centrale","garibaldi","cadorna","porta nuova","porta garibaldi",
+        "porta genova","rogoredo","lambrate"
+      ];
+
+      return airportKeys.some(k => t.includes(k)) || stationKeys.some(k => t.includes(k));
+    }
+
+    function updateContextHints() {
+      // (4) A/R hint
+      if ((serviceTypeEl.value || "").includes("A/R")) arHint.classList.remove("hidden");
+      else arHint.classList.add("hidden");
+
+      // (2) Airport/station hint
+      const showTravel = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
+      if (showTravel) travelHint.classList.remove("hidden");
+      else travelHint.classList.add("hidden");
+
+      // (1) Urgent within 2 hours
+      const dt = parseDateTimeLocal(whenEl.value);
+      if (dt) {
+        const diffMs = dt.getTime() - Date.now();
+        const diffHours = diffMs / 3600000;
+        if (diffHours >= 0 && diffHours <= 2) urgentHint.classList.remove("hidden");
+        else urgentHint.classList.add("hidden");
+      } else {
+        urgentHint.classList.add("hidden");
+      }
+
+      // (5) 4 pax + many luggage => suggest van (no forcing)
+      const paxN = getPaxNumber();
+      if (paxN === 4 && luggage === "Molti bagagli") luggageVanHint.classList.remove("hidden");
+      else luggageVanHint.classList.add("hidden");
+    }
+
+    // Bind changes
+    vehicleSelect.addEventListener("change", () => {
+      selectFleetByLabel(vehicleSelect.value);
+      updateSelectedVehicleUI();
+      updateNotesSuggestion();
+      enforceCapacityRule();
+      updateContextHints();
+    });
+
     paxSelect.addEventListener("change", () => {
       enforceCapacityRule();
       updateNotesSuggestion();
+      updateContextHints();
     });
 
-    // Form submit
+    serviceTypeEl.addEventListener("change", () => {
+      updateNotesSuggestion();
+      enforceCapacityRule();
+      updateContextHints();
+    });
+
+    fromEl.addEventListener("input", () => updateContextHints());
+    toEl.addEventListener("input", () => updateContextHints());
+    whenEl.addEventListener("change", () => updateContextHints());
+    whenEl.addEventListener("focus", () => setMinDateTimeNow());
+
+    // Alerts
+    const formAlert = document.getElementById("formAlert");
+    const formAlertText = document.getElementById("formAlertText");
+    function showFormAlert(missingLabels) {
+      formAlertText.textContent = "Manca: " + missingLabels.join(" · ");
+      formAlert.classList.remove("hidden");
+    }
+    function hideFormAlert() {
+      formAlert.classList.add("hidden");
+      formAlertText.textContent = "";
+    }
+    function focusFirstMissing(missingIds) {
+      const first = missingIds[0];
+      if (!first) return;
+      const el = document.getElementById(first);
+      if (el) el.focus({ preventScroll: true });
+    }
+
+    // Submit
     const form = document.getElementById("quoteForm");
     const resetBtn = document.getElementById("resetBtn");
     const invoice = document.getElementById("invoice");
@@ -792,10 +893,10 @@
 
       const vehicle = vehicleSelect.value.trim();
       const serviceType = serviceTypeEl.value.trim();
-      const from = document.getElementById("from").value.trim();
-      const to = document.getElementById("to").value.trim();
+      const from = fromEl.value.trim();
+      const to = toEl.value.trim();
       const stops = document.getElementById("stops").value.trim();
-      const whenRaw = document.getElementById("when").value.trim();
+      const whenRaw = whenEl.value.trim();
       const when = formatDateTimeIT(whenRaw);
       const pax = paxSelect.value.trim();
       const name = document.getElementById("name").value.trim();
@@ -839,12 +940,10 @@
       openWhatsAppWithText(msg);
     });
 
-    document.getElementById("when").addEventListener("focus", () => setMinDateTimeNow());
-
+    // Reset
     resetBtn.addEventListener("click", () => {
       form.reset();
 
-      // reset select
       vehicleSelect.selectedIndex = 0;
       paxSelect.selectedIndex = 0;
 
@@ -855,20 +954,25 @@
       setLuggage("Nessuno");
 
       setMinDateTimeNow();
-      document.getElementById("when").value = "";
+      whenEl.value = "";
       setDefaultDateTimePlus60();
 
-      // hide notice
       capacityNotice.classList.add("hidden");
+      urgentHint.classList.add("hidden");
+      travelHint.classList.add("hidden");
+      arHint.classList.add("hidden");
+      luggageVanHint.classList.add("hidden");
 
       updateSelectedVehicleUI();
       updateNotesSuggestion();
+      updateContextHints();
     });
 
     // init
     updateSelectedVehicleUI();
     updateNotesSuggestion();
     enforceCapacityRule();
+    updateContextHints();
   </script>
 </body>
 </html>
