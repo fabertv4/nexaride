@@ -183,7 +183,8 @@
         </div>
       </div>
     </section>
-        <!-- Come funziona -->
+
+    <!-- Come funziona -->
     <section id="come-funziona" class="border-t border-white/10 bg-white/5">
       <div class="mx-auto max-w-6xl px-4 py-12">
         <h2 class="text-3xl font-semibold">Come funziona</h2>
@@ -206,7 +207,8 @@
         </div>
       </div>
     </section>
- <!-- Flotta -->
+
+    <!-- Flotta -->
     <section id="flotta" class="mx-auto max-w-6xl px-4 py-16">
       <h2 class="text-3xl font-semibold">La nostra flotta</h2>
       <p class="mt-3 text-neutral-300 max-w-2xl">
@@ -336,18 +338,28 @@
               placeholder="Es. Milano Centrale → Hotel → Ufficio" />
           </div>
 
+          <!-- MODIFICA: calendario + ora -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Data / Ora</label>
-            <input id="when" required
-              class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
-              placeholder="Es. 10/01 06:30" />
+            <input id="when" required type="datetime-local"
+              class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100" />
           </div>
 
+          <!-- MODIFICA: menu a tendina passeggeri 1-8 -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Passeggeri</label>
-            <input id="pax" required
-              class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100 placeholder:text-neutral-500"
-              placeholder="Es. 2" />
+            <select id="pax" required
+              class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100">
+              <option value="" selected>Seleziona</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
           </div>
 
           <div class="md:col-span-2">
@@ -477,6 +489,26 @@
       if (val) vehicleSelect.value = val;
     }
 
+    // Imposta MIN su datetime-local (non permette date nel passato)
+    function setMinDateTimeNow() {
+      const el = document.getElementById("when");
+      if (!el) return;
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      const min = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      el.min = min;
+    }
+    setMinDateTimeNow();
+
+    // Converte "YYYY-MM-DDTHH:MM" -> "DD/MM/YYYY HH:MM"
+    function formatDateTimeIT(dtLocalValue) {
+      if (!dtLocalValue) return "";
+      const [datePart, timePart] = dtLocalValue.split("T");
+      if (!datePart || !timePart) return dtLocalValue;
+      const [y, m, d] = datePart.split("-");
+      return `${d}/${m}/${y} ${timePart}`;
+    }
+
     // Messaggio WhatsApp base (pulito)
     const baseMsg = [
       "Ciao! Vorrei un preventivo NCC con NexaRide.",
@@ -536,8 +568,9 @@
       const from = document.getElementById("from").value.trim();
       const to = document.getElementById("to").value.trim();
       const stops = document.getElementById("stops").value.trim();
-      const when = document.getElementById("when").value.trim();
-      const pax = document.getElementById("pax").value.trim();
+      const whenRaw = document.getElementById("when").value.trim(); // datetime-local
+      const when = formatDateTimeIT(whenRaw);
+      const pax = document.getElementById("pax").value.trim(); // select 1-8
       const name = document.getElementById("name").value.trim();
       const phoneInput = document.getElementById("phoneInput").value.trim();
       const notes = document.getElementById("notes").value.trim();
@@ -563,6 +596,7 @@
       document.getElementById("serviceType").value = "Transfer singolo";
       selectedVehicleKey = null;
       clearFleetSelection();
+      setMinDateTimeNow(); // ripristina min (se il browser lo resetta)
     });
   </script>
 </body>
