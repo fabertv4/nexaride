@@ -5,14 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NexaRide — NCC Milano | Transfer aeroporti • Eventi • Aziende</title>
   <meta name="description" content="NCC premium a Milano: transfer aeroporti, eventi, business. Prenota su WhatsApp o telefono. Driver professionali, puntualità e comfort." />
-
-  <!-- Canonical (IT home) -->
   <link rel="canonical" href="https://nexaride.it/" />
-
-  <!-- Language alternates (EN base /en/) -->
-  <link rel="alternate" href="https://nexaride.it/" hreflang="it" />
-  <link rel="alternate" href="https://nexaride.it/en/chauffeur-milan.html" hreflang="en" />
-  <link rel="alternate" href="https://nexaride.it/" hreflang="x-default" />
 
   <meta property="og:title" content="NexaRide — NCC Milano" />
   <meta property="og:description" content="Transfer aeroporti • Eventi • Aziende. Prenota in 1 minuto su WhatsApp." />
@@ -84,7 +77,8 @@
     "url":"https://nexaride.it/",
     "telephone":"+393208784091",
     "email":"info@nexaride.it",
-    "areaServed":"Milano e Lombardia"
+    "areaServed":"Milano e Lombardia",
+    "sameAs":[]
   }
   </script>
 </head>
@@ -108,13 +102,6 @@
       </nav>
 
       <div class="flex items-center gap-2">
-        <!-- EN switch (SEO/Marketing: /en/) -->
-        <a href="/en/chauffeur-milan.html"
-           class="hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 md:inline-flex"
-           aria-label="English version">
-          EN
-        </a>
-
         <a href="tel:+393208784091"
            class="hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 md:inline-flex">
           Chiama
@@ -134,18 +121,9 @@
 
       <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-2 md:py-20">
         <div>
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-              Disponibilità su richiesta • 24/7
-            </div>
-
-            <!-- English support micro-trust -->
-            <a href="/en/chauffeur-milan.html"
-               class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200 hover:bg-white/10">
-              <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-              English support
-            </a>
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            Disponibilità su richiesta • 24/7
           </div>
 
           <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
@@ -223,7 +201,7 @@
                 Preventivo gratuito, nessun impegno. Conferma e dettagli via WhatsApp/telefono.
               </p>
               <p class="mt-2 text-xs text-neutral-500">
-                English available on request.
+                Risposta tipica: 2–5 minuti.
               </p>
             </div>
           </div>
@@ -330,11 +308,6 @@
               Preventivo gratuito, nessun impegno · Risposta tipica: <span class="text-neutral-200 font-semibold">2–5 min</span>
               · <span class="text-neutral-400">Niente call center: risponde un referente NexaRide.</span>
             </div>
-
-            <!-- English support note near form (marketing) -->
-            <div class="mt-2 text-xs text-neutral-400">
-              English: <a href="/en/chauffeur-milan.html" class="underline hover:text-white">open English page</a> (same WhatsApp number).
-            </div>
           </div>
 
           <div class="flex flex-wrap gap-3">
@@ -389,6 +362,7 @@
               <option value="Giornata intera">Giornata intera</option>
             </select>
 
+            <!-- (4) Hint A/R -->
             <div id="arHint" class="mt-2 hidden rounded-2xl border border-sky-500/25 bg-sky-500/10 px-4 py-3 text-xs text-sky-100">
               Se non sai l’orario del ritorno, scrivi <span class="font-semibold">“da definire”</span> nelle Note.
             </div>
@@ -408,6 +382,7 @@
               placeholder="Es. MXP Malpensa" />
           </div>
 
+          <!-- (2) Hint volo/treno -->
           <div id="travelHint" class="md:col-span-4 hidden rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-xs text-emerald-100">
             Se è aeroporto/stazione, nelle Note scrivi <span class="font-semibold">numero volo</span> o <span class="font-semibold">numero treno</span> (se lo hai): velocizziamo la conferma.
           </div>
@@ -426,6 +401,7 @@
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100" />
             <p class="mt-2 text-xs text-neutral-400">Suggerimento: abbiamo preimpostato una data/ora indicativa (modificabile).</p>
 
+            <!-- (1) Hint urgenza entro 2 ore -->
             <div id="urgentHint" class="mt-2 hidden rounded-2xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-xs text-rose-100">
               Se è entro <span class="font-semibold">2 ore</span>, scrivici direttamente su WhatsApp per gestire l’urgenza.
               <div class="mt-2">
@@ -446,6 +422,7 @@
               <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
             </select>
 
+            <!-- 5+ -> forzatura van -->
             <div id="capacityNotice" class="mt-2 hidden rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
               Per <span class="font-semibold">5+ passeggeri</span> selezioniamo automaticamente <span class="font-semibold">Van / Gruppi</span> per garantire spazio e comfort.
             </div>
@@ -460,6 +437,7 @@
             </div>
             <p class="mt-2 text-xs text-neutral-400">Ci aiuta a confermare la categoria migliore e lo spazio necessario.</p>
 
+            <!-- (5) 4 pax + molti bagagli -> suggerisci van -->
             <div id="luggageVanHint" class="mt-2 hidden rounded-2xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
               Per <span class="font-semibold">4 passeggeri</span> con <span class="font-semibold">molti bagagli</span> spesso conviene il <span class="font-semibold">Van</span> (più spazio e comfort).
             </div>
@@ -511,12 +489,14 @@
             </button>
           </div>
 
+          <!-- (7) Conferma solo dopo preventivo -->
           <div class="md:col-span-4">
             <p class="text-xs text-neutral-400">
               Confermi il servizio solo dopo aver ricevuto <span class="text-neutral-200 font-semibold">prezzo</span> e <span class="text-neutral-200 font-semibold">disponibilità</span>.
             </p>
           </div>
 
+          <!-- (8) Pagamento -->
           <div class="md:col-span-4">
             <p class="text-xs text-neutral-400">
               Pagamento: <span class="text-neutral-200 font-semibold">carta / contanti / bonifico</span> (si concorda in chat).
@@ -529,6 +509,7 @@
             </p>
           </div>
 
+          <!-- (10) Privacy zero spam -->
           <p class="md:col-span-4 text-xs text-neutral-400">
             Usiamo i tuoi dati solo per rispondere alla richiesta e organizzare la corsa. <span class="text-neutral-200 font-semibold">Zero spam.</span>
             <a href="/privacy" class="underline hover:text-neutral-200">Privacy</a>
@@ -572,14 +553,6 @@
              href="tel:+393208784091">Chiama</a>
           <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
              href="/privacy">Privacy</a>
-
-          <!-- EN links (future pages) -->
-          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
-             href="/en/chauffeur-milan.html">EN: Milan</a>
-          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
-             href="/en/milan-airport-transfer.html">EN: Airports</a>
-          <a class="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10"
-             href="/en/lake-como-private-driver.html">EN: Lake Como</a>
         </div>
       </div>
     </div>
@@ -646,9 +619,8 @@
 
     function formatDateTimeIT(dtLocalValue) {
       if (!dtLocalValue) return "";
-      const parts = dtLocalValue.split("T");
-      if (parts.length !== 2) return dtLocalValue;
-      const [datePart, timePart] = parts;
+      const [datePart, timePart] = dtLocalValue.split("T");
+      if (!datePart || !timePart) return dtLocalValue;
       const [y, m, d] = datePart.split("-");
       return `${d}/${m}/${y} ${timePart}`;
     }
@@ -764,7 +736,7 @@
     lugSome.addEventListener("click", () => setLuggage("1–2 valigie"));
     lugMany.addEventListener("click", () => setLuggage("Molti bagagli"));
 
-    // Notes suggestions
+    // Notes suggestions (existing logic)
     const notesEl = document.getElementById("notes");
     const notesHintEl = document.getElementById("notesHint");
 
@@ -794,7 +766,7 @@
       if (!notesEl.value.trim()) notesEl.placeholder = hint + " (opzionale)";
     }
 
-    // Capacity rule (5+ => van)
+    // === Capacity rule (5+ => van) ===
     function getPaxNumber() {
       const v = (paxSelect.value || "").trim();
       const n = parseInt(v, 10);
@@ -822,31 +794,45 @@
       }
     }
 
-    // Context hints (airport/station + AR + urgent + luggage)
+    // === NEW: Context hints (1,2,4,5) ===
     function isAirportOrStationText(text) {
       const t = (text || "").toLowerCase();
-      const keys = [
-        "mxp","malpensa","lin","linate","bgy","orio","orio al serio","aeroporto","airport","terminal","arrivi","partenze",
-        "stazione","station","centrale","garibaldi","cadorna","porta nuova","porta garibaldi","porta genova","rogoredo","lambrate"
+
+      const airportKeys = [
+        "mxp","malpensa","lin","linate","bgy","orio","orio al serio","bergamo aeroporto","aeroporto",
+        "airport","terminal","arrivi","partenze"
       ];
-      return keys.some(k => t.includes(k));
+
+      const stationKeys = [
+        "stazione","station","centrale","garibaldi","cadorna","porta nuova","porta garibaldi",
+        "porta genova","rogoredo","lambrate"
+      ];
+
+      return airportKeys.some(k => t.includes(k)) || stationKeys.some(k => t.includes(k));
     }
 
     function updateContextHints() {
+      // (4) A/R hint
       if ((serviceTypeEl.value || "").includes("A/R")) arHint.classList.remove("hidden");
       else arHint.classList.add("hidden");
 
+      // (2) Airport/station hint
       const showTravel = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
       if (showTravel) travelHint.classList.remove("hidden");
       else travelHint.classList.add("hidden");
 
+      // (1) Urgent within 2 hours
       const dt = parseDateTimeLocal(whenEl.value);
       if (dt) {
-        const diffHours = (dt.getTime() - Date.now()) / 3600000;
+        const diffMs = dt.getTime() - Date.now();
+        const diffHours = diffMs / 3600000;
         if (diffHours >= 0 && diffHours <= 2) urgentHint.classList.remove("hidden");
         else urgentHint.classList.add("hidden");
-      } else urgentHint.classList.add("hidden");
+      } else {
+        urgentHint.classList.add("hidden");
+      }
 
+      // (5) 4 pax + many luggage => suggest van (no forcing)
       const paxN = getPaxNumber();
       if (paxN === 4 && luggage === "Molti bagagli") luggageVanHint.classList.remove("hidden");
       else luggageVanHint.classList.add("hidden");
@@ -946,7 +932,10 @@
       if (name) msg += `Nome: ${name}\n`;
       if (phoneInput) msg += `Telefono: ${phoneInput}\n`;
       if (notes) msg += `Note: ${notes}\n`;
-      if (contactPref === "Chiamata") msg += "\nPuoi chiamarmi per confermare disponibilità e prezzo? Grazie.\n";
+
+      if (contactPref === "Chiamata") {
+        msg += "\nPuoi chiamarmi per confermare disponibilità e prezzo? Grazie.\n";
+      }
 
       openWhatsAppWithText(msg);
     });
