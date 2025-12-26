@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#0b0f14" />
-  <title>NexaRide — NCC Milano 24/7 | Aeroporti, lavoro, gruppi</title>
-  <meta name="description" content="NCC Milano 24/7 per aeroporti (MXP/LIN/BGY), viaggi di lavoro e gruppi. Click-to-chat WhatsApp con messaggio precompilato. Risposta rapida." />
+
+  <title>NexaRide — NCC e trasferimenti privati 24/7</title>
+  <meta name="description" content="NCC e trasferimenti privati disponibili 24/7: aeroporti (MXP/LIN/BGY), città, lunghi viaggi e gruppi. Scrivici su WhatsApp: preventivo immediato." />
   <link rel="canonical" href="https://nexaride.it/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NexaRide — NCC Milano 24/7" />
-  <meta property="og:description" content="Aeroporti, viaggi di lavoro e gruppi. Scrivici su WhatsApp: risposta rapida." />
+  <meta property="og:title" content="NexaRide — NCC 24/7" />
+  <meta property="og:description" content="Aeroporti · città · lunghi viaggi · gruppi. Scrivici su WhatsApp." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nexaride.it/" />
 
@@ -25,7 +26,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ["Inter", "system-ui", "Segoe UI", "Roboto", "Arial", "sans-serif"] }
+          fontFamily: { sans: ["Inter","system-ui","Segoe UI","Roboto","Arial","sans-serif"] }
         }
       }
     }
@@ -33,15 +34,8 @@
 
   <style>
     :root { color-scheme: dark; }
-    html { scroll-behavior: smooth; }
     body { background:#0b0f14; }
-
-    /* WhatsApp CTA */
-    .whatsapp-btn{
-      background:#25D366;
-      color:#0b141a !important;
-    }
-    .whatsapp-btn:hover{ background:#1ebe5d; }
+    html { scroll-behavior: smooth; }
 
     .glass{
       background: rgba(255,255,255,.04);
@@ -51,11 +45,22 @@
     }
     .soft-shadow{ box-shadow: 0 12px 30px rgba(0,0,0,.45); }
 
+    /* WhatsApp CTA */
+    .whatsapp-btn{
+      background:#25D366;
+      color:#0b141a !important;
+    }
+    .whatsapp-btn:hover{ background:#1ebe5d; }
+
+    /* Language toggle active */
     .lang-active{
       border-color: rgba(255,255,255,.25) !important;
       background: rgba(255,255,255,.12) !important;
       color: white !important;
     }
+
+    /* Avoid fixed button covering content bottom */
+    .safe-bottom { padding-bottom: 92px; } /* mobile only via JS class */
   </style>
 
   <!-- LocalBusiness schema -->
@@ -73,398 +78,482 @@
 </head>
 
 <body class="text-white font-sans">
-  <!-- HEADER (no CTA multiple: solo brand + lingua) -->
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b0f14]/80 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+  <!-- HEADER (minimal, no extra CTA) -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0b0f14]/85 backdrop-blur">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
       <a href="#top" class="flex items-center gap-3">
         <div class="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-sm font-bold">NR</div>
         <div class="leading-tight">
           <div class="text-sm font-semibold">NexaRide</div>
-          <div class="text-xs text-white/60" data-i18n="header_subtitle">NCC Milano 24/7 • Aeroporti • Lavoro • Gruppi</div>
+          <div class="text-xs text-white/60" data-i18n="header_subtitle">NCC 24/7</div>
         </div>
       </a>
 
-      <div class="flex items-center gap-2">
-        <div class="flex items-center gap-1">
-          <button id="langIT" type="button"
-            class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">
-            IT
-          </button>
-          <button id="langEN" type="button"
-            class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">
-            EN
-          </button>
-        </div>
+      <!-- Language (optional, not a CTA) -->
+      <div class="flex items-center gap-1">
+        <button id="langIT" type="button"
+          class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">IT</button>
+        <button id="langEN" type="button"
+          class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold hover:bg-white/10">EN</button>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- HERO -->
+  <main id="top" class="safe-bottom sm:pb-10">
+    <!-- 1) HERO -->
     <section class="relative overflow-hidden">
       <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.10),transparent_55%)]"></div>
 
-      <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-10 sm:py-14 lg:grid-cols-2">
-        <!-- LEFT -->
-        <div class="flex flex-col">
-          <div class="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/80">
-            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-            <span data-i18n="badge_availability">Disponibilità 24/7 • Risposta rapida</span>
-          </div>
+      <div class="mx-auto max-w-5xl px-4 pt-10 sm:pt-14">
+        <h1 class="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl" data-i18n="hero_h1">
+          NCC e trasferimenti privati – disponibili 24/7
+        </h1>
 
-          <h1 class="mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
-              data-i18n="hero_title">
-            NCC Milano 24/7<br class="hidden sm:block" />
-            Aeroporti • Lavoro • Gruppi
-          </h1>
+        <p class="mt-4 text-lg leading-relaxed text-white/70 sm:text-xl" data-i18n="hero_sub">
+          Aeroporti · città · lunghi viaggi · gruppi<br class="hidden sm:block" />
+          Rispondiamo subito su WhatsApp
+        </p>
 
-          <p class="mt-4 text-base leading-relaxed text-white/70 sm:text-lg"
-             data-i18n="hero_subtitle">
-            Transfer affidabili per aeroporti (MXP/LIN/BGY), viaggi di lavoro e gruppi con bagagli.
-            Scrivici su WhatsApp: rispondiamo in meno di 5 minuti.
-          </p>
+        <!-- CTA PRINCIPALE (full width mobile) -->
+        <div class="mt-7">
+          <a data-wa-template="wa_main"
+             href="#"
+             class="inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn soft-shadow sm:max-w-md"
+             target="_blank" rel="noopener">
+            <span data-i18n="cta_main">💬 Scrivici ora su WhatsApp</span>
+          </a>
 
-          <!-- ONE MAIN CTA -->
-          <div class="mt-7">
-            <a id="ctaWAHero"
-               data-wa-template="wa_main"
-               href="#"
-               class="relative z-20 pointer-events-auto w-full sm:w-auto inline-flex items-center justify-center rounded-2xl px-6 py-4 text-base font-semibold whatsapp-btn soft-shadow"
-               target="_blank" rel="noopener">
-              <span data-i18n="cta_whatsapp_main">💬 Scrivici ora su WhatsApp – rispondiamo subito</span>
-            </a>
-          </div>
-
-          <!-- Partner note (anti-broker, anti-flotta tua) -->
-          <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
-            <div class="font-semibold" data-i18n="partner_title">Partner NCC</div>
-            <div class="mt-1" data-i18n="partner_note">
-              Collaboriamo con NCC partner selezionati per garantire disponibilità e standard di servizio.
-              Veicoli soggetti a disponibilità.
-            </div>
-          </div>
-
-          <!-- Info (non CTA) -->
-          <div class="mt-5 text-sm text-white/55">
-            <span data-i18n="label_whatsapp_business">WhatsApp Business:</span>
-            <span class="font-semibold text-white/80">+39 320 878 4091</span>
-            <span class="mx-2">•</span>
-            <span data-i18n="label_email">Email:</span>
-            <a href="mailto:info@nexaride.it" class="underline hover:text-white">info@nexaride.it</a>
-          </div>
-        </div>
-
-        <!-- RIGHT (no CTA) -->
-        <div class="glass soft-shadow rounded-3xl p-5 sm:p-6">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <div class="text-xs text-white/60" data-i18n="services_kicker">Servizi</div>
-              <div class="mt-1 text-lg font-semibold" data-i18n="services_title">Aeroporti • Viaggi di lavoro • Gruppi</div>
-            </div>
-            <div class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70" data-i18n="area_served">
-              Milano & Lombardia
-            </div>
-          </div>
-
-          <div class="mt-4 grid gap-3">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="text-sm font-semibold" data-i18n="svc_airports_title">Transfer aeroporti</div>
-              <div class="mt-1 text-sm text-white/65" data-i18n="svc_airports_desc">MXP • LIN • BGY • Stazioni • Hotel</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="text-sm font-semibold" data-i18n="svc_business_title">Viaggi di lavoro</div>
-              <div class="mt-1 text-sm text-white/65" data-i18n="svc_business_desc">Meeting, hotel, aziende, servizi a ore/giornate</div>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div class="text-sm font-semibold" data-i18n="svc_groups_title">Gruppi</div>
-              <div class="mt-1 text-sm text-white/65" data-i18n="svc_groups_desc">Famiglie, team, bagagli, transfer eventi</div>
-            </div>
-          </div>
-
-          <div class="mt-4 text-xs text-white/55" data-i18n="no_payment_note">
-            Nessun pagamento online. Preventivo e conferma via WhatsApp.
+          <!-- Micro-trust -->
+          <div class="mt-3 text-sm text-white/60" data-i18n="micro_trust">
+            Preventivo immediato · Senza app · Persona reale
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORIE VEICOLI (informativo, NO CTA) -->
-    <section id="veicoli" class="mx-auto max-w-6xl px-4 py-8 sm:py-10">
-      <div>
-        <h2 class="text-2xl font-semibold" data-i18n="fleet_h2">Categorie veicoli</h2>
-        <p class="mt-2 text-white/65" data-i18n="fleet_p">
-          Disponibilità su richiesta tramite NCC partner selezionati. Le immagini sono indicative.
+    <!-- 2) PERCHÉ CONTATTARCI -->
+    <section class="mx-auto max-w-5xl px-4 pt-10">
+      <div class="glass rounded-3xl p-6 sm:p-7">
+        <h2 class="text-2xl font-semibold" data-i18n="why_h2">Perché scegliere Nexaride</h2>
+
+        <div class="mt-5 grid gap-3">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="why_1_title">🚗 NCC professionale con flotta operativa</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="why_2_title">⏱️ Risposta rapida e gestione diretta</div>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="why_3_title">🤝 Possibilità di più veicoli tramite NCC partner</div>
+          </div>
+        </div>
+
+        <!-- CTA ripetuta (stessa azione) -->
+        <a data-wa-template="wa_main"
+           href="#"
+           class="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn sm:max-w-md"
+           target="_blank" rel="noopener">
+          <span data-i18n="cta_repeat">👉 Contattaci su WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3) SERVIZI PRINCIPALI -->
+    <section class="mx-auto max-w-5xl px-4 pt-10">
+      <h2 class="text-2xl font-semibold" data-i18n="services_h2">Servizi NCC</h2>
+
+      <div class="mt-5 grid gap-3 sm:grid-cols-2">
+        <div class="glass rounded-2xl p-5">
+          <div class="text-base font-semibold" data-i18n="svc_1">Trasferimenti aeroportuali (MXP · LIN · BGY)</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-base font-semibold" data-i18n="svc_2">Viaggi di lavoro e clienti business</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-base font-semibold" data-i18n="svc_3">Trasferimenti privati e lunghi percorsi</div>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-base font-semibold" data-i18n="svc_4">Servizi per famiglie e gruppi</div>
+        </div>
+        <div class="glass rounded-2xl p-5 sm:col-span-2">
+          <div class="text-base font-semibold" data-i18n="svc_5">Disponibilità notturna e festivi</div>
+        </div>
+      </div>
+
+      <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-5 text-white/70">
+        <div class="text-base font-semibold" data-i18n="services_key_title">Testo chiave</div>
+        <p class="mt-2 text-base" data-i18n="services_key">
+          Scrivici su WhatsApp indicando tratta, data e orario. Pensiamo a tutto noi.
         </p>
       </div>
+    </section>
 
-      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <!-- 4) TIPOLOGIE DI SERVIZIO (non “flotta”) -->
+    <section class="mx-auto max-w-5xl px-4 pt-10">
+      <h2 class="text-2xl font-semibold" data-i18n="types_h2">Tipologie disponibili</h2>
+
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <!-- Berlina Executive -->
         <article class="glass rounded-3xl overflow-hidden">
-          <img src="assets/classeE_industriale.png" alt="Berlina Business" class="h-52 w-full object-cover sm:h-60" />
+          <img src="assets/classeE_industriale.png" alt="Berlina Executive" class="h-52 w-full object-cover" />
           <div class="p-5">
-            <h3 class="text-lg font-semibold" data-i18n="fleet_e_title">Berlina Business</h3>
-            <p class="mt-2 text-sm text-white/65" data-i18n="fleet_e_desc">Ideale per aeroporti e viaggi di lavoro.</p>
+            <div class="text-lg font-semibold" data-i18n="type_1_title">Berlina Executive</div>
+            <div class="mt-2 text-base text-white/70" data-i18n="type_1_desc">1–3 passeggeri · Ideale per lavoro e aeroporti</div>
           </div>
         </article>
 
+        <!-- SUV / Comfort -->
         <article class="glass rounded-3xl overflow-hidden">
-          <img src="assets/rav4_industriale.png" alt="SUV / Economy" class="h-52 w-full object-cover sm:h-60" />
+          <img src="assets/rav4_industriale.png" alt="SUV / Comfort" class="h-52 w-full object-cover" />
           <div class="p-5">
-            <h3 class="text-lg font-semibold" data-i18n="fleet_rav_title">SUV / Economy</h3>
-            <p class="mt-2 text-sm text-white/65" data-i18n="fleet_rav_desc">Soluzione versatile per trasferimenti rapidi.</p>
+            <div class="text-lg font-semibold" data-i18n="type_2_title">SUV / Comfort</div>
+            <div class="mt-2 text-base text-white/70" data-i18n="type_2_desc">Più spazio per bagagli e viaggi lunghi</div>
           </div>
         </article>
 
-        <article class="glass rounded-3xl overflow-hidden">
-          <img src="assets/classeV_industriale.png" alt="Van per gruppi" class="h-52 w-full object-cover sm:h-60" />
+        <!-- Van -->
+        <article class="glass rounded-3xl overflow-hidden sm:col-span-2">
+          <img src="assets/classeV_industriale.png" alt="Van fino a 7–8 passeggeri" class="h-52 w-full object-cover" />
           <div class="p-5">
-            <h3 class="text-lg font-semibold" data-i18n="fleet_v_title">Van per gruppi</h3>
-            <p class="mt-2 text-sm text-white/65" data-i18n="fleet_v_desc">Perfetto per gruppi e bagagli (aeroporti/eventi).</p>
+            <div class="text-lg font-semibold" data-i18n="type_3_title">Van fino a 7–8 passeggeri</div>
+            <div class="mt-2 text-base text-white/70" data-i18n="type_3_desc">Gruppi, famiglie, trasferimenti multipli</div>
           </div>
         </article>
 
-        <article class="glass rounded-3xl overflow-hidden">
-          <img src="assets/classeS_industriale.png" alt="Berlina alta rappresentanza" class="h-52 w-full object-cover sm:h-60" />
-          <div class="p-5">
-            <h3 class="text-lg font-semibold" data-i18n="fleet_s_title">Berlina alta rappresentanza</h3>
-            <p class="mt-2 text-sm text-white/65" data-i18n="fleet_s_desc">Disponibile su richiesta, soggetto a disponibilità.</p>
-          </div>
+        <!-- Luxury su richiesta (NO Classe S, solo testo) -->
+        <article class="glass rounded-3xl p-5 sm:col-span-2">
+          <div class="text-lg font-semibold" data-i18n="type_4_title">Luxury su richiesta</div>
+          <div class="mt-2 text-base text-white/70" data-i18n="type_4_desc">Disponibile tramite NCC partner selezionati</div>
         </article>
+      </div>
+
+      <!-- Nota obbligatoria -->
+      <div class="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
+        <span class="font-semibold">📌</span>
+        <span data-i18n="types_note">Alcune tipologie di servizio possono essere fornite tramite NCC partner selezionati.</span>
       </div>
     </section>
 
-    <!-- FORM (stessa CTA, stessa promessa) -->
-    <section id="preventivo" class="mx-auto max-w-6xl px-4 py-10">
-      <div class="glass soft-shadow rounded-3xl p-5 sm:p-7">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 class="text-2xl font-semibold" data-i18n="form_h2">Dettagli rapidi</h2>
-            <p class="mt-2 text-white/65" data-i18n="form_p">Compila se vuoi: generiamo un messaggio WhatsApp pronto da inviare.</p>
-          </div>
-          <div class="text-xs text-white/55" data-i18n="form_note">Risposta rapida su WhatsApp.</div>
-        </div>
+    <!-- 5) COME FUNZIONA -->
+    <section class="mx-auto max-w-5xl px-4 pt-10">
+      <div class="glass rounded-3xl p-6 sm:p-7">
+        <h2 class="text-2xl font-semibold" data-i18n="how_h2">Come prenotare</h2>
+
+        <ol class="mt-5 grid gap-3">
+          <li class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="how_1">1) Scrivici su WhatsApp</div>
+          </li>
+          <li class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="how_2">2) Indica tratta, data e orario</div>
+          </li>
+          <li class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="how_3">3) Ricevi subito il preventivo</div>
+          </li>
+          <li class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div class="text-base font-semibold" data-i18n="how_4">4) Conferma e viaggia senza pensieri</div>
+          </li>
+        </ol>
+
+        <a data-wa-template="wa_main"
+           href="#"
+           class="mt-6 inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn sm:max-w-md"
+           target="_blank" rel="noopener">
+          <span data-i18n="cta_book">💬 Prenota ora su WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 6) PREVENTIVO (secondario) -->
+    <section id="preventivo" class="mx-auto max-w-5xl px-4 pt-10">
+      <div class="glass rounded-3xl p-6 sm:p-7">
+        <h2 class="text-2xl font-semibold" data-i18n="quote_h2">Preferisci un preventivo scritto?</h2>
+        <p class="mt-3 text-base text-white/70" data-i18n="quote_p">
+          Puoi compilare il modulo oppure scriverci direttamente su WhatsApp (più veloce).
+        </p>
 
         <form id="quoteForm" class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="from" required
                  data-i18n-placeholder="ph_from"
                  placeholder="Partenza (es. Linate / Hotel / Indirizzo)" />
 
-          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="to" required
                  data-i18n-placeholder="ph_to"
                  placeholder="Destinazione (es. Duomo / MXP / Indirizzo)" />
 
-          <input class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="stops"
                  data-i18n-placeholder="ph_stops"
-                 placeholder="Fermate intermedie (opzionale – es. Hotel → Ufficio → Ristorante → Aeroporto)" />
+                 placeholder="Fermate intermedie (opzionale – es. Hotel → Ufficio → Aeroporto)" />
 
-          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="date"
                  data-i18n-placeholder="ph_date"
                  placeholder="Data (es. 12/01)" />
 
-          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="time"
                  data-i18n-placeholder="ph_time"
                  placeholder="Ora (es. 18:30)" />
 
-          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                  name="pax"
                  data-i18n-placeholder="ph_pax"
                  placeholder="Passeggeri (es. 2)" />
 
-          <select class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <select class="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                   name="vehicle" aria-label="Vehicle">
-            <option value="" data-i18n="opt_vehicle">Categoria veicolo (opzionale)</option>
-            <option>Berlina Business</option>
-            <option>SUV / Economy</option>
-            <option>Van per gruppi</option>
-            <option>Berlina alta rappresentanza</option>
+            <option value="" data-i18n="opt_vehicle">Tipologia (opzionale)</option>
+            <option>Berlina Executive</option>
+            <option>SUV / Comfort</option>
+            <option>Van (7–8)</option>
+            <option>Luxury su richiesta</option>
           </select>
 
-          <textarea class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-emerald-400"
+          <textarea class="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-base outline-none focus:ring-2 focus:ring-emerald-400"
                     name="notes" rows="3"
                     data-i18n-placeholder="ph_notes"
-                    placeholder="Note (voli, bagagli, numero valigie, richieste)"></textarea>
+                    placeholder="Note (voli, bagagli, richieste)"></textarea>
 
+          <!-- Submit generates WhatsApp message (same single action) -->
           <button type="submit"
-                  class="sm:col-span-2 inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-base font-semibold whatsapp-btn">
-            <span data-i18n="cta_whatsapp_main">💬 Scrivici ora su WhatsApp – rispondiamo subito</span>
+                  class="sm:col-span-2 inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn">
+            <span data-i18n="cta_main">💬 Scrivici ora su WhatsApp</span>
           </button>
         </form>
       </div>
     </section>
 
-    <!-- FOOTER (info only, no extra CTA) -->
+    <!-- 7) AFFIDABILITÀ -->
+    <section class="mx-auto max-w-5xl px-4 pt-10">
+      <div class="glass rounded-3xl p-6 sm:p-7">
+        <h2 class="text-2xl font-semibold" data-i18n="reliability_h2">Affidabilità</h2>
+        <p class="mt-3 text-base text-white/70" data-i18n="reliability_p">
+          Nexaride opera ogni giorno nel trasporto NCC. Gestiamo direttamente le corse e, in caso di alta richiesta,
+          collaboriamo con autisti NCC partner per garantire continuità del servizio.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8) CTA FINALE -->
+    <section class="mx-auto max-w-5xl px-4 py-10">
+      <div class="glass rounded-3xl p-6 sm:p-7">
+        <h2 class="text-2xl font-semibold" data-i18n="final_h2">Hai bisogno di un NCC adesso o nei prossimi giorni?</h2>
+
+        <a data-wa-template="wa_main"
+           href="#"
+           class="mt-5 inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn sm:max-w-md"
+           target="_blank" rel="noopener">
+          <span data-i18n="final_cta">💬 Scrivici su WhatsApp – rispondiamo subito</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 9) FOOTER (essenziale) -->
     <footer class="border-t border-white/10 py-10">
-      <div class="mx-auto max-w-6xl px-4">
+      <div class="mx-auto max-w-5xl px-4">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div class="text-sm text-white/60">
-            © <span id="year"></span> NexaRide
+            <div class="font-semibold text-white/75" data-i18n="footer_brand">Nexaride – NCC</div>
+            <div class="mt-1" data-i18n="footer_ops">Operativi 24/7</div>
           </div>
-          <div class="text-sm text-white/60">
-            <span class="font-semibold text-white/70">+39 320 878 4091</span>
-            <span class="mx-2">•</span>
-            <a href="mailto:info@nexaride.it" class="underline hover:text-white">info@nexaride.it</a>
+
+          <div class="flex items-center gap-3">
+            <a data-wa-template="wa_main"
+               href="#"
+               class="rounded-xl px-4 py-3 text-sm font-semibold whatsapp-btn"
+               target="_blank" rel="noopener">
+              <span data-i18n="footer_whatsapp">Contatto WhatsApp</span>
+            </a>
+
+            <a href="/privacy.html"
+               class="text-sm text-white/60 underline hover:text-white"
+               data-i18n="footer_privacy">
+              Privacy Policy
+            </a>
           </div>
         </div>
       </div>
     </footer>
   </main>
 
-  <!-- Fixed WhatsApp CTA (mobile) -->
+  <!-- Fixed WhatsApp CTA (mobile only) -->
   <a id="waFloating"
      data-wa-template="wa_main"
      href="#"
-     class="fixed bottom-4 left-4 right-4 z-50 sm:hidden inline-flex items-center justify-center rounded-2xl px-6 py-4 text-base font-semibold whatsapp-btn soft-shadow"
+     class="fixed bottom-4 left-4 right-4 z-50 sm:hidden inline-flex items-center justify-center rounded-2xl px-6 py-4 text-lg font-semibold whatsapp-btn soft-shadow"
      target="_blank" rel="noopener">
-    <span data-i18n="cta_whatsapp_main">💬 Scrivici ora su WhatsApp – rispondiamo subito</span>
+    <span data-i18n="cta_main">💬 Scrivici ora su WhatsApp</span>
   </a>
 
   <script>
+    // ===== Config =====
     const WA_PHONE = "393208784091";
 
+    // ===== i18n =====
     const I18N = {
       it: {
-        header_subtitle: "NCC Milano 24/7 • Aeroporti • Lavoro • Gruppi",
-        badge_availability: "Disponibilità 24/7 • Risposta rapida",
+        header_subtitle: "NCC 24/7",
 
-        hero_title: 'NCC Milano 24/7<br class="hidden sm:block" />Aeroporti • Lavoro • Gruppi',
-        hero_subtitle: "Transfer affidabili per aeroporti (MXP/LIN/BGY), viaggi di lavoro e gruppi con bagagli. Scrivici su WhatsApp: rispondiamo in meno di 5 minuti.",
+        hero_h1: "NCC e trasferimenti privati – disponibili 24/7",
+        hero_sub: "Aeroporti · città · lunghi viaggi · gruppi<br/>Rispondiamo subito su WhatsApp",
+        cta_main: "💬 Scrivici ora su WhatsApp",
+        micro_trust: "Preventivo immediato · Senza app · Persona reale",
 
-        cta_whatsapp_main: "💬 Scrivici ora su WhatsApp – rispondiamo subito",
+        why_h2: "Perché scegliere Nexaride",
+        why_1_title: "🚗 NCC professionale con flotta operativa",
+        why_2_title: "⏱️ Risposta rapida e gestione diretta",
+        why_3_title: "🤝 Possibilità di più veicoli tramite NCC partner",
+        cta_repeat: "👉 Contattaci su WhatsApp",
 
-        partner_title: "Partner NCC",
-        partner_note: "Collaboriamo con NCC partner selezionati per garantire disponibilità e standard di servizio. Veicoli soggetti a disponibilità.",
+        services_h2: "Servizi NCC",
+        svc_1: "Trasferimenti aeroportuali (MXP · LIN · BGY)",
+        svc_2: "Viaggi di lavoro e clienti business",
+        svc_3: "Trasferimenti privati e lunghi percorsi",
+        svc_4: "Servizi per famiglie e gruppi",
+        svc_5: "Disponibilità notturna e festivi",
+        services_key_title: "Testo chiave",
+        services_key: "Scrivici su WhatsApp indicando tratta, data e orario. Pensiamo a tutto noi.",
 
-        label_whatsapp_business: "WhatsApp Business:",
-        label_email: "Email:",
+        types_h2: "Tipologie disponibili",
+        type_1_title: "Berlina Executive",
+        type_1_desc: "1–3 passeggeri · Ideale per lavoro e aeroporti",
+        type_2_title: "SUV / Comfort",
+        type_2_desc: "Più spazio per bagagli e viaggi lunghi",
+        type_3_title: "Van fino a 7–8 passeggeri",
+        type_3_desc: "Gruppi, famiglie, trasferimenti multipli",
+        type_4_title: "Luxury su richiesta",
+        type_4_desc: "Disponibile tramite NCC partner selezionati",
+        types_note: "Alcune tipologie di servizio possono essere fornite tramite NCC partner selezionati.",
 
-        services_kicker: "Servizi",
-        services_title: "Aeroporti • Viaggi di lavoro • Gruppi",
-        area_served: "Milano & Lombardia",
+        how_h2: "Come prenotare",
+        how_1: "1) Scrivici su WhatsApp",
+        how_2: "2) Indica tratta, data e orario",
+        how_3: "3) Ricevi subito il preventivo",
+        how_4: "4) Conferma e viaggia senza pensieri",
+        cta_book: "💬 Prenota ora su WhatsApp",
 
-        svc_airports_title: "Transfer aeroporti",
-        svc_airports_desc: "MXP • LIN • BGY • Stazioni • Hotel",
-        svc_business_title: "Viaggi di lavoro",
-        svc_business_desc: "Meeting, hotel, aziende, servizi a ore/giornate",
-        svc_groups_title: "Gruppi",
-        svc_groups_desc: "Famiglie, team, bagagli, transfer eventi",
-
-        no_payment_note: "Nessun pagamento online. Preventivo e conferma via WhatsApp.",
-
-        fleet_h2: "Categorie veicoli",
-        fleet_p: "Disponibilità su richiesta tramite NCC partner selezionati. Le immagini sono indicative.",
-
-        fleet_e_title: "Berlina Business",
-        fleet_e_desc: "Ideale per aeroporti e viaggi di lavoro.",
-        fleet_rav_title: "SUV / Economy",
-        fleet_rav_desc: "Soluzione versatile per trasferimenti rapidi.",
-        fleet_v_title: "Van per gruppi",
-        fleet_v_desc: "Perfetto per gruppi e bagagli (aeroporti/eventi).",
-        fleet_s_title: "Berlina alta rappresentanza",
-        fleet_s_desc: "Disponibile su richiesta, soggetto a disponibilità.",
-
-        form_h2: "Dettagli rapidi",
-        form_p: "Compila se vuoi: generiamo un messaggio WhatsApp pronto da inviare.",
-        form_note: "Risposta rapida su WhatsApp.",
-        opt_vehicle: "Categoria veicolo (opzionale)",
-
+        quote_h2: "Preferisci un preventivo scritto?",
+        quote_p: "Puoi compilare il modulo oppure scriverci direttamente su WhatsApp (più veloce).",
+        opt_vehicle: "Tipologia (opzionale)",
         ph_from: "Partenza (es. Linate / Hotel / Indirizzo)",
         ph_to: "Destinazione (es. Duomo / MXP / Indirizzo)",
-        ph_stops: "Fermate intermedie (opzionale – es. Hotel → Ufficio → Ristorante → Aeroporto)",
+        ph_stops: "Fermate intermedie (opzionale – es. Hotel → Ufficio → Aeroporto)",
         ph_date: "Data (es. 12/01)",
         ph_time: "Ora (es. 18:30)",
         ph_pax: "Passeggeri (es. 2)",
-        ph_notes: "Note (voli, bagagli, numero valigie, richieste)",
+        ph_notes: "Note (voli, bagagli, richieste)",
 
-        // WhatsApp main prefilled (operativo)
-        wa_main: "Ciao! Vorrei un preventivo NCC.\nPartenza:\nDestinazione:\nData e ora:\nPasseggeri:\nBagagli/Note:\nGrazie!",
+        reliability_h2: "Affidabilità",
+        reliability_p: "Nexaride opera ogni giorno nel trasporto NCC. Gestiamo direttamente le corse e, in caso di alta richiesta, collaboriamo con autisti NCC partner per garantire continuità del servizio.",
 
-        // Labels for form WhatsApp lines
+        final_h2: "Hai bisogno di un NCC adesso o nei prossimi giorni?",
+        final_cta: "💬 Scrivici su WhatsApp – rispondiamo subito",
+
+        footer_brand: "Nexaride – NCC",
+        footer_ops: "Operativi 24/7",
+        footer_whatsapp: "Contatto WhatsApp",
+        footer_privacy: "Privacy Policy",
+
+        // WhatsApp main template (precompiled, operational)
+        wa_main: "Ciao! Vorrei un NCC.\nTratta (partenza → destinazione):\nData:\nOrario:\nPasseggeri:\nBagagli/Note:\nGrazie!",
+
+        // Labels for form -> WhatsApp (Italian)
         wa_label_from: "Partenza",
         wa_label_to: "Destinazione",
-        wa_label_stops: "Fermate intermedie",
+        wa_label_stops: "Fermate",
         wa_label_date: "Data",
-        wa_label_time: "Ora",
+        wa_label_time: "Orario",
         wa_label_pax: "Passeggeri",
-        wa_label_vehicle: "Categoria veicolo",
+        wa_label_vehicle: "Tipologia",
         wa_label_notes: "Note"
       },
 
       en: {
-        header_subtitle: "Milan chauffeur service 24/7 • Airports • Business • Groups",
-        badge_availability: "Available 24/7 • Quick reply",
+        header_subtitle: "Chauffeur service 24/7",
 
-        hero_title: 'Milan chauffeur service 24/7<br class="hidden sm:block" />Airports • Business • Groups',
-        hero_subtitle: "Reliable transfers for airports (MXP/LIN/BGY), business trips and groups with luggage. Message us on WhatsApp: reply in under 5 minutes.",
+        hero_h1: "Private transfers & chauffeur service – available 24/7",
+        hero_sub: "Airports · city · long-distance · groups<br/>Quick reply on WhatsApp",
+        cta_main: "💬 Message us on WhatsApp",
+        micro_trust: "Instant quote · No app · Real person",
 
-        cta_whatsapp_main: "💬 Message us on WhatsApp – quick reply",
+        why_h2: "Why Nexaride",
+        why_1_title: "🚗 Professional NCC with operating fleet",
+        why_2_title: "⏱️ Fast reply and direct management",
+        why_3_title: "🤝 Multiple vehicles via selected NCC partners",
+        cta_repeat: "👉 Contact us on WhatsApp",
 
-        partner_title: "NCC Partners",
-        partner_note: "We work with selected NCC partner operators to ensure availability and service standards. Vehicles subject to availability.",
+        services_h2: "NCC services",
+        svc_1: "Airport transfers (MXP · LIN · BGY)",
+        svc_2: "Business trips and corporate clients",
+        svc_3: "Private and long-distance transfers",
+        svc_4: "Families and groups",
+        svc_5: "Night-time and holiday availability",
+        services_key_title: "Key note",
+        services_key: "Message us on WhatsApp with route, date and time. We’ll handle everything.",
 
-        label_whatsapp_business: "WhatsApp Business:",
-        label_email: "Email:",
+        types_h2: "Available service types",
+        type_1_title: "Executive sedan",
+        type_1_desc: "1–3 passengers · Ideal for business and airports",
+        type_2_title: "SUV / Comfort",
+        type_2_desc: "More luggage space and long-distance comfort",
+        type_3_title: "Van up to 7–8 passengers",
+        type_3_desc: "Groups, families, multiple transfers",
+        type_4_title: "Luxury on request",
+        type_4_desc: "Available via selected NCC partners",
+        types_note: "Some service types may be provided via selected NCC partner operators.",
 
-        services_kicker: "Services",
-        services_title: "Airports • Business trips • Groups",
-        area_served: "Milan & Lombardy",
+        how_h2: "How to book",
+        how_1: "1) Message us on WhatsApp",
+        how_2: "2) Share route, date and time",
+        how_3: "3) Get an instant quote",
+        how_4: "4) Confirm and travel stress-free",
+        cta_book: "💬 Book now on WhatsApp",
 
-        svc_airports_title: "Airport transfers",
-        svc_airports_desc: "MXP • LIN • BGY • Stations • Hotels",
-        svc_business_title: "Business trips",
-        svc_business_desc: "Meetings, hotels, companies, hourly/daily service",
-        svc_groups_title: "Groups",
-        svc_groups_desc: "Families, teams, luggage, event transfers",
-
-        no_payment_note: "No online payment. Quote and confirmation via WhatsApp.",
-
-        fleet_h2: "Vehicle categories",
-        fleet_p: "Subject to availability via selected NCC partner operators. Images are illustrative.",
-
-        fleet_e_title: "Business sedan",
-        fleet_e_desc: "Ideal for airports and business trips.",
-        fleet_rav_title: "SUV / Economy",
-        fleet_rav_desc: "Versatile option for quick transfers.",
-        fleet_v_title: "Group van",
-        fleet_v_desc: "Perfect for groups and luggage (airports/events).",
-        fleet_s_title: "Executive sedan",
-        fleet_s_desc: "Available on request, subject to availability.",
-
-        form_h2: "Quick details",
-        form_p: "Optional: fill in the form to generate a WhatsApp message ready to send.",
-        form_note: "Quick reply on WhatsApp.",
-        opt_vehicle: "Vehicle category (optional)",
-
+        quote_h2: "Prefer a written quote?",
+        quote_p: "You can fill the form or message us on WhatsApp (faster).",
+        opt_vehicle: "Service type (optional)",
         ph_from: "Pickup (e.g. Linate / Hotel / Address)",
         ph_to: "Destination (e.g. Duomo / MXP / Address)",
-        ph_stops: "Extra stops (optional – e.g. Hotel → Office → Restaurant → Airport)",
+        ph_stops: "Extra stops (optional – e.g. Hotel → Office → Airport)",
         ph_date: "Date (e.g. 12/01)",
         ph_time: "Time (e.g. 18:30)",
         ph_pax: "Passengers (e.g. 2)",
-        ph_notes: "Notes (flight, luggage, number of bags, requests)",
+        ph_notes: "Notes (flight, luggage, requests)",
 
-        wa_main: "Hi! I'd like a quote for a chauffeur service.\nPickup:\nDestination:\nDate & time:\nPassengers:\nLuggage/Notes:\nThanks!",
+        reliability_h2: "Reliability",
+        reliability_p: "Nexaride operates daily in the NCC transport sector. We manage trips directly and, during peak demand, we work with NCC partner drivers to ensure continuity.",
+
+        final_h2: "Need an NCC now or in the next few days?",
+        final_cta: "💬 Message us on WhatsApp – quick reply",
+
+        footer_brand: "Nexaride – NCC",
+        footer_ops: "Available 24/7",
+        footer_whatsapp: "WhatsApp contact",
+        footer_privacy: "Privacy Policy",
+
+        wa_main: "Hi! I'd like an NCC/chauffeur service.\nRoute (pickup → destination):\nDate:\nTime:\nPassengers:\nLuggage/Notes:\nThanks!",
 
         wa_label_from: "Pickup",
         wa_label_to: "Destination",
-        wa_label_stops: "Extra stops",
+        wa_label_stops: "Stops",
         wa_label_date: "Date",
         wa_label_time: "Time",
         wa_label_pax: "Passengers",
-        wa_label_vehicle: "Vehicle category",
+        wa_label_vehicle: "Service type",
         wa_label_notes: "Notes"
       }
     };
 
     function getLang() {
-      return localStorage.getItem("lang") || (navigator.language && navigator.language.toLowerCase().startsWith("en") ? "en" : "it");
+      return localStorage.getItem("lang") ||
+        ((navigator.language || "").toLowerCase().startsWith("en") ? "en" : "it");
     }
 
     function applyLang(lang) {
       const dict = I18N[lang] || I18N.it;
+
       document.documentElement.setAttribute("lang", lang === "en" ? "en" : "it");
 
       document.getElementById("langIT")?.classList.toggle("lang-active", lang === "it");
@@ -480,7 +569,7 @@
         if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
       });
 
-      // Single WhatsApp CTA (main)
+      // All WhatsApp links = same single action
       document.querySelectorAll("a[data-wa-template]").forEach(a => {
         const tKey = a.getAttribute("data-wa-template");
         const msg = dict[tKey] || I18N.it[tKey] || "";
@@ -488,7 +577,15 @@
       });
     }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Mobile safe-bottom padding (so fixed button doesn't cover content)
+    function setSafeBottom() {
+      const isMobile = window.matchMedia("(max-width: 639px)").matches;
+      document.querySelector("main")?.classList.toggle("safe-bottom", isMobile);
+    }
+
+    // Init
+    setSafeBottom();
+    window.addEventListener("resize", setSafeBottom);
 
     const initialLang = getLang();
     applyLang(initialLang);
@@ -502,7 +599,7 @@
       applyLang("en");
     });
 
-    // Form -> WhatsApp (generates detailed message; still same CTA/action)
+    // Form -> WhatsApp (detailed message, same action)
     const form = document.getElementById("quoteForm");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
