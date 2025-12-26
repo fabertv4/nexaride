@@ -16,7 +16,7 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts (optional) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,8 +27,41 @@
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     section[id] { scroll-margin-top: 90px; }
 
-    /* Fix click: overlay non deve bloccare i bottoni */
+    /* overlay hero non blocca click */
     .hero-overlay { pointer-events: none; }
+
+    /* micro-spunta selezione flotta */
+    .fleet-card { position: relative; }
+    .fleet-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      font-size: 12px;
+      color: #fff;
+      user-select: none;
+    }
+    .fleet-badge .dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #25D366;
+      display: grid;
+      place-items: center;
+      color: #0b1a10;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .fleet-card.is-selected { outline: 2px solid rgba(255,255,255,0.9); outline-offset: 0px; }
+    .fleet-card.is-selected .fleet-badge { display: inline-flex; }
   </style>
 
   <!-- LocalBusiness schema -->
@@ -47,7 +80,7 @@
 </head>
 
 <body class="bg-neutral-950 text-neutral-100">
-  <!-- Top bar -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
       <a href="#top" class="flex items-center gap-3">
@@ -72,8 +105,7 @@
           Chiama
         </a>
 
-        <button id="ctaWATop"
-           type="button"
+        <button id="ctaWATop" type="button"
            class="inline-flex items-center gap-2 rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
           WhatsApp
         </button>
@@ -84,10 +116,8 @@
   <main id="top">
     <!-- Hero -->
     <section class="relative overflow-hidden">
-      <!-- overlay SOLO estetico: non blocca click -->
       <div class="hero-overlay absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.10),transparent_55%)]"></div>
 
-      <!-- contenuto sopra overlay -->
       <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 md:grid-cols-2 md:py-20">
         <div>
           <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-neutral-200">
@@ -105,16 +135,13 @@
             Rispondiamo subito su WhatsApp: persona reale, preventivo rapido.
           </p>
 
-          <!-- CTA HERO (INTERATTIVI) -->
           <div class="mt-8 flex flex-wrap gap-3">
-            <button id="ctaWAHero"
-              type="button"
+            <button id="ctaWAHero" type="button"
               class="inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-6 py-3 font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
               Scrivici ora su WhatsApp
             </button>
 
-            <button id="ctaScrollToForm"
-              type="button"
+            <button id="ctaScrollToForm" type="button"
               class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-3 font-semibold hover:bg-white/10 active:bg-white/15">
               Compila i dettagli del viaggio
             </button>
@@ -141,7 +168,6 @@
           </div>
         </div>
 
-        <!-- Right card -->
         <div class="relative">
           <div class="rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-2xl shadow-black/50">
             <div class="flex items-start justify-between gap-4">
@@ -170,8 +196,7 @@
             </div>
 
             <div class="mt-6">
-              <button id="ctaWACard"
-                type="button"
+              <button id="ctaWACard" type="button"
                 class="w-full inline-flex items-center justify-center rounded-2xl bg-[#25D366] text-neutral-950 px-5 py-3 font-semibold hover:opacity-90 active:opacity-80">
                 Prenota / Chiedi disponibilità su WhatsApp
               </button>
@@ -182,6 +207,97 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Servizi -->
+    <section id="servizi" class="mx-auto max-w-6xl px-4 py-12">
+      <h2 class="text-3xl font-semibold">Servizi</h2>
+      <p class="mt-3 text-neutral-300 max-w-2xl">
+        Soluzioni NCC su misura per privati e aziende. Preventivo rapido e conferma via WhatsApp/telefono.
+      </p>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-lg font-semibold">Transfer aeroporti</div>
+          <p class="mt-2 text-neutral-300">Malpensa, Linate, Bergamo. Monitoraggio voli e attese concordate.</p>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-lg font-semibold">Eventi</div>
+          <p class="mt-2 text-neutral-300">Fiere, hotel, meeting, concerti, serate, matrimoni. Driver dedicato.</p>
+        </div>
+
+        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-lg font-semibold">Business</div>
+          <p class="mt-2 text-neutral-300">Servizi a ore o giornate. Massima riservatezza e puntualità.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flotta -->
+    <section id="flotta" class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-3xl font-semibold">La nostra flotta</h2>
+      <p class="mt-3 text-neutral-300 max-w-2xl">
+        Seleziona la categoria più adatta: comfort, rappresentanza o van per gruppi.
+      </p>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+
+        <!-- COMFORT / SUV -->
+        <div id="card-comfort" data-vehicle-key="comfort" data-vehicle-label="Comfort / SUV (Toyota RAV4)"
+          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
+          <div class="fleet-badge"><span class="dot">✓</span> Selezionato</div>
+          <img src="/rav4_industriale.png" alt="Toyota RAV4 NCC" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Comfort / SUV</h3>
+            <p class="mt-2 text-neutral-300">
+              Toyota RAV4 · ideale per città, aeroporti e viaggi comodi fino a 4 passeggeri.
+            </p>
+            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
+          </div>
+        </div>
+
+        <!-- EXECUTIVE -->
+        <div id="card-executive" data-vehicle-key="executive" data-vehicle-label="Executive (Mercedes Classe E)"
+          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
+          <div class="fleet-badge"><span class="dot">✓</span> Selezionato</div>
+          <img src="/classeE_industriale.png" alt="Mercedes Classe E NCC" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Executive</h3>
+            <p class="mt-2 text-neutral-300">
+              Mercedes Classe E · comfort e immagine per clienti business e VIP.
+            </p>
+            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
+          </div>
+        </div>
+
+        <!-- VAN -->
+        <div id="card-van" data-vehicle-key="van" data-vehicle-label="Van / Gruppi (Mercedes Classe V / Vito)"
+          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
+          <div class="fleet-badge"><span class="dot">✓</span> Selezionato</div>
+          <img src="/classeV_industriale.png" alt="Mercedes Classe V / Vito NCC" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold">Van / Gruppi</h3>
+            <p class="mt-2 text-neutral-300">
+              Mercedes Classe V / Vito · fino a 7 passeggeri + bagagli. Perfetto per gruppi e trasferte.
+            </p>
+            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA unico flotta -->
+      <div class="mt-12 flex justify-center">
+        <button id="ctaFleet" type="button"
+          class="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold text-neutral-950 hover:bg-neutral-200 active:bg-neutral-300">
+          Richiedi preventivo
+        </button>
+      </div>
+
+      <p class="mt-3 text-center text-xs text-neutral-400">
+        Seleziona un veicolo sopra per pre-compilare automaticamente il form.
+      </p>
     </section>
 
     <!-- Come funziona -->
@@ -206,66 +322,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Flotta -->
-    <section id="flotta" class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-semibold">La nostra flotta</h2>
-      <p class="mt-3 text-neutral-300 max-w-2xl">
-        Seleziona la categoria più adatta: comfort, rappresentanza o van per gruppi.
-      </p>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <!-- COMFORT / SUV -->
-        <div data-vehicle="comfort"
-          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
-          <img src="/rav4_industriale.png" alt="Toyota RAV4 NCC" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Comfort / SUV</h3>
-            <p class="mt-2 text-neutral-300">
-              Toyota RAV4 · ideale per città, aeroporti e viaggi comodi fino a 4 passeggeri.
-            </p>
-            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
-          </div>
-        </div>
-
-        <!-- EXECUTIVE -->
-        <div data-vehicle="executive"
-          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
-          <img src="/classeE_industriale.png" alt="Mercedes Classe E NCC" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Executive</h3>
-            <p class="mt-2 text-neutral-300">
-              Mercedes Classe E · comfort e immagine per clienti business e VIP.
-            </p>
-            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
-          </div>
-        </div>
-
-        <!-- VAN -->
-        <div data-vehicle="van"
-          class="fleet-card cursor-pointer rounded-3xl border border-white/10 bg-white/5 overflow-hidden transition hover:scale-[1.01] hover:border-white/20">
-          <img src="/classeV_industriale.png" alt="Mercedes Classe V / Vito NCC" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold">Van / Gruppi</h3>
-            <p class="mt-2 text-neutral-300">
-              Mercedes Classe V / Vito · fino a 7 passeggeri + bagagli. Perfetto per gruppi e trasferte.
-            </p>
-            <p class="mt-4 text-xs text-neutral-400">Tocca per selezionare</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 flex justify-center">
-        <button id="ctaFleet" type="button"
-          class="inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold text-neutral-950 hover:bg-neutral-200 active:bg-neutral-300">
-          Richiedi preventivo
-        </button>
-      </div>
-
-      <p class="mt-3 text-center text-xs text-neutral-400">
-        Se selezioni un veicolo, lo preimpostiamo nel modulo.
-      </p>
     </section>
 
     <!-- Preventivo -->
@@ -295,15 +351,21 @@
         </div>
 
         <form id="quoteForm" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4">
+          <!-- CATEGORIA VEICOLO (OBBLIGATORIA) -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Categoria veicolo</label>
-            <select id="vehicle"
+
+            <select id="vehicle" required
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100">
-              <option value="" selected>Seleziona (opzionale)</option>
+              <option value="" disabled selected>Seleziona categoria veicolo</option>
               <option value="Comfort / SUV (Toyota RAV4)">Comfort / SUV (Toyota RAV4)</option>
               <option value="Executive (Mercedes Classe E)">Executive (Mercedes Classe E)</option>
               <option value="Van / Gruppi (Mercedes Classe V / Vito)">Van / Gruppi (Mercedes Classe V / Vito)</option>
             </select>
+
+            <p class="mt-2 text-xs text-neutral-400">
+              Puoi selezionare anche il Van per 1–2 passeggeri se desideri più spazio e comfort.
+            </p>
           </div>
 
           <div class="md:col-span-2">
@@ -338,19 +400,17 @@
               placeholder="Es. Milano Centrale → Hotel → Ufficio" />
           </div>
 
-          <!-- MODIFICA: calendario + ora -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Data / Ora</label>
             <input id="when" required type="datetime-local"
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100" />
           </div>
 
-          <!-- MODIFICA: menu a tendina passeggeri 1-8 -->
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300">Passeggeri</label>
             <select id="pax" required
               class="mt-1 w-full rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-3 text-neutral-100">
-              <option value="" selected>Seleziona</option>
+              <option value="" disabled selected>Seleziona</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -459,6 +519,7 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
+    // WhatsApp number (digits only)
     const WA_PHONE = "393208784091";
 
     function openWhatsAppWithText(text) {
@@ -475,21 +536,7 @@
       }, 350);
     }
 
-    function setVehicleByKey(key) {
-      const vehicleSelect = document.getElementById("vehicle");
-      if (!vehicleSelect) return;
-
-      const map = {
-        comfort: "Comfort / SUV (Toyota RAV4)",
-        executive: "Executive (Mercedes Classe E)",
-        van: "Van / Gruppi (Mercedes Classe V / Vito)"
-      };
-
-      const val = map[key];
-      if (val) vehicleSelect.value = val;
-    }
-
-    // Imposta MIN su datetime-local (non permette date nel passato)
+    // Min datetime: adesso
     function setMinDateTimeNow() {
       const el = document.getElementById("when");
       if (!el) return;
@@ -500,7 +547,7 @@
     }
     setMinDateTimeNow();
 
-    // Converte "YYYY-MM-DDTHH:MM" -> "DD/MM/YYYY HH:MM"
+    // YYYY-MM-DDTHH:MM -> DD/MM/YYYY HH:MM
     function formatDateTimeIT(dtLocalValue) {
       if (!dtLocalValue) return "";
       const [datePart, timePart] = dtLocalValue.split("T");
@@ -509,20 +556,20 @@
       return `${d}/${m}/${y} ${timePart}`;
     }
 
-    // Messaggio WhatsApp base (pulito)
+    // Base message
     const baseMsg = [
       "Ciao! Vorrei un preventivo NCC con NexaRide.",
       "",
+      "Categoria veicolo:",
       "Partenza:",
       "Destinazione:",
       "Fermate intermedie (se presenti):",
       "Data/Ora:",
       "Passeggeri:",
-      "Categoria veicolo (se preferita):",
       "Note:"
     ].join("\n");
 
-    // CTA WhatsApp (interattivi)
+    // CTA WhatsApp
     document.getElementById("ctaWATop").addEventListener("click", () => openWhatsAppWithText(baseMsg));
     document.getElementById("ctaWAHero").addEventListener("click", () => openWhatsAppWithText(baseMsg));
     document.getElementById("ctaWACard").addEventListener("click", () => openWhatsAppWithText(baseMsg));
@@ -530,33 +577,50 @@
     document.getElementById("ctaWAOpenGeneric").addEventListener("click", () => openWhatsAppWithText(baseMsg));
 
     // CTA "Compila i dettagli"
-    document.getElementById("ctaScrollToForm").addEventListener("click", () => {
-      scrollToPreventivoAndFocus();
-    });
+    document.getElementById("ctaScrollToForm").addEventListener("click", () => scrollToPreventivoAndFocus());
 
-    // Flotta: selezione su card + CTA unico
-    let selectedVehicleKey = null;
+    // --- Flotta selection + micro-spunta ---
+    const vehicleSelect = document.getElementById("vehicle");
+    const fleetCards = Array.from(document.querySelectorAll(".fleet-card"));
 
     function clearFleetSelection() {
-      document.querySelectorAll(".fleet-card").forEach(c => {
-        c.classList.remove("ring-2", "ring-white");
-      });
+      fleetCards.forEach(c => c.classList.remove("is-selected"));
     }
 
-    document.querySelectorAll(".fleet-card").forEach(card => {
+    function selectFleetByLabel(label) {
+      clearFleetSelection();
+      const card = fleetCards.find(c => c.getAttribute("data-vehicle-label") === label);
+      if (card) card.classList.add("is-selected");
+    }
+
+    function setVehicleSelectValue(label) {
+      if (!vehicleSelect) return;
+      vehicleSelect.value = label;
+      // trigger change for any listeners
+      vehicleSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    // Click su card -> seleziona nel form + spunta
+    fleetCards.forEach(card => {
       card.addEventListener("click", () => {
-        selectedVehicleKey = card.getAttribute("data-vehicle");
-        clearFleetSelection();
-        card.classList.add("ring-2", "ring-white");
+        const label = card.getAttribute("data-vehicle-label");
+        if (label) setVehicleSelectValue(label);
+        selectFleetByLabel(label);
       });
     });
 
+    // Cambio select -> aggiorna spunta card
+    vehicleSelect.addEventListener("change", () => {
+      const label = vehicleSelect.value;
+      if (label) selectFleetByLabel(label);
+    });
+
+    // CTA flotta -> scroll al form (se non hai scelto veicolo, lo sceglierai nel form)
     document.getElementById("ctaFleet").addEventListener("click", () => {
-      if (selectedVehicleKey) setVehicleByKey(selectedVehicleKey);
       scrollToPreventivoAndFocus();
     });
 
-    // Form submit -> invio WhatsApp
+    // Form submit -> invio WhatsApp strutturato
     const form = document.getElementById("quoteForm");
     const resetBtn = document.getElementById("resetBtn");
 
@@ -568,16 +632,16 @@
       const from = document.getElementById("from").value.trim();
       const to = document.getElementById("to").value.trim();
       const stops = document.getElementById("stops").value.trim();
-      const whenRaw = document.getElementById("when").value.trim(); // datetime-local
+      const whenRaw = document.getElementById("when").value.trim();
       const when = formatDateTimeIT(whenRaw);
-      const pax = document.getElementById("pax").value.trim(); // select 1-8
+      const pax = document.getElementById("pax").value.trim();
       const name = document.getElementById("name").value.trim();
       const phoneInput = document.getElementById("phoneInput").value.trim();
       const notes = document.getElementById("notes").value.trim();
 
       let msg = "Ciao! Vorrei un preventivo NCC con NexaRide.\n";
       msg += `Tipo servizio: ${serviceType}\n`;
-      if (vehicle) msg += `Categoria veicolo: ${vehicle}\n`;
+      msg += `Categoria veicolo: ${vehicle}\n`;
       msg += `Partenza: ${from}\n`;
       msg += `Destinazione: ${to}\n`;
       if (stops) msg += `Fermate intermedie: ${stops}\n`;
@@ -592,11 +656,16 @@
 
     resetBtn.addEventListener("click", () => {
       form.reset();
-      document.getElementById("vehicle").value = "";
-      document.getElementById("serviceType").value = "Transfer singolo";
-      selectedVehicleKey = null;
+
+      // ripristina placeholder disabled su select (alcuni browser lo gestiscono da soli, qui forziamo)
+      const veh = document.getElementById("vehicle");
+      veh.selectedIndex = 0;
+
+      const pax = document.getElementById("pax");
+      pax.selectedIndex = 0;
+
       clearFleetSelection();
-      setMinDateTimeNow(); // ripristina min (se il browser lo resetta)
+      setMinDateTimeNow();
     });
   </script>
 </body>
