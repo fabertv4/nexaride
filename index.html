@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <!-- Source audited: :contentReference[oaicite:0]{index=0} -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -77,13 +76,6 @@
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
 
-    .top-urgent {
-      position: sticky; top: 56px; z-index: 45;
-      background: rgba(245, 79, 79, 0.10);
-      border-bottom: 1px solid rgba(245,79,79,0.25);
-      backdrop-filter: blur(10px);
-    }
-
     .toast {
       position: fixed; left: 50%; transform: translateX(-50%);
       bottom: 96px; z-index: 80;
@@ -95,6 +87,13 @@
       font-size: 13px;
       max-width: calc(100vw - 24px);
     }
+
+    .intent-card {
+      cursor: pointer;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+    }
+    .intent-card:hover { background: rgba(255,255,255,0.07); }
+    .intent-card:active { transform: translateY(1px); }
   </style>
 </head>
 
@@ -110,10 +109,8 @@
         </div>
       </a>
 
+      <!-- MENU: tolti Aeroporti / Lago di Como -->
       <nav class="hidden items-center gap-6 text-sm text-neutral-300 md:flex">
-        <a href="#milan" class="hover:text-white" id="t_nav_milan">Milano</a>
-        <a href="#airports" class="hover:text-white" id="t_nav_airports">Aeroporti</a>
-        <a href="#lakecomo" class="hover:text-white" id="t_nav_lakecomo">Lago di Como</a>
         <a href="#fleet" class="hover:text-white" id="t_nav_fleet">Flotta</a>
         <a href="#quote" class="hover:text-white" id="t_nav_quote">Preventivo</a>
         <a href="#faq" class="hover:text-white" id="t_nav_faq">FAQ</a>
@@ -130,28 +127,6 @@
       </div>
     </div>
   </header>
-
-  <!-- TOP URGENT BAR (shows only if within 2h) -->
-  <div id="urgentTopBar" class="top-urgent hidden">
-    <div class="mx-auto max-w-6xl px-4 py-3">
-      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <div id="t_urgent_top_title" class="font-semibold">Entro 2 ore?</div>
-          <div id="t_urgent_top_desc" class="text-sm text-neutral-200/80">Scrivici “URGENTE” su WhatsApp per risposta immediata.</div>
-        </div>
-        <div class="flex gap-2">
-          <button id="urgentTopWA" type="button"
-            class="inline-flex flex-1 sm:flex-none items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
-            <span id="t_urgent_top_btn">WhatsApp urgente</span>
-          </button>
-          <a href="tel:+393208784091"
-             class="inline-flex flex-1 sm:flex-none items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
-            <span id="t_urgent_top_call">Chiama</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- HERO -->
   <main class="mx-auto max-w-6xl px-4">
@@ -207,67 +182,32 @@
             <div id="t_season_title" class="text-sm font-semibold">Speciale eventi:</div>
             <div id="t_season_desc" class="text-sm text-neutral-200/80">Fashion Week · Salone del Mobile · Stagione Lago di Como</div>
           </div>
-
-          <div class="mt-5 flex flex-col gap-3 sm:flex-row">
-            <button id="ctaWACard" type="button"
-              class="inline-flex w-full items-center justify-center rounded-2xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80 sm:w-auto">
-              <span id="t_btn_check_wa">Scrivici su WhatsApp</span>
-            </button>
-            <a href="tel:+393208784091"
-              class="inline-flex w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold hover:bg-white/10 active:bg-white/15 sm:w-auto">
-              <span id="t_btn_call">Chiama</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- INTENT: MILAN / AIRPORTS / LAKE COMO -->
+    <!-- INTENT: niente bottoni ripetuti; card cliccabili -->
     <section class="pb-10">
       <div class="grid gap-4 md:grid-cols-3">
-        <div id="milan" class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <div id="intentMilan" data-intent="Milan"
+          class="intent-card rounded-3xl border border-white/10 bg-white/5 p-5">
           <div id="t_intent_milan_title" class="text-lg font-semibold">Milano</div>
-          <div id="t_intent_milan_desc" class="mt-1 text-sm text-neutral-200/75">City transfer, business, eventi, hotel. Prenotazione rapida su WhatsApp.</div>
-          <div class="mt-4 flex gap-2">
-            <button id="intentMilanWA" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
-              <span id="t_btn_open_wa">Apri WhatsApp</span>
-            </button>
-            <button id="intentMilanQuote" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
-              <span id="t_btn_fleet_quote">Preventivo</span>
-            </button>
-          </div>
+          <div id="t_intent_milan_desc" class="mt-1 text-sm text-neutral-200/75">City transfer, business, eventi, hotel.</div>
+          <div id="t_intent_tap_1" class="mt-3 text-xs text-neutral-200/60">Tocca per compilare il preventivo</div>
         </div>
 
-        <div id="airports" class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <div id="intentAirports" data-intent="Airports"
+          class="intent-card rounded-3xl border border-white/10 bg-white/5 p-5">
           <div id="t_intent_air_title" class="text-lg font-semibold">Aeroporti</div>
-          <div id="t_intent_air_desc" class="mt-1 text-sm text-neutral-200/75">MXP Malpensa · LIN Linate · BGY Orio. Meet &amp; Greet su richiesta.</div>
-          <div class="mt-4 flex gap-2">
-            <button id="intentAirWA" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
-              <span id="t_btn_open_wa_2">Apri WhatsApp</span>
-            </button>
-            <button id="intentAirQuote" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
-              <span id="t_btn_fleet_quote_2">Preventivo</span>
-            </button>
-          </div>
+          <div id="t_intent_air_desc" class="mt-1 text-sm text-neutral-200/75">MXP · LIN · BGY. Meet &amp; Greet su richiesta.</div>
+          <div id="t_intent_tap_2" class="mt-3 text-xs text-neutral-200/60">Tocca per compilare il preventivo</div>
         </div>
 
-        <div id="lakecomo" class="rounded-3xl border border-white/10 bg-white/5 p-5">
+        <div id="intentLake" data-intent="Lake Como"
+          class="intent-card rounded-3xl border border-white/10 bg-white/5 p-5">
           <div id="t_intent_lake_title" class="text-lg font-semibold">Lago di Como</div>
           <div id="t_intent_lake_desc" class="mt-1 text-sm text-neutral-200/75">Como · Bellagio · Varenna · Menaggio. Ideale per giornata intera o A/R.</div>
-          <div class="mt-4 flex gap-2">
-            <button id="intentLakeWA" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
-              <span id="t_btn_open_wa_3">Apri WhatsApp</span>
-            </button>
-            <button id="intentLakeQuote" type="button"
-              class="flex-1 inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
-              <span id="t_btn_fleet_quote_3">Preventivo</span>
-            </button>
-          </div>
+          <div id="t_intent_tap_3" class="mt-3 text-xs text-neutral-200/60">Tocca per compilare il preventivo</div>
         </div>
       </div>
     </section>
@@ -292,7 +232,7 @@
           <img src="/rav4_industriale.png" alt="Toyota RAV4" class="h-44 w-full rounded-2xl object-cover ring-1 ring-white/10" />
           <div class="mt-4">
             <div id="t_fleet_c1_t" class="text-lg font-semibold">Comfort / SUV</div>
-            <div id="t_fleet_c1_d" class="mt-1 text-sm text-neutral-200/75">Ideale per città e aeroporti (1–4 pax).</div>
+            <div id="t_fleet_c1_d" class="mt-1 text-sm text-neutral-200/75">Auto fino a 4 passeggeri.</div>
           </div>
         </article>
 
@@ -302,7 +242,7 @@
           <img src="/classeE_industriale.png" alt="Mercedes Classe E" class="h-44 w-full rounded-2xl object-cover ring-1 ring-white/10" />
           <div class="mt-4">
             <div id="t_fleet_c2_t" class="text-lg font-semibold">Executive</div>
-            <div id="t_fleet_c2_d" class="mt-1 text-sm text-neutral-200/75">Business, hotel, eventi. Comfort premium (1–4 pax).</div>
+            <div id="t_fleet_c2_d" class="mt-1 text-sm text-neutral-200/75">Auto fino a 4 passeggeri (business/eventi).</div>
           </div>
         </article>
 
@@ -312,13 +252,13 @@
           <img src="/classeV_industriale.png" alt="Mercedes Classe V / Vito" class="h-44 w-full rounded-2xl object-cover ring-1 ring-white/10" />
           <div class="mt-4">
             <div id="t_fleet_c3_t" class="text-lg font-semibold">Van / Gruppi</div>
-            <div id="t_fleet_c3_d" class="mt-1 text-sm text-neutral-200/75">Più passeggeri e bagagli (fino a 8 pax).</div>
+            <div id="t_fleet_c3_d" class="mt-1 text-sm text-neutral-200/75">Da 1 a 7 passeggeri + bagagli.</div>
           </div>
         </article>
       </div>
 
       <div id="t_fleet_hint" class="mt-4 text-sm text-neutral-200/70">
-        Tip: se hai 4 passeggeri e molti bagagli, spesso conviene il Van.
+        Nota: Auto fino a 4 passeggeri. Van disponibile anche per 1 persona, fino a 7 passeggeri.
       </div>
     </section>
 
@@ -329,7 +269,7 @@
           <div>
             <h2 id="t_quote_title" class="text-2xl font-bold">Richiedi preventivo</h2>
             <p id="t_quote_sub" class="mt-1 text-sm text-neutral-200/75">
-              Compila i dettagli: generiamo un messaggio WhatsApp già strutturato.
+              Compila i dettagli: apriamo WhatsApp con un messaggio già strutturato.
             </p>
           </div>
           <button id="ctaWAOpenGeneric" type="button"
@@ -338,7 +278,7 @@
           </button>
         </div>
 
-        <!-- alerts -->
+        <!-- alert -->
         <div id="formAlert" class="mt-4 hidden rounded-2xl border border-red-500/40 bg-red-500/10 p-4 text-sm">
           <div class="font-semibold" id="t_alert_title">Completa i campi richiesti</div>
           <div id="formAlertText" class="mt-1 text-neutral-200/80"></div>
@@ -352,23 +292,23 @@
 
         <!-- capacity notice -->
         <div id="capacityNotice" class="mt-4 hidden rounded-2xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-neutral-200/85">
-          <span id="t_capacity_notice">Con 5+ passeggeri impostiamo automaticamente Van/Gruppi.</span>
+          <span id="t_capacity_notice">Auto fino a 4 passeggeri. Con 5–7 passeggeri selezioniamo Van.</span>
         </div>
 
-        <!-- airport/travel hint -->
+        <!-- airport/station hint -->
         <div id="travelHint" class="mt-4 hidden rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-neutral-200/80">
           <span id="t_travel_hint">Hai indicato aeroporto/stazione: se vuoi aggiungi numero volo/treno e Meet &amp; Greet.</span>
         </div>
 
         <!-- luggage hint -->
         <div id="luggageVanHint" class="mt-4 hidden rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-neutral-200/80">
-          <span id="t_luggage_hint">4 passeggeri + molti bagagli: spesso conviene Van/Gruppi.</span>
+          <span id="t_luggage_hint">4 passeggeri + molti bagagli: spesso conviene Van.</span>
         </div>
 
-        <!-- urgent hint -->
+        <!-- urgent hint (solo inline nel form, niente banner fisso sopra) -->
         <div id="urgentHint" class="mt-4 hidden rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-neutral-200/85">
           <div class="font-semibold" id="t_urgent_hint_t">Partenza entro 2 ore</div>
-          <div id="t_urgent_hint_d" class="mt-1 text-neutral-200/80">Per urgenze, inviamo “URGENTE” in cima al messaggio WhatsApp.</div>
+          <div id="t_urgent_hint_d" class="mt-1 text-neutral-200/80">Per urgenze, aggiungiamo “URGENTE” in cima al messaggio WhatsApp.</div>
           <div class="mt-3 flex gap-2">
             <button id="urgentWA" type="button"
               class="inline-flex flex-1 items-center justify-center rounded-2xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-neutral-950 hover:opacity-90 active:opacity-80">
@@ -390,7 +330,6 @@
               <option value="transfer_roundtrip" id="t_service_opt2">Transfer (andata/ritorno)</option>
               <option value="hourly" id="t_service_opt3">A disposizione (ore)</option>
             </select>
-            <div id="arHint" class="mt-2 hidden text-xs text-neutral-200/60">Tip: se conosci già il ritorno, aggiungilo per un preventivo più preciso.</div>
           </div>
 
           <!-- vehicle -->
@@ -402,15 +341,18 @@
               <option value="Executive (Mercedes Classe E)" id="t_vehicle_opt2">Executive (Mercedes Classe E)</option>
               <option value="Van / Gruppi (Mercedes Classe V / Vito)" id="t_vehicle_opt3">Van / Gruppi (Mercedes Classe V / Vito)</option>
             </select>
+            <div id="t_vehicle_cap_hint" class="mt-2 text-xs text-neutral-200/60">
+              Auto: fino a 4 passeggeri · Van: da 1 a 7 passeggeri
+            </div>
           </div>
 
-          <!-- passengers -->
+          <!-- passengers (max 7) -->
           <div>
             <label class="text-sm font-semibold" id="t_pax_label" for="pax">Passeggeri</label>
             <select id="pax" required class="mt-2 w-full rounded-2xl border border-white/10 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#25D366]/40">
               <option value="" id="t_pax_ph">Seleziona…</option>
               <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-              <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+              <option value="5">5</option><option value="6">6</option><option value="7">7</option>
             </select>
           </div>
 
@@ -455,10 +397,10 @@
             </select>
           </div>
 
-          <!-- return conditional -->
+          <!-- return conditional (NON opzionale se A/R) -->
           <div id="returnWrap" class="md:col-span-2 hidden rounded-2xl border border-white/10 bg-white/5 p-4">
             <div class="flex items-center justify-between gap-2">
-              <label class="text-sm font-semibold" id="t_return_label" for="returnWhen">Ritorno (opzionale)</label>
+              <label class="text-sm font-semibold" id="t_return_label" for="returnWhen">Ritorno (obbligatorio)</label>
               <label class="inline-flex items-center gap-2 text-xs text-neutral-200/70">
                 <input id="returnTbd" type="checkbox" class="h-4 w-4 accent-[#25D366]">
                 <span id="t_return_tbd">Da definire</span>
@@ -501,7 +443,6 @@
             </div>
           </div>
 
-          <!-- airport extra: waiting + child seat (only if airport/station is detected) -->
           <div id="airportExtrasWrap" class="md:col-span-2 hidden rounded-2xl border border-white/10 bg-white/5 p-4">
             <div class="grid gap-4 md:grid-cols-2">
               <div>
@@ -533,7 +474,7 @@
             <div class="text-sm font-semibold" id="t_contactpref_label">Preferenza contatto</div>
             <div class="mt-2 seg-wrap">
               <button id="prefWA" type="button" class="seg" aria-pressed="true">WhatsApp</button>
-              <button id="prefCall" type="button" class="seg" aria-pressed="false" id="t_contact_call">Chiamata</button>
+              <button id="prefCall" type="button" class="seg" aria-pressed="false">Chiamata</button>
             </div>
           </div>
 
@@ -610,21 +551,6 @@
               placeholder="Es: 2 bambini, richiesta seggiolino, orario flessibile, ecc."></textarea>
           </div>
 
-          <!-- LIVE SUMMARY + COPY -->
-          <div class="md:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-4">
-            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <div>
-                <div class="text-sm font-semibold" id="t_summary_title">Riepilogo (preview WhatsApp)</div>
-                <div class="text-xs text-neutral-200/60" id="t_summary_sub">Controlla prima di inviare: meno domande, più veloce la conferma.</div>
-              </div>
-              <button id="copyMsgBtn" type="button"
-                class="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-neutral-950/40 px-4 py-2 text-sm font-semibold hover:bg-white/10 active:bg-white/15">
-                <span id="t_copy_btn">Copia testo</span>
-              </button>
-            </div>
-            <pre id="msgPreview" class="mt-3 whitespace-pre-wrap break-words rounded-2xl border border-white/10 bg-neutral-950/40 p-4 text-xs text-neutral-100/90"></pre>
-          </div>
-
           <!-- submit -->
           <div class="md:col-span-2 flex flex-col gap-3 md:flex-row">
             <button id="submitBtn" type="submit"
@@ -645,7 +571,7 @@
       </div>
     </section>
 
-    <!-- REVIEWS (static placeholders) -->
+    <!-- REVIEWS (niente “Cliente” come nome) -->
     <section class="pb-12">
       <h2 id="t_reviews_title" class="text-2xl font-bold">Recensioni</h2>
       <p id="t_reviews_sub" class="mt-1 text-sm text-neutral-200/75">Esempi (placeholder): aggiungeremo le recensioni reali.</p>
@@ -654,17 +580,17 @@
         <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
           <div class="text-sm font-semibold">★★★★★</div>
           <div id="t_r1" class="mt-2 text-sm text-neutral-200/80">Puntuali, auto pulita e comunicazione rapidissima su WhatsApp.</div>
-          <div class="mt-3 text-xs text-neutral-200/60">— Cliente</div>
+          <div class="mt-3 text-xs text-neutral-200/60">— M.R.</div>
         </div>
         <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
           <div class="text-sm font-semibold">★★★★★</div>
           <div id="t_r2" class="mt-2 text-sm text-neutral-200/80">Transfer aeroporto perfetto, Meet &amp; Greet comodo e professionale.</div>
-          <div class="mt-3 text-xs text-neutral-200/60">— Cliente</div>
+          <div class="mt-3 text-xs text-neutral-200/60">— S.L.</div>
         </div>
         <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
           <div class="text-sm font-semibold">★★★★★</div>
           <div id="t_r3" class="mt-2 text-sm text-neutral-200/80">Ottimo per gruppo con bagagli. Preventivo chiaro e veloce.</div>
-          <div class="mt-3 text-xs text-neutral-200/60">— Cliente</div>
+          <div class="mt-3 text-xs text-neutral-200/60">— A.K.</div>
         </div>
       </div>
     </section>
@@ -686,8 +612,8 @@
           <div id="t_faq_a3" class="mt-2 text-sm text-neutral-200/80">Carta, contanti, bonifico, Apple/Google Pay.</div>
         </div>
         <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-          <div id="t_faq_q4" class="font-semibold">Se siamo in gruppo?</div>
-          <div id="t_faq_a4" class="mt-2 text-sm text-neutral-200/80">Se 5+ passeggeri impostiamo Van/Gruppi. Puoi anche richiedere più veicoli.</div>
+          <div id="t_faq_q4" class="font-semibold">Quanti passeggeri?</div>
+          <div id="t_faq_a4" class="mt-2 text-sm text-neutral-200/80">Auto fino a 4 passeggeri. Van da 1 a 7 passeggeri (consigliato con molti bagagli).</div>
         </div>
       </div>
     </section>
@@ -752,72 +678,70 @@
     // ---------- CONFIG ----------
     const WA_PHONE = "393208784091";
     const VAN_LABEL = "Van / Gruppi (Mercedes Classe V / Vito)";
+    const STORAGE_KEY = "nexaride_last_quote_v2";
     const TZ_LABEL = "Europe/Rome";
-    const STORAGE_KEY = "nexaride_last_quote_v1";
 
     // ---------- I18N ----------
     const I18N = {
       it: {
         headerSub: "NCC • Milano • Transfer",
-        nav: { milan:"Milano", airports:"Aeroporti", lakecomo:"Lago di Como", fleet:"Flotta", quote:"Preventivo", faq:"FAQ" },
+        nav: { fleet:"Flotta", quote:"Preventivo", faq:"FAQ" },
         badges: { b1:"Disponibili 24/7", b2:"Risposta rapida" },
         h1: "NCC e trasferimenti privati – disponibili 24/7",
         sub: "Aeroporti · città · lunghi viaggi · gruppi\nRispondiamo subito su WhatsApp",
-        seasonTitle:"Speciale eventi:",
-        seasonDesc:"Fashion Week · Salone del Mobile · Stagione Lago di Como",
         microtrust: "Preventivo immediato · Senza app · Persona reale",
         trustline: "Servizio NCC autorizzato · Fattura su richiesta · Pagamenti: carta/contanti/bonifico",
         email: "Email",
+        seasonTitle:"Speciale eventi:",
+        seasonDesc:"Fashion Week · Salone del Mobile · Stagione Lago di Como",
         btn: {
           wa:"WhatsApp",
           waHero:"Scrivici ora su WhatsApp",
           fill:"Compila i dettagli",
-          checkWa:"Scrivici su WhatsApp",
-          fleetQuote:"Preventivo",
-          call:"Chiama",
           openWa:"Apri WhatsApp",
+          fleetQuote:"Richiedi preventivo",
           submit:"Invia su WhatsApp",
           reset:"Reset",
-          urgentTopBtn:"WhatsApp urgente",
-          urgentTopCall:"Chiama",
-          copy:"Copia testo"
+          urgentBtn:"WhatsApp urgente",
+          call:"Chiama"
         },
-        urgentTop: { title:"Entro 2 ore?", desc:"Scrivici “URGENTE” su WhatsApp per risposta immediata." },
         intent: {
           milanTitle:"Milano",
-          milanDesc:"City transfer, business, eventi, hotel. Prenotazione rapida su WhatsApp.",
+          milanDesc:"City transfer, business, eventi, hotel.",
           airTitle:"Aeroporti",
-          airDesc:"MXP Malpensa · LIN Linate · BGY Orio. Meet & Greet su richiesta.",
+          airDesc:"MXP · LIN · BGY. Meet & Greet su richiesta.",
           lakeTitle:"Lago di Como",
-          lakeDesc:"Como · Bellagio · Varenna · Menaggio. Ideale per giornata intera o A/R."
+          lakeDesc:"Como · Bellagio · Varenna · Menaggio. Ideale per giornata intera o A/R.",
+          tap:"Tocca per compilare il preventivo"
         },
         fleet: {
           title:"Flotta",
           sub:"Seleziona un veicolo: verrà impostato nel preventivo.",
           c1t:"Comfort / SUV",
-          c1d:"Ideale per città e aeroporti (1–4 pax).",
+          c1d:"Auto fino a 4 passeggeri.",
           c2t:"Executive",
-          c2d:"Business, hotel, eventi. Comfort premium (1–4 pax).",
+          c2d:"Auto fino a 4 passeggeri (business/eventi).",
           c3t:"Van / Gruppi",
-          c3d:"Più passeggeri e bagagli (fino a 8 pax).",
-          quoteHint:"Tip: se hai 4 passeggeri e molti bagagli, spesso conviene il Van.",
+          c3d:"Da 1 a 7 passeggeri + bagagli.",
+          hint:"Nota: Auto fino a 4 passeggeri. Van disponibile anche per 1 persona, fino a 7 passeggeri.",
           selected:"Selezionato"
         },
         quote: {
           title:"Richiedi preventivo",
-          sub:"Compila i dettagli: generiamo un messaggio WhatsApp già strutturato.",
+          sub:"Compila i dettagli: apriamo WhatsApp con un messaggio già strutturato.",
           selectedVehicle:"Veicolo selezionato",
-          capacityNotice:"Con 5+ passeggeri impostiamo automaticamente Van/Gruppi.",
+          capNotice:"Auto fino a 4 passeggeri. Con 5–7 passeggeri selezioniamo Van.",
           travelHint:"Hai indicato aeroporto/stazione: se vuoi aggiungi numero volo/treno e Meet & Greet.",
-          luggageHint:"4 passeggeri + molti bagagli: spesso conviene Van/Gruppi.",
-          urgentHintT:"Partenza entro 2 ore",
-          urgentHintD:"Per urgenze, inviamo “URGENTE” in cima al messaggio WhatsApp.",
+          luggageHint:"4 passeggeri + molti bagagli: spesso conviene Van.",
+          urgentT:"Partenza entro 2 ore",
+          urgentD:"Per urgenze, aggiungiamo “URGENTE” in cima al messaggio WhatsApp.",
           serviceLabel:"Tipo servizio",
           service1:"Transfer (solo andata)",
           service2:"Transfer (andata/ritorno)",
           service3:"A disposizione (ore)",
           vehicleLabel:"Veicolo (obbligatorio)",
           vehiclePH:"Seleziona veicolo…",
+          vehicleCapHint:"Auto: fino a 4 passeggeri · Van: da 1 a 7 passeggeri",
           paxLabel:"Passeggeri",
           paxPH:"Seleziona…",
           fromLabel:"Partenza (Pickup)",
@@ -830,7 +754,7 @@
           whenTZ:"Timezone: Europe/Rome",
           multiLabel:"Più veicoli (opzionale)",
           multi1:"1 veicolo", multi2:"2 veicoli", multi3:"3 veicoli", multi4:"4 veicoli",
-          returnLabel:"Ritorno (opzionale)",
+          returnLabel:"Ritorno (obbligatorio)",
           returnTbd:"Da definire",
           returnHint:"Se non lo sai, spunta “Da definire”.",
           hoursLabel:"Ore (obbligatorio)",
@@ -866,8 +790,6 @@
           phonePH:"+39 ...",
           notesLabel:"Note (opzionale)",
           notesPH:"Es: 2 bambini, richiesta seggiolino, orario flessibile, ecc.",
-          summaryTitle:"Riepilogo (preview WhatsApp)",
-          summarySub:"Controlla prima di inviare: meno domande, più veloce la conferma.",
           privacyNote:"Inviando, aprirai WhatsApp con il messaggio già compilato. Nessun dato viene inviato a server dal sito."
         },
         reviews: { title:"Recensioni", sub:"Esempi (placeholder): aggiungeremo le recensioni reali." },
@@ -879,85 +801,104 @@
           a2:"Sì, su richiesta. Spunta “Richiedo fattura” nel preventivo.",
           q3:"Pagamenti accettati?",
           a3:"Carta, contanti, bonifico, Apple/Google Pay.",
-          q4:"Se siamo in gruppo?",
-          a4:"Se 5+ passeggeri impostiamo Van/Gruppi. Puoi anche richiedere più veicoli."
+          q4:"Quanti passeggeri?",
+          a4:"Auto fino a 4 passeggeri. Van da 1 a 7 passeggeri (consigliato con molti bagagli)."
         },
         footer: { sub:"NCC Milano · Transfer privati 24/7", links:"Link", wa:"WhatsApp", call:"Chiama", quote:"Preventivo" },
-        alert: { title:"Completa i campi richiesti", missingPrefix:"Manca: " },
-        toasts: { copied:"Testo copiato", blocked:"Evita doppio invio: sto aprendo WhatsApp…" },
+        alert: {
+          title:"Completa i campi richiesti",
+          missingPrefix:"Manca: ",
+          carCapacity:"Con 5–7 passeggeri serve Van. Abbiamo selezionato Van automaticamente."
+        },
+        toasts: { blocked:"Evita doppio invio: sto aprendo WhatsApp…" },
         waTemplates: {
           urgent: "URGENTE\n\n",
-          base: "Ciao! Vorrei un preventivo NCC con NexaRide.\n\n" +
-                "Pickup:\n" +
-                "Drop-off:\n" +
-                "Data/Ora:\n" +
-                "Passeggeri:\n" +
-                "Veicolo:\n" +
-                "Fermate (se presenti):\n" +
-                "Note:\n"
+          header: "Ciao! Vorrei un preventivo NCC con NexaRide.\n\n",
+          ctx: "Richiesta: ",
+          labels: {
+            service:"Tipo servizio",
+            hours:"Ore",
+            return:"Ritorno",
+            vehicle:"Categoria veicolo",
+            vehiclesN:"N. veicoli",
+            from:"Partenza",
+            to:"Destinazione",
+            stops:"Fermate",
+            when:"Data/Ora",
+            pax:"Passeggeri",
+            flight:"Volo/Treno",
+            meet:"Meet & Greet",
+            wait:"Attesa",
+            seat:"Seggiolino",
+            lug:"Bagagli",
+            pay:"Pagamento",
+            inv:"Fattura",
+            pref:"Preferenza contatto",
+            name:"Nome",
+            phone:"Telefono",
+            notes:"Note"
+          }
         }
       },
       en: {
         headerSub: "Chauffeur • Milan • Transfers",
-        nav: { milan:"Milan", airports:"Airports", lakecomo:"Lake Como", fleet:"Fleet", quote:"Quote", faq:"FAQ" },
+        nav: { fleet:"Fleet", quote:"Quote", faq:"FAQ" },
         badges: { b1:"Available 24/7", b2:"Fast reply" },
         h1: "Private chauffeur & transfers — available 24/7",
         sub: "Airports · city · long trips · groups\nWe reply fast on WhatsApp",
-        seasonTitle:"Events season:",
-        seasonDesc:"Fashion Week · Salone del Mobile · Lake Como season",
         microtrust: "Instant quote · No app · Real person",
         trustline: "Licensed NCC service · Invoice on request · Payments: card/cash/bank",
         email: "Email",
+        seasonTitle:"Events season:",
+        seasonDesc:"Fashion Week · Salone del Mobile · Lake Como season",
         btn: {
           wa:"WhatsApp",
           waHero:"Message us on WhatsApp",
           fill:"Fill the details",
-          checkWa:"Chat on WhatsApp",
-          fleetQuote:"Quote",
-          call:"Call",
           openWa:"Open WhatsApp",
+          fleetQuote:"Request quote",
           submit:"Send on WhatsApp",
           reset:"Reset",
-          urgentTopBtn:"Urgent WhatsApp",
-          urgentTopCall:"Call",
-          copy:"Copy text"
+          urgentBtn:"Urgent WhatsApp",
+          call:"Call"
         },
-        urgentTop: { title:"Within 2 hours?", desc:"Message “URGENT” on WhatsApp for immediate handling." },
         intent: {
           milanTitle:"Milan",
-          milanDesc:"City transfers, business, events, hotels. Fast booking on WhatsApp.",
+          milanDesc:"City transfers, business, events, hotels.",
           airTitle:"Airports",
-          airDesc:"MXP Malpensa · LIN Linate · BGY Orio. Meet & Greet on request.",
+          airDesc:"MXP · LIN · BGY. Meet & Greet on request.",
           lakeTitle:"Lake Como",
-          lakeDesc:"Como · Bellagio · Varenna · Menaggio. Ideal for full day or round-trip."
+          lakeDesc:"Como · Bellagio · Varenna · Menaggio. Ideal for full day or round trip.",
+          tap:"Tap to fill the quote"
         },
         fleet: {
           title:"Fleet",
           sub:"Select a vehicle: it will be set in your quote request.",
           c1t:"Comfort / SUV",
-          c1d:"Perfect for city & airports (1–4 pax).",
+          c1d:"Car up to 4 passengers.",
           c2t:"Executive",
-          c2d:"Business, hotels, events. Premium comfort (1–4 pax).",
+          c2d:"Car up to 4 passengers (business/events).",
           c3t:"Van / Groups",
-          c3d:"More passengers and luggage (up to 8 pax).",
-          quoteHint:"Tip: 4 passengers + lots of luggage often means a Van is better.",
+          c3d:"From 1 to 7 passengers + luggage.",
+          hint:"Note: Car up to 4 passengers. Van available also for 1 person, up to 7 passengers.",
           selected:"Selected"
         },
         quote: {
           title:"Request a quote",
-          sub:"Fill the details: we generate a structured WhatsApp message.",
+          sub:"Fill the details: we open WhatsApp with a structured message.",
           selectedVehicle:"Selected vehicle",
-          capacityNotice:"With 5+ passengers we auto-select Van/Groups.",
+          capNotice:"Car up to 4 passengers. With 5–7 passengers we select Van.",
           travelHint:"You mentioned an airport/station: add flight/train number and Meet & Greet if needed.",
-          luggageHint:"4 passengers + lots of luggage: Van/Groups is often better.",
-          urgentHintT:"Departure within 2 hours",
-          urgentHintD:"For urgent trips we place “URGENT” at the top of the WhatsApp message.",
+          luggageHint:"4 passengers + lots of luggage: Van is often better.",
+          urgentT:"Departure within 2 hours",
+          urgentD:"For urgent trips we add “URGENT” at the top of the WhatsApp message.",
           serviceLabel:"Service type",
           service1:"Transfer (one-way)",
           service2:"Transfer (round trip)",
           service3:"Hourly (as directed)",
           vehicleLabel:"Vehicle (required)",
           vehiclePH:"Select vehicle…",
+          vehicleCapHint:"Car: up to 4 passengers · Van: from 1 to 7 passengers",
           paxLabel:"Passengers",
           paxPH:"Select…",
           fromLabel:"Pickup",
@@ -970,7 +911,7 @@
           whenTZ:"Timezone: Europe/Rome",
           multiLabel:"Multiple vehicles (optional)",
           multi1:"1 vehicle", multi2:"2 vehicles", multi3:"3 vehicles", multi4:"4 vehicles",
-          returnLabel:"Return (optional)",
+          returnLabel:"Return (required)",
           returnTbd:"To be defined",
           returnHint:"If unknown, tick “To be defined”.",
           hoursLabel:"Hours (required)",
@@ -1006,8 +947,6 @@
           phonePH:"+39 ...",
           notesLabel:"Notes (optional)",
           notesPH:"E.g. 2 kids, child seat requested, flexible time, etc.",
-          summaryTitle:"Summary (WhatsApp preview)",
-          summarySub:"Check before sending: fewer follow-up questions, faster confirmation.",
           privacyNote:"When you send, WhatsApp opens with a pre-filled message. No data is sent to a server."
         },
         reviews: { title:"Reviews", sub:"Examples (placeholders): real reviews will be added." },
@@ -1019,158 +958,85 @@
           a2:"Yes, on request. Tick “I need an invoice”.",
           q3:"Accepted payments?",
           a3:"Card, cash, bank transfer, Apple/Google Pay.",
-          q4:"What if we are a group?",
-          a4:"With 5+ passengers we select Van/Groups. You can also request multiple vehicles."
+          q4:"How many passengers?",
+          a4:"Car up to 4 passengers. Van from 1 to 7 passengers (recommended with lots of luggage)."
         },
         footer: { sub:"Milan chauffeur · Private transfers 24/7", links:"Links", wa:"WhatsApp", call:"Call", quote:"Quote" },
-        alert: { title:"Please complete required fields", missingPrefix:"Missing: " },
-        toasts: { copied:"Text copied", blocked:"Preventing double send: opening WhatsApp…" },
+        alert: {
+          title:"Please complete required fields",
+          missingPrefix:"Missing: ",
+          carCapacity:"With 5–7 passengers you need a Van. We selected Van automatically."
+        },
+        toasts: { blocked:"Preventing double send: opening WhatsApp…" },
         waTemplates: {
           urgent: "URGENT\n\n",
-          base: "Hi! I’d like a chauffeur/NCC quote with NexaRide.\n\n" +
-                "Pickup:\n" +
-                "Drop-off:\n" +
-                "Date/Time:\n" +
-                "Passengers:\n" +
-                "Vehicle:\n" +
-                "Stops (if any):\n" +
-                "Notes:\n"
+          header: "Hi! I’d like a chauffeur/NCC quote with NexaRide.\n\n",
+          ctx: "Request: ",
+          labels: {
+            service:"Service",
+            hours:"Hours",
+            return:"Return",
+            vehicle:"Vehicle",
+            vehiclesN:"# Vehicles",
+            from:"Pickup",
+            to:"Drop-off",
+            stops:"Stops",
+            when:"Date/Time",
+            pax:"Passengers",
+            flight:"Flight/Train",
+            meet:"Meet & Greet",
+            wait:"Waiting",
+            seat:"Child seat",
+            lug:"Luggage",
+            pay:"Payment",
+            inv:"Invoice",
+            pref:"Contact pref",
+            name:"Name",
+            phone:"Phone",
+            notes:"Notes"
+          }
         }
       }
     };
 
     // ---------- STATE ----------
     let LANG = (localStorage.getItem("nexaride_lang") || "it");
-    let contactPref = "WhatsApp"; // "WhatsApp" or "Call"
-    let luggage = "none";         // none|some|many
-    let meetGreet = "no";         // no|yes
-    let payment = "card";         // card|cash|bank|apple
-    let lastContextTag = "";      // "Milan" | "Airports" | "Lake Como" | ""
+    let contactPref = "WhatsApp"; // WhatsApp | Call
+    let luggage = "none";         // none | some | many
+    let meetGreet = "no";         // no | yes
+    let payment = "card";         // card | cash | bank | apple
+    let lastContextTag = "";      // Milan | Airports | Lake Como | ""
 
     let isSubmitting = false;
     let lastSubmitAt = 0;
 
-    // ---------- UI helpers ----------
-    function $(id) { return document.getElementById(id); }
+    // ---------- helpers ----------
+    const $ = (id) => document.getElementById(id);
 
     function showToast(text) {
       const el = $("toast");
       el.textContent = text;
       el.classList.remove("hidden");
       clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => el.classList.add("hidden"), 1600);
+      showToast._t = setTimeout(() => el.classList.add("hidden"), 1500);
     }
 
-    function clearFleetSelection() { fleetCards.forEach(c => c.classList.remove("is-selected")); }
-    function selectFleetByLabel(label) {
-      clearFleetSelection();
-      const card = fleetCards.find(c => c.getAttribute("data-vehicle-label") === label);
-      if (card) card.classList.add("is-selected");
+    function openWhatsApp(text) {
+      const url = "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    function updateSelectedVehicleUI() {
-      const v = (vehicleSelect.value || "").trim();
-      if (v) {
-        selectedVehicleLabel.textContent = v;
-        selectedVehicleWrap.classList.remove("hidden");
-      } else {
-        selectedVehicleWrap.classList.add("hidden");
-        selectedVehicleLabel.textContent = "";
-      }
-    }
-
-    function scrollToQuoteAndFocus() {
-      $("quote").scrollIntoView({ behavior: "smooth", block: "start" });
-      setTimeout(() => {
-        const first = getFirstMissingField();
-        (first || vehicleSelect).focus({ preventScroll: true });
-      }, 350);
-    }
-
-    function getPaxNumber() {
-      const v = (paxSelect.value || "").trim();
-      const n = parseInt(v, 10);
-      return Number.isFinite(n) ? n : null;
-    }
-
-    function isVanSelected() { return (vehicleSelect.value || "") === VAN_LABEL; }
-
-    function enforceCapacityRule() {
-      const paxN = getPaxNumber();
-      if (!paxN) { capacityNotice.classList.add("hidden"); return; }
-      if (paxN >= 5) {
-        capacityNotice.classList.remove("hidden");
-        if (!isVanSelected()) {
-          vehicleSelect.value = VAN_LABEL;
-          selectFleetByLabel(VAN_LABEL);
-          updateSelectedVehicleUI();
-        }
-      } else {
-        capacityNotice.classList.add("hidden");
-      }
-    }
-
-    function setContactPref(v) {
-      contactPref = v;
-      prefWA.setAttribute("aria-pressed", v === "WhatsApp" ? "true" : "false");
-      prefCall.setAttribute("aria-pressed", v === "Call" ? "true" : "false");
-    }
-
-    function setLuggage(v) {
-      luggage = v;
-      lugNone.setAttribute("aria-pressed", v === "none" ? "true" : "false");
-      lugSome.setAttribute("aria-pressed", v === "some" ? "true" : "false");
-      lugMany.setAttribute("aria-pressed", v === "many" ? "true" : "false");
-      updateNotesSuggestion();
-      updateContextHints();
-    }
-
-    function setMeetGreet(v) {
-      meetGreet = v;
-      meetNo.setAttribute("aria-pressed", v === "no" ? "true" : "false");
-      meetYes.setAttribute("aria-pressed", v === "yes" ? "true" : "false");
-    }
-
-    function setPayment(v) {
-      payment = v;
-      payCard.setAttribute("aria-pressed", v === "card" ? "true" : "false");
-      payCash.setAttribute("aria-pressed", v === "cash" ? "true" : "false");
-      payBank.setAttribute("aria-pressed", v === "bank" ? "true" : "false");
-      payApple.setAttribute("aria-pressed", v === "apple" ? "true" : "false");
-    }
-
-    function serviceNeedsReturn() { return serviceTypeEl.value === "transfer_roundtrip"; }
-    function serviceNeedsHours() { return serviceTypeEl.value === "hourly"; }
-
-    function setMinDateTimeNow(el) {
-      if (!el) return;
-      const now = new Date();
-      const pad = (n) => String(n).padStart(2, "0");
-      const min = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
-      el.min = min;
-    }
-
-    function setDefaultDateTimePlus60(el) {
-      if (!el || el.value) return;
-      const d = new Date();
-      d.setMinutes(d.getMinutes() + 60);
-      const pad = (n) => String(n).padStart(2, "0");
-      el.value = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-    }
-
-    function parseDateTimeLocal(value) {
+    function parseDT(value) {
       if (!value) return null;
       const d = new Date(value);
       return isNaN(d.getTime()) ? null : d;
     }
 
-    function formatDateTime(lang, dtLocalValue) {
-      if (!dtLocalValue) return "";
-      const d = new Date(dtLocalValue);
-      if (isNaN(d.getTime())) return dtLocalValue;
-      return d.toLocaleString(lang === "en" ? "en-GB" : "it-IT", {
-        year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit"
-      });
+    function setMinNow(el) {
+      if (!el) return;
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      el.min = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
     }
 
     function isAirportOrStationText(text) {
@@ -1182,73 +1048,70 @@
       return keys.some(k => t.includes(k));
     }
 
-    function setText(id, value) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.textContent = value;
+    function formatDT(lang, dtLocalValue) {
+      if (!dtLocalValue) return "";
+      const d = new Date(dtLocalValue);
+      if (isNaN(d.getTime())) return dtLocalValue;
+      return d.toLocaleString(lang === "en" ? "en-GB" : "it-IT", {
+        year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit"
+      });
     }
 
-    function openWhatsAppWithText(text) {
-      const url = "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(text);
-      window.open(url, "_blank", "noopener,noreferrer");
+    function getPax() {
+      const n = parseInt(($("pax").value || "").trim(), 10);
+      return Number.isFinite(n) ? n : null;
     }
 
-    function getFirstMissingField() {
-      if (!vehicleSelect.value) return vehicleSelect;
-      if (!fromEl.value.trim()) return fromEl;
-      if (!toEl.value.trim()) return toEl;
-      if (!whenEl.value) return whenEl;
-      if (!paxSelect.value) return paxSelect;
-      if (serviceNeedsHours() && !hoursEl.value) return hoursEl;
-      return null;
+    function isCarVehicle(v) {
+      return v === "Comfort / SUV (Toyota RAV4)" || v === "Executive (Mercedes Classe E)";
     }
 
-    // ---------- ELEMENTS ----------
-    const langIT = $("langIT");
-    const langEN = $("langEN");
+    function clearFleetSelection() {
+      document.querySelectorAll(".fleet-card").forEach(c => c.classList.remove("is-selected"));
+    }
 
-    const vehicleSelect = $("vehicle");
-    const paxSelect = $("pax");
-    const whenEl = $("when");
+    function selectFleetByLabel(label) {
+      clearFleetSelection();
+      const card = Array.from(document.querySelectorAll(".fleet-card"))
+        .find(c => c.getAttribute("data-vehicle-label") === label);
+      if (card) card.classList.add("is-selected");
+    }
+
+    // ---------- elements ----------
+    const vehicleEl = $("vehicle");
+    const paxEl = $("pax");
     const fromEl = $("from");
     const toEl = $("to");
     const stopsEl = $("stops");
-    const serviceTypeEl = $("serviceType");
-    const notesEl = $("notes");
-    const nameEl = $("name");
-    const phoneEl = $("phoneInput");
-    const invoiceEl = $("invoice");
-    const multiVehiclesEl = $("multiVehicles");
-
+    const whenEl = $("when");
+    const serviceEl = $("serviceType");
     const returnWrap = $("returnWrap");
     const returnWhenEl = $("returnWhen");
     const returnTbdEl = $("returnTbd");
-    const arHint = $("arHint");
-
     const hoursWrap = $("hoursWrap");
     const hoursEl = $("hours");
 
     const travelHint = $("travelHint");
     const flightWrap = $("flightWrap");
-    const flightNumberEl = $("flightNumber");
+    const flightEl = $("flightNumber");
     const meetWrap = $("meetWrap");
+    const meetNo = $("meetNo");
+    const meetYes = $("meetYes");
     const airportExtrasWrap = $("airportExtrasWrap");
-    const waitTimeEl = $("waitTime");
-    const childSeatEl = $("childSeat");
+    const waitEl = $("waitTime");
+    const seatEl = $("childSeat");
 
     const urgentHint = $("urgentHint");
-    const urgentTopBar = $("urgentTopBar");
     const urgentWA = $("urgentWA");
-    const urgentTopWA = $("urgentTopWA");
 
     const capacityNotice = $("capacityNotice");
     const luggageVanHint = $("luggageVanHint");
 
-    const formAlert = $("formAlert");
-    const formAlertText = $("formAlertText");
-
     const selectedVehicleWrap = $("selectedVehicleWrap");
     const selectedVehicleLabel = $("selectedVehicleLabel");
+
+    const formAlert = $("formAlert");
+    const formAlertText = $("formAlertText");
 
     const prefWA = $("prefWA");
     const prefCall = $("prefCall");
@@ -1257,41 +1120,76 @@
     const lugSome = $("lugSome");
     const lugMany = $("lugMany");
 
-    const bigSuitcasesEl = $("bigSuitcases");
-    const carryOnEl = $("carryOn");
+    const bigEl = $("bigSuitcases");
+    const carryEl = $("carryOn");
     const notesHintEl = $("notesHint");
-
-    const meetNo = $("meetNo");
-    const meetYes = $("meetYes");
 
     const payCard = $("payCard");
     const payCash = $("payCash");
     const payBank = $("payBank");
     const payApple = $("payApple");
 
-    const msgPreview = $("msgPreview");
-    const copyMsgBtn = $("copyMsgBtn");
+    const invoiceEl = $("invoice");
+    const nameEl = $("name");
+    const phoneEl = $("phoneInput");
+    const notesEl = $("notes");
+    const multiVehiclesEl = $("multiVehicles");
+
     const submitBtn = $("submitBtn");
 
-    const fleetCards = Array.from(document.querySelectorAll(".fleet-card"));
+    // ---------- state setters ----------
+    function setContactPref(v) {
+      contactPref = v;
+      prefWA.setAttribute("aria-pressed", v === "WhatsApp" ? "true" : "false");
+      prefCall.setAttribute("aria-pressed", v === "Call" ? "true" : "false");
+    }
 
-    // ---------- conditional fields ----------
-    function updateServiceConditionalFields() {
+    function setLuggage(v) {
+      luggage = v;
+      lugNone.setAttribute("aria-pressed", v === "none" ? "true" : "false");
+      lugSome.setAttribute("aria-pressed", v === "some" ? "true" : "false");
+      lugMany.setAttribute("aria-pressed", v === "many" ? "true" : "false");
+      updateHints();
+      save();
+    }
+
+    function setMeet(v) {
+      meetGreet = v;
+      meetNo.setAttribute("aria-pressed", v === "no" ? "true" : "false");
+      meetYes.setAttribute("aria-pressed", v === "yes" ? "true" : "false");
+      save();
+    }
+
+    function setPayment(v) {
+      payment = v;
+      payCard.setAttribute("aria-pressed", v === "card" ? "true" : "false");
+      payCash.setAttribute("aria-pressed", v === "cash" ? "true" : "false");
+      payBank.setAttribute("aria-pressed", v === "bank" ? "true" : "false");
+      payApple.setAttribute("aria-pressed", v === "apple" ? "true" : "false");
+      save();
+    }
+
+    // ---------- conditionals ----------
+    function serviceNeedsReturn() { return serviceEl.value === "transfer_roundtrip"; }
+    function serviceNeedsHours() { return serviceEl.value === "hourly"; }
+
+    function updateServiceConditionals() {
       const needsReturn = serviceNeedsReturn();
       const needsHours = serviceNeedsHours();
 
       returnWrap.classList.toggle("hidden", !needsReturn);
       hoursWrap.classList.toggle("hidden", !needsHours);
 
+      // A/R: return REQUIRED unless TBD is checked
       if (needsReturn) {
-        setMinDateTimeNow(returnWhenEl);
+        setMinNow(returnWhenEl);
         if (returnTbdEl.checked) {
           returnWhenEl.required = false;
           returnWhenEl.disabled = true;
           returnWhenEl.value = "";
         } else {
           returnWhenEl.disabled = false;
-          returnWhenEl.required = false; // optional by design
+          returnWhenEl.required = true; // required per tua richiesta
         }
       } else {
         returnTbdEl.checked = false;
@@ -1300,19 +1198,14 @@
         returnWhenEl.value = "";
       }
 
-      if (needsHours) {
-        hoursEl.required = true;
-      } else {
-        hoursEl.required = false;
-        hoursEl.value = "";
-      }
+      // hourly: hours required
+      hoursEl.required = needsHours;
+      if (!needsHours) hoursEl.value = "";
 
-      arHint.classList.toggle("hidden", !needsReturn);
-      updateNotesSuggestion();
-      updateMessagePreview();
+      save();
     }
 
-    function updateTravelConditionalFields() {
+    function updateTravelConditionals() {
       const show = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
       travelHint.classList.toggle("hidden", !show);
       flightWrap.classList.toggle("hidden", !show);
@@ -1320,262 +1213,246 @@
       airportExtrasWrap.classList.toggle("hidden", !show);
 
       if (!show) {
-        flightNumberEl.value = "";
-        waitTimeEl.value = "";
-        childSeatEl.value = "";
-        setMeetGreet("no");
+        flightEl.value = "";
+        waitEl.value = "";
+        seatEl.value = "";
+        setMeet("no");
       }
-      updateMessagePreview();
     }
 
-    function updateUrgentHints() {
-      const dt = parseDateTimeLocal(whenEl.value);
-      if (!dt) {
-        urgentHint.classList.add("hidden");
-        urgentTopBar.classList.add("hidden");
+    function updateUrgentHint() {
+      const dt = parseDT(whenEl.value);
+      if (!dt) { urgentHint.classList.add("hidden"); return; }
+      const diffH = (dt.getTime() - Date.now()) / 3600000;
+      const isUrgent = (diffH >= 0 && diffH <= 2);
+      urgentHint.classList.toggle("hidden", !isUrgent);
+    }
+
+    function updateSelectedVehicleUI() {
+      const v = (vehicleEl.value || "").trim();
+      if (!v) {
+        selectedVehicleWrap.classList.add("hidden");
+        selectedVehicleLabel.textContent = "";
         return;
       }
-      const diffHours = (dt.getTime() - Date.now()) / 3600000;
-      const isUrgent = (diffHours >= 0 && diffHours <= 2);
-      urgentHint.classList.toggle("hidden", !isUrgent);
-      urgentTopBar.classList.toggle("hidden", !isUrgent);
-      updateMessagePreview();
+      selectedVehicleWrap.classList.remove("hidden");
+      selectedVehicleLabel.textContent = v;
     }
 
-    function updateContextHints() {
-      updateTravelConditionalFields();
-      updateUrgentHints();
-      const paxN = getPaxNumber();
-      luggageVanHint.classList.toggle("hidden", !(paxN === 4 && luggage === "many"));
+    function enforceCapacity() {
+      const pax = getPax();
+      const v = (vehicleEl.value || "").trim();
+
+      // hint/notice
+      capacityNotice.classList.toggle("hidden", !(pax && pax >= 5));
+
+      // regola: auto max 4; van 1-7
+      if (pax && pax >= 5) {
+        if (v !== VAN_LABEL) {
+          vehicleEl.value = VAN_LABEL;
+          selectFleetByLabel(VAN_LABEL);
+          updateSelectedVehicleUI();
+        }
+      } else if (pax && pax <= 4) {
+        // van resta sempre consentito (anche per 1 persona): non facciamo downgrade automatico
+      }
+
+      // se utente prova a forzare auto con pax>4: correggiamo a van + alert
+      if (pax && pax >= 5 && v && isCarVehicle(v)) {
+        vehicleEl.value = VAN_LABEL;
+        selectFleetByLabel(VAN_LABEL);
+        updateSelectedVehicleUI();
+        showAlert([I18N[LANG].alert.carCapacity]);
+      }
+
+      updateHints();
+      save();
     }
 
-    function buildNotesSuggestion() {
+    function updateHints() {
+      const pax = getPax();
+      luggageVanHint.classList.toggle("hidden", !(pax === 4 && luggage === "many"));
+      updateTravelConditionals();
+      updateUrgentHint();
+
+      // notes suggestion
       const tips = [];
       const airport = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
       if (airport) tips.push(LANG === "en" ? "flight/train number" : "numero volo/treno");
       if (serviceNeedsHours()) tips.push(LANG === "en" ? "hours/time range" : "ore/fascia oraria");
-      if (serviceNeedsReturn()) tips.push(LANG === "en" ? "return time (if known)" : "orario ritorno (se noto)");
+      if (serviceNeedsReturn() && !returnTbdEl.checked) tips.push(LANG === "en" ? "return time" : "orario ritorno");
       if (meetGreet === "yes" && airport) tips.push("Meet & Greet");
-      if (isVanSelected()) tips.push(LANG === "en" ? "luggage qty/size" : "bagagli (q.tà/dimensioni)");
+      if ((vehicleEl.value || "") === VAN_LABEL) tips.push(LANG === "en" ? "luggage qty/size" : "bagagli (q.tà/dimensioni)");
       if (invoiceEl.checked) tips.push(LANG === "en" ? "invoice details" : "dati fattura");
-      if (multiVehiclesEl.value && multiVehiclesEl.value !== "1") tips.push(LANG === "en" ? "number of vehicles" : "numero veicoli");
-      return tips;
-    }
-
-    function updateNotesSuggestion() {
-      const tips = buildNotesSuggestion();
+      if (multiVehiclesEl.value && multiVehiclesEl.value !== "1") tips.push(LANG === "en" ? "vehicles count" : "numero veicoli");
       notesHintEl.textContent = tips.length ? ((LANG === "en" ? "Suggestion: " : "Suggerimento: ") + tips.join(" · ")) : "";
     }
 
-    function showFormAlert(missingLabels) {
+    // ---------- alerts ----------
+    function showAlert(lines) {
       const T = I18N[LANG];
-      setText("t_alert_title", T.alert.title);
-      formAlertText.textContent = T.alert.missingPrefix + missingLabels.join(" · ");
+      $("t_alert_title").textContent = T.alert.title;
+      formAlertText.textContent = lines.join(" ");
       formAlert.classList.remove("hidden");
     }
-    function hideFormAlert() { formAlert.classList.add("hidden"); formAlertText.textContent = ""; }
+    function hideAlert() {
+      formAlert.classList.add("hidden");
+      formAlertText.textContent = "";
+    }
 
-    // ---------- WhatsApp messages ----------
-    function getRequestTagLine() {
+    // ---------- message builder ----------
+    function getContextLine() {
       if (!lastContextTag) return "";
       const mapIt = { "Milan":"Milano", "Airports":"Aeroporti", "Lake Como":"Lago di Como" };
       const mapEn = { "Milan":"Milan", "Airports":"Airports", "Lake Como":"Lake Como" };
       const v = (LANG === "en") ? (mapEn[lastContextTag] || lastContextTag) : (mapIt[lastContextTag] || lastContextTag);
-      return (LANG === "en") ? `Request: ${v}\n` : `Richiesta: ${v}\n`;
-    }
-
-    function getBaseWhatsAppMessage(isUrgent=false) {
-      const T = I18N[LANG];
-      let msg = "";
-      if (isUrgent) msg += T.waTemplates.urgent;
-      msg += getRequestTagLine();
-      if (lastContextTag) msg += "\n";
-      msg += T.waTemplates.base;
-      return msg;
+      return I18N[LANG].waTemplates.ctx + v + "\n\n";
     }
 
     function getLuggageLabel() {
-      const T = I18N[LANG];
-      return (luggage === "none") ? T.quote.lugNone : (luggage === "some") ? T.quote.lugSome : T.quote.lugMany;
+      const T = I18N[LANG].quote;
+      if (luggage === "none") return T.lugNone;
+      if (luggage === "some") return T.lugSome;
+      return T.lugMany;
     }
 
     function getPaymentLabel() {
-      const T = I18N[LANG];
-      if (payment === "card") return T.quote.payCard;
-      if (payment === "cash") return T.quote.payCash;
-      if (payment === "bank") return T.quote.payBank;
-      return T.quote.payApple;
+      const T = I18N[LANG].quote;
+      if (payment === "card") return T.payCard;
+      if (payment === "cash") return T.payCash;
+      if (payment === "bank") return T.payBank;
+      return T.payApple;
     }
 
     function getServiceLabel() {
-      const T = I18N[LANG];
-      if (serviceTypeEl.value === "transfer_oneway") return T.quote.service1;
-      if (serviceTypeEl.value === "transfer_roundtrip") return T.quote.service2;
-      return T.quote.service3;
+      const T = I18N[LANG].quote;
+      if (serviceEl.value === "transfer_oneway") return T.service1;
+      if (serviceEl.value === "transfer_roundtrip") return T.service2;
+      return T.service3;
     }
 
     function getChildSeatLabel() {
-      const T = I18N[LANG];
-      const v = (childSeatEl.value || "");
+      const T = I18N[LANG].quote;
+      const v = (seatEl.value || "");
       if (!v) return "";
-      if (v === "infant") return T.quote.seat1;
-      if (v === "child") return T.quote.seat2;
-      if (v === "booster") return T.quote.seat3;
+      if (v === "infant") return T.seat1;
+      if (v === "child") return T.seat2;
+      if (v === "booster") return T.seat3;
       return v;
     }
 
-    function buildFormWhatsAppMessage(isUrgent=false) {
-      const vehicle = (vehicleSelect.value || "").trim();
-      const serviceType = getServiceLabel();
+    function buildWhatsAppMessage(isUrgent=false) {
+      const T = I18N[LANG];
+      const L = T.waTemplates.labels;
+
+      const vehicle = (vehicleEl.value || "").trim();
+      const pax = (paxEl.value || "").trim();
       const from = (fromEl.value || "").trim();
       const to = (toEl.value || "").trim();
       const stops = (stopsEl.value || "").trim();
-      const whenRaw = (whenEl.value || "").trim();
-      const whenFmt = formatDateTime(LANG, whenRaw);
-      const pax = (paxSelect.value || "").trim();
+      const whenFmt = formatDT(LANG, (whenEl.value || "").trim());
+      const service = getServiceLabel();
+
+      const vehiclesN = (multiVehiclesEl.value || "1");
+      const invoice = invoiceEl.checked ? (LANG === "en" ? "Yes" : "Sì") : (LANG === "en" ? "No" : "No");
       const name = (nameEl.value || "").trim();
       const phone = (phoneEl.value || "").trim();
       const notes = (notesEl.value || "").trim();
-      const invoice = invoiceEl.checked ? (LANG === "en" ? "Yes" : "Sì") : (LANG === "en" ? "No" : "No");
-      const vehiclesN = (multiVehiclesEl.value || "1");
 
       const airportMode = !flightWrap.classList.contains("hidden");
-      const flight = (flightNumberEl.value || "").trim();
+      const flight = (flightEl.value || "").trim();
       const meet = (meetGreet === "yes") ? (LANG === "en" ? "Yes" : "Sì") : (LANG === "en" ? "No" : "No");
-      const wait = (waitTimeEl.value || "").trim();
+      const wait = (waitEl.value || "").trim();
       const seat = getChildSeatLabel();
 
-      const bigSuitcases = bigSuitcasesEl.value;
-      const carryOn = carryOnEl.value;
+      const big = bigEl.value;
+      const carry = carryEl.value;
 
-      const ret = returnWhenEl.value ? formatDateTime(LANG, returnWhenEl.value) : "";
       const retTbd = returnTbdEl.checked;
+      const ret = returnWhenEl.value ? formatDT(LANG, returnWhenEl.value) : "";
       const hours = (hoursEl.value || "").trim();
 
       let msg = "";
-      const requestLine = getRequestTagLine();
+      if (isUrgent) msg += T.waTemplates.urgent;
+      msg += getContextLine();
+      msg += T.waTemplates.header;
 
-      if (isUrgent) msg += I18N[LANG].waTemplates.urgent;
-      if (requestLine) msg += requestLine + "\n";
+      msg += `${L.service}: ${service}\n`;
+      if (serviceNeedsHours()) msg += `${L.hours}: ${hours}\n`;
+      if (serviceNeedsReturn()) msg += `${L.return}: ${retTbd ? (LANG === "en" ? "To be defined" : "Da definire") : ret}\n`;
 
-      if (LANG === "en") {
-        msg += "Hi! I’d like a chauffeur/NCC quote with NexaRide.\n\n";
-        msg += `Service: ${serviceType}\n`;
-        if (serviceNeedsHours()) msg += `Hours: ${hours}\n`;
-        if (serviceNeedsReturn()) msg += `Return: ${retTbd ? "To be defined" : (ret || "—")}\n`;
-        msg += `Vehicle: ${vehicle}\n`;
-        if (vehiclesN && vehiclesN !== "1") msg += `# Vehicles: ${vehiclesN}\n`;
-        msg += `Pickup: ${from}\n`;
-        msg += `Drop-off: ${to}\n`;
-        if (stops) msg += `Stops: ${stops}\n`;
-        msg += `Date/Time: ${whenFmt} (${TZ_LABEL})\n`;
-        msg += `Passengers: ${pax}\n`;
-        if (airportMode && flight) msg += `Flight/Train: ${flight}\n`;
-        if (airportMode) {
-          msg += `Meet & Greet: ${meet}\n`;
-          if (wait) msg += `Waiting: +${wait} min\n`;
-          if (seat) msg += `Child seat: ${seat}\n`;
-        }
-        msg += `Luggage: ${getLuggageLabel()} (Large: ${bigSuitcases}, Carry-on: ${carryOn})\n`;
-        msg += `Payment: ${getPaymentLabel()}\n`;
-        msg += `Invoice: ${invoice}\n`;
-        msg += `Contact pref: ${contactPref === "Call" ? "Call" : "WhatsApp"}\n`;
-        if (name) msg += `Name: ${name}\n`;
-        if (phone) msg += `Phone: ${phone}\n`;
-        if (notes) msg += `Notes: ${notes}\n`;
-        if (contactPref === "Call") msg += `\nPlease call me to confirm availability and price. Thank you.\n`;
-      } else {
-        msg += "Ciao! Vorrei un preventivo NCC con NexaRide.\n\n";
-        msg += `Tipo servizio: ${serviceType}\n`;
-        if (serviceNeedsHours()) msg += `Ore: ${hours}\n`;
-        if (serviceNeedsReturn()) msg += `Ritorno: ${retTbd ? "Da definire" : (ret || "—")}\n`;
-        msg += `Categoria veicolo: ${vehicle}\n`;
-        if (vehiclesN && vehiclesN !== "1") msg += `N. veicoli: ${vehiclesN}\n`;
-        msg += `Partenza: ${from}\n`;
-        msg += `Destinazione: ${to}\n`;
-        if (stops) msg += `Fermate: ${stops}\n`;
-        msg += `Data/Ora: ${whenFmt} (${TZ_LABEL})\n`;
-        msg += `Passeggeri: ${pax}\n`;
-        if (airportMode && flight) msg += `Volo/Treno: ${flight}\n`;
-        if (airportMode) {
-          msg += `Meet & Greet: ${meet}\n`;
-          if (wait) msg += `Attesa: +${wait} min\n`;
-          if (seat) msg += `Seggiolino: ${seat}\n`;
-        }
-        msg += `Bagagli: ${getLuggageLabel()} (Grandi: ${bigSuitcases}, Mano: ${carryOn})\n`;
-        msg += `Pagamento: ${getPaymentLabel()}\n`;
-        msg += `Fattura: ${invoice}\n`;
-        msg += `Preferenza contatto: ${contactPref === "Call" ? "Chiamata" : "WhatsApp"}\n`;
-        if (name) msg += `Nome: ${name}\n`;
-        if (phone) msg += `Telefono: ${phone}\n`;
-        if (notes) msg += `Note: ${notes}\n`;
-        if (contactPref === "Call") msg += `\nMi puoi chiamare per confermare disponibilità e prezzo? Grazie.\n`;
+      msg += `${L.vehicle}: ${vehicle}\n`;
+      if (vehiclesN && vehiclesN !== "1") msg += `${L.vehiclesN}: ${vehiclesN}\n`;
+      msg += `${L.from}: ${from}\n`;
+      msg += `${L.to}: ${to}\n`;
+      if (stops) msg += `${L.stops}: ${stops}\n`;
+      msg += `${L.when}: ${whenFmt} (${TZ_LABEL})\n`;
+      msg += `${L.pax}: ${pax}\n`;
+
+      if (airportMode && flight) msg += `${L.flight}: ${flight}\n`;
+      if (airportMode) {
+        msg += `${L.meet}: ${meet}\n`;
+        if (wait) msg += `${L.wait}: +${wait} min\n`;
+        if (seat) msg += `${L.seat}: ${seat}\n`;
       }
+
+      msg += `${L.lug}: ${getLuggageLabel()} (Large: ${big}, Carry-on: ${carry})\n`;
+      msg += `${L.pay}: ${getPaymentLabel()}\n`;
+      msg += `${L.inv}: ${invoice}\n`;
+      msg += `${L.pref}: ${contactPref === "Call" ? (LANG === "en" ? "Call" : "Chiamata") : "WhatsApp"}\n`;
+
+      if (name) msg += `${L.name}: ${name}\n`;
+      if (phone) msg += `${L.phone}: ${phone}\n`;
+      if (notes) msg += `${L.notes}: ${notes}\n`;
 
       return msg;
     }
 
-    function updateMessagePreview() {
-      const isUrgent = !urgentTopBar.classList.contains("hidden");
-      const firstMissing = getFirstMissingField();
-      if (firstMissing) {
-        msgPreview.textContent = getBaseWhatsAppMessage(isUrgent);
-      } else {
-        msgPreview.textContent = buildFormWhatsAppMessage(isUrgent);
-      }
+    function baseWhatsAppMessage(isUrgent=false) {
+      const T = I18N[LANG];
+      let msg = "";
+      if (isUrgent) msg += T.waTemplates.urgent;
+      msg += getContextLine();
+      msg += T.waTemplates.header;
+      msg += (LANG === "en")
+        ? "Pickup:\nDrop-off:\nDate/Time:\nPassengers:\nVehicle:\nNotes:\n"
+        : "Partenza:\nDestinazione:\nData/Ora:\nPasseggeri:\nVeicolo:\nNote:\n";
+      return msg;
     }
 
-    // ---------- Language apply ----------
+    // ---------- language apply ----------
+    function setText(id, v) { const el = $(id); if (el) el.textContent = v; }
     function applyLang() {
       const T = I18N[LANG];
       document.documentElement.lang = LANG;
 
-      // header/nav
       setText("t_header_sub", T.headerSub);
-      setText("t_nav_milan", T.nav.milan);
-      setText("t_nav_airports", T.nav.airports);
-      setText("t_nav_lakecomo", T.nav.lakecomo);
       setText("t_nav_fleet", T.nav.fleet);
       setText("t_nav_quote", T.nav.quote);
       setText("t_nav_faq", T.nav.faq);
 
-      // hero
       setText("t_badge_1", T.badges.b1);
       setText("t_badge_2", T.badges.b2);
       setText("t_h1", T.h1);
       $("t_sub").innerText = T.sub;
-      setText("t_season_title", T.seasonTitle);
-      setText("t_season_desc", T.seasonDesc);
+
       setText("t_microtrust", T.microtrust);
       setText("t_trustline", T.trustline);
       setText("t_email_label", T.email);
       setText("t_email_label_2", T.email);
 
-      // buttons
+      setText("t_season_title", T.seasonTitle);
+      setText("t_season_desc", T.seasonDesc);
+
       setText("t_btn_whatsapp_top", T.btn.wa);
       setText("t_btn_wa_hero", T.btn.waHero);
       setText("t_btn_fill_details", T.btn.fill);
-      setText("t_btn_check_wa", T.btn.checkWa);
-      setText("t_btn_fleet_quote", T.btn.fleetQuote);
-      setText("t_btn_fleet_quote_2", T.btn.fleetQuote);
-      setText("t_btn_fleet_quote_3", T.btn.fleetQuote);
-      setText("t_btn_fleet_quote_top", T.btn.fleetQuote);
-      setText("t_btn_call", T.btn.call);
-      setText("t_btn_open_wa", T.btn.openWa);
-      setText("t_btn_open_wa_2", T.btn.openWa);
-      setText("t_btn_open_wa_3", T.btn.openWa);
       setText("t_btn_open_wa_form", T.btn.openWa);
+      setText("t_btn_fleet_quote_top", T.btn.fleetQuote);
       setText("t_submit", T.btn.submit);
       setText("t_reset", T.btn.reset);
-      setText("t_urgent_top_btn", T.btn.urgentTopBtn);
-      setText("t_urgent_top_call", T.btn.urgentTopCall);
-      setText("t_copy_btn", T.btn.copy);
-      setText("t_urgent_btn", T.btn.urgentTopBtn);
+      setText("t_urgent_btn", T.btn.urgentBtn);
       setText("t_urgent_call", T.btn.call);
-
-      // urgent top
-      setText("t_urgent_top_title", T.urgentTop.title);
-      setText("t_urgent_top_desc", T.urgentTop.desc);
 
       // intent
       setText("t_intent_milan_title", T.intent.milanTitle);
@@ -1584,27 +1461,33 @@
       setText("t_intent_air_desc", T.intent.airDesc);
       setText("t_intent_lake_title", T.intent.lakeTitle);
       setText("t_intent_lake_desc", T.intent.lakeDesc);
+      setText("t_intent_tap_1", T.intent.tap);
+      setText("t_intent_tap_2", T.intent.tap);
+      setText("t_intent_tap_3", T.intent.tap);
 
       // fleet
       setText("t_fleet_title", T.fleet.title);
       setText("t_fleet_sub", T.fleet.sub);
-      setText("t_fleet_c1_t", T.fleet.c1t); setText("t_fleet_c1_d", T.fleet.c1d);
-      setText("t_fleet_c2_t", T.fleet.c2t); setText("t_fleet_c2_d", T.fleet.c2d);
-      setText("t_fleet_c3_t", T.fleet.c3t); setText("t_fleet_c3_d", T.fleet.c3d);
-      setText("t_fleet_hint", T.fleet.quoteHint);
+      setText("t_fleet_c1_t", T.fleet.c1t);
+      setText("t_fleet_c1_d", T.fleet.c1d);
+      setText("t_fleet_c2_t", T.fleet.c2t);
+      setText("t_fleet_c2_d", T.fleet.c2d);
+      setText("t_fleet_c3_t", T.fleet.c3t);
+      setText("t_fleet_c3_d", T.fleet.c3d);
+      setText("t_fleet_hint", T.fleet.hint);
       setText("t_selected_badge", T.fleet.selected);
       setText("t_selected_badge_2", T.fleet.selected);
       setText("t_selected_badge_3", T.fleet.selected);
 
-      // quote labels + placeholders
+      // quote
       setText("t_quote_title", T.quote.title);
       setText("t_quote_sub", T.quote.sub);
       setText("t_selected_vehicle_label", T.quote.selectedVehicle);
-      setText("t_capacity_notice", T.quote.capacityNotice);
+      setText("t_capacity_notice", T.quote.capNotice);
       setText("t_travel_hint", T.quote.travelHint);
       setText("t_luggage_hint", T.quote.luggageHint);
-      setText("t_urgent_hint_t", T.quote.urgentHintT);
-      setText("t_urgent_hint_d", T.quote.urgentHintD);
+      setText("t_urgent_hint_t", T.quote.urgentT);
+      setText("t_urgent_hint_d", T.quote.urgentD);
 
       setText("t_service_label", T.quote.serviceLabel);
       setText("t_service_opt1", T.quote.service1);
@@ -1613,13 +1496,13 @@
 
       setText("t_vehicle_label", T.quote.vehicleLabel);
       setText("t_vehicle_ph", T.quote.vehiclePH);
+      setText("t_vehicle_cap_hint", T.quote.vehicleCapHint);
 
       setText("t_pax_label", T.quote.paxLabel);
       setText("t_pax_ph", T.quote.paxPH);
 
       setText("t_from_label", T.quote.fromLabel);
       fromEl.placeholder = T.quote.fromPH;
-
       setText("t_to_label", T.quote.toLabel);
       toEl.placeholder = T.quote.toPH;
 
@@ -1689,13 +1572,12 @@
       setText("t_notes_label", T.quote.notesLabel);
       notesEl.placeholder = T.quote.notesPH;
 
-      setText("t_summary_title", T.quote.summaryTitle);
-      setText("t_summary_sub", T.quote.summarySub);
       setText("t_privacy_note", T.quote.privacyNote);
 
       // reviews/faq/footer
       setText("t_reviews_title", T.reviews.title);
       setText("t_reviews_sub", T.reviews.sub);
+
       setText("t_faq_title", T.faq.title);
       setText("t_faq_q1", T.faq.q1);
       setText("t_faq_a1", T.faq.a1);
@@ -1714,22 +1596,20 @@
       setText("t_sticky_wa", T.footer.wa);
       setText("t_sticky_quote", T.footer.quote);
 
-      // update notes hints + preview
-      updateNotesSuggestion();
-      updateMessagePreview();
+      updateHints();
     }
 
-    function setLanguage(newLang) {
-      LANG = (newLang === "en") ? "en" : "it";
+    function setLanguage(lang) {
+      LANG = (lang === "en") ? "en" : "it";
       localStorage.setItem("nexaride_lang", LANG);
-      langIT.classList.toggle("is-active", LANG === "it");
-      langEN.classList.toggle("is-active", LANG === "en");
+      $("langIT").classList.toggle("is-active", LANG === "it");
+      $("langEN").classList.toggle("is-active", LANG === "en");
       applyLang();
-      saveToStorage();
+      save();
     }
 
     // ---------- storage ----------
-    function saveToStorage() {
+    function save() {
       const payload = {
         lang: LANG,
         contactPref,
@@ -1737,21 +1617,21 @@
         meetGreet,
         payment,
         contextTag: lastContextTag || "",
-        vehicle: vehicleSelect.value || "",
-        serviceType: serviceTypeEl.value || "transfer_oneway",
-        hours: hoursEl.value || "",
+        vehicle: vehicleEl.value || "",
+        pax: paxEl.value || "",
         from: fromEl.value || "",
         to: toEl.value || "",
         stops: stopsEl.value || "",
         when: whenEl.value || "",
+        serviceType: serviceEl.value || "transfer_oneway",
         returnWhen: returnWhenEl.value || "",
         returnTbd: !!returnTbdEl.checked,
-        flightNumber: flightNumberEl.value || "",
-        waitTime: waitTimeEl.value || "",
-        childSeat: childSeatEl.value || "",
-        bigSuitcases: bigSuitcasesEl.value || "0",
-        carryOn: carryOnEl.value || "0",
-        pax: paxSelect.value || "",
+        hours: hoursEl.value || "",
+        flightNumber: flightEl.value || "",
+        waitTime: waitEl.value || "",
+        childSeat: seatEl.value || "",
+        bigSuitcases: bigEl.value || "0",
+        carryOn: carryEl.value || "0",
         multiVehicles: multiVehiclesEl.value || "1",
         invoice: !!invoiceEl.checked,
         name: nameEl.value || "",
@@ -1759,199 +1639,185 @@
         notes: notesEl.value || ""
       };
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch(e) {}
-      updateMessagePreview();
     }
 
-    function restoreFromStorage() {
+    function restore() {
       let raw = null;
       try { raw = localStorage.getItem(STORAGE_KEY); } catch(e) {}
       if (!raw) return;
-      let payload = null;
-      try { payload = JSON.parse(raw); } catch(e) { return; }
-      if (!payload || typeof payload !== "object") return;
+      let p = null;
+      try { p = JSON.parse(raw); } catch(e) { return; }
+      if (!p || typeof p !== "object") return;
 
-      if (payload.lang === "it" || payload.lang === "en") LANG = payload.lang;
+      if (p.lang === "it" || p.lang === "en") LANG = p.lang;
 
-      contactPref = (payload.contactPref === "Call") ? "Call" : "WhatsApp";
-      luggage = ["none","some","many"].includes(payload.luggage) ? payload.luggage : "none";
-      meetGreet = (payload.meetGreet === "yes") ? "yes" : "no";
-      payment = ["card","cash","bank","apple"].includes(payload.payment) ? payload.payment : "card";
-      lastContextTag = payload.contextTag || "";
+      contactPref = (p.contactPref === "Call") ? "Call" : "WhatsApp";
+      luggage = ["none","some","many"].includes(p.luggage) ? p.luggage : "none";
+      meetGreet = (p.meetGreet === "yes") ? "yes" : "no";
+      payment = ["card","cash","bank","apple"].includes(p.payment) ? p.payment : "card";
+      lastContextTag = p.contextTag || "";
 
-      vehicleSelect.value = payload.vehicle || "";
-      serviceTypeEl.value = payload.serviceType || "transfer_oneway";
-      hoursEl.value = payload.hours || "";
-      fromEl.value = payload.from || "";
-      toEl.value = payload.to || "";
-      stopsEl.value = payload.stops || "";
-      whenEl.value = payload.when || "";
-      returnWhenEl.value = payload.returnWhen || "";
-      returnTbdEl.checked = !!payload.returnTbd;
-      flightNumberEl.value = payload.flightNumber || "";
-      waitTimeEl.value = payload.waitTime || "";
-      childSeatEl.value = payload.childSeat || "";
-      bigSuitcasesEl.value = payload.bigSuitcases || "0";
-      carryOnEl.value = payload.carryOn || "0";
-      paxSelect.value = payload.pax || "";
-      multiVehiclesEl.value = payload.multiVehicles || "1";
-      invoiceEl.checked = !!payload.invoice;
-      nameEl.value = payload.name || "";
-      phoneEl.value = payload.phone || "";
-      notesEl.value = payload.notes || "";
+      vehicleEl.value = p.vehicle || "";
+      paxEl.value = p.pax || "";
+      fromEl.value = p.from || "";
+      toEl.value = p.to || "";
+      stopsEl.value = p.stops || "";
+      whenEl.value = p.when || "";
+      serviceEl.value = p.serviceType || "transfer_oneway";
+      returnWhenEl.value = p.returnWhen || "";
+      returnTbdEl.checked = !!p.returnTbd;
+      hoursEl.value = p.hours || "";
+      flightEl.value = p.flightNumber || "";
+      waitEl.value = p.waitTime || "";
+      seatEl.value = p.childSeat || "";
+      bigEl.value = p.bigSuitcases || "0";
+      carryEl.value = p.carryOn || "0";
+      multiVehiclesEl.value = p.multiVehicles || "1";
+      invoiceEl.checked = !!p.invoice;
+      nameEl.value = p.name || "";
+      phoneEl.value = p.phone || "";
+      notesEl.value = p.notes || "";
 
       setContactPref(contactPref);
-      setLuggage(luggage);
-      setMeetGreet(meetGreet);
+      setMeet(meetGreet);
       setPayment(payment);
 
-      selectFleetByLabel(vehicleSelect.value);
+      // luggage buttons
+      lugNone.setAttribute("aria-pressed", luggage === "none" ? "true" : "false");
+      lugSome.setAttribute("aria-pressed", luggage === "some" ? "true" : "false");
+      lugMany.setAttribute("aria-pressed", luggage === "many" ? "true" : "false");
+
+      selectFleetByLabel(vehicleEl.value);
       updateSelectedVehicleUI();
-      enforceCapacityRule();
     }
 
-    // ---------- Events ----------
+    // ---------- scrolling ----------
+    function scrollToQuoteAndFocus() {
+      $("quote").scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        const first = getFirstMissingField();
+        (first || vehicleEl).focus({ preventScroll: true });
+      }, 350);
+    }
+
+    function getFirstMissingField() {
+      if (!vehicleEl.value) return vehicleEl;
+      if (!paxEl.value) return paxEl;
+      if (!fromEl.value.trim()) return fromEl;
+      if (!toEl.value.trim()) return toEl;
+      if (!whenEl.value) return whenEl;
+      if (serviceNeedsHours() && !hoursEl.value) return hoursEl;
+      if (serviceNeedsReturn() && !returnTbdEl.checked && !returnWhenEl.value) return returnWhenEl;
+      return null;
+    }
+
+    // ---------- init ----------
     $("y").textContent = new Date().getFullYear();
 
-    // language
-    langIT.addEventListener("click", () => setLanguage("it"));
-    langEN.addEventListener("click", () => setLanguage("en"));
+    // language buttons
+    $("langIT").addEventListener("click", () => setLanguage("it"));
+    $("langEN").addEventListener("click", () => setLanguage("en"));
 
-    // CTAs -> WhatsApp base
-    $("ctaWATop").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("ctaWAHero").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("ctaWACard").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("ctaWAFooter").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("ctaWAOpenGeneric").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("stickyWA").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
-    $("waInline").addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(false)));
+    // WhatsApp CTAs (base message)
+    $("ctaWATop").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
+    $("ctaWAHero").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
+    $("ctaWAOpenGeneric").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
+    $("ctaWAFooter").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
+    $("stickyWA").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
+    $("waInline").addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(false)));
 
-    // urgent
-    urgentWA.addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(true)));
-    urgentTopWA.addEventListener("click", () => openWhatsAppWithText(getBaseWhatsAppMessage(true)));
+    // form CTAs
+    $("ctaScrollToForm").addEventListener("click", scrollToQuoteAndFocus);
+    $("ctaFleetToForm").addEventListener("click", scrollToQuoteAndFocus);
+    $("stickyQuote").addEventListener("click", scrollToQuoteAndFocus);
+    $("ctaFooterToForm").addEventListener("click", scrollToQuoteAndFocus);
 
-    // CTAs -> form
-    $("ctaScrollToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    $("ctaFleetToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    $("stickyQuote").addEventListener("click", () => scrollToQuoteAndFocus());
-    $("ctaFooterToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    $("intentMilanQuote").addEventListener("click", () => { prefillIntent("Milan"); scrollToQuoteAndFocus(); });
-    $("intentAirQuote").addEventListener("click", () => { prefillIntent("Airports"); scrollToQuoteAndFocus(); });
-    $("intentLakeQuote").addEventListener("click", () => { prefillIntent("Lake Como"); scrollToQuoteAndFocus(); });
-
-    // intent buttons (context prefill + message)
-    function prefillIntent(context) {
-      lastContextTag = context || "";
-      // light prefill only, keep user in control
-      if (context === "Airports") {
+    // intent cards: set context + light prefill + go form
+    function prefillIntent(ctx) {
+      lastContextTag = ctx || "";
+      if (ctx === "Airports") {
         if (!toEl.value && !fromEl.value) toEl.value = (LANG === "en" ? "MXP Malpensa Airport" : "MXP Malpensa");
       }
-      if (context === "Lake Como") {
+      if (ctx === "Lake Como") {
         if (!toEl.value && !fromEl.value) toEl.value = (LANG === "en" ? "Lake Como (Como/Bellagio)" : "Lago di Como (Como/Bellagio)");
       }
-      saveToStorage();
-      updateContextHints();
+      save();
+      updateHints();
     }
 
-    $("intentMilanWA").addEventListener("click", () => { prefillIntent("Milan"); openWhatsAppWithText(getBaseWhatsAppMessage(false)); });
-    $("intentAirWA").addEventListener("click", () => { prefillIntent("Airports"); openWhatsAppWithText(getBaseWhatsAppMessage(false)); });
-    $("intentLakeWA").addEventListener("click", () => { prefillIntent("Lake Como"); openWhatsAppWithText(getBaseWhatsAppMessage(false)); });
+    $("intentMilan").addEventListener("click", () => { prefillIntent("Milan"); scrollToQuoteAndFocus(); });
+    $("intentAirports").addEventListener("click", () => { prefillIntent("Airports"); scrollToQuoteAndFocus(); });
+    $("intentLake").addEventListener("click", () => { prefillIntent("Lake Como"); scrollToQuoteAndFocus(); });
 
     // fleet selection
-    fleetCards.forEach(card => {
+    document.querySelectorAll(".fleet-card").forEach(card => {
       card.addEventListener("click", () => {
         const label = card.getAttribute("data-vehicle-label");
-        if (label) {
-          vehicleSelect.value = label;
-          selectFleetByLabel(label);
-          updateSelectedVehicleUI();
-          enforceCapacityRule();
-          updateNotesSuggestion();
-          updateContextHints();
-          saveToStorage();
-          scrollToQuoteAndFocus();
-        }
+        if (!label) return;
+        vehicleEl.value = label;
+        selectFleetByLabel(label);
+        updateSelectedVehicleUI();
+        enforceCapacity();
+        scrollToQuoteAndFocus();
       });
     });
 
-    // contact preference
-    prefWA.addEventListener("click", () => { setContactPref("WhatsApp"); saveToStorage(); });
-    prefCall.addEventListener("click", () => { setContactPref("Call"); saveToStorage(); });
+    // toggles
+    prefWA.addEventListener("click", () => { setContactPref("WhatsApp"); save(); });
+    prefCall.addEventListener("click", () => { setContactPref("Call"); save(); });
 
-    // luggage
-    lugNone.addEventListener("click", () => { setLuggage("none"); saveToStorage(); });
-    lugSome.addEventListener("click", () => { setLuggage("some"); saveToStorage(); });
-    lugMany.addEventListener("click", () => { setLuggage("many"); saveToStorage(); });
+    lugNone.addEventListener("click", () => setLuggage("none"));
+    lugSome.addEventListener("click", () => setLuggage("some"));
+    lugMany.addEventListener("click", () => setLuggage("many"));
 
-    // meet & greet
-    meetNo.addEventListener("click", () => { setMeetGreet("no"); saveToStorage(); updateMessagePreview(); });
-    meetYes.addEventListener("click", () => { setMeetGreet("yes"); saveToStorage(); updateMessagePreview(); });
+    meetNo.addEventListener("click", () => { setMeet("no"); updateHints(); });
+    meetYes.addEventListener("click", () => { setMeet("yes"); updateHints(); });
 
-    // payment
-    payCard.addEventListener("click", () => { setPayment("card"); saveToStorage(); });
-    payCash.addEventListener("click", () => { setPayment("cash"); saveToStorage(); });
-    payBank.addEventListener("click", () => { setPayment("bank"); saveToStorage(); });
-    payApple.addEventListener("click", () => { setPayment("apple"); saveToStorage(); });
+    payCard.addEventListener("click", () => setPayment("card"));
+    payCash.addEventListener("click", () => setPayment("cash"));
+    payBank.addEventListener("click", () => setPayment("bank"));
+    payApple.addEventListener("click", () => setPayment("apple"));
 
-    // reactive hints
-    serviceTypeEl.addEventListener("change", () => { updateServiceConditionalFields(); updateContextHints(); saveToStorage(); });
-    returnTbdEl.addEventListener("change", () => { updateServiceConditionalFields(); saveToStorage(); });
+    // fields reactions
+    serviceEl.addEventListener("change", () => { updateServiceConditionals(); updateHints(); });
+    returnTbdEl.addEventListener("change", () => { updateServiceConditionals(); updateHints(); });
+    returnWhenEl.addEventListener("change", () => save());
+    hoursEl.addEventListener("change", () => save());
 
-    vehicleSelect.addEventListener("change", () => {
-      selectFleetByLabel(vehicleSelect.value);
+    vehicleEl.addEventListener("change", () => {
+      selectFleetByLabel(vehicleEl.value);
       updateSelectedVehicleUI();
-      enforceCapacityRule();
-      updateNotesSuggestion();
-      updateContextHints();
-      saveToStorage();
+      enforceCapacity();
     });
 
-    paxSelect.addEventListener("change", () => { enforceCapacityRule(); updateNotesSuggestion(); updateContextHints(); saveToStorage(); });
+    paxEl.addEventListener("change", () => enforceCapacity());
 
-    fromEl.addEventListener("input", () => { updateContextHints(); saveToStorage(); });
-    toEl.addEventListener("input", () => { updateContextHints(); saveToStorage(); });
+    fromEl.addEventListener("input", () => { updateHints(); save(); });
+    toEl.addEventListener("input", () => { updateHints(); save(); });
+    stopsEl.addEventListener("input", () => save());
+    whenEl.addEventListener("focus", () => setMinNow(whenEl));
+    whenEl.addEventListener("change", () => { updateHints(); save(); });
 
-    whenEl.addEventListener("focus", () => setMinDateTimeNow(whenEl));
-    whenEl.addEventListener("change", () => { updateContextHints(); saveToStorage(); });
+    flightEl.addEventListener("input", () => save());
+    waitEl.addEventListener("change", () => save());
+    seatEl.addEventListener("change", () => save());
 
-    flightNumberEl.addEventListener("input", () => saveToStorage());
-    waitTimeEl.addEventListener("change", () => saveToStorage());
-    childSeatEl.addEventListener("change", () => saveToStorage());
-    stopsEl.addEventListener("input", () => saveToStorage());
-    returnWhenEl.addEventListener("change", () => saveToStorage());
-    hoursEl.addEventListener("change", () => saveToStorage());
-    multiVehiclesEl.addEventListener("change", () => saveToStorage());
+    bigEl.addEventListener("change", () => { updateHints(); save(); });
+    carryEl.addEventListener("change", () => { updateHints(); save(); });
 
-    bigSuitcasesEl.addEventListener("change", () => { updateNotesSuggestion(); saveToStorage(); });
-    carryOnEl.addEventListener("change", () => { updateNotesSuggestion(); saveToStorage(); });
+    multiVehiclesEl.addEventListener("change", () => save());
+    invoiceEl.addEventListener("change", () => { updateHints(); save(); });
+    nameEl.addEventListener("input", () => save());
+    phoneEl.addEventListener("input", () => save());
+    notesEl.addEventListener("input", () => save());
 
-    invoiceEl.addEventListener("change", () => { updateNotesSuggestion(); saveToStorage(); });
-    nameEl.addEventListener("input", () => saveToStorage());
-    phoneEl.addEventListener("input", () => saveToStorage());
-    notesEl.addEventListener("input", () => saveToStorage());
+    // urgent WA
+    urgentWA.addEventListener("click", () => openWhatsApp(baseWhatsAppMessage(true)));
 
-    // copy message
-    copyMsgBtn.addEventListener("click", async () => {
-      const text = msgPreview.textContent || "";
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast(I18N[LANG].toasts.copied);
-      } catch (e) {
-        // fallback
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.position = "fixed";
-        ta.style.left = "-9999px";
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand("copy"); showToast(I18N[LANG].toasts.copied); } catch(e2) {}
-        document.body.removeChild(ta);
-      }
-    });
-
-    // form submit (robust: focus first missing + block double)
+    // submit: anti double + focus missing + capacity enforcement
     $("quoteForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      hideFormAlert();
+      hideAlert();
 
       const now = Date.now();
       if (isSubmitting || (now - lastSubmitAt) < 1500) {
@@ -1959,34 +1825,38 @@
         return;
       }
 
+      // enforce capacity before validating
+      enforceCapacity();
+
       const missing = [];
       const T = I18N[LANG];
 
-      if (!vehicleSelect.value) missing.push(T.quote.vehicleLabel.replace(" (obbligatorio)","").replace(" (required)",""));
+      if (!vehicleEl.value) missing.push(T.quote.vehicleLabel);
+      if (!paxEl.value) missing.push(T.quote.paxLabel);
       if (!fromEl.value.trim()) missing.push(T.quote.fromLabel);
       if (!toEl.value.trim()) missing.push(T.quote.toLabel);
       if (!whenEl.value) missing.push(T.quote.whenLabel);
-      if (!paxSelect.value) missing.push(T.quote.paxLabel);
-      if (serviceNeedsHours() && !hoursEl.value) missing.push(T.quote.hoursLabel.replace(" (obbligatorio)","").replace(" (required)",""));
+      if (serviceNeedsHours() && !hoursEl.value) missing.push(T.quote.hoursLabel);
+      if (serviceNeedsReturn() && !returnTbdEl.checked && !returnWhenEl.value) missing.push(T.quote.returnLabel);
 
       if (missing.length) {
-        showFormAlert(missing);
+        showAlert([T.alert.missingPrefix + missing.join(" · ")]);
         scrollToQuoteAndFocus();
         return;
       }
 
-      saveToStorage();
+      // urgent?
+      const dt = parseDT(whenEl.value);
+      const urgent = dt ? (((dt.getTime() - Date.now()) / 3600000) >= 0 && ((dt.getTime() - Date.now()) / 3600000) <= 2) : false;
 
       isSubmitting = true;
       lastSubmitAt = now;
       submitBtn.disabled = true;
       submitBtn.classList.add("opacity-70");
 
-      const isUrgent = !urgentTopBar.classList.contains("hidden");
-      const msg = buildFormWhatsAppMessage(isUrgent);
-      openWhatsAppWithText(msg);
+      save();
+      openWhatsApp(buildWhatsAppMessage(urgent));
 
-      // unlock shortly (user returns from tab)
       setTimeout(() => {
         isSubmitting = false;
         submitBtn.disabled = false;
@@ -1997,74 +1867,60 @@
     // reset
     $("resetBtn").addEventListener("click", () => {
       $("quoteForm").reset();
-      hideFormAlert();
+      hideAlert();
 
       lastContextTag = "";
+      setContactPref("WhatsApp");
+      luggage = "none";
+      lugNone.setAttribute("aria-pressed","true");
+      lugSome.setAttribute("aria-pressed","false");
+      lugMany.setAttribute("aria-pressed","false");
+
+      setMeet("no");
+      setPayment("card");
 
       clearFleetSelection();
       updateSelectedVehicleUI();
-
-      setContactPref("WhatsApp");
-      setLuggage("none");
-      setMeetGreet("no");
-      setPayment("card");
-
-      // default datetimes
-      setMinDateTimeNow(whenEl);
-      whenEl.value = "";
-      setDefaultDateTimePlus60(whenEl);
 
       // clear conditionals
       returnTbdEl.checked = false;
       returnWhenEl.value = "";
       hoursEl.value = "";
-      flightNumberEl.value = "";
-      waitTimeEl.value = "";
-      childSeatEl.value = "";
-      bigSuitcasesEl.value = "0";
-      carryOnEl.value = "0";
-      multiVehiclesEl.value = "1";
+      flightEl.value = "";
+      waitEl.value = "";
+      seatEl.value = "";
 
-      // hide hints
+      // hide notices
       capacityNotice.classList.add("hidden");
-      urgentHint.classList.add("hidden");
-      urgentTopBar.classList.add("hidden");
       travelHint.classList.add("hidden");
       flightWrap.classList.add("hidden");
       meetWrap.classList.add("hidden");
       airportExtrasWrap.classList.add("hidden");
-      arHint.classList.add("hidden");
       luggageVanHint.classList.add("hidden");
+      urgentHint.classList.add("hidden");
       returnWrap.classList.add("hidden");
       hoursWrap.classList.add("hidden");
 
-      // remove storage
       try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
 
-      updateNotesSuggestion();
-      updateContextHints();
-      updateServiceConditionalFields();
-      updateMessagePreview();
+      updateServiceConditionals();
+      updateHints();
+      save();
     });
 
-    // init
-    setMinDateTimeNow(whenEl);
-    setDefaultDateTimePlus60(whenEl);
-    setMinDateTimeNow(returnWhenEl);
+    // ---------- boot ----------
+    setMinNow(whenEl);
+    setMinNow(returnWhenEl);
 
-    // restore state first
-    restoreFromStorage();
-
-    // apply language after restore
+    restore();
+    // apply lang after restore
     setLanguage(LANG);
 
-    // keep conditional fields updated
-    updateServiceConditionalFields();
+    // initial
+    updateServiceConditionals();
     updateSelectedVehicleUI();
-    enforceCapacityRule();
-    updateNotesSuggestion();
-    updateContextHints();
-    updateMessagePreview();
+    enforceCapacity();
+    updateHints();
   </script>
 </body>
 </html>
