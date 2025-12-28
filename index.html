@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="it">
 <head>
@@ -40,7 +41,6 @@
   </script>
 
   <style>
-    :root { color-scheme: dark; }
     html { scroll-behavior: smooth; }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     section[id] { scroll-margin-top: 92px; }
@@ -104,13 +104,6 @@
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
 
-    .top-urgent{
-      position:fixed; left:0; right:0; top:0; z-index:80;
-      background: rgba(190, 18, 60, 0.16);
-      border-bottom: 1px solid rgba(244, 63, 94, 0.25);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    }
-
     .btn-wa{
       background:#25D366;
       color:#0b1a10;
@@ -157,19 +150,6 @@
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-0">
-  <!-- TOP URGENT BAR (shown when trip within 2 hours) -->
-  <div id="topUrgentBar" class="top-urgent hidden">
-    <div class="mx-auto max-w-6xl px-4 py-2 flex items-center justify-between gap-3">
-      <div class="text-xs sm:text-sm text-rose-100">
-        <span class="font-semibold" id="t_urgent_bar_title">Entro 2 ore?</span>
-        <span class="text-rose-100/80" id="t_urgent_bar_sub">Scrivi su WhatsApp urgente per risposta rapida.</span>
-      </div>
-      <button id="urgentWA" type="button" class="btn-wa rounded-2xl px-4 py-2 text-xs sm:text-sm">
-        <span id="t_btn_urgent">WhatsApp urgente</span>
-      </button>
-    </div>
-  </div>
-
   <!-- HEADER -->
   <header class="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/70 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
@@ -362,27 +342,6 @@ Rispondiamo subito su WhatsApp</p>
       </div>
     </section>
 
-    <!-- REVIEWS -->
-    <section id="reviews" class="mx-auto max-w-6xl px-4 py-12">
-      <h2 class="text-3xl font-semibold" id="t_reviews_title">Recensioni</h2>
-      <p class="mt-3 text-neutral-300" id="t_reviews_sub">Feedback reali (placeholder): sostituire con recensioni Google quando vuoi.</p>
-
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="text-sm text-neutral-300" id="t_rev_1">“Puntualissimi e super professionali. Preventivo chiaro e risposta rapidissima.”</div>
-          <div class="mt-4 text-xs text-neutral-400"><span class="font-semibold text-white">Cliente</span> · Milano</div>
-        </div>
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="text-sm text-neutral-300" id="t_rev_2">“Auto pulita, guida perfetta. Ottimo per aeroporti e transfer business.”</div>
-          <div class="mt-4 text-xs text-neutral-400"><span class="font-semibold text-white">Cliente</span> · Linate</div>
-        </div>
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-6">
-          <div class="text-sm text-neutral-300" id="t_rev_3">“Servizio impeccabile anche con bagagli e orari stretti. Consigliato.”</div>
-          <div class="mt-4 text-xs text-neutral-400"><span class="font-semibold text-white">Cliente</span> · Malpensa</div>
-        </div>
-      </div>
-    </section>
-
     <!-- QUOTE -->
     <section id="quote" class="mx-auto max-w-6xl px-4 py-12">
       <div class="rounded-[2rem] border border-white/10 bg-white/5 p-7 md:p-10">
@@ -412,25 +371,6 @@ Rispondiamo subito su WhatsApp</p>
         <div id="formAlert" class="mt-6 hidden rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm text-red-100">
           <div class="font-semibold" id="t_form_alert_title">Compila i campi obbligatori</div>
           <div id="formAlertText" class="mt-1 text-red-100/90"></div>
-        </div>
-
-        <!-- LIGHT LIVE SUMMARY -->
-        <div class="mt-6 rounded-2xl border border-white/10 bg-neutral-950/30 px-5 py-4">
-          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <div class="text-xs text-neutral-400" id="t_live_title">Anteprima messaggio WhatsApp</div>
-              <div class="mt-2 whitespace-pre-line text-sm text-neutral-200" id="livePreview">(compila il form per vedere l’anteprima)</div>
-            </div>
-            <div class="flex gap-2 sm:flex-col">
-              <button id="copyMsg" type="button" class="rounded-2xl px-4 py-2 text-sm btn-ghost">
-                <span id="t_copy_btn">Copia testo</span>
-              </button>
-              <button id="sendPreviewWA" type="button" class="rounded-2xl px-4 py-2 text-sm btn-wa">
-                <span id="t_send_preview">Invia ora</span>
-              </button>
-            </div>
-          </div>
-          <div id="copyToast" class="mt-3 hidden text-xs text-emerald-200">Copiato.</div>
         </div>
 
         <form id="quoteForm" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4" novalidate>
@@ -467,11 +407,38 @@ Rispondiamo subito su WhatsApp</p>
             </select>
           </div>
 
-          <!-- Conditional: return datetime (required for round trip) -->
+          <!-- Date/Time (Departure FIRST) -->
+          <div class="md:col-span-2">
+            <label class="text-sm text-neutral-300" id="t_when_label">Data / Ora (partenza) *</label>
+            <input id="when" required type="datetime-local" class="mt-1 w-full field" />
+            <p class="mt-2 text-xs text-neutral-400" id="t_when_hint">Inserisci prima la partenza. Se hai A/R, comparirà il ritorno.</p>
+          </div>
+
+          <!-- Pax -->
+          <div class="md:col-span-2">
+            <label class="text-sm text-neutral-300" id="t_pax_label">Passeggeri *</label>
+            <select id="pax" required class="mt-1 w-full field">
+              <option value="" disabled selected id="t_pax_ph">Seleziona passeggeri</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+
+            <div id="capacityNotice" class="mt-2 hidden rounded-2xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
+              <span id="t_capacity_notice">Con più di 4 passeggeri serve VAN/Gruppi: impostato automaticamente.</span>
+            </div>
+          </div>
+
+          <!-- Conditional: return datetime (AFTER departure) -->
           <div id="returnWrap" class="md:col-span-2 hidden">
             <label class="text-sm text-neutral-300" id="t_return_label">Ritorno (data/ora) *</label>
             <input id="returnWhen" type="datetime-local" class="mt-1 w-full field" />
-            <p class="mt-2 text-xs text-neutral-400" id="t_return_hint">Se cambi idea: seleziona “Solo andata”.</p>
+            <p class="mt-2 text-xs text-neutral-400" id="t_return_hint">Il ritorno non può essere prima della partenza.</p>
           </div>
 
           <!-- Conditional: hours dropdown 2-16 (required for hourly) -->
@@ -499,34 +466,6 @@ Rispondiamo subito su WhatsApp</p>
             <label class="text-sm text-neutral-300" id="t_stops_label">Fermate (opzionale)</label>
             <input id="stops" class="mt-1 w-full field" placeholder="Es. Stazione → Hotel → Ufficio" />
             <p class="mt-2 text-xs text-neutral-400" id="t_stops_hint">Scrivi le fermate in ordine.</p>
-          </div>
-
-          <!-- Date/Time + Pax -->
-          <div class="md:col-span-2">
-            <label class="text-sm text-neutral-300" id="t_when_label">Data / Ora *</label>
-            <input id="when" required type="datetime-local" class="mt-1 w-full field" />
-            <div id="urgentHint" class="mt-2 hidden rounded-2xl border border-rose-500/25 bg-rose-500/10 px-4 py-3 text-xs text-rose-100">
-              <div id="t_urgent_hint">Se è entro 2 ore, usa “WhatsApp urgente” in alto per risposta più rapida.</div>
-            </div>
-          </div>
-
-          <div class="md:col-span-2">
-            <label class="text-sm text-neutral-300" id="t_pax_label">Passeggeri *</label>
-            <select id="pax" required class="mt-1 w-full field">
-              <option value="" disabled selected id="t_pax_ph">Seleziona passeggeri</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-            </select>
-
-            <div id="capacityNotice" class="mt-2 hidden rounded-2xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs text-amber-100">
-              <span id="t_capacity_notice">Con più di 4 passeggeri serve VAN/Gruppi: impostato automaticamente.</span>
-            </div>
           </div>
 
           <!-- Airport/station conditional -->
@@ -736,7 +675,8 @@ Rispondiamo subito su WhatsApp</p>
     // =========================================================
     const WA_PHONE = "393208784091";
     const CANONICAL_URL = "https://www.nexaride.it/";
-    const STORAGE_KEY = "nexaride_quote_v2";
+    const STORAGE_KEY = "nexaride_quote_v3";
+    const ROUNDTRIP_MIN_MINUTES = 30; // return must be at least +30 min after departure
 
     // =========================================================
     // I18N
@@ -761,11 +701,8 @@ Rispondiamo subito su WhatsApp</p>
           fleetQuote: "Richiedi preventivo",
           footerQuote: "Preventivo",
           footerWa: "Apri WhatsApp",
-          urgent: "WhatsApp urgente",
           submit: "Invia su WhatsApp",
-          reset: "Reset",
-          copy: "Copia testo",
-          sendNow: "Invia ora"
+          reset: "Reset"
         },
         card: {
           small: "Come funziona",
@@ -794,10 +731,6 @@ Rispondiamo subito su WhatsApp</p>
           c3t:"Van / Gruppi", c3d:"Classe V / Vito · fino a 7 passeggeri + bagagli.",
           selected:"Selezionato"
         },
-        reviews: {
-          title:"Recensioni",
-          sub:"Feedback reali (placeholder): sostituire con recensioni Google quando vuoi."
-        },
         quote: {
           title:"Richiedi preventivo",
           sub:"Compila i dettagli e invia su WhatsApp in 1 click.",
@@ -816,8 +749,13 @@ Rispondiamo subito su WhatsApp</p>
           s2:"Andata/Ritorno",
           s3:"A disposizione (ore)",
           s4:"Intera giornata",
+          whenLabel:"Data / Ora (partenza) *",
+          whenHint:"Inserisci prima la partenza. Se hai A/R, comparirà il ritorno.",
+          paxLabel:"Passeggeri *",
+          paxPh:"Seleziona passeggeri",
+          capNotice:"Con più di 4 passeggeri serve VAN/Gruppi: impostato automaticamente.",
           returnLabel:"Ritorno (data/ora) *",
-          returnHint:"Se cambi idea: seleziona “Solo andata”.",
+          returnHint:"Il ritorno non può essere prima della partenza.",
           hoursLabel:"A disposizione (ore) *",
           hoursPh:"Seleziona ore",
           hoursHint:"Esempio: meeting, shopping, appuntamenti multipli.",
@@ -825,10 +763,6 @@ Rispondiamo subito su WhatsApp</p>
           toLabel:"Destinazione *",
           stopsLabel:"Fermate (opzionale)",
           stopsHint:"Scrivi le fermate in ordine.",
-          whenLabel:"Data / Ora *",
-          paxLabel:"Passeggeri *",
-          paxPh:"Seleziona passeggeri",
-          capNotice:"Con più di 4 passeggeri serve VAN/Gruppi: impostato automaticamente.",
           travelTitle:"Aeroporto / Stazione",
           flightLabel:"Numero volo/treno (opzionale)",
           meetLabel:"Meet & Greet",
@@ -856,12 +790,7 @@ Rispondiamo subito su WhatsApp</p>
           namePh:"Es. Marco",
           phoneLabel:"Telefono (consigliato)",
           phonePh:"Es. +39 3xx xxx xxxx",
-          notesLabel:"Note",
-          liveTitle:"Anteprima messaggio WhatsApp",
-          liveEmpty:"(compila il form per vedere l’anteprima)",
-          urgentHint:"Se è entro 2 ore, usa “WhatsApp urgente” in alto per risposta più rapida.",
-          urgentBarTitle:"Entro 2 ore?",
-          urgentBarSub:"Scrivi su WhatsApp urgente per risposta rapida."
+          notesLabel:"Note"
         },
         faq: {
           title:"FAQ",
@@ -912,11 +841,8 @@ Note:`,
           fleetQuote: "Get a quote",
           footerQuote: "Quote",
           footerWa: "Open WhatsApp",
-          urgent: "Urgent WhatsApp",
           submit: "Send on WhatsApp",
-          reset: "Reset",
-          copy: "Copy text",
-          sendNow: "Send now"
+          reset: "Reset"
         },
         card: {
           small: "How it works",
@@ -945,10 +871,6 @@ Note:`,
           c3t:"Van / Groups", c3d:"V-Class / Vito · up to 7 passengers + luggage.",
           selected:"Selected"
         },
-        reviews: {
-          title:"Reviews",
-          sub:"Real feedback (placeholder): replace with Google reviews when you want."
-        },
         quote: {
           title:"Get a quote",
           sub:"Fill details and send on WhatsApp in 1 click.",
@@ -967,8 +889,13 @@ Note:`,
           s2:"Round trip",
           s3:"Hourly (as directed)",
           s4:"Full day",
+          whenLabel:"Date / Time (departure) *",
+          whenHint:"Enter departure first. For round trips, return will appear after.",
+          paxLabel:"Passengers *",
+          paxPh:"Select passengers",
+          capNotice:"More than 4 passengers requires a Van/Groups: set automatically.",
           returnLabel:"Return (date/time) *",
-          returnHint:"Changed your mind? Select “One-way”.",
+          returnHint:"Return cannot be before departure.",
           hoursLabel:"Hourly (hours) *",
           hoursPh:"Select hours",
           hoursHint:"Example: meetings, shopping, multiple stops.",
@@ -976,10 +903,6 @@ Note:`,
           toLabel:"Drop-off *",
           stopsLabel:"Stops (optional)",
           stopsHint:"Write stops in order.",
-          whenLabel:"Date / Time *",
-          paxLabel:"Passengers *",
-          paxPh:"Select passengers",
-          capNotice:"More than 4 passengers requires a Van/Groups: set automatically.",
           travelTitle:"Airport / Station",
           flightLabel:"Flight/train number (optional)",
           meetLabel:"Meet & Greet",
@@ -1007,12 +930,7 @@ Note:`,
           namePh:"e.g. Mark",
           phoneLabel:"Phone (recommended)",
           phonePh:"e.g. +39 …",
-          notesLabel:"Notes",
-          liveTitle:"WhatsApp message preview",
-          liveEmpty:"(fill the form to see a preview)",
-          urgentHint:"If within 2 hours, use “Urgent WhatsApp” at the top for faster reply.",
-          urgentBarTitle:"Within 2 hours?",
-          urgentBarSub:"Use urgent WhatsApp for a faster reply."
+          notesLabel:"Notes"
         },
         faq: {
           title:"FAQ",
@@ -1077,27 +995,21 @@ Notes:`,
       const now = new Date();
       inputEl.min = fmtDateTimeLocal(now);
     }
-    function addHours(dt, hrs){
-      return new Date(dt.getTime() + hrs*60*60*1000);
-    }
-    function isWithinHours(dateValue, hours) {
-      const dt = parseDT(dateValue);
-      if (!dt) return false;
-      const diff = dt.getTime() - Date.now();
-      return diff <= (hours * 60 * 60 * 1000) && diff >= (-1 * 60 * 1000); // allow slight past by 1 min
+    function addMinutes(dt, mins){
+      return new Date(dt.getTime() + mins*60*1000);
     }
     function isAirportOrStationText(text) {
       const t = (text || "").toLowerCase();
       const keys = [
         "mxp","malpensa","lin","linate","bgy","orio","orio al serio","airport","terminal","arrivals","departures",
-        "stazione","station","train","centrale","garibaldi","cadorna","rogoredo","lambrate","duomo m1","m1"
+        "stazione","station","train","centrale","garibaldi","cadorna","rogoredo","lambrate"
       ];
       return keys.some(k => t.includes(k));
     }
     function scrollToQuoteAndFocus() {
       document.getElementById("quote").scrollIntoView({ behavior:"smooth", block:"start" });
       setTimeout(() => {
-        const first = document.querySelector("#quoteForm input#from");
+        const first = document.querySelector("#quoteForm select#vehicle");
         if (first) first.focus({ preventScroll:true });
       }, 450);
     }
@@ -1168,8 +1080,6 @@ Notes:`,
     const prefCall = document.getElementById("prefCall");
 
     const capacityNotice = document.getElementById("capacityNotice");
-    const urgentHint = document.getElementById("urgentHint");
-    const topUrgentBar = document.getElementById("topUrgentBar");
     const luggageVanHint = document.getElementById("luggageVanHint");
 
     const selectedVehicleWrap = document.getElementById("selectedVehicleWrap");
@@ -1178,10 +1088,6 @@ Notes:`,
     const formAlert = document.getElementById("formAlert");
     const formAlertText = document.getElementById("formAlertText");
 
-    const livePreviewEl = document.getElementById("livePreview");
-    const copyMsgBtn = document.getElementById("copyMsg");
-    const copyToast = document.getElementById("copyToast");
-    const sendPreviewWA = document.getElementById("sendPreviewWA");
     const submitBtn = document.getElementById("submitBtn");
 
     const fleetCards = Array.from(document.querySelectorAll(".fleet-card"));
@@ -1271,10 +1177,6 @@ Notes:`,
       setText("t_btn_fleet_quote", T.btn.fleetQuote);
       setText("t_btn_open_wa_fleet", T.btn.openWa);
 
-      // reviews
-      setText("t_reviews_title", T.reviews.title);
-      setText("t_reviews_sub", T.reviews.sub);
-
       // quote
       setText("t_quote_title", T.quote.title);
       setText("t_quote_sub", T.quote.sub);
@@ -1296,6 +1198,13 @@ Notes:`,
       setText("t_service_3", T.quote.s3);
       setText("t_service_4", T.quote.s4);
 
+      setText("t_when_label", T.quote.whenLabel);
+      setText("t_when_hint", T.quote.whenHint);
+
+      setText("t_pax_label", T.quote.paxLabel);
+      setText("t_pax_ph", T.quote.paxPh);
+      setText("t_capacity_notice", T.quote.capNotice);
+
       setText("t_return_label", T.quote.returnLabel);
       setText("t_return_hint", T.quote.returnHint);
       setText("t_hours_label", T.quote.hoursLabel);
@@ -1306,11 +1215,6 @@ Notes:`,
       setText("t_to_label", T.quote.toLabel);
       setText("t_stops_label", T.quote.stopsLabel);
       setText("t_stops_hint", T.quote.stopsHint);
-
-      setText("t_when_label", T.quote.whenLabel);
-      setText("t_pax_label", T.quote.paxLabel);
-      setText("t_pax_ph", T.quote.paxPh);
-      setText("t_capacity_notice", T.quote.capNotice);
 
       setText("t_travel_title", T.quote.travelTitle);
       setText("t_flight_label", T.quote.flightLabel);
@@ -1334,7 +1238,6 @@ Notes:`,
       setText("t_luggage_van_hint", T.quote.luggageVanHint);
 
       setText("t_pay_label", T.quote.payLabel);
-
       setText("t_invoice_label", T.quote.invoiceLabel);
       setText("t_invoice_check", T.quote.invoiceCheck);
       setText("t_invoice_hint", T.quote.invoiceHint);
@@ -1345,17 +1248,8 @@ Notes:`,
       phoneEl.placeholder = T.quote.phonePh;
       setText("t_notes_label", T.quote.notesLabel);
 
-      setText("t_live_title", T.quote.liveTitle);
-      setText("t_urgent_hint", T.quote.urgentHint);
-
-      setText("t_btn_urgent", T.btn.urgent);
       setText("t_submit", T.btn.submit);
       setText("t_reset", T.btn.reset);
-      setText("t_copy_btn", T.btn.copy);
-      setText("t_send_preview", T.btn.sendNow);
-
-      setText("t_urgent_bar_title", T.quote.urgentBarTitle);
-      setText("t_urgent_bar_sub", T.quote.urgentBarSub);
 
       // faq
       setText("t_faq_title", T.faq.title);
@@ -1376,13 +1270,6 @@ Notes:`,
       setText("t_sticky_wa", T.sticky.wa);
       setText("t_sticky_quote", T.sticky.quote);
 
-      // live preview empty
-      if (!hasAnyFormData()) {
-        livePreviewEl.textContent = T.quote.liveEmpty;
-      } else {
-        livePreviewEl.textContent = buildFormWhatsAppMessage();
-      }
-
       updateNotesSuggestion();
     }
 
@@ -1394,7 +1281,6 @@ Notes:`,
       localStorage.setItem("nexaride_lang", LANG);
       applyLang();
       updateContext();
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1404,7 +1290,6 @@ Notes:`,
       prefWA.setAttribute("aria-pressed", isWA ? "true" : "false");
       prefCall.setAttribute("aria-pressed", isWA ? "false" : "true");
       saveToStorageDebounced();
-      updateLivePreview();
     }
 
     function setLuggage(mode) {
@@ -1412,10 +1297,9 @@ Notes:`,
       lugNone.setAttribute("aria-pressed", mode === "none" ? "true" : "false");
       lugSome.setAttribute("aria-pressed", mode === "some" ? "true" : "false");
       lugMany.setAttribute("aria-pressed", mode === "many" ? "true" : "false");
-      updateLuggageStepperState();
-      updateContext();
+      updateLuggageCountersUI();
+      updateLuggageHints();
       updateNotesSuggestion();
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1423,7 +1307,6 @@ Notes:`,
       meetGreet = val;
       meetYes.setAttribute("aria-pressed", val === "yes" ? "true" : "false");
       meetNo.setAttribute("aria-pressed", val === "no" ? "true" : "false");
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1433,7 +1316,6 @@ Notes:`,
       payCash.setAttribute("aria-pressed", mode === "cash" ? "true" : "false");
       payBank.setAttribute("aria-pressed", mode === "bank" ? "true" : "false");
       payWallet.setAttribute("aria-pressed", mode === "wallet" ? "true" : "false");
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1472,28 +1354,49 @@ Notes:`,
       return v.includes("disposizione") || v.includes("hour");
     }
 
-    function enforceServiceConditionals() {
-      // Return datetime
-      if (isRoundTrip()) {
-        returnWrap.classList.remove("hidden");
-        returnWhenEl.required = true;
-        // set min return >= when (or now)
-        const base = parseDT(whenEl.value) || new Date();
-        const min = addHours(base, 1); // +1h default minimum
-        returnWhenEl.min = fmtDateTimeLocal(min);
-        if (!returnWhenEl.value) {
-          returnWhenEl.value = fmtDateTimeLocal(addHours(base, 4));
-        } else {
-          const r = parseDT(returnWhenEl.value);
-          if (r && r.getTime() < min.getTime()) returnWhenEl.value = fmtDateTimeLocal(min);
-        }
-      } else {
+    function enforceRoundTripLogic() {
+      // Professional logic:
+      // - Return field is shown only if Round trip AND departure datetime is valid
+      // - Return min is departure + ROUNDTRIP_MIN_MINUTES
+      // - If user changes departure to after return, return auto-adjusts to min
+      const dep = parseDT(whenEl.value);
+
+      if (!isRoundTrip()) {
         returnWrap.classList.add("hidden");
         returnWhenEl.required = false;
         returnWhenEl.value = "";
+        returnWhenEl.disabled = true;
+        return;
       }
 
-      // Hours dropdown
+      // Round trip selected:
+      if (!dep) {
+        // Departure missing: keep return hidden and disabled (prevents illogical flow)
+        returnWrap.classList.add("hidden");
+        returnWhenEl.required = true; // still required logically, but hidden until dep exists
+        returnWhenEl.value = "";
+        returnWhenEl.disabled = true;
+        return;
+      }
+
+      // Departure exists => show return, enable and enforce min
+      returnWrap.classList.remove("hidden");
+      returnWhenEl.disabled = false;
+      returnWhenEl.required = true;
+
+      const minReturn = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
+      returnWhenEl.min = fmtDateTimeLocal(minReturn);
+
+      const currentReturn = parseDT(returnWhenEl.value);
+      if (!currentReturn || currentReturn.getTime() < minReturn.getTime()) {
+        // if empty or invalid, suggest a sensible default (dep + 4h)
+        const suggested = addMinutes(dep, 240);
+        const finalVal = (suggested.getTime() < minReturn.getTime()) ? minReturn : suggested;
+        returnWhenEl.value = fmtDateTimeLocal(finalVal);
+      }
+    }
+
+    function enforceHoursLogic() {
       if (isHourly()) {
         hoursWrap.classList.remove("hidden");
         hoursEl.required = true;
@@ -1504,11 +1407,15 @@ Notes:`,
       }
     }
 
+    function enforceServiceConditionals() {
+      enforceRoundTripLogic();
+      enforceHoursLogic();
+    }
+
     function enforceCapacityRule() {
       const paxNum = parseInt(paxSelect.value || "0", 10);
       const isOver4 = paxNum > 4;
       if (isOver4) {
-        // force Van
         if (vehicleSelect.value !== "Van / Gruppi (Mercedes Classe V / Vito)") {
           vehicleSelect.value = "Van / Gruppi (Mercedes Classe V / Vito)";
           selectFleetByLabel(vehicleSelect.value);
@@ -1518,7 +1425,6 @@ Notes:`,
         capacityNotice.classList.add("hidden");
       }
       updateSelectedVehicleUI();
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1526,19 +1432,12 @@ Notes:`,
       const a = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
       travelFields.classList.toggle("hidden", !a);
 
-      // If hidden, clear travel-only fields (optional but reduces noise)
       if (!a) {
         flightTrainEl.value = "";
         waitExtraEl.value = "";
         childSeatEl.value = "";
         setMeetGreet("yes");
       }
-    }
-
-    function updateUrgency() {
-      const urgent = isWithinHours(whenEl.value, 2);
-      urgentHint.classList.toggle("hidden", !urgent);
-      topUrgentBar.classList.toggle("hidden", !urgent);
     }
 
     function updateLuggageHints() {
@@ -1551,7 +1450,6 @@ Notes:`,
     function updateContext() {
       enforceServiceConditionals();
       updateTravelDetection();
-      updateUrgency();
       updateLuggageHints();
       updateNotesSuggestion();
       updateSelectedVehicleUI();
@@ -1562,7 +1460,6 @@ Notes:`,
     // NOTES SUGGESTION
     // =========================================================
     function updateNotesSuggestion() {
-      const T = I18N[LANG];
       const parts = [];
 
       if (invoiceEl.checked) parts.push(LANG === "en" ? "Invoice required (details in chat)." : "Richiedo fattura (dati in chat).");
@@ -1574,17 +1471,12 @@ Notes:`,
       }
 
       const paxNum = parseInt(paxSelect.value || "0", 10);
-      if (paxNum === 8) {
-        parts.push(LANG === "en" ? "Group of 8: please specify luggage." : "Gruppo da 8: indica bagagli.");
-      }
-
       const many = (luggageMode === "many") || (bigBags >= 3) || (carryBags >= 4);
       if (paxNum >= 4 && many) {
         parts.push(LANG === "en" ? "Often better with a Van for space." : "Spesso meglio Van per spazio.");
       }
 
       notesHintEl.textContent = parts.length ? (LANG === "en" ? "Tip: " : "Suggerimento: ") + parts.join(" ") : "";
-      // keep note placeholder minimal but coherent
       notesEl.placeholder = (LANG === "en")
         ? "Extra info (e.g. hotel name, door number, timing constraints)…"
         : "Info utili (es. nome hotel, civico, vincoli di orario)…";
@@ -1637,7 +1529,7 @@ Notes:`,
       const to = (toEl.value || "").trim();
       const stops = (stopsEl.value || "").trim();
 
-      const when = whenEl.value || "";
+      const dep = whenEl.value || "";
       const ret = returnWhenEl.value || "";
       const hrs = hoursEl.value || "";
 
@@ -1651,7 +1543,7 @@ Notes:`,
       lines.push((LANG==="en"?"Drop-off: ":"Destinazione: ") + to);
       if (stops) lines.push((LANG==="en"?"Stops: ":"Fermate: ") + stops);
 
-      lines.push((LANG==="en"?"Date/Time: ":"Data/Ora: ") + when);
+      lines.push((LANG==="en"?"Departure: ":"Partenza: ") + dep);
       if (isRoundTrip()) lines.push((LANG==="en"?"Return: ":"Ritorno: ") + ret);
       if (isHourly()) lines.push((LANG==="en"?"Hours: ":"Ore: ") + hrs);
 
@@ -1667,7 +1559,6 @@ Notes:`,
       }
 
       lines.push((LANG==="en"?"Payment: ":"Pagamento: ") + humanPay(payMode));
-
       if (invoiceEl.checked) lines.push(LANG==="en" ? "Invoice: yes" : "Fattura: sì");
       lines.push((LANG==="en"?"Contact preference: ":"Preferenza contatto: ") + (contactPref || (LANG==="en"?"WhatsApp":"WhatsApp")));
 
@@ -1683,56 +1574,7 @@ Notes:`,
     }
 
     // =========================================================
-    // LIVE PREVIEW + COPY
-    // =========================================================
-    function hasAnyFormData() {
-      return Boolean(
-        (vehicleSelect.value && vehicleSelect.value !== "") ||
-        (fromEl.value || "").trim() ||
-        (toEl.value || "").trim() ||
-        (whenEl.value || "") ||
-        (paxSelect.value || "") ||
-        (notesEl.value || "").trim()
-      );
-    }
-
-    function updateLivePreview() {
-      const T = I18N[LANG];
-      if (!hasAnyFormData()) {
-        livePreviewEl.textContent = T.quote.liveEmpty;
-        return;
-      }
-      livePreviewEl.textContent = buildFormWhatsAppMessage();
-    }
-
-    async function copyToClipboard(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        return true;
-      } catch (e) {
-        // fallback
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          const ok = document.execCommand("copy");
-          document.body.removeChild(ta);
-          return ok;
-        } catch (err) {
-          document.body.removeChild(ta);
-          return false;
-        }
-      }
-    }
-
-    function showCopyToast() {
-      copyToast.classList.remove("hidden");
-      setTimeout(() => copyToast.classList.add("hidden"), 1400);
-    }
-
-    // =========================================================
-    // VALIDATION (focus first missing)
+    // VALIDATION
     // =========================================================
     function hideFormAlert() {
       formAlert.classList.add("hidden");
@@ -1744,29 +1586,29 @@ Notes:`,
     }
 
     function focusFirstMissing() {
-      // order: vehicle, from, to, when, pax, returnWhen (if required), hours (if required)
       const checks = [
         { ok: () => !!vehicleSelect.value, el: vehicleSelect },
-        { ok: () => !!fromEl.value.trim(), el: fromEl },
-        { ok: () => !!toEl.value.trim(), el: toEl },
+        { ok: () => !!serviceTypeEl.value, el: serviceTypeEl },
         { ok: () => !!whenEl.value, el: whenEl },
+        { ok: () => !isRoundTrip() || !!returnWhenEl.value, el: returnWhenEl },
+        { ok: () => !isHourly() || !!hoursEl.value, el: hoursEl },
         { ok: () => !!paxSelect.value, el: paxSelect },
-        { ok: () => !returnWhenEl.required || !!returnWhenEl.value, el: returnWhenEl },
-        { ok: () => !hoursEl.required || !!hoursEl.value, el: hoursEl }
+        { ok: () => !!fromEl.value.trim(), el: fromEl },
+        { ok: () => !!toEl.value.trim(), el: toEl }
       ];
       const firstBad = checks.find(c => !c.ok());
-      if (firstBad && firstBad.el) firstBad.el.focus({ preventScroll:false });
+      if (firstBad && firstBad.el && !firstBad.el.disabled) firstBad.el.focus({ preventScroll:false });
     }
 
     function validateForm() {
       const missing = [];
       if (!vehicleSelect.value) missing.push(LANG === "en" ? "Vehicle" : "Veicolo");
-      if (!fromEl.value.trim()) missing.push(LANG === "en" ? "Pickup" : "Partenza");
-      if (!toEl.value.trim()) missing.push(LANG === "en" ? "Drop-off" : "Destinazione");
-      if (!whenEl.value) missing.push(LANG === "en" ? "Date/Time" : "Data/Ora");
+      if (!whenEl.value) missing.push(LANG === "en" ? "Departure date/time" : "Data/ora partenza");
+      if (isRoundTrip() && !returnWhenEl.value) missing.push(LANG === "en" ? "Return date/time" : "Data/ora ritorno");
+      if (isHourly() && !hoursEl.value) missing.push(LANG === "en" ? "Hours" : "Ore");
       if (!paxSelect.value) missing.push(LANG === "en" ? "Passengers" : "Passeggeri");
-      if (returnWhenEl.required && !returnWhenEl.value) missing.push(LANG === "en" ? "Return" : "Ritorno");
-      if (hoursEl.required && !hoursEl.value) missing.push(LANG === "en" ? "Hours" : "Ore");
+      if (!fromEl.value.trim()) missing.push(LANG === "en" ? "Pickup" : "Partenza (luogo)");
+      if (!toEl.value.trim()) missing.push(LANG === "en" ? "Drop-off" : "Destinazione");
       return missing;
     }
 
@@ -1785,12 +1627,13 @@ Notes:`,
         values: {
           vehicle: vehicleSelect.value || "",
           serviceType: serviceTypeEl.value || "",
-          from: fromEl.value || "",
-          to: toEl.value || "",
-          stops: stopsEl.value || "",
           when: whenEl.value || "",
           returnWhen: returnWhenEl.value || "",
           hours: hoursEl.value || "",
+          pax: paxSelect.value || "",
+          from: fromEl.value || "",
+          to: toEl.value || "",
+          stops: stopsEl.value || "",
           flightTrain: flightTrainEl.value || "",
           waitExtra: waitExtraEl.value || "",
           childSeat: childSeatEl.value || "",
@@ -1829,12 +1672,13 @@ Notes:`,
         const v = (p.values || {});
         vehicleSelect.value = v.vehicle || "";
         serviceTypeEl.value = v.serviceType || serviceTypeEl.value;
-        fromEl.value = v.from || "";
-        toEl.value = v.to || "";
-        stopsEl.value = v.stops || "";
         whenEl.value = v.when || "";
         returnWhenEl.value = v.returnWhen || "";
         hoursEl.value = v.hours || "";
+        paxSelect.value = v.pax || "";
+        fromEl.value = v.from || "";
+        toEl.value = v.to || "";
+        stopsEl.value = v.stops || "";
         flightTrainEl.value = v.flightTrain || "";
         waitExtraEl.value = v.waitExtra || "";
         childSeatEl.value = v.childSeat || "";
@@ -1842,7 +1686,6 @@ Notes:`,
         nameEl.value = v.name || "";
         phoneEl.value = v.phone || "";
         notesEl.value = v.notes || "";
-
       } catch(e) {}
     }
 
@@ -1856,18 +1699,12 @@ Notes:`,
       carryCountEl.textContent = String(carryBags);
     }
 
-    function updateLuggageStepperState() {
-      // if "none", keep counters but allow user; do not auto reset to avoid annoyance
-      updateLuggageCountersUI();
-      updateLuggageHints();
-    }
-
     function bumpBags(kind, delta) {
       if (kind === "big") bigBags = clamp(bigBags + delta, 0, 12);
       if (kind === "carry") carryBags = clamp(carryBags + delta, 0, 12);
       updateLuggageCountersUI();
 
-      // auto luggage mode from counters (conversion-oriented)
+      // auto luggage mode from counters
       if (bigBags === 0 && carryBags === 0) {
         setLuggage("none");
       } else if (bigBags <= 2 && carryBags <= 2) {
@@ -1875,7 +1712,6 @@ Notes:`,
       } else {
         setLuggage("many");
       }
-      updateLivePreview();
       saveToStorageDebounced();
     }
 
@@ -1890,7 +1726,6 @@ Notes:`,
         o.textContent = String(i);
         frag.appendChild(o);
       }
-      // keep placeholder option as first child; append others
       const existing = Array.from(hoursEl.querySelectorAll("option")).slice(1);
       existing.forEach(o => o.remove());
       hoursEl.appendChild(frag);
@@ -1904,7 +1739,7 @@ Notes:`,
     }
 
     // =========================================================
-    // BIND EVENTS
+    // EVENTS
     // =========================================================
     langIT.addEventListener("click", () => setLang("it"));
     langEN.addEventListener("click", () => setLang("en"));
@@ -1915,14 +1750,13 @@ Notes:`,
     document.getElementById("ctaWAOpenGeneric2").addEventListener("click", () => openWAFrom("quote_top", buildGenericWhatsAppMessage()));
     document.getElementById("ctaWAFooter").addEventListener("click", () => openWAFrom("footer", buildGenericWhatsAppMessage()));
     document.getElementById("stickyWA").addEventListener("click", () => openWAFrom("sticky", buildGenericWhatsAppMessage()));
-    document.getElementById("urgentWA").addEventListener("click", () => openWAFrom("urgent", buildFormWhatsAppMessage()));
     document.getElementById("ctaFleetWA").addEventListener("click", () => openWAFrom("fleet", buildGenericWhatsAppMessage()));
+    document.getElementById("ctaWhy").addEventListener("click", () => openWAFrom("why", buildGenericWhatsAppMessage()));
 
     document.getElementById("ctaScrollToForm").addEventListener("click", () => scrollToQuoteAndFocus());
     document.getElementById("ctaFooterToForm").addEventListener("click", () => scrollToQuoteAndFocus());
     document.getElementById("stickyQuote").addEventListener("click", () => scrollToQuoteAndFocus());
     document.getElementById("ctaFleetToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    document.getElementById("ctaWhy").addEventListener("click", () => openWAFrom("why", buildGenericWhatsAppMessage()));
 
     // Fleet cards -> select vehicle + badge + scroll
     fleetCards.forEach(card => {
@@ -1932,9 +1766,9 @@ Notes:`,
         vehicleSelect.value = label;
         selectFleetByLabel(label);
         updateSelectedVehicleUI();
-        enforceCapacityRule(); // will keep if pax >4
+        enforceCapacityRule();
         updateContext();
-        updateLivePreview();
+        saveToStorageDebounced();
         scrollToQuoteAndFocus();
       });
     });
@@ -1969,71 +1803,56 @@ Notes:`,
       selectFleetByLabel(vehicleSelect.value);
       updateSelectedVehicleUI();
       updateContext();
-      updateLivePreview();
       saveToStorageDebounced();
     });
 
     paxSelect.addEventListener("change", () => {
       enforceCapacityRule();
       updateContext();
-      updateLivePreview();
       saveToStorageDebounced();
     });
 
     serviceTypeEl.addEventListener("change", () => {
       enforceServiceConditionals();
-      updateLivePreview();
+      // If user just switched to round trip but departure is missing, guide by focusing departure
+      if (isRoundTrip() && !whenEl.value) {
+        whenEl.focus({ preventScroll:false });
+      }
       saveToStorageDebounced();
     });
 
-    fromEl.addEventListener("input", () => { updateContext(); updateLivePreview(); saveToStorageDebounced(); });
-    toEl.addEventListener("input", () => { updateContext(); updateLivePreview(); saveToStorageDebounced(); });
-    stopsEl.addEventListener("input", () => { updateLivePreview(); saveToStorageDebounced(); });
+    fromEl.addEventListener("input", () => { updateTravelDetection(); saveToStorageDebounced(); });
+    toEl.addEventListener("input", () => { updateTravelDetection(); saveToStorageDebounced(); });
+    stopsEl.addEventListener("input", () => { saveToStorageDebounced(); });
 
     whenEl.addEventListener("focus", () => setMinDateTimeNow(whenEl));
     whenEl.addEventListener("change", () => {
       setMinDateTimeNow(whenEl);
-      enforceServiceConditionals();
-      updateContext();
-      updateLivePreview();
+      // When departure changes, re-enforce A/R and ensure return can't be before
+      enforceRoundTripLogic();
       saveToStorageDebounced();
     });
 
     returnWhenEl.addEventListener("focus", () => {
-      if (returnWhenEl.min) return;
-      enforceServiceConditionals();
+      // Ensure min is correct on focus
+      enforceRoundTripLogic();
     });
-    returnWhenEl.addEventListener("change", () => { updateLivePreview(); saveToStorageDebounced(); });
-
-    hoursEl.addEventListener("change", () => { updateLivePreview(); saveToStorageDebounced(); });
-
-    flightTrainEl.addEventListener("input", () => { updateLivePreview(); saveToStorageDebounced(); });
-    waitExtraEl.addEventListener("change", () => { updateLivePreview(); saveToStorageDebounced(); });
-    childSeatEl.addEventListener("change", () => { updateLivePreview(); saveToStorageDebounced(); });
-
-    invoiceEl.addEventListener("change", () => { updateNotesSuggestion(); updateLivePreview(); saveToStorageDebounced(); });
-    nameEl.addEventListener("input", () => { updateLivePreview(); saveToStorageDebounced(); });
-    phoneEl.addEventListener("input", () => { updateLivePreview(); saveToStorageDebounced(); });
-    notesEl.addEventListener("input", () => { updateNotesSuggestion(); updateLivePreview(); saveToStorageDebounced(); });
-
-    // Copy + send preview
-    copyMsgBtn.addEventListener("click", async () => {
-      const text = buildFormWhatsAppMessage();
-      const ok = await copyToClipboard(text);
-      if (ok) showCopyToast();
+    returnWhenEl.addEventListener("change", () => {
+      // If somehow user picks earlier than min, snap back
+      enforceRoundTripLogic();
+      saveToStorageDebounced();
     });
 
-    sendPreviewWA.addEventListener("click", () => {
-      const missing = validateForm();
-      hideFormAlert();
-      if (missing.length) {
-        showFormAlert(missing);
-        scrollToQuoteAndFocus();
-        focusFirstMissing();
-        return;
-      }
-      openWAFrom("preview_send", buildFormWhatsAppMessage());
-    });
+    hoursEl.addEventListener("change", () => { saveToStorageDebounced(); });
+
+    flightTrainEl.addEventListener("input", () => { saveToStorageDebounced(); });
+    waitExtraEl.addEventListener("change", () => { saveToStorageDebounced(); });
+    childSeatEl.addEventListener("change", () => { saveToStorageDebounced(); });
+
+    invoiceEl.addEventListener("change", () => { updateNotesSuggestion(); saveToStorageDebounced(); });
+    nameEl.addEventListener("input", () => { saveToStorageDebounced(); });
+    phoneEl.addEventListener("input", () => { saveToStorageDebounced(); });
+    notesEl.addEventListener("input", () => { updateNotesSuggestion(); saveToStorageDebounced(); });
 
     // Submit (block double submit + focus missing)
     document.getElementById("quoteForm").addEventListener("submit", (e) => {
@@ -2041,6 +1860,10 @@ Notes:`,
       if (isSubmitting) return;
       isSubmitting = true;
       hideFormAlert();
+
+      // Always enforce logic before validating
+      enforceServiceConditionals();
+      enforceCapacityRule();
 
       const missing = validateForm();
       if (missing.length) {
@@ -2051,13 +1874,20 @@ Notes:`,
         return;
       }
 
-      // Last safety: enforce van if pax >4
-      enforceCapacityRule();
+      // Final sanity for round trip chronology
+      if (isRoundTrip()) {
+        const dep = parseDT(whenEl.value);
+        const ret = parseDT(returnWhenEl.value);
+        if (dep && ret) {
+          const minRet = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
+          if (ret.getTime() < minRet.getTime()) {
+            returnWhenEl.value = fmtDateTimeLocal(minRet);
+          }
+        }
+      }
 
-      // open WhatsApp
       openWAFrom("form_submit", buildFormWhatsAppMessage());
 
-      // anti-double click window
       submitBtn.setAttribute("disabled", "disabled");
       submitBtn.style.opacity = "0.7";
       setTimeout(() => {
@@ -2084,11 +1914,13 @@ Notes:`,
       carryBags = 0;
       updateLuggageCountersUI();
 
-      // datetime min now + default +60m
+      // datetime min now
       setMinDateTimeNow(whenEl);
       whenEl.value = "";
 
       returnWhenEl.value = "";
+      returnWhenEl.disabled = true;
+
       hoursEl.value = "";
       flightTrainEl.value = "";
       waitExtraEl.value = "";
@@ -2099,12 +1931,10 @@ Notes:`,
 
       travelFields.classList.add("hidden");
       capacityNotice.classList.add("hidden");
-      urgentHint.classList.add("hidden");
-      topUrgentBar.classList.add("hidden");
       luggageVanHint.classList.add("hidden");
 
+      enforceServiceConditionals();
       updateContext();
-      updateLivePreview();
       saveToStorage();
     });
 
@@ -2116,12 +1946,8 @@ Notes:`,
     fillHoursOptions();
     loadFromStorage();
 
-    // Ensure datetime min now; if empty, suggest +60min but do not force (less friction)
+    // Set datetime min now; do NOT force a default (less friction)
     setMinDateTimeNow(whenEl);
-    if (!whenEl.value) {
-      const dt = new Date(Date.now() + 60*60*1000);
-      whenEl.value = fmtDateTimeLocal(dt);
-    }
 
     // Apply stored prefs
     setContactPref(contactPref || "WhatsApp");
@@ -2136,16 +1962,16 @@ Notes:`,
     // If pax over 4, force Van
     enforceCapacityRule();
 
-    // Default service conditional fields
+    // Enforce professional service logic
     enforceServiceConditionals();
 
-    // Apply language + context + preview
+    // Apply language + context
     applyLang();
     updateContext();
-    updateLivePreview();
 
     // Save once on init (normalizes schema)
     saveToStorage();
   </script>
 </body>
 </html>
+```
