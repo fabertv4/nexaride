@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="it">
 <head>
@@ -104,11 +103,7 @@
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
 
-    .btn-wa{
-      background:#25D366;
-      color:#0b1a10;
-      font-weight: 800;
-    }
+    .btn-wa{ background:#25D366; color:#0b1a10; font-weight: 800; }
     .btn-wa:hover{ opacity:.92; }
     .btn-wa:active{ opacity:.85; }
 
@@ -119,17 +114,6 @@
       color: rgba(255,255,255,0.95);
     }
     .btn-ghost:hover{ background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
-
-    .num-stepper button{
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      border-radius: 14px;
-      width: 42px;
-      height: 42px;
-      font-weight: 900;
-    }
-    .num-stepper button:hover{ background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
-    .num-stepper button:active{ transform: translateY(1px); }
 
     .field{
       border:1px solid rgba(255,255,255,0.10);
@@ -328,7 +312,7 @@ Rispondiamo subito su WhatsApp</p>
           <div class="fleet-badge"><span class="dot">✓</span><span id="t_fleet_selected_3">Selezionato</span></div>
           <img src="/classeV_industriale.png" alt="Mercedes Classe V / Vito" class="w-full rounded-2xl border border-white/10 bg-black/20" loading="lazy">
           <div class="mt-5 text-lg font-semibold" id="t_fleet_c3t">Van / Gruppi</div>
-          <div class="mt-1 text-sm text-neutral-300" id="t_fleet_c3d">Classe V / Vito · fino a 7 passeggeri + bagagli.</div>
+          <div class="mt-1 text-sm text-neutral-300" id="t_fleet_c3d">Classe V / Vito · fino a 7 passeggeri.</div>
         </button>
       </div>
 
@@ -508,50 +492,6 @@ Rispondiamo subito su WhatsApp</p>
             </div>
           </div>
 
-          <!-- Luggage -->
-          <div class="md:col-span-4">
-            <label class="text-sm text-neutral-300" id="t_luggage_label">Bagagli (consigliato)</label>
-            <div class="mt-2 seg-wrap">
-              <button type="button" class="seg" id="lugNone" aria-pressed="true">Nessuno</button>
-              <button type="button" class="seg" id="lugSome" aria-pressed="false">1–2 valigie</button>
-              <button type="button" class="seg" id="lugMany" aria-pressed="false">Molti bagagli</button>
-            </div>
-
-            <div class="mt-4 grid gap-4 md:grid-cols-2">
-              <div class="rounded-3xl border border-white/10 bg-neutral-950/30 p-5">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <div class="font-semibold" id="t_big_bags">Valigie grandi</div>
-                    <div class="text-xs text-neutral-400" id="t_big_bags_hint">Trolley/valigie da stiva</div>
-                  </div>
-                  <div class="flex items-center gap-3 num-stepper">
-                    <button type="button" id="bigMinus" aria-label="diminuisci valigie grandi">−</button>
-                    <div class="w-10 text-center font-extrabold" id="bigCount">0</div>
-                    <button type="button" id="bigPlus" aria-label="aumenta valigie grandi">+</button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rounded-3xl border border-white/10 bg-neutral-950/30 p-5">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <div class="font-semibold" id="t_carry_bags">Bagagli a mano</div>
-                    <div class="text-xs text-neutral-400" id="t_carry_bags_hint">Zaini/piccoli trolley</div>
-                  </div>
-                  <div class="flex items-center gap-3 num-stepper">
-                    <button type="button" id="carryMinus" aria-label="diminuisci bagagli a mano">−</button>
-                    <div class="w-10 text-center font-extrabold" id="carryCount">0</div>
-                    <button type="button" id="carryPlus" aria-label="aumenta bagagli a mano">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="luggageVanHint" class="mt-3 hidden rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-xs text-emerald-100">
-              <span id="t_luggage_van_hint">Con 4 passeggeri e molti bagagli spesso è meglio un Van (più spazio).</span>
-            </div>
-          </div>
-
           <!-- Payment -->
           <div class="md:col-span-4">
             <label class="text-sm text-neutral-300" id="t_pay_label">Pagamento</label>
@@ -675,11 +615,11 @@ Rispondiamo subito su WhatsApp</p>
     // =========================================================
     const WA_PHONE = "393208784091";
     const CANONICAL_URL = "https://www.nexaride.it/";
-    const STORAGE_KEY = "nexaride_quote_v3";
-    const ROUNDTRIP_MIN_MINUTES = 30; // return must be at least +30 min after departure
+    const STORAGE_KEY = "nexaride_quote_v4_noluggage";
+    const ROUNDTRIP_MIN_MINUTES = 30;
 
     // =========================================================
-    // I18N
+    // I18N (NO LUGGAGE ANYWHERE)
     // =========================================================
     const I18N = {
       it: {
@@ -728,7 +668,7 @@ Rispondiamo subito su WhatsApp</p>
           sub:"Seleziona una categoria: precompiliamo il form. Se vuoi un VAN anche in 1–2 passeggeri, puoi sceglierlo.",
           c1t:"Comfort / SUV", c1d:"Toyota RAV4 · ideale fino a 4 passeggeri.",
           c2t:"Executive", c2d:"Mercedes Classe E · business e VIP.",
-          c3t:"Van / Gruppi", c3d:"Classe V / Vito · fino a 7 passeggeri + bagagli.",
+          c3t:"Van / Gruppi", c3d:"Classe V / Vito · fino a 7 passeggeri.",
           selected:"Selezionato"
         },
         quote: {
@@ -773,15 +713,6 @@ Rispondiamo subito su WhatsApp</p>
           waitPh:"Nessuna",
           childLabel:"Seggiolino bimbo (opzionale)",
           childPh:"Nessuno",
-          luggageLabel:"Bagagli (consigliato)",
-          lugNone:"Nessuno",
-          lugSome:"1–2 valigie",
-          lugMany:"Molti bagagli",
-          bigBags:"Valigie grandi",
-          bigBagsHint:"Trolley/valigie da stiva",
-          carryBags:"Bagagli a mano",
-          carryBagsHint:"Zaini/piccoli trolley",
-          luggageVanHint:"Con 4 passeggeri e molti bagagli spesso è meglio un Van (più spazio).",
           payLabel:"Pagamento",
           invoiceLabel:"Fattura",
           invoiceCheck:"Mi serve fattura",
@@ -816,7 +747,6 @@ Fermate (se presenti):
 Data/Ora:
 Passeggeri:
 Veicolo (Comfort / Executive / Van):
-Bagagli:
 Note:`,
           formPrefix:"Ciao! Vorrei un preventivo NCC con NexaRide.\n"
         }
@@ -868,7 +798,7 @@ Note:`,
           sub:"Select a category to prefill the form. You can choose a Van even for 1–2 passengers if you prefer more space.",
           c1t:"Comfort / SUV", c1d:"Toyota RAV4 · ideal up to 4 passengers.",
           c2t:"Executive", c2d:"Mercedes E-Class · business and VIP.",
-          c3t:"Van / Groups", c3d:"V-Class / Vito · up to 7 passengers + luggage.",
+          c3t:"Van / Groups", c3d:"V-Class / Vito · up to 7 passengers.",
           selected:"Selected"
         },
         quote: {
@@ -913,15 +843,6 @@ Note:`,
           waitPh:"None",
           childLabel:"Child seat (optional)",
           childPh:"None",
-          luggageLabel:"Luggage (recommended)",
-          lugNone:"None",
-          lugSome:"1–2 suitcases",
-          lugMany:"Lots of luggage",
-          bigBags:"Large suitcases",
-          bigBagsHint:"Checked luggage",
-          carryBags:"Carry-ons",
-          carryBagsHint:"Backpacks/small trolleys",
-          luggageVanHint:"With 4 passengers and lots of luggage, a Van is often better (more space).",
           payLabel:"Payment",
           invoiceLabel:"Invoice",
           invoiceCheck:"I need an invoice",
@@ -956,7 +877,6 @@ Stops (if any):
 Date/Time:
 Passengers:
 Vehicle (Comfort / Executive / Van):
-Luggage:
 Notes:`,
           formPrefix:"Hi! I'd like a chauffeur quote with NexaRide.\n"
         }
@@ -1019,14 +939,8 @@ Notes:`,
     // =========================================================
     let LANG = (localStorage.getItem("nexaride_lang") || "it");
     let contactPref = "WhatsApp";
-    let luggageMode = "none"; // none|some|many
     let meetGreet = "yes"; // yes|no
-    let payMode = "card"; // card|cash|bank|wallet
-
-    let bigBags = 0;
-    let carryBags = 0;
-
-    let isSubmitting = false;
+    let payMode = "card";  // card|cash|bank|wallet
 
     // =========================================================
     // ELEMENTS
@@ -1054,17 +968,6 @@ Notes:`,
     const waitExtraEl = document.getElementById("waitExtra");
     const childSeatEl = document.getElementById("childSeat");
 
-    const lugNone = document.getElementById("lugNone");
-    const lugSome = document.getElementById("lugSome");
-    const lugMany = document.getElementById("lugMany");
-
-    const bigMinus = document.getElementById("bigMinus");
-    const bigPlus = document.getElementById("bigPlus");
-    const carryMinus = document.getElementById("carryMinus");
-    const carryPlus = document.getElementById("carryPlus");
-    const bigCountEl = document.getElementById("bigCount");
-    const carryCountEl = document.getElementById("carryCount");
-
     const payCard = document.getElementById("payCard");
     const payCash = document.getElementById("payCash");
     const payBank = document.getElementById("payBank");
@@ -1080,7 +983,6 @@ Notes:`,
     const prefCall = document.getElementById("prefCall");
 
     const capacityNotice = document.getElementById("capacityNotice");
-    const luggageVanHint = document.getElementById("luggageVanHint");
 
     const selectedVehicleWrap = document.getElementById("selectedVehicleWrap");
     const selectedVehicleLabel = document.getElementById("selectedVehicleLabel");
@@ -1227,16 +1129,6 @@ Notes:`,
       setText("t_child_label", T.quote.childLabel);
       setText("t_child_ph", T.quote.childPh);
 
-      setText("t_luggage_label", T.quote.luggageLabel);
-      lugNone.textContent = T.quote.lugNone;
-      lugSome.textContent = T.quote.lugSome;
-      lugMany.textContent = T.quote.lugMany;
-      setText("t_big_bags", T.quote.bigBags);
-      setText("t_big_bags_hint", T.quote.bigBagsHint);
-      setText("t_carry_bags", T.quote.carryBags);
-      setText("t_carry_bags_hint", T.quote.carryBagsHint);
-      setText("t_luggage_van_hint", T.quote.luggageVanHint);
-
       setText("t_pay_label", T.quote.payLabel);
       setText("t_invoice_label", T.quote.invoiceLabel);
       setText("t_invoice_check", T.quote.invoiceCheck);
@@ -1273,9 +1165,6 @@ Notes:`,
       updateNotesSuggestion();
     }
 
-    // =========================================================
-    // SELECTION UTILS
-    // =========================================================
     function setLang(next) {
       LANG = next;
       localStorage.setItem("nexaride_lang", LANG);
@@ -1292,338 +1181,48 @@ Notes:`,
       saveToStorageDebounced();
     }
 
-    function setLuggage(mode) {
-      luggageMode = mode;
-      lugNone.setAttribute("aria-pressed", mode === "none" ? "true" : "false");
-      lugSome.setAttribute("aria-pressed", mode === "some" ? "true" : "false");
-      lugMany.setAttribute("aria-pressed", mode === "many" ? "true" : "false");
-      updateLuggageCountersUI();
-      updateLuggageHints();
-      updateNotesSuggestion();
+    function setMeetGreet(next) {
+      meetGreet = next;
+      meetYes.setAttribute("aria-pressed", next === "yes" ? "true" : "false");
+      meetNo.setAttribute("aria-pressed", next === "no" ? "true" : "false");
       saveToStorageDebounced();
     }
 
-    function setMeetGreet(val) {
-      meetGreet = val;
-      meetYes.setAttribute("aria-pressed", val === "yes" ? "true" : "false");
-      meetNo.setAttribute("aria-pressed", val === "no" ? "true" : "false");
+    function setPay(next) {
+      payMode = next;
+      payCard.setAttribute("aria-pressed", next === "card" ? "true" : "false");
+      payCash.setAttribute("aria-pressed", next === "cash" ? "true" : "false");
+      payBank.setAttribute("aria-pressed", next === "bank" ? "true" : "false");
+      payWallet.setAttribute("aria-pressed", next === "wallet" ? "true" : "false");
       saveToStorageDebounced();
     }
 
-    function setPayMode(mode) {
-      payMode = mode;
-      payCard.setAttribute("aria-pressed", mode === "card" ? "true" : "false");
-      payCash.setAttribute("aria-pressed", mode === "cash" ? "true" : "false");
-      payBank.setAttribute("aria-pressed", mode === "bank" ? "true" : "false");
-      payWallet.setAttribute("aria-pressed", mode === "wallet" ? "true" : "false");
-      saveToStorageDebounced();
+    function selectFleetByLabel(label) {
+      fleetCards.forEach((card) => {
+        const isSel = card.getAttribute("data-vehicle-label") === label;
+        card.classList.toggle("is-selected", isSel);
+      });
     }
 
     function updateSelectedVehicleUI() {
       const v = vehicleSelect.value || "";
-      if (!v) {
-        selectedVehicleWrap.classList.add("hidden");
-        selectedVehicleLabel.textContent = "";
-      } else {
+      if (v) {
         selectedVehicleLabel.textContent = v;
         selectedVehicleWrap.classList.remove("hidden");
-      }
-    }
-
-    function clearFleetSelection() {
-      fleetCards.forEach(c => c.classList.remove("is-selected"));
-    }
-
-    function selectFleetByLabel(label) {
-      clearFleetSelection();
-      fleetCards.forEach(card => {
-        const l = card.getAttribute("data-vehicle-label");
-        if (l === label) card.classList.add("is-selected");
-      });
-    }
-
-    // =========================================================
-    // CONDITIONAL LOGIC
-    // =========================================================
-    function isRoundTrip() {
-      const v = (serviceTypeEl.value || "").toLowerCase();
-      return v.includes("andata/ritorno") || v.includes("round");
-    }
-    function isHourly() {
-      const v = (serviceTypeEl.value || "").toLowerCase();
-      return v.includes("disposizione") || v.includes("hour");
-    }
-
-    function enforceRoundTripLogic() {
-      // Professional logic:
-      // - Return field is shown only if Round trip AND departure datetime is valid
-      // - Return min is departure + ROUNDTRIP_MIN_MINUTES
-      // - If user changes departure to after return, return auto-adjusts to min
-      const dep = parseDT(whenEl.value);
-
-      if (!isRoundTrip()) {
-        returnWrap.classList.add("hidden");
-        returnWhenEl.required = false;
-        returnWhenEl.value = "";
-        returnWhenEl.disabled = true;
-        return;
-      }
-
-      // Round trip selected:
-      if (!dep) {
-        // Departure missing: keep return hidden and disabled (prevents illogical flow)
-        returnWrap.classList.add("hidden");
-        returnWhenEl.required = true; // still required logically, but hidden until dep exists
-        returnWhenEl.value = "";
-        returnWhenEl.disabled = true;
-        return;
-      }
-
-      // Departure exists => show return, enable and enforce min
-      returnWrap.classList.remove("hidden");
-      returnWhenEl.disabled = false;
-      returnWhenEl.required = true;
-
-      const minReturn = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
-      returnWhenEl.min = fmtDateTimeLocal(minReturn);
-
-      const currentReturn = parseDT(returnWhenEl.value);
-      if (!currentReturn || currentReturn.getTime() < minReturn.getTime()) {
-        // if empty or invalid, suggest a sensible default (dep + 4h)
-        const suggested = addMinutes(dep, 240);
-        const finalVal = (suggested.getTime() < minReturn.getTime()) ? minReturn : suggested;
-        returnWhenEl.value = fmtDateTimeLocal(finalVal);
-      }
-    }
-
-    function enforceHoursLogic() {
-      if (isHourly()) {
-        hoursWrap.classList.remove("hidden");
-        hoursEl.required = true;
       } else {
-        hoursWrap.classList.add("hidden");
-        hoursEl.required = false;
-        hoursEl.value = "";
+        selectedVehicleWrap.classList.add("hidden");
       }
     }
 
-    function enforceServiceConditionals() {
-      enforceRoundTripLogic();
-      enforceHoursLogic();
-    }
-
-    function enforceCapacityRule() {
-      const paxNum = parseInt(paxSelect.value || "0", 10);
-      const isOver4 = paxNum > 4;
-      if (isOver4) {
-        if (vehicleSelect.value !== "Van / Gruppi (Mercedes Classe V / Vito)") {
-          vehicleSelect.value = "Van / Gruppi (Mercedes Classe V / Vito)";
-          selectFleetByLabel(vehicleSelect.value);
-        }
-        capacityNotice.classList.remove("hidden");
-      } else {
-        capacityNotice.classList.add("hidden");
-      }
-      updateSelectedVehicleUI();
-      saveToStorageDebounced();
-    }
-
-    function updateTravelDetection() {
-      const a = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value);
-      travelFields.classList.toggle("hidden", !a);
-
-      if (!a) {
-        flightTrainEl.value = "";
-        waitExtraEl.value = "";
-        childSeatEl.value = "";
-        setMeetGreet("yes");
-      }
-    }
-
-    function updateLuggageHints() {
-      const paxNum = parseInt(paxSelect.value || "0", 10);
-      const many = (luggageMode === "many") || (bigBags >= 3) || (carryBags >= 4);
-      if (paxNum >= 4 && many) luggageVanHint.classList.remove("hidden");
-      else luggageVanHint.classList.add("hidden");
-    }
-
-    function updateContext() {
-      enforceServiceConditionals();
-      updateTravelDetection();
-      updateLuggageHints();
-      updateNotesSuggestion();
-      updateSelectedVehicleUI();
-      selectFleetByLabel(vehicleSelect.value || "");
-    }
-
     // =========================================================
-    // NOTES SUGGESTION
-    // =========================================================
-    function updateNotesSuggestion() {
-      const parts = [];
-
-      if (invoiceEl.checked) parts.push(LANG === "en" ? "Invoice required (details in chat)." : "Richiedo fattura (dati in chat).");
-
-      const a = !travelFields.classList.contains("hidden");
-      if (a) {
-        parts.push(LANG === "en" ? "If available: flight/train number." : "Se disponibile: numero volo/treno.");
-        parts.push(LANG === "en" ? "Meet & Greet: yes/no." : "Meet & Greet: sì/no.");
-      }
-
-      const paxNum = parseInt(paxSelect.value || "0", 10);
-      const many = (luggageMode === "many") || (bigBags >= 3) || (carryBags >= 4);
-      if (paxNum >= 4 && many) {
-        parts.push(LANG === "en" ? "Often better with a Van for space." : "Spesso meglio Van per spazio.");
-      }
-
-      notesHintEl.textContent = parts.length ? (LANG === "en" ? "Tip: " : "Suggerimento: ") + parts.join(" ") : "";
-      notesEl.placeholder = (LANG === "en")
-        ? "Extra info (e.g. hotel name, door number, timing constraints)…"
-        : "Info utili (es. nome hotel, civico, vincoli di orario)…";
-    }
-
-    // =========================================================
-    // WHATSAPP MESSAGE BUILDERS
-    // =========================================================
-    function humanPay(mode){
-      if (LANG === "en") {
-        if (mode === "card") return "Card";
-        if (mode === "cash") return "Cash";
-        if (mode === "bank") return "Bank transfer";
-        return "Apple/Google Pay";
-      }
-      if (mode === "card") return "Carta";
-      if (mode === "cash") return "Contanti";
-      if (mode === "bank") return "Bonifico";
-      return "Apple/Google Pay";
-    }
-
-    function luggageSummary() {
-      const base = (luggageMode === "none")
-        ? (LANG === "en" ? "None" : "Nessuno")
-        : (luggageMode === "some")
-          ? (LANG === "en" ? "1–2 suitcases" : "1–2 valigie")
-          : (LANG === "en" ? "Lots of luggage" : "Molti bagagli");
-
-      const details = [];
-      if (bigBags > 0) details.push((LANG === "en" ? "Large: " : "Grandi: ") + bigBags);
-      if (carryBags > 0) details.push((LANG === "en" ? "Carry-on: " : "A mano: ") + carryBags);
-
-      return details.length ? `${base} (${details.join(", ")})` : base;
-    }
-
-    function buildGenericWhatsAppMessage() {
-      return I18N[LANG].waTemplates.base;
-    }
-
-    function buildFormWhatsAppMessage() {
-      const T = I18N[LANG];
-
-      const lines = [];
-      lines.push(T.waTemplates.formPrefix.trim());
-
-      const st = serviceTypeEl.value || "";
-      const paxVal = paxSelect.value || "";
-      const v = vehicleSelect.value || "";
-      const from = (fromEl.value || "").trim();
-      const to = (toEl.value || "").trim();
-      const stops = (stopsEl.value || "").trim();
-
-      const dep = whenEl.value || "";
-      const ret = returnWhenEl.value || "";
-      const hrs = hoursEl.value || "";
-
-      const a = !travelFields.classList.contains("hidden");
-      const ft = (flightTrainEl.value || "").trim();
-      const wait = (waitExtraEl.value || "").trim();
-      const child = (childSeatEl.value || "").trim();
-
-      lines.push((LANG==="en"?"Service: ":"Servizio: ") + st);
-      lines.push((LANG==="en"?"Pickup: ":"Partenza: ") + from);
-      lines.push((LANG==="en"?"Drop-off: ":"Destinazione: ") + to);
-      if (stops) lines.push((LANG==="en"?"Stops: ":"Fermate: ") + stops);
-
-      lines.push((LANG==="en"?"Departure: ":"Partenza: ") + dep);
-      if (isRoundTrip()) lines.push((LANG==="en"?"Return: ":"Ritorno: ") + ret);
-      if (isHourly()) lines.push((LANG==="en"?"Hours: ":"Ore: ") + hrs);
-
-      lines.push((LANG==="en"?"Passengers: ":"Passeggeri: ") + paxVal);
-      lines.push((LANG==="en"?"Vehicle: ":"Veicolo: ") + v);
-      lines.push((LANG==="en"?"Luggage: ":"Bagagli: ") + luggageSummary());
-
-      if (a) {
-        if (ft) lines.push((LANG==="en"?"Flight/Train: ":"Volo/Treno: ") + ft);
-        lines.push((LANG==="en"?"Meet & Greet: ":"Meet & Greet: ") + (meetGreet === "yes" ? (LANG==="en"?"Yes":"Sì") : (LANG==="en"?"No":"No")));
-        if (wait) lines.push((LANG==="en"?"Extra waiting: ":"Attesa extra: ") + wait);
-        if (child) lines.push((LANG==="en"?"Child seat: ":"Seggiolino: ") + child);
-      }
-
-      lines.push((LANG==="en"?"Payment: ":"Pagamento: ") + humanPay(payMode));
-      if (invoiceEl.checked) lines.push(LANG==="en" ? "Invoice: yes" : "Fattura: sì");
-      lines.push((LANG==="en"?"Contact preference: ":"Preferenza contatto: ") + (contactPref || (LANG==="en"?"WhatsApp":"WhatsApp")));
-
-      const name = (nameEl.value || "").trim();
-      const phone = (phoneEl.value || "").trim();
-      if (name) lines.push((LANG==="en"?"Name: ":"Nome: ") + name);
-      if (phone) lines.push((LANG==="en"?"Phone: ":"Telefono: ") + phone);
-
-      const n = (notesEl.value || "").trim();
-      if (n) lines.push((LANG==="en"?"Notes: ":"Note: ") + n);
-
-      return lines.join("\n");
-    }
-
-    // =========================================================
-    // VALIDATION
-    // =========================================================
-    function hideFormAlert() {
-      formAlert.classList.add("hidden");
-      formAlertText.textContent = "";
-    }
-    function showFormAlert(missingLabels) {
-      formAlertText.textContent = (LANG === "en" ? "Missing: " : "Manca: ") + missingLabels.join(" · ");
-      formAlert.classList.remove("hidden");
-    }
-
-    function focusFirstMissing() {
-      const checks = [
-        { ok: () => !!vehicleSelect.value, el: vehicleSelect },
-        { ok: () => !!serviceTypeEl.value, el: serviceTypeEl },
-        { ok: () => !!whenEl.value, el: whenEl },
-        { ok: () => !isRoundTrip() || !!returnWhenEl.value, el: returnWhenEl },
-        { ok: () => !isHourly() || !!hoursEl.value, el: hoursEl },
-        { ok: () => !!paxSelect.value, el: paxSelect },
-        { ok: () => !!fromEl.value.trim(), el: fromEl },
-        { ok: () => !!toEl.value.trim(), el: toEl }
-      ];
-      const firstBad = checks.find(c => !c.ok());
-      if (firstBad && firstBad.el && !firstBad.el.disabled) firstBad.el.focus({ preventScroll:false });
-    }
-
-    function validateForm() {
-      const missing = [];
-      if (!vehicleSelect.value) missing.push(LANG === "en" ? "Vehicle" : "Veicolo");
-      if (!whenEl.value) missing.push(LANG === "en" ? "Departure date/time" : "Data/ora partenza");
-      if (isRoundTrip() && !returnWhenEl.value) missing.push(LANG === "en" ? "Return date/time" : "Data/ora ritorno");
-      if (isHourly() && !hoursEl.value) missing.push(LANG === "en" ? "Hours" : "Ore");
-      if (!paxSelect.value) missing.push(LANG === "en" ? "Passengers" : "Passeggeri");
-      if (!fromEl.value.trim()) missing.push(LANG === "en" ? "Pickup" : "Partenza (luogo)");
-      if (!toEl.value.trim()) missing.push(LANG === "en" ? "Drop-off" : "Destinazione");
-      return missing;
-    }
-
-    // =========================================================
-    // STORAGE (prefill)
+    // STORAGE (NO LUGGAGE)
     // =========================================================
     function saveToStorage() {
       const payload = {
         lang: LANG,
         contactPref,
-        luggageMode,
         meetGreet,
         payMode,
-        bigBags,
-        carryBags,
         values: {
           vehicle: vehicleSelect.value || "",
           serviceType: serviceTypeEl.value || "",
@@ -1641,8 +1240,7 @@ Notes:`,
           name: nameEl.value || "",
           phone: phoneEl.value || "",
           notes: notesEl.value || ""
-        },
-        ts: Date.now()
+        }
       };
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch(e) {}
     }
@@ -1660,14 +1258,9 @@ Notes:`,
         const p = JSON.parse(raw);
 
         if (p.lang === "it" || p.lang === "en") LANG = p.lang;
-
         contactPref = p.contactPref || contactPref;
-        luggageMode = p.luggageMode || luggageMode;
         meetGreet = p.meetGreet || meetGreet;
         payMode = p.payMode || payMode;
-
-        bigBags = Number.isFinite(p.bigBags) ? p.bigBags : bigBags;
-        carryBags = Number.isFinite(p.carryBags) ? p.carryBags : carryBags;
 
         const v = (p.values || {});
         vehicleSelect.value = v.vehicle || "";
@@ -1690,32 +1283,6 @@ Notes:`,
     }
 
     // =========================================================
-    // LUGGAGE STEPPER
-    // =========================================================
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    function updateLuggageCountersUI() {
-      bigCountEl.textContent = String(bigBags);
-      carryCountEl.textContent = String(carryBags);
-    }
-
-    function bumpBags(kind, delta) {
-      if (kind === "big") bigBags = clamp(bigBags + delta, 0, 12);
-      if (kind === "carry") carryBags = clamp(carryBags + delta, 0, 12);
-      updateLuggageCountersUI();
-
-      // auto luggage mode from counters
-      if (bigBags === 0 && carryBags === 0) {
-        setLuggage("none");
-      } else if (bigBags <= 2 && carryBags <= 2) {
-        setLuggage("some");
-      } else {
-        setLuggage("many");
-      }
-      saveToStorageDebounced();
-    }
-
-    // =========================================================
     // HOURS OPTIONS (2-16)
     // =========================================================
     function fillHoursOptions() {
@@ -1732,246 +1299,394 @@ Notes:`,
     }
 
     // =========================================================
-    // CTA ACTIONS
+    // SERVICE CONDITIONALS
     // =========================================================
-    function openWAFrom(source, text) {
-      openWhatsAppWithText(text);
+    function enforceServiceConditionals() {
+      const st = serviceTypeEl.value;
+
+      // Return trip
+      if (st === (LANG === "en" ? "Round trip" : "Andata/Ritorno")) {
+        returnWrap.classList.remove("hidden");
+        returnWhenEl.required = true;
+
+        // Ensure return min >= departure + X
+        const dep = parseDT(whenEl.value);
+        if (dep) {
+          const minRet = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
+          returnWhenEl.min = fmtDateTimeLocal(minRet);
+
+          const curRet = parseDT(returnWhenEl.value);
+          if (!curRet || curRet.getTime() < minRet.getTime()) {
+            returnWhenEl.value = fmtDateTimeLocal(minRet);
+          }
+        }
+      } else {
+        returnWrap.classList.add("hidden");
+        returnWhenEl.required = false;
+        returnWhenEl.value = "";
+      }
+
+      // Hourly
+      if (st === (LANG === "en" ? "Hourly (as directed)" : "A disposizione (ore)")) {
+        hoursWrap.classList.remove("hidden");
+        hoursEl.required = true;
+      } else {
+        hoursWrap.classList.add("hidden");
+        hoursEl.required = false;
+        hoursEl.value = "";
+      }
+
+      // Full day: no extra field required
+    }
+
+    // =========================================================
+    // TRAVEL DETECTION (airport/station)
+    // =========================================================
+    function updateTravelDetection() {
+      const hit = isAirportOrStationText(fromEl.value) || isAirportOrStationText(toEl.value) || isAirportOrStationText(stopsEl.value);
+      if (hit) {
+        travelFields.classList.remove("hidden");
+      } else {
+        travelFields.classList.add("hidden");
+        flightTrainEl.value = "";
+        waitExtraEl.value = "";
+        childSeatEl.value = "";
+        setMeetGreet("yes");
+      }
+    }
+
+    // =========================================================
+    // NOTES SUGGESTION (NO LUGGAGE)
+    // =========================================================
+    function updateNotesSuggestion() {
+      const parts = [];
+
+      if (invoiceEl.checked) parts.push(LANG === "en" ? "Invoice required (details in chat)." : "Richiedo fattura (dati in chat).");
+
+      const a = !travelFields.classList.contains("hidden");
+      if (a) {
+        parts.push(LANG === "en" ? "If available: flight/train number." : "Se disponibile: numero volo/treno.");
+        parts.push(LANG === "en" ? "Meet & Greet: yes/no." : "Meet & Greet: sì/no.");
+      }
+
+      notesHintEl.textContent = parts.length ? (LANG === "en" ? "Tip: " : "Suggerimento: ") + parts.join(" ") : "";
+      notesEl.placeholder = (LANG === "en")
+        ? "Extra info (e.g. hotel name, door number, timing constraints)…"
+        : "Info utili (es. nome hotel, civico, vincoli di orario)…";
+    }
+
+    // =========================================================
+    // WHATSAPP MESSAGE BUILDERS (NO LUGGAGE)
+    // =========================================================
+    function humanPay(mode){
+      if (LANG === "en") {
+        if (mode === "card") return "Card";
+        if (mode === "cash") return "Cash";
+        if (mode === "bank") return "Bank transfer";
+        return "Apple/Google Pay";
+      }
+      if (mode === "card") return "Carta";
+      if (mode === "cash") return "Contanti";
+      if (mode === "bank") return "Bonifico";
+      return "Apple/Google Pay";
+    }
+
+    function buildWhatsAppFromForm() {
+      const T = I18N[LANG];
+      const st = serviceTypeEl.value || "";
+      const dep = whenEl.value || "";
+      const ret = returnWrap.classList.contains("hidden") ? "" : (returnWhenEl.value || "");
+      const hrs = hoursWrap.classList.contains("hidden") ? "" : (hoursEl.value || "");
+      const pax = paxSelect.value || "";
+      const vehicle = vehicleSelect.value || "";
+      const from = fromEl.value || "";
+      const to = toEl.value || "";
+      const stops = stopsEl.value || "";
+      const name = nameEl.value || "";
+      const phone = phoneEl.value || "";
+      const notes = notesEl.value || "";
+      const invoice = invoiceEl.checked ? (LANG === "en" ? "Yes" : "Sì") : (LANG === "en" ? "No" : "No");
+
+      const travelOn = !travelFields.classList.contains("hidden");
+      const flightTrain = travelOn ? (flightTrainEl.value || "") : "";
+      const meet = travelOn ? (meetGreet === "yes" ? (LANG === "en" ? "Yes" : "Sì") : (LANG === "en" ? "No" : "No")) : "";
+      const waitExtra = travelOn ? (waitExtraEl.value || "") : "";
+      const childSeat = travelOn ? (childSeatEl.value || "") : "";
+
+      let msg = T.waTemplates.formPrefix;
+
+      if (LANG === "en") {
+        msg += `\nService: ${st}`;
+        msg += `\nPickup: ${from}`;
+        msg += `\nDrop-off: ${to}`;
+        if (stops) msg += `\nStops: ${stops}`;
+        msg += `\nDate/Time (departure): ${dep}`;
+        if (ret) msg += `\nReturn: ${ret}`;
+        if (hrs) msg += `\nHours: ${hrs}`;
+        msg += `\nPassengers: ${pax}`;
+        msg += `\nVehicle: ${vehicle}`;
+        msg += `\nPayment: ${humanPay(payMode)}`;
+        msg += `\nInvoice: ${invoice}`;
+        if (travelOn) {
+          msg += `\n\nAirport/Station:`;
+          if (flightTrain) msg += `\n- Flight/Train: ${flightTrain}`;
+          msg += `\n- Meet & Greet: ${meet}`;
+          if (waitExtra) msg += `\n- Extra waiting: ${waitExtra}`;
+          if (childSeat) msg += `\n- Child seat: ${childSeat}`;
+        }
+        if (name) msg += `\n\nName: ${name}`;
+        if (phone) msg += `\nPhone: ${phone}`;
+        if (notes) msg += `\nNotes: ${notes}`;
+      } else {
+        msg += `\nTipo servizio: ${st}`;
+        msg += `\nPartenza: ${from}`;
+        msg += `\nDestinazione: ${to}`;
+        if (stops) msg += `\nFermate: ${stops}`;
+        msg += `\nData/Ora (partenza): ${dep}`;
+        if (ret) msg += `\nRitorno: ${ret}`;
+        if (hrs) msg += `\nOre: ${hrs}`;
+        msg += `\nPasseggeri: ${pax}`;
+        msg += `\nVeicolo: ${vehicle}`;
+        msg += `\nPagamento: ${humanPay(payMode)}`;
+        msg += `\nFattura: ${invoice}`;
+        if (travelOn) {
+          msg += `\n\nAeroporto/Stazione:`;
+          if (flightTrain) msg += `\n- Volo/Treno: ${flightTrain}`;
+          msg += `\n- Meet & Greet: ${meet}`;
+          if (waitExtra) msg += `\n- Attesa extra: ${waitExtra}`;
+          if (childSeat) msg += `\n- Seggiolino bimbo: ${childSeat}`;
+        }
+        if (name) msg += `\n\nNome: ${name}`;
+        if (phone) msg += `\nTelefono: ${phone}`;
+        if (notes) msg += `\nNote: ${notes}`;
+      }
+
+      return msg.trim();
+    }
+
+    function buildWhatsAppGeneric() {
+      const T = I18N[LANG];
+      return T.waTemplates.base;
+    }
+
+    // =========================================================
+    // VALIDATION
+    // =========================================================
+    function showAlert(lines) {
+      formAlertText.textContent = lines.join(" · ");
+      formAlert.classList.remove("hidden");
+    }
+    function hideAlert() {
+      formAlert.classList.add("hidden");
+      formAlertText.textContent = "";
+    }
+    function validateForm() {
+      const T = I18N[LANG];
+      const missing = [];
+
+      if (!vehicleSelect.value) missing.push(T.quote.vehicleLabel.replace("*","").trim());
+      if (!whenEl.value) missing.push(T.quote.whenLabel.replace("*","").trim());
+      if (!paxSelect.value) missing.push(T.quote.paxLabel.replace("*","").trim());
+      if (!fromEl.value.trim()) missing.push(T.quote.fromLabel.replace("*","").trim());
+      if (!toEl.value.trim()) missing.push(T.quote.toLabel.replace("*","").trim());
+
+      if (!returnWrap.classList.contains("hidden")) {
+        if (!returnWhenEl.value) missing.push(T.quote.returnLabel.replace("*","").trim());
+        const dep = parseDT(whenEl.value);
+        const ret = parseDT(returnWhenEl.value);
+        if (dep && ret && ret.getTime() < addMinutes(dep, ROUNDTRIP_MIN_MINUTES).getTime()) {
+          missing.push(LANG === "en" ? "Return must be after departure" : "Ritorno dopo la partenza");
+        }
+      }
+
+      if (!hoursWrap.classList.contains("hidden")) {
+        if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
+      }
+
+      return missing;
+    }
+
+    // =========================================================
+    // CONTEXT UPDATERS
+    // =========================================================
+    function updateContext() {
+      enforceServiceConditionals();
+      updateTravelDetection();
+      updateNotesSuggestion();
+      updateSelectedVehicleUI();
+      selectFleetByLabel(vehicleSelect.value || "");
     }
 
     // =========================================================
     // EVENTS
     // =========================================================
-    langIT.addEventListener("click", () => setLang("it"));
-    langEN.addEventListener("click", () => setLang("en"));
+    function bindEvents() {
+      // Lang
+      langIT.addEventListener("click", () => setLang("it"));
+      langEN.addEventListener("click", () => setLang("en"));
 
-    document.getElementById("ctaWATop").addEventListener("click", () => openWAFrom("header", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaWAHero").addEventListener("click", () => openWAFrom("hero", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaWAOpenGeneric").addEventListener("click", () => openWAFrom("hero_card", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaWAOpenGeneric2").addEventListener("click", () => openWAFrom("quote_top", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaWAFooter").addEventListener("click", () => openWAFrom("footer", buildGenericWhatsAppMessage()));
-    document.getElementById("stickyWA").addEventListener("click", () => openWAFrom("sticky", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaFleetWA").addEventListener("click", () => openWAFrom("fleet", buildGenericWhatsAppMessage()));
-    document.getElementById("ctaWhy").addEventListener("click", () => openWAFrom("why", buildGenericWhatsAppMessage()));
+      // CTA
+      const ctaWATop = document.getElementById("ctaWATop");
+      const ctaWAHero = document.getElementById("ctaWAHero");
+      const ctaWAOpenGeneric = document.getElementById("ctaWAOpenGeneric");
+      const ctaWAOpenGeneric2 = document.getElementById("ctaWAOpenGeneric2");
+      const ctaWhy = document.getElementById("ctaWhy");
+      const ctaFleetWA = document.getElementById("ctaFleetWA");
+      const ctaWAFooter = document.getElementById("ctaWAFooter");
+      const stickyWA = document.getElementById("stickyWA");
 
-    document.getElementById("ctaScrollToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    document.getElementById("ctaFooterToForm").addEventListener("click", () => scrollToQuoteAndFocus());
-    document.getElementById("stickyQuote").addEventListener("click", () => scrollToQuoteAndFocus());
-    document.getElementById("ctaFleetToForm").addEventListener("click", () => scrollToQuoteAndFocus());
+      const ctaScrollToForm = document.getElementById("ctaScrollToForm");
+      const ctaFleetToForm = document.getElementById("ctaFleetToForm");
+      const ctaFooterToForm = document.getElementById("ctaFooterToForm");
+      const stickyQuote = document.getElementById("stickyQuote");
 
-    // Fleet cards -> select vehicle + badge + scroll
-    fleetCards.forEach(card => {
-      card.addEventListener("click", () => {
-        const label = card.getAttribute("data-vehicle-label");
-        if (!label) return;
-        vehicleSelect.value = label;
-        selectFleetByLabel(label);
-        updateSelectedVehicleUI();
-        enforceCapacityRule();
+      ctaWATop?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWAHero?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWAOpenGeneric?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWAOpenGeneric2?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWhy?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaFleetWA?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWAFooter?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      stickyWA?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+
+      ctaScrollToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
+      ctaFleetToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
+      ctaFooterToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
+      stickyQuote?.addEventListener("click", () => scrollToQuoteAndFocus());
+
+      // Pref contact
+      prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
+      prefCall.addEventListener("click", () => setContactPref("Call"));
+
+      // Meet & greet
+      meetYes.addEventListener("click", () => setMeetGreet("yes"));
+      meetNo.addEventListener("click", () => setMeetGreet("no"));
+
+      // Pay
+      payCard.addEventListener("click", () => setPay("card"));
+      payCash.addEventListener("click", () => setPay("cash"));
+      payBank.addEventListener("click", () => setPay("bank"));
+      payWallet.addEventListener("click", () => setPay("wallet"));
+
+      // Form changes
+      [vehicleSelect, serviceTypeEl, whenEl, returnWhenEl, hoursEl, paxSelect, fromEl, toEl, stopsEl, flightTrainEl, waitExtraEl, childSeatEl, invoiceEl, nameEl, phoneEl, notesEl].forEach((el) => {
+        el?.addEventListener("input", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
+        el?.addEventListener("change", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
+      });
+
+      // Enforce departure-first return min when dep changes
+      whenEl.addEventListener("change", () => {
+        enforceServiceConditionals();
+        saveToStorageDebounced();
+      });
+
+      // Vehicle capacity auto: >4 => Van
+      paxSelect.addEventListener("change", () => {
+        const n = parseInt(paxSelect.value || "0", 10);
+        if (n > 4) {
+          vehicleSelect.value = "Van / Gruppi (Mercedes Classe V / Vito)";
+          capacityNotice.classList.remove("hidden");
+        } else {
+          capacityNotice.classList.add("hidden");
+        }
         updateContext();
         saveToStorageDebounced();
-        scrollToQuoteAndFocus();
       });
-    });
 
-    // Contact pref
-    prefWA.addEventListener("click", () => setContactPref(I18N[LANG].quote.prefWA));
-    prefCall.addEventListener("click", () => setContactPref(I18N[LANG].quote.prefCall));
+      // Fleet selection
+      fleetCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const label = card.getAttribute("data-vehicle-label") || "";
+          if (label) vehicleSelect.value = label;
+          updateContext();
+          scrollToQuoteAndFocus();
+          saveToStorageDebounced();
+        });
+      });
 
-    // Luggage mode
-    lugNone.addEventListener("click", () => setLuggage("none"));
-    lugSome.addEventListener("click", () => setLuggage("some"));
-    lugMany.addEventListener("click", () => setLuggage("many"));
-
-    // Luggage counters
-    bigMinus.addEventListener("click", () => bumpBags("big", -1));
-    bigPlus.addEventListener("click", () => bumpBags("big", +1));
-    carryMinus.addEventListener("click", () => bumpBags("carry", -1));
-    carryPlus.addEventListener("click", () => bumpBags("carry", +1));
-
-    // Meet & greet
-    meetYes.addEventListener("click", () => setMeetGreet("yes"));
-    meetNo.addEventListener("click", () => setMeetGreet("no"));
-
-    // Payment
-    payCard.addEventListener("click", () => setPayMode("card"));
-    payCash.addEventListener("click", () => setPayMode("cash"));
-    payBank.addEventListener("click", () => setPayMode("bank"));
-    payWallet.addEventListener("click", () => setPayMode("wallet"));
-
-    // Reactive listeners
-    vehicleSelect.addEventListener("change", () => {
-      selectFleetByLabel(vehicleSelect.value);
-      updateSelectedVehicleUI();
-      updateContext();
-      saveToStorageDebounced();
-    });
-
-    paxSelect.addEventListener("change", () => {
-      enforceCapacityRule();
-      updateContext();
-      saveToStorageDebounced();
-    });
-
-    serviceTypeEl.addEventListener("change", () => {
-      enforceServiceConditionals();
-      // If user just switched to round trip but departure is missing, guide by focusing departure
-      if (isRoundTrip() && !whenEl.value) {
-        whenEl.focus({ preventScroll:false });
-      }
-      saveToStorageDebounced();
-    });
-
-    fromEl.addEventListener("input", () => { updateTravelDetection(); saveToStorageDebounced(); });
-    toEl.addEventListener("input", () => { updateTravelDetection(); saveToStorageDebounced(); });
-    stopsEl.addEventListener("input", () => { saveToStorageDebounced(); });
-
-    whenEl.addEventListener("focus", () => setMinDateTimeNow(whenEl));
-    whenEl.addEventListener("change", () => {
-      setMinDateTimeNow(whenEl);
-      // When departure changes, re-enforce A/R and ensure return can't be before
-      enforceRoundTripLogic();
-      saveToStorageDebounced();
-    });
-
-    returnWhenEl.addEventListener("focus", () => {
-      // Ensure min is correct on focus
-      enforceRoundTripLogic();
-    });
-    returnWhenEl.addEventListener("change", () => {
-      // If somehow user picks earlier than min, snap back
-      enforceRoundTripLogic();
-      saveToStorageDebounced();
-    });
-
-    hoursEl.addEventListener("change", () => { saveToStorageDebounced(); });
-
-    flightTrainEl.addEventListener("input", () => { saveToStorageDebounced(); });
-    waitExtraEl.addEventListener("change", () => { saveToStorageDebounced(); });
-    childSeatEl.addEventListener("change", () => { saveToStorageDebounced(); });
-
-    invoiceEl.addEventListener("change", () => { updateNotesSuggestion(); saveToStorageDebounced(); });
-    nameEl.addEventListener("input", () => { saveToStorageDebounced(); });
-    phoneEl.addEventListener("input", () => { saveToStorageDebounced(); });
-    notesEl.addEventListener("input", () => { updateNotesSuggestion(); saveToStorageDebounced(); });
-
-    // Submit (block double submit + focus missing)
-    document.getElementById("quoteForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (isSubmitting) return;
-      isSubmitting = true;
-      hideFormAlert();
-
-      // Always enforce logic before validating
-      enforceServiceConditionals();
-      enforceCapacityRule();
-
-      const missing = validateForm();
-      if (missing.length) {
-        showFormAlert(missing);
-        scrollToQuoteAndFocus();
-        focusFirstMissing();
-        isSubmitting = false;
-        return;
-      }
-
-      // Final sanity for round trip chronology
-      if (isRoundTrip()) {
-        const dep = parseDT(whenEl.value);
-        const ret = parseDT(returnWhenEl.value);
-        if (dep && ret) {
-          const minRet = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
-          if (ret.getTime() < minRet.getTime()) {
-            returnWhenEl.value = fmtDateTimeLocal(minRet);
-          }
+      // Submit
+      const quoteForm = document.getElementById("quoteForm");
+      quoteForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const missing = validateForm();
+        if (missing.length) {
+          showAlert(missing);
+          return;
         }
-      }
 
-      openWAFrom("form_submit", buildFormWhatsAppMessage());
+        const msg = buildWhatsAppFromForm();
 
-      submitBtn.setAttribute("disabled", "disabled");
-      submitBtn.style.opacity = "0.7";
-      setTimeout(() => {
-        submitBtn.removeAttribute("disabled");
-        submitBtn.style.opacity = "";
-        isSubmitting = false;
-      }, 1800);
-    });
+        // If user chose "Call", still send WA but hint call preference at top (fast ops)
+        if (contactPref.toLowerCase().includes("call")) {
+          const callLine = (LANG === "en")
+            ? "Preferred contact: CALL (please call me if possible)."
+            : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+          openWhatsAppWithText(callLine + "\n\n" + msg);
+          return;
+        }
 
-    // Reset
-    document.getElementById("resetBtn").addEventListener("click", () => {
-      document.getElementById("quoteForm").reset();
-      clearFleetSelection();
-      updateSelectedVehicleUI();
-      hideFormAlert();
+        openWhatsAppWithText(msg);
+      });
 
-      // defaults
-      setContactPref("WhatsApp");
-      setLuggage("none");
-      setMeetGreet("yes");
-      setPayMode("card");
+      // Reset
+      const resetBtn = document.getElementById("resetBtn");
+      resetBtn.addEventListener("click", () => {
+        hideAlert();
+        vehicleSelect.value = "";
+        serviceTypeEl.value = (LANG === "en" ? "One-way" : "Solo andata");
+        whenEl.value = "";
+        returnWhenEl.value = "";
+        hoursEl.value = "";
+        paxSelect.value = "";
+        fromEl.value = "";
+        toEl.value = "";
+        stopsEl.value = "";
+        flightTrainEl.value = "";
+        waitExtraEl.value = "";
+        childSeatEl.value = "";
+        invoiceEl.checked = false;
+        nameEl.value = "";
+        phoneEl.value = "";
+        notesEl.value = "";
 
-      bigBags = 0;
-      carryBags = 0;
-      updateLuggageCountersUI();
+        setContactPref("WhatsApp");
+        setMeetGreet("yes");
+        setPay("card");
 
-      // datetime min now
-      setMinDateTimeNow(whenEl);
-      whenEl.value = "";
-
-      returnWhenEl.value = "";
-      returnWhenEl.disabled = true;
-
-      hoursEl.value = "";
-      flightTrainEl.value = "";
-      waitExtraEl.value = "";
-      childSeatEl.value = "";
-      notesEl.value = "";
-      nameEl.value = "";
-      phoneEl.value = "";
-
-      travelFields.classList.add("hidden");
-      capacityNotice.classList.add("hidden");
-      luggageVanHint.classList.add("hidden");
-
-      enforceServiceConditionals();
-      updateContext();
-      saveToStorage();
-    });
+        capacityNotice.classList.add("hidden");
+        updateContext();
+        saveToStorageDebounced();
+      });
+    }
 
     // =========================================================
     // INIT
     // =========================================================
-    document.getElementById("y").textContent = new Date().getFullYear();
+    function init() {
+      // footer year
+      document.getElementById("y").textContent = String(new Date().getFullYear());
 
-    fillHoursOptions();
-    loadFromStorage();
+      fillHoursOptions();
 
-    // Set datetime min now; do NOT force a default (less friction)
-    setMinDateTimeNow(whenEl);
+      setMinDateTimeNow(whenEl);
+      setMinDateTimeNow(returnWhenEl);
 
-    // Apply stored prefs
-    setContactPref(contactPref || "WhatsApp");
-    setLuggage(luggageMode || "none");
-    setMeetGreet(meetGreet || "yes");
-    setPayMode(payMode || "card");
+      loadFromStorage();
 
-    bigBags = clamp(bigBags, 0, 12);
-    carryBags = clamp(carryBags, 0, 12);
-    updateLuggageCountersUI();
+      // Apply stored button states
+      langIT.classList.toggle("is-active", LANG === "it");
+      langEN.classList.toggle("is-active", LANG === "en");
 
-    // If pax over 4, force Van
-    enforceCapacityRule();
+      setContactPref(contactPref);
+      setMeetGreet(meetGreet);
+      setPay(payMode);
 
-    // Enforce professional service logic
-    enforceServiceConditionals();
+      applyLang();
+      updateContext();
+      bindEvents();
+    }
 
-    // Apply language + context
-    applyLang();
-    updateContext();
-
-    // Save once on init (normalizes schema)
-    saveToStorage();
+    init();
   </script>
 </body>
 </html>
-```
