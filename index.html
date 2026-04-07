@@ -596,9 +596,21 @@ Rispondiamo subito su WhatsApp</p>
 
         <div class="mt-8 flex flex-col gap-2 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
           <div>© <span id="y"></span> NexaRide</div>
-          <div class="flex gap-4">
-            <a href="#privacy" class="hover:text-neutral-300" id="t_privacy">Privacy</a>
-            <a href="#cookie" class="hover:text-neutral-300" id="t_cookie">Cookie</a>
+         <div class="flex gap-4">
+  <a href="https://www.iubenda.com/privacy-policy/99617025"
+     class="iubenda-white iubenda-noiframe iubenda-embed hover:text-neutral-300"
+     title="Privacy Policy"
+     id="t_privacy">
+     Privacy
+  </a>
+
+  <a href="https://www.iubenda.com/privacy-policy/99617025/cookie-policy"
+     class="iubenda-white iubenda-noiframe iubenda-embed hover:text-neutral-300"
+     title="Cookie Policy"
+     id="t_cookie">
+     Cookie
+  </a>
+</div>
           </div>
         </div>
       </div>
@@ -1746,5 +1758,18 @@ openWhatsAppWithText(msg);
 
     init();
   </script>
+  <script type="text/javascript">
+(function (w,d) {
+  var loader = function () {
+    var s = d.createElement("script"),
+        tag = d.getElementsByTagName("script")[0];
+    s.src="https://cdn.iubenda.com/iubenda.js";
+    tag.parentNode.insertBefore(s,tag);
+  };
+  if(w.addEventListener){w.addEventListener("load", loader, false);}
+  else if(w.attachEvent){w.attachEvent("onload", loader);}
+  else{w.onload = loader;}
+})(window, document);
+</script>
 </body>
 </html>
