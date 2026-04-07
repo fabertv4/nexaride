@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="it">
 <head>
+  <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-QED5KQ9C47"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QED5KQ9C47'); </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NexaRide — NCC e trasferimenti privati 24/7</title>
@@ -617,6 +618,11 @@ Rispondiamo subito su WhatsApp</p>
     const CANONICAL_URL = "https://www.nexaride.it/";
     const STORAGE_KEY = "nexaride_quote_v4_noluggage";
     const ROUNDTRIP_MIN_MINUTES = 30;
+    function trackEvent(name, data = {}) {
+  if (typeof gtag === "function") {
+    gtag("event", name, data);
+  }
+}
 
     // =========================================================
     // I18N (NO LUGGAGE ANYWHERE)
@@ -1540,14 +1546,45 @@ Notes:`,
       const ctaFooterToForm = document.getElementById("ctaFooterToForm");
       const stickyQuote = document.getElementById("stickyQuote");
 
-      ctaWATop?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaWAHero?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaWAOpenGeneric?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaWAOpenGeneric2?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaWhy?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaFleetWA?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      ctaWAFooter?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
-      stickyWA?.addEventListener("click", () => openWhatsAppWithText(buildWhatsAppGeneric()));
+      ctaWATop?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "top_header" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaWAHero?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "hero_primary" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaWAOpenGeneric?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "hero_card" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaWAOpenGeneric2?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "quote_top" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaWhy?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "why_section" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaFleetWA?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "fleet_section" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+ctaWAFooter?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "footer" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
+
+stickyWA?.addEventListener("click", () => {
+  trackEvent("whatsapp_click", { position: "sticky_mobile" });
+  openWhatsAppWithText(buildWhatsAppGeneric());
+});
 
       ctaScrollToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
       ctaFleetToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
@@ -1621,11 +1658,23 @@ Notes:`,
           const callLine = (LANG === "en")
             ? "Preferred contact: CALL (please call me if possible)."
             : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
-          openWhatsAppWithText(callLine + "\n\n" + msg);
+          trackEvent("quote_submit_whatsapp", {
+  contact_preference: "Call",
+  vehicle: vehicleSelect.value || "",
+  service_type: serviceTypeEl.value || "",
+  passengers: paxSelect.value || ""
+});
+openWhatsAppWithText(callLine + "\n\n" + msg);
           return;
         }
 
-        openWhatsAppWithText(msg);
+       trackEvent("quote_submit_whatsapp", {
+  contact_preference: contactPref,
+  vehicle: vehicleSelect.value || "",
+  service_type: serviceTypeEl.value || "",
+  passengers: paxSelect.value || ""
+});
+openWhatsAppWithText(msg);
       });
 
       // Reset
