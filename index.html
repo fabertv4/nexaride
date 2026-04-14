@@ -1426,7 +1426,7 @@ Notes:`,
 
     function buildWhatsAppFromForm() {
       const T = I18N[LANG];
-      const st = serviceTypeEl.value || "";
+      const st = humanServiceType(serviceTypeEl.value || "");
       const dep = whenEl.value || "";
       const ret = returnWrap.classList.contains("hidden") ? "" : (returnWhenEl.value || "");
       const hrs = hoursWrap.classList.contains("hidden") ? "" : (hoursEl.value || "");
