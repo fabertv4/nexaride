@@ -1760,24 +1760,6 @@ resetBtn.addEventListener("click", () => {
   saveToStorageDebounced();
 });
 
-        // If user chose "Call", still send WA but hint call preference at top (fast ops)
-        if (contactPref.toLowerCase().includes("call")) {
-          const callLine = (LANG === "en")
-            ? "Preferred contact: CALL (please call me if possible)."
-            : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
-          trackEvent("generate_lead", {
-  method: "whatsapp",
-  contact_preference: "Call",
-  vehicle: vehicleSelect.value || "",
-  service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || "",
-  lang: LANG,
-  invoice_requested: invoiceEl.checked ? "yes" : "no",
-  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
-});
-openWhatsAppWithText(callLine + "\n\n" + msg);
-return;
-
   trackEvent("generate_lead", {
   method: "whatsapp",
   contact_preference: contactPref,
