@@ -1679,15 +1679,18 @@ stickyWA?.addEventListener("click", () => {
           const callLine = (LANG === "en")
             ? "Preferred contact: CALL (please call me if possible)."
             : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
-          trackEvent("quote_submit_whatsapp", {
+          trackEvent("generate_lead", {
+  method: "whatsapp",
   contact_preference: "Call",
   vehicle: vehicleSelect.value || "",
   service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || ""
+  passengers: paxSelect.value || "",
+  lang: LANG,
+  invoice_requested: invoiceEl.checked ? "yes" : "no",
+  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
 });
 openWhatsAppWithText(callLine + "\n\n" + msg);
-          return;
-        }
+return;
 
   trackEvent("generate_lead", {
   method: "whatsapp",
