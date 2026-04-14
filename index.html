@@ -644,6 +644,26 @@ Rispondiamo subito su WhatsApp</p>
     gtag("event", name, data);
   }
 }
+    function trackWhatsAppLead(position, extra = {}) {
+  trackEvent("whatsapp_click", {
+    position,
+    lang: LANG,
+    ...extra
+  });
+
+  trackEvent("generate_lead", {
+    method: "whatsapp",
+    lead_type: "whatsapp_click",
+    position,
+    lang: LANG,
+    vehicle: vehicleSelect?.value || "",
+    service_type: serviceTypeEl?.value || "",
+    passengers: paxSelect?.value || "",
+    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
+    invoice_requested: invoiceEl?.checked ? "yes" : "no",
+    ...extra
+  });
+}
 
     // =========================================================
     // I18N (NO LUGGAGE ANYWHERE)
