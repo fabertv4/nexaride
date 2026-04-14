@@ -1414,6 +1414,15 @@ Notes:`,
       if (mode === "bank") return "Bonifico";
       return "Apple/Google Pay";
     }
+    function humanServiceType(value) {
+  const map = {
+    one_way: LANG === "en" ? "One-way" : "Solo andata",
+    round_trip: LANG === "en" ? "Round trip" : "Andata/Ritorno",
+    hourly: LANG === "en" ? "Hourly (as directed)" : "A disposizione (ore)",
+    full_day: LANG === "en" ? "Full day" : "Intera giornata"
+  };
+  return map[value] || value;
+}
 
     function buildWhatsAppFromForm() {
       const T = I18N[LANG];
