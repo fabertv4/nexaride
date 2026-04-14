@@ -1521,6 +1521,17 @@ Notes:`,
       const T = I18N[LANG];
       return T.waTemplates.base;
     }
+    function buildBestWhatsAppMessage() {
+  const hasFormData =
+    (vehicleSelect?.value || "") ||
+    (whenEl?.value || "") ||
+    (paxSelect?.value || "") ||
+    (fromEl?.value || "").trim() ||
+    (toEl?.value || "").trim() ||
+    (stopsEl?.value || "").trim();
+
+  return hasFormData ? buildWhatsAppFromForm() : buildWhatsAppGeneric();
+}
 
     // =========================================================
     // VALIDATION
