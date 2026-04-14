@@ -1730,7 +1730,7 @@ stickyQuote?.addEventListener("click", () => {
         openWhatsAppWithText(msg);
       });
 
-      resetBtn.addEventListener("click", () => {
+            resetBtn.addEventListener("click", () => {
         hideAlert();
 
         vehicleSelect.value = "";
@@ -1758,7 +1758,12 @@ stickyQuote?.addEventListener("click", () => {
         updateContext();
         saveToStorageDebounced();
       });
+    }
 
+    // =========================================================
+    // INIT
+    // =========================================================
+    function init() {
 
     // =========================================================
     // INIT
