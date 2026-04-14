@@ -1739,16 +1739,18 @@ stickyQuote?.addEventListener("click", () => {
 
         const msg = buildWhatsAppFromForm();
 
-        const payload = {
-          method: "whatsapp",
-          contact_preference: contactPref,
-          vehicle: vehicleSelect.value || "",
-          service_type: serviceTypeEl.value || "",
-          passengers: paxSelect.value || "",
-          lang: LANG,
-          invoice_requested: invoiceEl.checked ? "yes" : "no",
-          airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
-        };
+      const payload = {
+  method: "whatsapp",
+  lead_type: "form_whatsapp",
+  position: "quote_form",
+  contact_preference: contactPref,
+  vehicle: vehicleSelect.value || "",
+  service_type: serviceTypeEl.value || "",
+  passengers: paxSelect.value || "",
+  lang: LANG,
+  invoice_requested: invoiceEl.checked ? "yes" : "no",
+  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
+};
 
         if (contactPref.toLowerCase().includes("call")) {
           const callLine = (LANG === "en")
