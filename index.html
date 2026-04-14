@@ -1564,12 +1564,14 @@ Notes:`,
       }
 
       if (!hoursWrap.classList.contains("hidden")) {
-        if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
-      }
+  if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
+}
 
-      return missing;
-    }
+if (contactPref.toLowerCase().includes("call") && !phoneEl.value.trim()) {
+  missing.push(LANG === "en" ? "Phone for callback" : "Telefono per richiamata");
+}
 
+return missing;
     // =========================================================
     // CONTEXT UPDATERS
     // =========================================================
