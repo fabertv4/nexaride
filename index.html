@@ -1689,14 +1689,17 @@ openWhatsAppWithText(callLine + "\n\n" + msg);
           return;
         }
 
-       trackEvent("quote_submit_whatsapp", {
+  trackEvent("generate_lead", {
+  method: "whatsapp",
   contact_preference: contactPref,
   vehicle: vehicleSelect.value || "",
   service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || ""
+  passengers: paxSelect.value || "",
+  lang: LANG,
+  invoice_requested: invoiceEl.checked ? "yes" : "no",
+  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
 });
 openWhatsAppWithText(msg);
-      });
 
       // Reset
       const resetBtn = document.getElementById("resetBtn");
