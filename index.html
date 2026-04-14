@@ -1604,44 +1604,44 @@ Notes:`,
       const ctaFooterToForm = document.getElementById("ctaFooterToForm");
       const stickyQuote = document.getElementById("stickyQuote");
 
-      ctaWATop?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "top_header" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+ctaWATop?.addEventListener("click", () => {
+  trackWhatsAppLead("top_header");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaWAHero?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "hero_primary" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("hero_primary");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaWAOpenGeneric?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "hero_card" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("hero_card");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaWAOpenGeneric2?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "quote_top" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("quote_top");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaWhy?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "why_section" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("why_section");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaFleetWA?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "fleet_section" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("fleet_section");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 ctaWAFooter?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "footer" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("footer");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
 stickyWA?.addEventListener("click", () => {
-  trackEvent("whatsapp_click", { position: "sticky_mobile" });
-  openWhatsAppWithText(buildWhatsAppGeneric());
+  trackWhatsAppLead("sticky_mobile");
+  openWhatsAppWithText(buildBestWhatsAppMessage());
 });
 
       ctaScrollToForm?.addEventListener("click", () => {
