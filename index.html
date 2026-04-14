@@ -1759,48 +1759,6 @@ resetBtn.addEventListener("click", () => {
   saveToStorageDebounced();
 });
 
-  trackEvent("generate_lead", {
-  method: "whatsapp",
-  contact_preference: contactPref,
-  vehicle: vehicleSelect.value || "",
-  service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || "",
-  lang: LANG,
-  invoice_requested: invoiceEl.checked ? "yes" : "no",
-  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
-});
-openWhatsAppWithText(msg);
-
-      // Reset
-      const resetBtn = document.getElementById("resetBtn");
-      resetBtn.addEventListener("click", () => {
-        hideAlert();
-        vehicleSelect.value = "";
-        serviceTypeEl.value = "one_way";
-        whenEl.value = "";
-        returnWhenEl.value = "";
-        hoursEl.value = "";
-        paxSelect.value = "";
-        fromEl.value = "";
-        toEl.value = "";
-        stopsEl.value = "";
-        flightTrainEl.value = "";
-        waitExtraEl.value = "";
-        childSeatEl.value = "";
-        invoiceEl.checked = false;
-        nameEl.value = "";
-        phoneEl.value = "";
-        notesEl.value = "";
-
-        setContactPref("WhatsApp");
-        setMeetGreet("yes");
-        setPay("card");
-
-        capacityNotice.classList.add("hidden");
-        updateContext();
-        saveToStorageDebounced();
-      });
-    }
 
     // =========================================================
     // INIT
