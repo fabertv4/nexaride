@@ -1607,10 +1607,33 @@ stickyWA?.addEventListener("click", () => {
   openWhatsAppWithText(buildWhatsAppGeneric());
 });
 
-      ctaScrollToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
-      ctaFleetToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
-      ctaFooterToForm?.addEventListener("click", () => scrollToQuoteAndFocus());
-      stickyQuote?.addEventListener("click", () => scrollToQuoteAndFocus());
+      ctaScrollToForm?.addEventListener("click", () => {
+  trackEvent("scroll_to_quote", { position: "hero_secondary", lang: LANG });
+  scrollToQuoteAndFocus();
+});
+
+ctaFleetToForm?.addEventListener("click", () => {
+  trackEvent("scroll_to_quote", { position: "fleet_section", lang: LANG });
+  scrollToQuoteAndFocus();
+});
+
+ctaFooterToForm?.addEventListener("click", () => {
+  trackEvent("scroll_to_quote", { position: "footer", lang: LANG });
+  scrollToQuoteAndFocus();
+});
+
+stickyQuote?.addEventListener("click", () => {
+  trackEvent("scroll_to_quote", { position: "sticky_mobile", lang: LANG });
+  scrollToQuoteAndFocus();
+});
+      document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+  el.addEventListener("click", () => {
+    trackEvent("phone_click", {
+      position: el.id || "phone_cta",
+      lang: LANG
+    });
+  });
+});
 
       // Pref contact
       prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
