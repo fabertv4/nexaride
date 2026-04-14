@@ -1612,7 +1612,20 @@ setText("t_faq_a6", T.faq.a6);
         }
       }
 
-   if (contactPref.toLowerCase().includes("call") && !phoneEl.value.trim()) {
+   if (!returnWrap.classList.contains("hidden")) {
+  if (!returnWhenEl.value) missing.push(T.quote.returnLabel.replace("*","").trim());
+  const dep = parseDT(whenEl.value);
+  const ret = parseDT(returnWhenEl.value);
+  if (dep && ret && ret.getTime() < addMinutes(dep, ROUNDTRIP_MIN_MINUTES).getTime()) {
+    missing.push(LANG === "en" ? "Return must be after departure" : "Ritorno dopo la partenza");
+  }
+}
+
+if (!hoursWrap.classList.contains("hidden")) {
+  if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
+}
+
+if (contactPref.toLowerCase().includes("call") && !phoneEl.value.trim()) {
   missing.push(LANG === "en" ? "Phone for callback" : "Telefono per richiamata");
 }
 
