@@ -1328,39 +1328,37 @@ Notes:`,
     // SERVICE CONDITIONALS
     // =========================================================
     function enforceServiceConditionals() {
-      const st = serviceTypeEl.value;
+  const st = serviceTypeEl.value;
 
-      // Return trip
-      if (st === (LANG === "en" ? "Round trip" : "Andata/Ritorno")) {
-        returnWrap.classList.remove("hidden");
-        returnWhenEl.required = true;
+  if (st === "round_trip") {
+    returnWrap.classList.remove("hidden");
+    returnWhenEl.required = true;
 
-        // Ensure return min >= departure + X
-        const dep = parseDT(whenEl.value);
-        if (dep) {
-          const minRet = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
-          returnWhenEl.min = fmtDateTimeLocal(minRet);
+    const dep = parseDT(whenEl.value);
+    if (dep) {
+      const minRet = addMinutes(dep, ROUNDTRIP_MIN_MINUTES);
+      returnWhenEl.min = fmtDateTimeLocal(minRet);
 
-          const curRet = parseDT(returnWhenEl.value);
-          if (!curRet || curRet.getTime() < minRet.getTime()) {
-            returnWhenEl.value = fmtDateTimeLocal(minRet);
-          }
-        }
-      } else {
-        returnWrap.classList.add("hidden");
-        returnWhenEl.required = false;
-        returnWhenEl.value = "";
+      const curRet = parseDT(returnWhenEl.value);
+      if (!curRet || curRet.getTime() < minRet.getTime()) {
+        returnWhenEl.value = fmtDateTimeLocal(minRet);
       }
+    }
+  } else {
+    returnWrap.classList.add("hidden");
+    returnWhenEl.required = false;
+    returnWhenEl.value = "";
+  }
 
-      // Hourly
-      if (st === (LANG === "en" ? "Hourly (as directed)" : "A disposizione (ore)")) {
-        hoursWrap.classList.remove("hidden");
-        hoursEl.required = true;
-      } else {
-        hoursWrap.classList.add("hidden");
-        hoursEl.required = false;
-        hoursEl.value = "";
-      }
+  if (st === "hourly") {
+    hoursWrap.classList.remove("hidden");
+    hoursEl.required = true;
+  } else {
+    hoursWrap.classList.add("hidden");
+    hoursEl.required = false;
+    hoursEl.value = "";
+  }
+}
 
       // Full day: no extra field required
     }
