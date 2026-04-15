@@ -1882,17 +1882,37 @@ stickyQuote?.addEventListener("click", () => {
 };
 
         if (contactPref.toLowerCase().includes("call")) {
-          const callLine = (LANG === "en")
-            ? "Preferred contact: CALL (please call me if possible)."
-            : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+  const callLine = (LANG === "en")
+    ? "Preferred contact: CALL (please call me if possible)."
+    : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
 
-          trackEvent("generate_lead", payload);
-          openWhatsAppWithText(callLine + "\n\n" + msg);
-          return;
-        }
+  trackEvent("whatsapp_click", {
+    position: "quote_form",
+    lang: LANG,
+    vehicle: vehicleSelect.value || "",
+    service_type: serviceTypeEl.value || "",
+    passengers: paxSelect.value || "",
+    airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+    invoice_requested: invoiceEl.checked ? "yes" : "no"
+  });
 
-        trackEvent("generate_lead", payload);
-        openWhatsAppWithText(msg);
+  trackEvent("generate_lead", payload);
+  openWhatsAppWithText(callLine + "\n\n" + msg);
+  return;
+}
+
+trackEvent("whatsapp_click", {
+  position: "quote_form",
+  lang: LANG,
+  vehicle: vehicleSelect.value || "",
+  service_type: serviceTypeEl.value || "",
+  passengers: paxSelect.value || "",
+  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+  invoice_requested: invoiceEl.checked ? "yes" : "no"
+});
+
+trackEvent("generate_lead", payload);
+openWhatsAppWithText(msg);
       });
 
           resetBtn.addEventListener("click", () => {
