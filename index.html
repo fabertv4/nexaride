@@ -719,26 +719,39 @@ Rispondiamo subito su WhatsApp</p>
     }
   }
 
-  function trackWhatsAppLead(position, extra = {}) {
-    trackEvent("whatsapp_click", {
-      position,
-      lang: LANG,
-      ...extra
-    });
+  function trackWhatsAppClick(position, extra = {}) {
+  const hasQualifiedData = !!(
+    (vehicleSelect?.value || "").trim() ||
+    (whenEl?.value || "").trim() ||
+    (paxSelect?.value || "").trim() ||
+    (fromEl?.value || "").trim() ||
+    (toEl?.value || "").trim() ||
+    (stopsEl?.value || "").trim()
+  );
 
+  const basePayload = {
+    position,
+    lang: LANG,
+    vehicle: vehicleSelect?.value || "",
+    service_type: serviceTypeEl?.value || "",
+    passengers: paxSelect?.value || "",
+    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
+    invoice_requested: invoiceEl?.checked ? "yes" : "no",
+    ...extra
+  };
+
+  // Sempre: click WhatsApp
+  trackEvent("whatsapp_click", basePayload);
+
+  // Solo se ci sono dati utili: lead vero
+  if (hasQualifiedData) {
     trackEvent("generate_lead", {
+      ...basePayload,
       method: "whatsapp",
-      lead_type: "whatsapp_click",
-      position,
-      lang: LANG,
-      vehicle: vehicleSelect?.value || "",
-      service_type: serviceTypeEl?.value || "",
-      passengers: paxSelect?.value || "",
-      airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
-      invoice_requested: invoiceEl?.checked ? "yes" : "no",
-      ...extra
+      lead_type: "qualified_whatsapp"
     });
   }
+}
 
 
     // =========================================================
