@@ -670,39 +670,61 @@ Rispondiamo subito su WhatsApp</p>
     </div>
   </div>
 
-  <script>
-    // =========================================================
-    // CONFIG
-    // =========================================================
-    const WA_PHONE = "393520294857";
-    const CANONICAL_URL = "https://www.nexaride.it/";
-    const STORAGE_KEY = "nexaride_quote_v4_noluggage";
-    const ROUNDTRIP_MIN_MINUTES = 30;
-    function trackEvent(name, data = {}) {
-  if (typeof gtag === "function") {
-    gtag("event", name, data);
-  }
-}
-    function trackWhatsAppLead(position, extra = {}) {
-  trackEvent("whatsapp_click", {
-    position,
-    lang: LANG,
-    ...extra
-  });
+ <script>
+  // =========================================================
+  // CONFIG
+  // =========================================================
+  const WA_PHONE = "393520294857";
+  const CANONICAL_URL = "https://www.nexaride.it/";
+  const STORAGE_KEY = "nexaride_quote_v4_noluggage";
+  const ROUNDTRIP_MIN_MINUTES = 30;
 
-  trackEvent("generate_lead", {
-    method: "whatsapp",
-    lead_type: "whatsapp_click",
-    position,
-    lang: LANG,
-    vehicle: vehicleSelect?.value || "",
-    service_type: serviceTypeEl?.value || "",
-    passengers: paxSelect?.value || "",
-    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
-    invoice_requested: invoiceEl?.checked ? "yes" : "no",
-    ...extra
-  });
-}
+  // =========================================================
+  // SIMPLE TRANSLATIONS
+  // =========================================================
+  const translations = {
+    it: {
+      pay_label: "Pagamento",
+      card: "Carta",
+      cash: "Contanti",
+      bank: "Bonifico",
+      wallet: "Apple/Google Pay"
+    },
+    en: {
+      pay_label: "Payment",
+      card: "Card",
+      cash: "Cash",
+      bank: "Bank transfer",
+      wallet: "Apple/Google Pay"
+    }
+  };
+
+  function trackEvent(name, data = {}) {
+    if (typeof gtag === "function") {
+      gtag("event", name, data);
+    }
+  }
+
+  function trackWhatsAppLead(position, extra = {}) {
+    trackEvent("whatsapp_click", {
+      position,
+      lang: LANG,
+      ...extra
+    });
+
+    trackEvent("generate_lead", {
+      method: "whatsapp",
+      lead_type: "whatsapp_click",
+      position,
+      lang: LANG,
+      vehicle: vehicleSelect?.value || "",
+      service_type: serviceTypeEl?.value || "",
+      passengers: paxSelect?.value || "",
+      airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
+      invoice_requested: invoiceEl?.checked ? "yes" : "no",
+      ...extra
+    });
+  }
 
     // =========================================================
     // I18N (NO LUGGAGE ANYWHERE)
