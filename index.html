@@ -699,6 +699,20 @@ Rispondiamo subito su WhatsApp</p>
     }
   };
 
+  function applyPaymentTranslations(lang) {
+    const dict = translations[lang] || translations.it;
+
+    const payCard = document.getElementById("payCard");
+    const payCash = document.getElementById("payCash");
+    const payBank = document.getElementById("payBank");
+    const payWallet = document.getElementById("payWallet");
+
+    if (payCard) payCard.textContent = dict.card;
+    if (payCash) payCash.textContent = dict.cash;
+    if (payBank) payBank.textContent = dict.bank;
+    if (payWallet) payWallet.textContent = dict.wallet;
+  }
+
   function trackEvent(name, data = {}) {
     if (typeof gtag === "function") {
       gtag("event", name, data);
@@ -711,6 +725,20 @@ Rispondiamo subito su WhatsApp</p>
       lang: LANG,
       ...extra
     });
+
+    trackEvent("generate_lead", {
+      method: "whatsapp",
+      lead_type: "whatsapp_click",
+      position,
+      lang: LANG,
+      vehicle: vehicleSelect?.value || "",
+      service_type: serviceTypeEl?.value || "",
+      passengers: paxSelect?.value || "",
+      airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
+      invoice_requested: invoiceEl?.checked ? "yes" : "no",
+      ...extra
+    });
+  }
 
     trackEvent("generate_lead", {
       method: "whatsapp",
