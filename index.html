@@ -1679,317 +1679,308 @@ setText("t_faq_a6", T.faq.a6);
       formAlertText.textContent = "";
     }
     function validateForm() {
-      const T = I18N[LANG];
-      const missing = [];
+  const T = I18N[LANG];
+  const missing = [];
 
-      if (!vehicleSelect.value) missing.push(T.quote.vehicleLabel.replace("*","").trim());
-      if (!whenEl.value) missing.push(T.quote.whenLabel.replace("*","").trim());
-      if (!paxSelect.value) missing.push(T.quote.paxLabel.replace("*","").trim());
-      if (!fromEl.value.trim()) missing.push(T.quote.fromLabel.replace("*","").trim());
-      if (!toEl.value.trim()) missing.push(T.quote.toLabel.replace("*","").trim());
+  if (!vehicleSelect.value) missing.push(T.quote.vehicleLabel.replace("*","").trim());
+  if (!whenEl.value) missing.push(T.quote.whenLabel.replace("*","").trim());
+  if (!paxSelect.value) missing.push(T.quote.paxLabel.replace("*","").trim());
+  if (!fromEl.value.trim()) missing.push(T.quote.fromLabel.replace("*","").trim());
+  if (!toEl.value.trim()) missing.push(T.quote.toLabel.replace("*","").trim());
 
-      if (!returnWrap.classList.contains("hidden")) {
-        if (!returnWhenEl.value) missing.push(T.quote.returnLabel.replace("*","").trim());
-        const dep = parseDT(whenEl.value);
-        const ret = parseDT(returnWhenEl.value);
-        if (dep && ret && ret.getTime() < addMinutes(dep, ROUNDTRIP_MIN_MINUTES).getTime()) {
-          missing.push(LANG === "en" ? "Return must be after departure" : "Ritorno dopo la partenza");
-        }
-      }
-
-   if (!returnWrap.classList.contains("hidden")) {
-  if (!returnWhenEl.value) missing.push(T.quote.returnLabel.replace("*","").trim());
-  const dep = parseDT(whenEl.value);
-  const ret = parseDT(returnWhenEl.value);
-  if (dep && ret && ret.getTime() < addMinutes(dep, ROUNDTRIP_MIN_MINUTES).getTime()) {
-    missing.push(LANG === "en" ? "Return must be after departure" : "Ritorno dopo la partenza");
+  if (!returnWrap.classList.contains("hidden")) {
+    if (!returnWhenEl.value) missing.push(T.quote.returnLabel.replace("*","").trim());
+    const dep = parseDT(whenEl.value);
+    const ret = parseDT(returnWhenEl.value);
+    if (dep && ret && ret.getTime() < addMinutes(dep, ROUNDTRIP_MIN_MINUTES).getTime()) {
+      missing.push(LANG === "en" ? "Return must be after departure" : "Ritorno dopo la partenza");
+    }
   }
-}
 
-if (!hoursWrap.classList.contains("hidden")) {
-  if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
-}
+  if (!hoursWrap.classList.contains("hidden")) {
+    if (!hoursEl.value) missing.push(T.quote.hoursLabel.replace("*","").trim());
+  }
 
-if (contactPref.toLowerCase().includes("call") && !phoneEl.value.trim()) {
-  missing.push(LANG === "en" ? "Phone for callback" : "Telefono per richiamata");
-}
+  if (contactPref.toLowerCase().includes("call") && !phoneEl.value.trim()) {
+    missing.push(LANG === "en" ? "Phone for callback" : "Telefono per richiamata");
+  }
 
-return missing;
+  return missing;
 }
 
 // =========================================================
 // CONTEXT UPDATERS
 // =========================================================
 function updateContext() {
-      enforceServiceConditionals();
-      updateTravelDetection();
-      updateNotesSuggestion();
-      updateSelectedVehicleUI();
-      selectFleetByLabel(vehicleSelect.value || "");
-    }
+  enforceServiceConditionals();
+  updateTravelDetection();
+  updateNotesSuggestion();
+  updateSelectedVehicleUI();
+  selectFleetByLabel(vehicleSelect.value || "");
+}
 
-    // =========================================================
-    // EVENTS
-    // =========================================================
-    function bindEvents() {
-      // Lang
-      langIT.addEventListener("click", () => setLang("it"));
-      langEN.addEventListener("click", () => setLang("en"));
+// =========================================================
+// EVENTS
+// =========================================================
+function bindEvents() {
+  // Lang
+  langIT.addEventListener("click", () => setLang("it"));
+  langEN.addEventListener("click", () => setLang("en"));
 
-      // CTA
-      const ctaWATop = document.getElementById("ctaWATop");
-      const ctaWAHero = document.getElementById("ctaWAHero");
-      const ctaWAOpenGeneric = document.getElementById("ctaWAOpenGeneric");
-      const ctaWAOpenGeneric2 = document.getElementById("ctaWAOpenGeneric2");
-      const ctaWhy = document.getElementById("ctaWhy");
-      const ctaFleetWA = document.getElementById("ctaFleetWA");
-      const ctaWAFooter = document.getElementById("ctaWAFooter");
-      const stickyWA = document.getElementById("stickyWA");
+  // CTA
+  const ctaWATop = document.getElementById("ctaWATop");
+  const ctaWAHero = document.getElementById("ctaWAHero");
+  const ctaWAOpenGeneric = document.getElementById("ctaWAOpenGeneric");
+  const ctaWAOpenGeneric2 = document.getElementById("ctaWAOpenGeneric2");
+  const ctaWhy = document.getElementById("ctaWhy");
+  const ctaFleetWA = document.getElementById("ctaFleetWA");
+  const ctaWAFooter = document.getElementById("ctaWAFooter");
+  const stickyWA = document.getElementById("stickyWA");
 
-      const ctaScrollToForm = document.getElementById("ctaScrollToForm");
-      const ctaFleetToForm = document.getElementById("ctaFleetToForm");
-      const ctaFooterToForm = document.getElementById("ctaFooterToForm");
-      const stickyQuote = document.getElementById("stickyQuote");
+  const ctaScrollToForm = document.getElementById("ctaScrollToForm");
+  const ctaFleetToForm = document.getElementById("ctaFleetToForm");
+  const ctaFooterToForm = document.getElementById("ctaFooterToForm");
+  const stickyQuote = document.getElementById("stickyQuote");
 
-ctaWATop?.addEventListener("click", () => {
-  trackWhatsAppClick("top_header");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWATop?.addEventListener("click", () => {
+    trackWhatsAppClick("top_header");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaWAHero?.addEventListener("click", () => {
-  trackWhatsAppClick("hero_primary");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWAHero?.addEventListener("click", () => {
+    trackWhatsAppClick("hero_primary");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaWAOpenGeneric?.addEventListener("click", () => {
-  trackWhatsAppClick("hero_card");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWAOpenGeneric?.addEventListener("click", () => {
+    trackWhatsAppClick("hero_card");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaWAOpenGeneric2?.addEventListener("click", () => {
-  trackWhatsAppClick("quote_top");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWAOpenGeneric2?.addEventListener("click", () => {
+    trackWhatsAppClick("quote_top");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaWhy?.addEventListener("click", () => {
-  trackWhatsAppClick("why_section");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWhy?.addEventListener("click", () => {
+    trackWhatsAppClick("why_section");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaFleetWA?.addEventListener("click", () => {
- trackWhatsAppClick("fleet_section");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaFleetWA?.addEventListener("click", () => {
+    trackWhatsAppClick("fleet_section");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-ctaWAFooter?.addEventListener("click", () => {
-  trackWhatsAppClick("footer");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  ctaWAFooter?.addEventListener("click", () => {
+    trackWhatsAppClick("footer");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-stickyWA?.addEventListener("click", () => {
-  trackWhatsAppClick("sticky_mobile");
-  openWhatsAppWithText(buildBestWhatsAppMessage());
-});
+  stickyWA?.addEventListener("click", () => {
+    trackWhatsAppClick("sticky_mobile");
+    openWhatsAppWithText(buildBestWhatsAppMessage());
+  });
 
-      ctaScrollToForm?.addEventListener("click", () => {
-  trackEvent("scroll_to_quote", { position: "hero_secondary", lang: LANG });
-  scrollToQuoteAndFocus();
-});
+  ctaScrollToForm?.addEventListener("click", () => {
+    trackEvent("scroll_to_quote", { position: "hero_secondary", lang: LANG });
+    scrollToQuoteAndFocus();
+  });
 
-ctaFleetToForm?.addEventListener("click", () => {
-  trackEvent("scroll_to_quote", { position: "fleet_section", lang: LANG });
-  scrollToQuoteAndFocus();
-});
+  ctaFleetToForm?.addEventListener("click", () => {
+    trackEvent("scroll_to_quote", { position: "fleet_section", lang: LANG });
+    scrollToQuoteAndFocus();
+  });
 
-ctaFooterToForm?.addEventListener("click", () => {
-  trackEvent("scroll_to_quote", { position: "footer", lang: LANG });
-  scrollToQuoteAndFocus();
-});
+  ctaFooterToForm?.addEventListener("click", () => {
+    trackEvent("scroll_to_quote", { position: "footer", lang: LANG });
+    scrollToQuoteAndFocus();
+  });
 
-stickyQuote?.addEventListener("click", () => {
-  trackEvent("scroll_to_quote", { position: "sticky_mobile", lang: LANG });
-  scrollToQuoteAndFocus();
-});
-      document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
-  el.addEventListener("click", () => {
-    trackEvent("phone_click", {
-      position: el.id || "phone_cta",
-      lang: LANG
+  stickyQuote?.addEventListener("click", () => {
+    trackEvent("scroll_to_quote", { position: "sticky_mobile", lang: LANG });
+    scrollToQuoteAndFocus();
+  });
+
+  document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      trackEvent("phone_click", {
+        position: el.id || "phone_cta",
+        lang: LANG
+      });
     });
   });
-});
 
-      // Pref contact
-      prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
-      prefCall.addEventListener("click", () => setContactPref("Call"));
+  // Pref contact
+  prefWA.addEventListener("click", () => setContactPref("WhatsApp"));
+  prefCall.addEventListener("click", () => setContactPref("Call"));
 
-      // Meet & greet
-      meetYes.addEventListener("click", () => setMeetGreet("yes"));
-      meetNo.addEventListener("click", () => setMeetGreet("no"));
+  // Meet & greet
+  meetYes.addEventListener("click", () => setMeetGreet("yes"));
+  meetNo.addEventListener("click", () => setMeetGreet("no"));
 
-      // Pay
-      payCard.addEventListener("click", () => setPay("card"));
-      payCash.addEventListener("click", () => setPay("cash"));
-      payBank.addEventListener("click", () => setPay("bank"));
-      payWallet.addEventListener("click", () => setPay("wallet"));
+  // Pay
+  payCard.addEventListener("click", () => setPay("card"));
+  payCash.addEventListener("click", () => setPay("cash"));
+  payBank.addEventListener("click", () => setPay("bank"));
+  payWallet.addEventListener("click", () => setPay("wallet"));
 
-      // Form changes
-      [vehicleSelect, serviceTypeEl, whenEl, returnWhenEl, hoursEl, paxSelect, fromEl, toEl, stopsEl, flightTrainEl, waitExtraEl, childSeatEl, invoiceEl, nameEl, phoneEl, notesEl].forEach((el) => {
-        el?.addEventListener("input", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
-        el?.addEventListener("change", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
-      });
-
-      // Enforce departure-first return min when dep changes
-      whenEl.addEventListener("change", () => {
-        enforceServiceConditionals();
-        saveToStorageDebounced();
-      });
-
-      // Vehicle capacity auto: >4 => Van
-      paxSelect.addEventListener("change", () => {
-        const n = parseInt(paxSelect.value || "0", 10);
-        if (n > 4) {
-          vehicleSelect.value = "Van / Gruppi (Mercedes Classe V / Vito)";
-          capacityNotice.classList.remove("hidden");
-        } else {
-          capacityNotice.classList.add("hidden");
-        }
-        updateContext();
-        saveToStorageDebounced();
-      });
-
-      // Fleet selection
-      fleetCards.forEach((card) => {
-        card.addEventListener("click", () => {
-          const label = card.getAttribute("data-vehicle-label") || "";
-          if (label) vehicleSelect.value = label;
-          updateContext();
-          scrollToQuoteAndFocus();
-          saveToStorageDebounced();
-        });
-      });
-
-          // Submit
-      const quoteForm = document.getElementById("quoteForm");
-      const resetBtn = document.getElementById("resetBtn");
-
-      quoteForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const missing = validateForm();
-        if (missing.length) {
-          showAlert(missing);
-          return;
-        }
-
-        const msg = buildWhatsAppFromForm();
-
-      const payload = {
-  method: "whatsapp",
-  lead_type: "form_whatsapp",
-  position: "quote_form",
-  contact_preference: contactPref,
-  vehicle: vehicleSelect.value || "",
-  service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || "",
-  lang: LANG,
-  invoice_requested: invoiceEl.checked ? "yes" : "no",
-  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
-};
-
-        if (contactPref.toLowerCase().includes("call")) {
-  const callLine = (LANG === "en")
-    ? "Preferred contact: CALL (please call me if possible)."
-    : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
-
-  trackEvent("whatsapp_click", {
-    position: "quote_form",
-    lang: LANG,
-    vehicle: vehicleSelect.value || "",
-    service_type: serviceTypeEl.value || "",
-    passengers: paxSelect.value || "",
-    airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
-    invoice_requested: invoiceEl.checked ? "yes" : "no"
+  // Form changes
+  [vehicleSelect, serviceTypeEl, whenEl, returnWhenEl, hoursEl, paxSelect, fromEl, toEl, stopsEl, flightTrainEl, waitExtraEl, childSeatEl, invoiceEl, nameEl, phoneEl, notesEl].forEach((el) => {
+    el?.addEventListener("input", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
+    el?.addEventListener("change", () => { hideAlert(); updateContext(); saveToStorageDebounced(); });
   });
 
-  trackEvent("generate_lead", payload);
-fireGoogleAdsConversion();
-openWhatsAppWithText(callLine + "\n\n" + msg);
-return;
+  // Enforce departure-first return min when dep changes
+  whenEl.addEventListener("change", () => {
+    enforceServiceConditionals();
+    saveToStorageDebounced();
+  });
 
-trackEvent("whatsapp_click", {
-  position: "quote_form",
-  lang: LANG,
-  vehicle: vehicleSelect.value || "",
-  service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || "",
-  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
-  invoice_requested: invoiceEl.checked ? "yes" : "no"
-});
-
-trackEvent("generate_lead", payload);
-fireGoogleAdsConversion();
-openWhatsAppWithText(msg);
-
-          resetBtn.addEventListener("click", () => {
-        hideAlert();
-
-        vehicleSelect.value = "";
-        serviceTypeEl.value = "one_way";
-        whenEl.value = "";
-        returnWhenEl.value = "";
-        hoursEl.value = "";
-        paxSelect.value = "";
-        fromEl.value = "";
-        toEl.value = "";
-        stopsEl.value = "";
-        flightTrainEl.value = "";
-        waitExtraEl.value = "";
-        childSeatEl.value = "";
-        invoiceEl.checked = false;
-        nameEl.value = "";
-        phoneEl.value = "";
-        notesEl.value = "";
-
-        setContactPref("WhatsApp");
-        setMeetGreet("yes");
-        setPay("card");
-
-        capacityNotice.classList.add("hidden");
-        updateContext();
-        saveToStorageDebounced();
-      });
+  // Vehicle capacity auto: >4 => Van
+  paxSelect.addEventListener("change", () => {
+    const n = parseInt(paxSelect.value || "0", 10);
+    if (n > 4) {
+      vehicleSelect.value = "Van / Gruppi (Mercedes Classe V / Vito)";
+      capacityNotice.classList.remove("hidden");
+    } else {
+      capacityNotice.classList.add("hidden");
     }
+    updateContext();
+    saveToStorageDebounced();
+  });
 
-
-    // =========================================================
-    // INIT
-    // =========================================================
-    function init() {
-      // footer year
-      document.getElementById("y").textContent = String(new Date().getFullYear());
-
-      fillHoursOptions();
-
-      setMinDateTimeNow(whenEl);
-      setMinDateTimeNow(returnWhenEl);
-
-      loadFromStorage();
-
-      // Apply stored button states
-      langIT.classList.toggle("is-active", LANG === "it");
-      langEN.classList.toggle("is-active", LANG === "en");
-
-      setContactPref(contactPref);
-      setMeetGreet(meetGreet);
-      setPay(payMode);
-
-      applyLang();
+  // Fleet selection
+  fleetCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const label = card.getAttribute("data-vehicle-label") || "";
+      if (label) vehicleSelect.value = label;
       updateContext();
-      bindEvents();
+      scrollToQuoteAndFocus();
+      saveToStorageDebounced();
+    });
+  });
+
+  // Submit
+  const quoteForm = document.getElementById("quoteForm");
+  const resetBtn = document.getElementById("resetBtn");
+
+  quoteForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const missing = validateForm();
+    if (missing.length) {
+      showAlert(missing);
+      return;
     }
 
-    init();
+    const msg = buildWhatsAppFromForm();
+
+    const payload = {
+      method: "whatsapp",
+      lead_type: "form_whatsapp",
+      position: "quote_form",
+      contact_preference: contactPref,
+      vehicle: vehicleSelect.value || "",
+      service_type: serviceTypeEl.value || "",
+      passengers: paxSelect.value || "",
+      lang: LANG,
+      invoice_requested: invoiceEl.checked ? "yes" : "no",
+      airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
+    };
+
+    if (contactPref.toLowerCase().includes("call")) {
+      const callLine = (LANG === "en")
+        ? "Preferred contact: CALL (please call me if possible)."
+        : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+
+      trackEvent("whatsapp_click", {
+        position: "quote_form",
+        lang: LANG,
+        vehicle: vehicleSelect.value || "",
+        service_type: serviceTypeEl.value || "",
+        passengers: paxSelect.value || "",
+        airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+        invoice_requested: invoiceEl.checked ? "yes" : "no"
+      });
+
+      trackEvent("generate_lead", payload);
+      fireGoogleAdsConversion();
+      openWhatsAppWithText(callLine + "\n\n" + msg);
+      return;
+    }
+
+    trackEvent("whatsapp_click", {
+      position: "quote_form",
+      lang: LANG,
+      vehicle: vehicleSelect.value || "",
+      service_type: serviceTypeEl.value || "",
+      passengers: paxSelect.value || "",
+      airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+      invoice_requested: invoiceEl.checked ? "yes" : "no"
+    });
+
+    trackEvent("generate_lead", payload);
+    fireGoogleAdsConversion();
+    openWhatsAppWithText(msg);
+  });
+
+  resetBtn.addEventListener("click", () => {
+    hideAlert();
+
+    vehicleSelect.value = "";
+    serviceTypeEl.value = "one_way";
+    whenEl.value = "";
+    returnWhenEl.value = "";
+    hoursEl.value = "";
+    paxSelect.value = "";
+    fromEl.value = "";
+    toEl.value = "";
+    stopsEl.value = "";
+    flightTrainEl.value = "";
+    waitExtraEl.value = "";
+    childSeatEl.value = "";
+    invoiceEl.checked = false;
+    nameEl.value = "";
+    phoneEl.value = "";
+    notesEl.value = "";
+
+    setContactPref("WhatsApp");
+    setMeetGreet("yes");
+    setPay("card");
+
+    capacityNotice.classList.add("hidden");
+    updateContext();
+    saveToStorageDebounced();
+  });
+}
+
+// =========================================================
+// INIT
+// =========================================================
+function init() {
+  document.getElementById("y").textContent = String(new Date().getFullYear());
+
+  fillHoursOptions();
+
+  setMinDateTimeNow(whenEl);
+  setMinDateTimeNow(returnWhenEl);
+
+  loadFromStorage();
+
+  langIT.classList.toggle("is-active", LANG === "it");
+  langEN.classList.toggle("is-active", LANG === "en");
+
+  setContactPref(contactPref);
+  setMeetGreet(meetGreet);
+  setPay(payMode);
+
+  applyLang();
+  updateContext();
+  bindEvents();
+}
+
+init();
   </script>
   <script type="text/javascript">
 (function (w,d) {
