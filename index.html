@@ -1858,38 +1858,58 @@ function bindEvents() {
     });
   });
 
-  // Submit
-  const quoteForm = document.getElementById("quoteForm");
-  const resetBtn = document.getElementById("resetBtn");
+ // Submit
+const quoteForm = document.getElementById("quoteForm");
+const resetBtn = document.getElementById("resetBtn");
 
-  quoteForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+quoteForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    const missing = validateForm();
-    if (missing.length) {
-      showAlert(missing);
-      return;
-    }
+  const missing = validateForm();
+  if (missing.length) {
+    showAlert(missing);
+    return;
+  }
 
-    const msg = buildWhatsAppFromForm();
+  const msg = buildWhatsAppFromForm();
 
-    const payload = {
-      method: "whatsapp",
-      lead_type: "form_whatsapp",
+  const payload = {
+    method: "whatsapp",
+    lead_type: "form_whatsapp",
+    position: "quote_form",
+    contact_preference: contactPref,
+    vehicle: vehicleSelect.value || "",
+    service_type: serviceTypeEl.value || "",
+    passengers: paxSelect.value || "",
+    lang: LANG,
+    invoice_requested: invoiceEl.checked ? "yes" : "no",
+    airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
+  };
+
+  if (contactPref.toLowerCase().includes("call")) {
+    const callLine = (LANG === "en")
+      ? "Preferred contact: CALL (please call me if possible)."
+      : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+
+    trackEvent("whatsapp_click", {
       position: "quote_form",
-      contact_preference: contactPref,
+      lang: LANG,
       vehicle: vehicleSelect.value || "",
       service_type: serviceTypeEl.value || "",
       passengers: paxSelect.value || "",
-      lang: LANG,
-      invoice_requested: invoiceEl.checked ? "yes" : "no",
-      airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
-    };
+      airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+      invoice_requested: invoiceEl.checked ? "yes" : "no"
+    });
 
-    if (contactPref.toLowerCase().includes("call")) {
-  const callLine = (LANG === "en")
-    ? "Preferred contact: CALL (please call me if possible)."
-    : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+    trackEvent("generate_lead", payload);
+    fireGoogleAdsConversion();
+
+    setTimeout(() => {
+      openWhatsAppWithText(callLine + "\n\n" + msg);
+    }, 700);
+
+    return;
+  }
 
   trackEvent("whatsapp_click", {
     position: "quote_form",
@@ -1905,59 +1925,38 @@ function bindEvents() {
   fireGoogleAdsConversion();
 
   setTimeout(() => {
-    openWhatsAppWithText(callLine + "\n\n" + msg);
+    openWhatsAppWithText(msg);
   }, 700);
-
-  return;
-}
-
-trackEvent("whatsapp_click", {
-  position: "quote_form",
-  lang: LANG,
-  vehicle: vehicleSelect.value || "",
-  service_type: serviceTypeEl.value || "",
-  passengers: paxSelect.value || "",
-  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
-  invoice_requested: invoiceEl.checked ? "yes" : "no"
-});
-
-trackEvent("generate_lead", payload);
-fireGoogleAdsConversion();
-
-setTimeout(() => {
-  openWhatsAppWithText(msg);
-}, 700);
 });
 
 resetBtn.addEventListener("click", () => {
   hideAlert();
 
-    vehicleSelect.value = "";
-    serviceTypeEl.value = "one_way";
-    whenEl.value = "";
-    returnWhenEl.value = "";
-    hoursEl.value = "";
-    paxSelect.value = "";
-    fromEl.value = "";
-    toEl.value = "";
-    stopsEl.value = "";
-    flightTrainEl.value = "";
-    waitExtraEl.value = "";
-    childSeatEl.value = "";
-    invoiceEl.checked = false;
-    nameEl.value = "";
-    phoneEl.value = "";
-    notesEl.value = "";
+  vehicleSelect.value = "";
+  serviceTypeEl.value = "one_way";
+  whenEl.value = "";
+  returnWhenEl.value = "";
+  hoursEl.value = "";
+  paxSelect.value = "";
+  fromEl.value = "";
+  toEl.value = "";
+  stopsEl.value = "";
+  flightTrainEl.value = "";
+  waitExtraEl.value = "";
+  childSeatEl.value = "";
+  invoiceEl.checked = false;
+  nameEl.value = "";
+  phoneEl.value = "";
+  notesEl.value = "";
 
-    setContactPref("WhatsApp");
-    setMeetGreet("yes");
-    setPay("card");
+  setContactPref("WhatsApp");
+  setMeetGreet("yes");
+  setPay("card");
 
-    capacityNotice.classList.add("hidden");
-    updateContext();
-    saveToStorageDebounced();
-  });
-}
+  capacityNotice.classList.add("hidden");
+  updateContext();
+  saveToStorageDebounced();
+});
 
 // =========================================================
 // INIT
