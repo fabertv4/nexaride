@@ -1919,8 +1919,10 @@ function bindEvents() {
 
     trackEvent("generate_lead", payload);
     fireGoogleAdsConversion();
-    openWhatsAppWithText(msg);
-  });
+
+setTimeout(() => {
+  openWhatsAppWithText(msg);
+}, 700);
 
   resetBtn.addEventListener("click", () => {
     hideAlert();
