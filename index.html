@@ -742,10 +742,17 @@ Rispondiamo subito su WhatsApp</p>
     ...extra
   };
 
-  // Sempre: click WhatsApp
+  // Evento GA4
   trackEvent("whatsapp_click", basePayload);
 
-  // Solo se ci sono dati utili: lead vero
+  // Conversione Google Ads
+  if (typeof gtag === "function") {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18088830060/5E_pCKf1mJwcEOzItrFD'
+    });
+  }
+
+  // Lead qualificato GA4
   if (hasQualifiedData) {
     trackEvent("generate_lead", {
       ...basePayload,
