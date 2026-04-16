@@ -715,12 +715,13 @@ Rispondiamo subito su WhatsApp</p>
     if (payWallet) payWallet.textContent = dict.wallet;
   }
 
-  function trackEvent(name, data = {}) {
-    if (typeof gtag === "function") {
-      gtag("event", name, data);
-    }
+ function trackEvent(name, data = {}) {
+  if (typeof gtag === "function") {
+    gtag("event", name, data);
   }
-   function fireGoogleAdsConversion() {
+}
+
+function fireGoogleAdsConversion() {
   if (typeof gtag === "function") {
     gtag('event', 'conversion', {
       'send_to': 'AW-18088830060/zU46CMmO9ZwcEOzItrFD'
@@ -751,12 +752,6 @@ function trackWhatsAppClick(position, extra = {}) {
 
   trackEvent("whatsapp_click", basePayload);
 
-  if (typeof gtag === "function") {
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18088830060/zU46CMmO9ZwcEOzItrFD'
-    });
-  }
-
   if (hasQualifiedData) {
     trackEvent("generate_lead", {
       ...basePayload,
@@ -765,7 +760,6 @@ function trackWhatsAppClick(position, extra = {}) {
     });
   }
 }
-
 
     // =========================================================
     // I18N (NO LUGGAGE ANYWHERE)
