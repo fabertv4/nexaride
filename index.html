@@ -723,12 +723,12 @@ Rispondiamo subito su WhatsApp</p>
    function fireGoogleAdsConversion() {
   if (typeof gtag === "function") {
     gtag('event', 'conversion', {
-      'send_to': 'AW-18088830060/5E_pCKf1mJwcEOzItrFD'
+      'send_to': 'AW-18088830060/zU46CMmO9ZwcEOzItrFD'
     });
   }
 }
 
-  function trackWhatsAppClick(position, extra = {}) {
+function trackWhatsAppClick(position, extra = {}) {
   const hasQualifiedData = !!(
     (vehicleSelect?.value || "").trim() ||
     (whenEl?.value || "").trim() ||
@@ -749,17 +749,14 @@ Rispondiamo subito su WhatsApp</p>
     ...extra
   };
 
-  // Evento GA4
   trackEvent("whatsapp_click", basePayload);
 
-  // Conversione Google Ads
   if (typeof gtag === "function") {
     gtag('event', 'conversion', {
-      'send_to': 'AW-18088830060/5E_pCKf1mJwcEOzItrFD'
+      'send_to': 'AW-18088830060/zU46CMmO9ZwcEOzItrFD'
     });
   }
 
-  // Lead qualificato GA4
   if (hasQualifiedData) {
     trackEvent("generate_lead", {
       ...basePayload,
