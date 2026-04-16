@@ -720,6 +720,13 @@ Rispondiamo subito su WhatsApp</p>
       gtag("event", name, data);
     }
   }
+   function fireGoogleAdsConversion() {
+  if (typeof gtag === "function") {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18088830060/5E_pCKf1mJwcEOzItrFD'
+    });
+  }
+}
 
   function trackWhatsAppClick(position, extra = {}) {
   const hasQualifiedData = !!(
