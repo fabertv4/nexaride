@@ -1902,11 +1902,13 @@ function bindEvents() {
       });
 
       trackEvent("generate_lead", payload);
-      fireGoogleAdsConversion();
-      openWhatsAppWithText(callLine + "\n\n" + msg);
-      return;
-    }
+fireGoogleAdsConversion();
 
+setTimeout(() => {
+  openWhatsAppWithText(callLine + "\n\n" + msg);
+}, 700);
+
+return;
     trackEvent("whatsapp_click", {
       position: "quote_form",
       lang: LANG,
