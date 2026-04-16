@@ -1913,9 +1913,9 @@ stickyQuote?.addEventListener("click", () => {
   });
 
   trackEvent("generate_lead", payload);
-  openWhatsAppWithText(callLine + "\n\n" + msg);
-  return;
-}
+fireGoogleAdsConversion();
+openWhatsAppWithText(callLine + "\n\n" + msg);
+return;
 
 trackEvent("whatsapp_click", {
   position: "quote_form",
@@ -1928,8 +1928,8 @@ trackEvent("whatsapp_click", {
 });
 
 trackEvent("generate_lead", payload);
+fireGoogleAdsConversion();
 openWhatsAppWithText(msg);
-      });
 
           resetBtn.addEventListener("click", () => {
         hideAlert();
