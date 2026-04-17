@@ -365,7 +365,7 @@ Rispondiamo subito su WhatsApp</p>
         <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 id="t_quote_title" class="text-3xl font-semibold">Richiedi preventivo</h2>
-            <p id="t_quote_sub" class="mt-2 text-neutral-300">Compila i dettagli e invia su WhatsApp in 1 click.</p>
+            <p id="t_quote_sub" class="mt-2 text-neutral-600">Compila i dettagli e invia su WhatsApp in 1 click.</p>
           </div>
 
           <div class="mt-4 flex flex-col gap-2 sm:flex-row md:mt-0">
@@ -378,7 +378,7 @@ Rispondiamo subito su WhatsApp</p>
           </div>
         </div>
 
-        <div class="mt-4 text-sm text-neutral-400" id="t_quote_micro">Preventivo gratuito · Risposta tipica: 2–5 min</div>
+        <div class="mt-4 text-sm text-neutral-500" id="t_quote_micro">Preventivo gratuito · Risposta tipica: 2–5 min</div>
 
         <div id="selectedVehicleWrap" class="mt-6 hidden rounded-2xl border border-emerald-500/25 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-50">
           <span class="font-semibold" id="t_selected_label">Veicolo selezionato:</span>
@@ -393,24 +393,24 @@ Rispondiamo subito su WhatsApp</p>
         <form id="quoteForm" class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-4" novalidate>
           <!-- Contact pref -->
           <div class="md:col-span-4">
-            <label class="text-sm text-neutral-300" id="t_contact_pref">Preferenza contatto</label>
+            <label class="text-sm text-neutral-700" id="t_contact_pref">Preferenza contatto</label>
             <div class="mt-2 seg-wrap">
               <button type="button" class="seg" id="prefWA" aria-pressed="true">WhatsApp</button>
               <button type="button" class="seg" id="prefCall" aria-pressed="false">Chiamata</button>
             </div>
-            <p class="mt-2 text-xs text-neutral-400" id="t_contact_pref_hint">Se scegli “Chiamata”, ti richiamiamo appena possibile.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_contact_pref_hint">Se scegli “Chiamata”, ti richiamiamo appena possibile.</p>
           </div>
 
           <!-- Vehicle required -->
           <div class="md:col-span-2">
-            <label class="text-sm text-neutral-300" id="t_vehicle_label">Categoria veicolo *</label>
+            <label class="text-sm text-neutral-700" id="t_vehicle_label">Categoria veicolo *</label>
             <select id="vehicle" required class="mt-1 w-full field">
               <option value="" disabled selected id="t_vehicle_placeholder">Seleziona categoria veicolo</option>
               <option value="Comfort / SUV (Toyota RAV4)">Comfort / SUV (Toyota RAV4)</option>
               <option value="Executive (Mercedes Classe E)">Executive (Mercedes Classe E)</option>
               <option value="Van / Gruppi (Mercedes Classe V / Vito)">Van / Gruppi (Mercedes Classe V / Vito)</option>
             </select>
-            <p class="mt-2 text-xs text-neutral-400" id="t_vehicle_hint">Puoi scegliere il Van anche per 1–2 passeggeri se lo preferisci.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_vehicle_hint">Puoi scegliere il Van anche per 1–2 passeggeri se lo preferisci.</p>
           </div>
 
           <!-- Service type -->
@@ -428,7 +428,7 @@ Rispondiamo subito su WhatsApp</p>
           <div class="md:col-span-2">
             <label class="text-sm text-neutral-300" id="t_when_label">Data / Ora (partenza) *</label>
             <input id="when" required type="datetime-local" class="mt-1 w-full field" />
-            <p class="mt-2 text-xs text-neutral-400" id="t_when_hint">Inserisci prima la partenza. Se hai A/R, comparirà il ritorno.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_when_hint">Inserisci prima la partenza. Se hai A/R, comparirà il ritorno.</p>
           </div>
 
           <!-- Pax -->
@@ -455,7 +455,7 @@ Rispondiamo subito su WhatsApp</p>
           <div id="returnWrap" class="md:col-span-2 hidden">
             <label class="text-sm text-neutral-300" id="t_return_label">Ritorno (data/ora) *</label>
             <input id="returnWhen" type="datetime-local" class="mt-1 w-full field" />
-            <p class="mt-2 text-xs text-neutral-400" id="t_return_hint">Il ritorno non può essere prima della partenza.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_return_hint">Il ritorno non può essere prima della partenza.</p>
           </div>
 
           <!-- Conditional: hours dropdown 2-16 (required for hourly) -->
@@ -464,7 +464,7 @@ Rispondiamo subito su WhatsApp</p>
             <select id="hours" class="mt-1 w-full field">
               <option value="" disabled selected id="t_hours_ph">Seleziona ore</option>
             </select>
-            <p class="mt-2 text-xs text-neutral-400" id="t_hours_hint">Esempio: meeting, shopping, appuntamenti multipli.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_hours_hint">Esempio: meeting, shopping, appuntamenti multipli.</p>
           </div>
 
           <!-- Pickup / Dropoff -->
@@ -482,7 +482,7 @@ Rispondiamo subito su WhatsApp</p>
           <div class="md:col-span-4">
             <label class="text-sm text-neutral-300" id="t_stops_label">Fermate (opzionale)</label>
             <input id="stops" class="mt-1 w-full field" placeholder="Es. Stazione → Hotel → Ufficio" />
-            <p class="mt-2 text-xs text-neutral-400" id="t_stops_hint">Scrivi le fermate in ordine.</p>
+            <p class="mt-2 text-xs text-neutral-500" id="t_stops_hint">Scrivi le fermate in ordine.</p>
           </div>
 
           <!-- Airport/station conditional -->
