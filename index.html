@@ -1972,11 +1972,18 @@ quoteForm.addEventListener("submit", (e) => {
     });
 
     trackEvent("generate_lead", payload);
-    fireGoogleAdsConversion();
 
-    setTimeout(() => {
-      openWhatsAppWithText(callLine + "\n\n" + msg);
-    }, 700);
+if (typeof gtag === "function") {
+  gtag("event", "conversion", {
+    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
+    event_callback: function () {
+      openWhatsAppWithText(msg);
+    },
+    event_timeout: 2000
+  });
+} else {
+  openWhatsAppWithText(msg);
+}
 
     return;
   }
