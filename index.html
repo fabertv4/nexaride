@@ -1098,10 +1098,56 @@ Notes:`,
       if (!el) return;
       el.textContent = value;
     }
-    function openWhatsAppWithText(text) {
-      const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
+   function openWhatsAppWithText(text) {
+  const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function sendWhatsAppLead(position, extra = {}) {
+  const message = buildBestWhatsAppMessage();
+
+  const hasQualifiedData = !!(
+    (vehicleSelect?.value || "").trim() ||
+    (whenEl?.value || "").trim() ||
+    (paxSelect?.value || "").trim() ||
+    (fromEl?.value || "").trim() ||
+    (toEl?.value || "").trim() ||
+    (stopsEl?.value || "").trim()
+  );
+
+  const payload = {
+    position,
+    lang: LANG,
+    vehicle: vehicleSelect?.value || "",
+    service_type: serviceTypeEl?.value || "",
+    passengers: paxSelect?.value || "",
+    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
+    invoice_requested: invoiceEl?.checked ? "yes" : "no",
+    ...extra
+  };
+
+  trackEvent("whatsapp_click", payload);
+
+  if (hasQualifiedData) {
+    trackEvent("generate_lead", {
+      ...payload,
+      method: "whatsapp",
+      lead_type: "qualified_whatsapp"
+    });
+  }
+
+  if (typeof gtag === "function") {
+    gtag("event", "conversion", {
+      send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
+      event_callback: function () {
+        openWhatsAppWithText(message);
+      },
+      event_timeout: 2000
+    });
+  } else {
+    openWhatsAppWithText(message);
+  }
+}
     function pad2(n){ return String(n).padStart(2,"0"); }
     function fmtDateTimeLocal(dt) {
       return `${dt.getFullYear()}-${pad2(dt.getMonth()+1)}-${pad2(dt.getDate())}T${pad2(dt.getHours())}:${pad2(dt.getMinutes())}`;
