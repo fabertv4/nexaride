@@ -1956,37 +1956,39 @@ quoteForm.addEventListener("submit", (e) => {
     airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no"
   };
 
-  if (contactPref.toLowerCase().includes("call")) {
-    const callLine = (LANG === "en")
-      ? "Preferred contact: CALL (please call me if possible)."
-      : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
+if (contactPref.toLowerCase().includes("call")) {
+  const callLine = (LANG === "en")
+    ? "Preferred contact: CALL (please call me if possible)."
+    : "Preferenza contatto: CHIAMATA (se possibile richiamatemi).";
 
-    trackEvent("whatsapp_click", {
-      position: "quote_form",
-      lang: LANG,
-      vehicle: vehicleSelect.value || "",
-      service_type: serviceTypeEl.value || "",
-      passengers: paxSelect.value || "",
-      airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
-      invoice_requested: invoiceEl.checked ? "yes" : "no"
-    });
+  const finalMsg = callLine + "\n\n" + msg;
 
-    trackEvent("generate_lead", payload);
-
-if (typeof gtag === "function") {
-  gtag("event", "conversion", {
-    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
-    event_callback: function () {
-      openWhatsAppWithText(msg);
-    },
-    event_timeout: 2000
+  trackEvent("whatsapp_click", {
+    position: "quote_form",
+    lang: LANG,
+    vehicle: vehicleSelect.value || "",
+    service_type: serviceTypeEl.value || "",
+    passengers: paxSelect.value || "",
+    airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+    invoice_requested: invoiceEl.checked ? "yes" : "no"
   });
-} else {
-  openWhatsAppWithText(msg);
-}
 
-    return;
+  trackEvent("generate_lead", payload);
+
+  if (typeof gtag === "function") {
+    gtag("event", "conversion", {
+      send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
+      event_callback: function () {
+        openWhatsAppWithText(finalMsg);
+      },
+      event_timeout: 2000
+    });
+  } else {
+    openWhatsAppWithText(finalMsg);
   }
+
+  return;
+}
 
   trackEvent("whatsapp_click", {
     position: "quote_form",
