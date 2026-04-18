@@ -1817,45 +1817,37 @@ function bindEvents() {
   const ctaFooterToForm = document.getElementById("ctaFooterToForm");
   const stickyQuote = document.getElementById("stickyQuote");
 
-  ctaWATop?.addEventListener("click", () => {
-    trackWhatsAppClick("top_header");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+ctaWATop?.addEventListener("click", () => {
+  sendWhatsAppLead("top_header");
+});
 
   ctaWAHero?.addEventListener("click", () => {
-    trackWhatsAppClick("hero_primary");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("hero_primary");
+});
 
   ctaWAOpenGeneric?.addEventListener("click", () => {
-    trackWhatsAppClick("hero_card");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("hero_card");
+});
 
   ctaWAOpenGeneric2?.addEventListener("click", () => {
-    trackWhatsAppClick("quote_top");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("quote_top");
+});
 
   ctaWhy?.addEventListener("click", () => {
-    trackWhatsAppClick("why_section");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("why_section");
+});
 
   ctaFleetWA?.addEventListener("click", () => {
-    trackWhatsAppClick("fleet_section");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("fleet_section");
+});
 
-  ctaWAFooter?.addEventListener("click", () => {
-    trackWhatsAppClick("footer");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+ ctaWAFooter?.addEventListener("click", () => {
+  sendWhatsAppLead("footer");
+});
 
   stickyWA?.addEventListener("click", () => {
-    trackWhatsAppClick("sticky_mobile");
-    openWhatsAppWithText(buildBestWhatsAppMessage());
-  });
+  sendWhatsAppLead("sticky_mobile");
+});
 
   ctaScrollToForm?.addEventListener("click", () => {
     trackEvent("scroll_to_quote", { position: "hero_secondary", lang: LANG });
