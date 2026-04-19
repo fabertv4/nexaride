@@ -1196,32 +1196,39 @@ function sendWhatsAppLead(position, extra = {}) {
     function fmtDateTimeLocal(dt) {
       return `${dt.getFullYear()}-${pad2(dt.getMonth()+1)}-${pad2(dt.getDate())}T${pad2(dt.getHours())}:${pad2(dt.getMinutes())}`;
     }
-    function parseDT(val){
-      const d = new Date(val);
-      return Number.isNaN(d.getTime()) ? null : d;
-    }
-    function setMinDateTimeNow(inputEl) {
-      const now = new Date();
-      inputEl.min = fmtDateTimeLocal(now);
-    }
-    function addMinutes(dt, mins){
-      return new Date(dt.getTime() + mins*60*1000);
-    }
-    function isAirportOrStationText(text) {
-      const t = (text || "").toLowerCase();
-      const keys = [
-        "mxp","malpensa","lin","linate","bgy","orio","orio al serio","airport","terminal","arrivals","departures",
-        "stazione","station","train","centrale","garibaldi","cadorna","rogoredo","lambrate"
-      ];
-      return keys.some(k => t.includes(k));
-    }
-    function scrollToQuoteAndFocus() {
-      document.getElementById("quote").scrollIntoView({ behavior:"smooth", block:"start" });
-      setTimeout(() => {
-        const first = document.querySelector("#quoteForm select#vehicle");
-        if (first) first.focus({ preventScroll:true });
-      }, 450);
-    }
+   function parseDT(val){
+  const d = new Date(val);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function isFutureDateTime(value) {
+  const dt = parseDT(value);
+  if (!dt) return false;
+  return dt.getTime() >= Date.now();
+}
+
+function setMinDateTimeNow(inputEl) {
+  const now = new Date();
+  inputEl.min = fmtDateTimeLocal(now);
+}
+function addMinutes(dt, mins){
+  return new Date(dt.getTime() + mins*60*1000);
+}
+function isAirportOrStationText(text) {
+  const t = (text || "").toLowerCase();
+  const keys = [
+    "mxp","malpensa","lin","linate","bgy","orio","orio al serio","airport","terminal","arrivals","departures",
+    "stazione","station","train","centrale","garibaldi","cadorna","rogoredo","lambrate"
+  ];
+  return keys.some(k => t.includes(k));
+}
+function scrollToQuoteAndFocus() {
+  document.getElementById("quote").scrollIntoView({ behavior:"smooth", block:"start" });
+  setTimeout(() => {
+    const first = document.querySelector("#quoteForm select#vehicle");
+    if (first) first.focus({ preventScroll:true });
+  }, 450);
+}
 
     // =========================================================
     // STATE
