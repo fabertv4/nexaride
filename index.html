@@ -1934,7 +1934,16 @@ const resetBtn = document.getElementById("resetBtn");
 
 quoteForm.addEventListener("submit", (e) => {
   e.preventDefault();
+// RATE LIMIT (anti spam)
+const lastSubmit = localStorage.getItem("last_submit");
+const now = Date.now();
 
+if (lastSubmit && now - lastSubmit < 60000) {
+  alert("Attendi prima di inviare un'altra richiesta");
+  return;
+}
+
+localStorage.setItem("last_submit", now);
   const missing = validateForm();
   if (missing.length) {
     showAlert(missing);
