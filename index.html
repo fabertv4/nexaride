@@ -2197,6 +2197,21 @@ function init() {
   applyLang();
   updateContext();
   bindEvents();
+
+  let placesInitAttempts = 0;
+  const placesInitTimer = setInterval(() => {
+    placesInitAttempts++;
+
+    if (window.google && google.maps && google.maps.places) {
+      clearInterval(placesInitTimer);
+      initPlacesAutocomplete();
+    }
+
+    if (placesInitAttempts > 40) {
+      clearInterval(placesInitTimer);
+      console.warn("Timeout caricamento Google Places.");
+    }
+  }, 250);
 }
 
 init();
