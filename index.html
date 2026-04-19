@@ -1147,16 +1147,17 @@ Notes:`,
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
-function sendWhatsAppLead(position, extra = {}) {
-  const message = buildBestWhatsAppMessage();
+function sendWhatsAppLead(position, extra = {}, mode = "generic") {
+  const message = mode === "form"
+    ? buildWhatsAppFromForm()
+    : buildWhatsAppGeneric();
 
   const hasQualifiedData = !!(
-    (vehicleSelect?.value || "").trim() ||
-    (whenEl?.value || "").trim() ||
-    (paxSelect?.value || "").trim() ||
-    (fromEl?.value || "").trim() ||
-    (toEl?.value || "").trim() ||
-    (stopsEl?.value || "").trim()
+    (vehicleSelect?.value || "").trim() &&
+    (whenEl?.value || "").trim() &&
+    (paxSelect?.value || "").trim() &&
+    (fromEl?.value || "").trim() &&
+    (toEl?.value || "").trim()
   );
 
   const payload = {
