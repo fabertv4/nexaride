@@ -1282,7 +1282,76 @@ function sendWhatsAppLead(position, extra = {}) {
     const submitBtn = document.getElementById("submitBtn");
 
     const fleetCards = Array.from(document.querySelectorAll(".fleet-card"));
+// =========================================================
+// GOOGLE PLACES AUTOCOMPLETE
+// =========================================================
+let fromAutocomplete = null;
+let toAutocomplete = null;
 
+function initPlacesAutocomplete() {
+  if (
+    !window.google ||
+    !google.maps ||
+    !google.maps.places ||
+    !fromEl ||
+    !toEl
+  ) {
+    console.warn("Google Places non disponibile.");
+    return;
+  }
+
+  const autocompleteOptions = {
+    componentRestrictions: { country: ["it"] },
+    fields: ["formatted_address", "name", "place_id", "types"],
+    types: ["geocode"]
+  };
+
+  fromAutocomplete = new google.maps.places.Autocomplete(fromEl, autocompleteOptions);
+  toAutocomplete = new google.maps.places.Autocomplete(toEl, autocompleteOptions);
+
+  const lombardiaBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(44.8, 8.4),
+    new google.maps.LatLng(46.9, 10.8)
+  );
+
+  fromAutocomplete.setBounds(lombardiaBounds);
+  toAutocomplete.setBounds(lombardiaBounds);
+
+  fromAutocomplete.setOptions({ strictBounds: false });
+  toAutocomplete.setOptions({ strictBounds: false });
+
+  fromAutocomplete.addListener("place_changed", () => {
+    handlePlaceSelected(fromAutocomplete, fromEl, "from");
+  });
+
+  toAutocomplete.addListener("place_changed", () => {
+    handlePlaceSelected(toAutocomplete, toEl, "to");
+  });
+}
+
+function handlePlaceSelected(autocompleteInstance, inputEl, fieldName) {
+  const place = autocompleteInstance.getPlace();
+  if (!place) return;
+
+  const bestLabel =
+    place.formatted_address ||
+    place.name ||
+    inputEl.value ||
+    "";
+
+  inputEl.value = bestLabel;
+
+  trackEvent("address_autocomplete_select", {
+    field: fieldName,
+    lang: LANG,
+    place_type: Array.isArray(place.types) ? (place.types[0] || "") : "",
+    has_place_id: place.place_id ? "yes" : "no"
+  });
+
+  hideAlert();
+  updateContext();
+  saveToStorageDebounced();
+}
     // =========================================================
     // APPLY LANG
     // =========================================================
