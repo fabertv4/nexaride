@@ -191,6 +191,34 @@
 .quote-light .text-neutral-400 {
   color: #6b7280 !important;
 }
+    /* Google Places Autocomplete dropdown */
+.pac-container {
+  z-index: 9999 !important;
+  border-radius: 16px;
+  margin-top: 6px;
+  border: 1px solid #d4d4d8;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.pac-item {
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pac-item:hover {
+  background: #f5f5f5;
+}
+
+.pac-item-query {
+  font-size: 14px;
+  color: #111827;
+}
+
+.pac-matched {
+  font-weight: 700;
+}
   </style>
 </head>
 
@@ -503,15 +531,31 @@ Rispondiamo subito su WhatsApp</p>
           </div>
 
           <!-- Pickup / Dropoff -->
-          <div class="md:col-span-2">
-            <label class="text-sm text-neutral-300" id="t_from_label">Partenza *</label>
-            <input id="from" required class="mt-1 w-full field" placeholder="Es. Milano centro" />
-          </div>
+         <div class="md:col-span-2">
+  <label class="text-sm text-neutral-300" id="t_from_label">Partenza *</label>
+  <input
+    id="from"
+    required
+    class="mt-1 w-full field"
+    placeholder="Es. Milano centro"
+    autocomplete="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+</div>
 
-          <div class="md:col-span-2">
-            <label class="text-sm text-neutral-300" id="t_to_label">Destinazione *</label>
-            <input id="to" required class="mt-1 w-full field" placeholder="Es. MXP Malpensa" />
-          </div>
+<div class="md:col-span-2">
+  <label class="text-sm text-neutral-300" id="t_to_label">Destinazione *</label>
+  <input
+    id="to"
+    required
+    class="mt-1 w-full field"
+    placeholder="Es. MXP Malpensa"
+    autocomplete="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+</div>
 
           <!-- Stops -->
           <div class="md:col-span-4">
