@@ -1879,6 +1879,9 @@ setText("t_faq_a6", T.faq.a6);
 
   if (!vehicleSelect.value) missing.push(T.quote.vehicleLabel.replace("*","").trim());
   if (!whenEl.value) missing.push(T.quote.whenLabel.replace("*","").trim());
+      if (whenEl.value && !isFutureDateTime(whenEl.value)) {
+  missing.push(LANG === "en" ? "Departure must be in the future" : "La partenza deve essere nel futuro");
+}
   if (!paxSelect.value) missing.push(T.quote.paxLabel.replace("*","").trim());
   if (!fromEl.value.trim()) missing.push(T.quote.fromLabel.replace("*","").trim());
   if (!toEl.value.trim()) missing.push(T.quote.toLabel.replace("*","").trim());
