@@ -1851,17 +1851,7 @@ setText("t_faq_a6", T.faq.a6);
       const T = I18N[LANG];
       return T.waTemplates.base;
     }
-    function buildBestWhatsAppMessage() {
-  const hasFormData =
-    (vehicleSelect?.value || "") ||
-    (whenEl?.value || "") ||
-    (paxSelect?.value || "") ||
-    (fromEl?.value || "").trim() ||
-    (toEl?.value || "").trim() ||
-    (stopsEl?.value || "").trim();
 
-  return hasFormData ? buildWhatsAppFromForm() : buildWhatsAppGeneric();
-}
 
     // =========================================================
     // VALIDATION
