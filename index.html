@@ -2120,7 +2120,7 @@ if (contactPref.toLowerCase().includes("call")) {
     invoice_requested: invoiceEl.checked ? "yes" : "no"
   });
 
-  trackEvent("generate_lead", payload);
+   trackEvent("generate_lead", payload);
 
   if (typeof gtag === "function") {
     gtag("event", "conversion", {
@@ -2137,17 +2137,17 @@ if (contactPref.toLowerCase().includes("call")) {
   return;
 }
 
-  trackEvent("whatsapp_click", {
-    position: "quote_form",
-    lang: LANG,
-    vehicle: vehicleSelect.value || "",
-    service_type: serviceTypeEl.value || "",
-    passengers: paxSelect.value || "",
-    airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
-    invoice_requested: invoiceEl.checked ? "yes" : "no"
-  });
+trackEvent("whatsapp_click", {
+  position: "quote_form",
+  lang: LANG,
+  vehicle: vehicleSelect.value || "",
+  service_type: serviceTypeEl.value || "",
+  passengers: paxSelect.value || "",
+  airport_or_station: !travelFields.classList.contains("hidden") ? "yes" : "no",
+  invoice_requested: invoiceEl.checked ? "yes" : "no"
+});
 
-  trackEvent("generate_lead", payload);
+trackEvent("generate_lead", payload);
 
 if (typeof gtag === "function") {
   gtag("event", "conversion", {
@@ -2160,6 +2160,7 @@ if (typeof gtag === "function") {
 } else {
   openWhatsAppWithText(msg);
 }
+});
 
 resetBtn.addEventListener("click", () => {
   hideAlert();
