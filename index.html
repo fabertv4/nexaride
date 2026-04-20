@@ -1474,14 +1474,7 @@ setText("t_faq_a6", T.faq.a6);
       saveToStorageDebounced();
     }
 
-    function setContactPref(next) {
-      contactPref = next;
-      const isWA = (next || "").toLowerCase().includes("whatsapp");
-      prefWA.setAttribute("aria-pressed", isWA ? "true" : "false");
-      prefCall.setAttribute("aria-pressed", isWA ? "false" : "true");
-      saveToStorageDebounced();
-    }
-
+    
     function setMeetGreet(next) {
       meetGreet = next;
       meetYes.setAttribute("aria-pressed", next === "yes" ? "true" : "false");
