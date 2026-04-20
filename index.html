@@ -803,46 +803,6 @@ Rispondiamo subito su WhatsApp</p>
   }
 }
 
-function fireGoogleAdsConversion() {
-  if (typeof gtag === "function") {
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18088830060/zU46CMmO9ZwcEOzItrFD'
-    });
-  }
-}
-
-function trackWhatsAppClick(position, extra = {}) {
-  const hasQualifiedData = !!(
-    (vehicleSelect?.value || "").trim() ||
-    (whenEl?.value || "").trim() ||
-    (paxSelect?.value || "").trim() ||
-    (fromEl?.value || "").trim() ||
-    (toEl?.value || "").trim() ||
-    (stopsEl?.value || "").trim()
-  );
-
-  const basePayload = {
-    position,
-    lang: LANG,
-    vehicle: vehicleSelect?.value || "",
-    service_type: serviceTypeEl?.value || "",
-    passengers: paxSelect?.value || "",
-    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
-    invoice_requested: invoiceEl?.checked ? "yes" : "no",
-    ...extra
-  };
-
-  trackEvent("whatsapp_click", basePayload);
-
-  if (hasQualifiedData) {
-    trackEvent("generate_lead", {
-      ...basePayload,
-      method: "whatsapp",
-      lead_type: "qualified_whatsapp"
-    });
-  }
-}
-
     // =========================================================
     // I18N (NO LUGGAGE ANYWHERE)
     // =========================================================
