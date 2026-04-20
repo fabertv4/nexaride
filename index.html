@@ -1512,12 +1512,11 @@ setText("t_faq_a6", T.faq.a6);
     // STORAGE (NO LUGGAGE)
     // =========================================================
     function saveToStorage() {
-      const payload = {
-        lang: LANG,
-        contactPref,
-        meetGreet,
-        payMode,
-        values: {
+     const payload = {
+  lang: LANG,
+  meetGreet,
+  payMode,
+  values: {
           vehicle: vehicleSelect.value || "",
           serviceType: serviceTypeEl.value || "",
           when: whenEl.value || "",
