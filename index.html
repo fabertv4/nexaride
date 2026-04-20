@@ -1551,9 +1551,8 @@ setText("t_faq_a6", T.faq.a6);
         const p = JSON.parse(raw);
 
         if (p.lang === "it" || p.lang === "en") LANG = p.lang;
-        contactPref = p.contactPref || contactPref;
-        meetGreet = p.meetGreet || meetGreet;
-        payMode = p.payMode || payMode;
+       meetGreet = p.meetGreet || meetGreet;
+payMode = p.payMode || payMode;
 
         const v = (p.values || {});
         vehicleSelect.value = v.vehicle || "";
