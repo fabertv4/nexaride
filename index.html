@@ -1181,42 +1181,7 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
     });
   }
 
- function sendWhatsAppLead(position, extra = {}, mode = "generic") {
-  const message = mode === "form"
-    ? buildWhatsAppFromForm()
-    : buildWhatsAppGeneric();
-
-  const hasQualifiedData = !!(
-    (vehicleSelect?.value || "").trim() &&
-    (whenEl?.value || "").trim() &&
-    (paxSelect?.value || "").trim() &&
-    (fromEl?.value || "").trim() &&
-    (toEl?.value || "").trim()
-  );
-
-  const payload = {
-    position,
-    lang: LANG,
-    vehicle: vehicleSelect?.value || "",
-    service_type: serviceTypeEl?.value || "",
-    passengers: paxSelect?.value || "",
-    airport_or_station: travelFields && !travelFields.classList.contains("hidden") ? "yes" : "no",
-    invoice_requested: invoiceEl?.checked ? "yes" : "no",
-    ...extra
-  };
-
-  trackEvent("whatsapp_click", payload);
-
-  if (hasQualifiedData) {
-    trackEvent("generate_lead", {
-      ...payload,
-      method: "whatsapp",
-      lead_type: "qualified_whatsapp"
-    });
-  }
-
   openWhatsAppWithText(message);
-}
 }
     function pad2(n){ return String(n).padStart(2,"0"); }
     function fmtDateTimeLocal(dt) {
