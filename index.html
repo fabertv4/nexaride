@@ -2088,21 +2088,21 @@ return;
 }
 
 // RATE LIMIT (anti spam)
-const lastSubmit = localStorage.getItem("last_submit");
-const now = Date.now();
-
-if (lastSubmit && now - lastSubmit < 60000) {
- showAlert(["Attendi prima di inviare un'altra richiesta"]);
-return;
-}
-
 const missing = validateForm();
 if (missing.length) {
   showAlert(missing);
   return;
 }
 
-localStorage.setItem("last_submit", now);
+const now = Date.now();
+const lastSubmit = parseInt(localStorage.getItem("last_submit") || "0", 10);
+
+if (lastSubmit && now - lastSubmit < 30000) {
+  showAlert([LANG === "en"
+    ? "Please wait a few seconds before sending another request"
+    : "Attendi qualche secondo prima di inviare un'altra richiesta"]);
+  return;
+}
 
   const msg = buildWhatsAppFromForm();
 
@@ -2142,6 +2142,7 @@ if (contactPref.toLowerCase().includes("call")) {
     gtag("event", "conversion", {
       send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
       event_callback: function () {
+        localStorage.setItem("last_submit", String(now));
         openWhatsAppWithText(finalMsg);
       },
       event_timeout: 2000
