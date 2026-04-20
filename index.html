@@ -1333,11 +1333,10 @@ function initPlacesAutocomplete() {
     return;
   }
 
-  const autocompleteOptions = {
-    componentRestrictions: { country: ["it"] },
-    fields: ["formatted_address", "name", "place_id", "types"],
-    types: ["geocode"]
-  };
+ const autocompleteOptions = {
+  fields: ["formatted_address", "name", "place_id", "types"],
+  types: ["geocode"]
+};
 
   fromAutocomplete = new google.maps.places.Autocomplete(fromEl, autocompleteOptions);
   toAutocomplete = new google.maps.places.Autocomplete(toEl, autocompleteOptions);
