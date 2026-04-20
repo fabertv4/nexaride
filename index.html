@@ -1896,14 +1896,7 @@ ctaWATop?.addEventListener("click", () => {
     scrollToQuoteAndFocus();
   });
 
-  document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
-    el.addEventListener("click", () => {
-      trackEvent("phone_click", {
-        position: el.id || "phone_cta",
-        lang: LANG
-      });
-    });
-  });
+ 
 
   // Pref contact
  
