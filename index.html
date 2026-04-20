@@ -1113,12 +1113,9 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
     : buildWhatsAppGeneric();
 
   const hasQualifiedData = !!(
-    (vehicleSelect?.value || "").trim() &&
-    (whenEl?.value || "").trim() &&
-    (paxSelect?.value || "").trim() &&
-    (fromEl?.value || "").trim() &&
-    (toEl?.value || "").trim()
-  );
+  ((fromEl?.value || "").trim() && (toEl?.value || "").trim()) ||
+  ((vehicleSelect?.value || "").trim() && (whenEl?.value || "").trim())
+);
 
   const payload = {
     position,
