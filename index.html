@@ -2059,20 +2059,21 @@ if (contactPref.toLowerCase().includes("call")) {
 
    trackEvent("generate_lead", payload);
 
-  if (typeof gtag === "function") {
-    gtag("event", "conversion", {
-      send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
-      event_callback: function () {
-        localStorage.setItem("last_submit", String(now));
-        openWhatsAppWithText(finalMsg);
-      },
-      event_timeout: 2000
-    });
-  } else {
-    openWhatsAppWithText(finalMsg);
-  }
+if (typeof gtag === "function") {
+  gtag("event", "conversion", {
+    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
+    event_callback: function () {
+      localStorage.setItem("last_submit", String(now));
+      openWhatsAppWithText(finalMsg);
+    },
+    event_timeout: 2000
+  });
+} else {
+  localStorage.setItem("last_submit", String(now));
+  openWhatsAppWithText(finalMsg);
+}
 
-  return;
+return;
 }
 
 trackEvent("whatsapp_click", {
@@ -2091,11 +2092,13 @@ if (typeof gtag === "function") {
   gtag("event", "conversion", {
     send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
     event_callback: function () {
+      localStorage.setItem("last_submit", String(now));
       openWhatsAppWithText(msg);
     },
     event_timeout: 2000
   });
 } else {
+  localStorage.setItem("last_submit", String(now));
   openWhatsAppWithText(msg);
 }
 });
