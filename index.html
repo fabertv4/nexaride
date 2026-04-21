@@ -1098,10 +1098,7 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
     ? buildWhatsAppFromForm()
     : buildWhatsAppGeneric();
 
-  const hasQualifiedData = !!(
-  ((fromEl?.value || "").trim() && (toEl?.value || "").trim()) ||
-  ((vehicleSelect?.value || "").trim() && (whenEl?.value || "").trim())
-);
+ 
 
   const payload = {
     position,
