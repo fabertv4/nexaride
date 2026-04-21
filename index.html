@@ -2011,18 +2011,25 @@ trackEvent("whatsapp_click", {
 
 trackEvent("generate_lead", payload);
 
+let opened = false;
+
+function safeOpenWhatsApp() {
+  if (opened) return;
+  opened = true;
+  localStorage.setItem("last_submit", String(now));
+  openWhatsAppWithText(msg);
+}
+
 if (typeof gtag === "function") {
   gtag("event", "conversion", {
     send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
-    event_callback: function () {
-      localStorage.setItem("last_submit", String(now));
-      openWhatsAppWithText(msg);
-    },
-    event_timeout: 2000
+    event_callback: safeOpenWhatsApp,
+    event_timeout: 1200
   });
+
+  setTimeout(safeOpenWhatsApp, 1300);
 } else {
-  localStorage.setItem("last_submit", String(now));
-  openWhatsAppWithText(msg);
+  safeOpenWhatsApp();
 }
 });
 
