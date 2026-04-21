@@ -1158,7 +1158,14 @@ function scrollToQuoteAndFocus() {
     // =========================================================
     // STATE
     // =========================================================
-    let LANG = (localStorage.getItem("nexaride_lang") || "it");
+    function getLangFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const langParam = params.get("lang");
+  if (langParam === "en" || langParam === "it") return langParam;
+  return null;
+}
+
+let LANG = getLangFromURL() || localStorage.getItem("nexaride_lang") || "it";
    let meetGreet = "yes"; // yes|no
 let payMode = "card";  // card|cash|bank|wallet
     // =========================================================
