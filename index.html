@@ -1116,13 +1116,7 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
 
   trackEvent("whatsapp_click", payload);
 
-  if (hasQualifiedData) {
-    trackEvent("generate_lead", {
-      ...payload,
-      method: "whatsapp",
-      lead_type: "qualified_whatsapp"
-    });
-  }
+ 
 
   openWhatsAppWithText(message);
 }
