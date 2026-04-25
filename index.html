@@ -1098,9 +1098,9 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
     ? buildWhatsAppFromForm()
     : buildWhatsAppGeneric();
 
- 
-
   const payload = {
+    method: "whatsapp",
+    lead_type: mode === "form" ? "form_whatsapp" : "quick_whatsapp",
     position,
     lang: LANG,
     vehicle: vehicleSelect?.value || "",
@@ -1112,10 +1112,27 @@ function sendWhatsAppLead(position, extra = {}, mode = "generic") {
   };
 
   trackEvent("whatsapp_click", payload);
+  trackEvent("generate_lead", payload);
 
- 
+  let opened = false;
 
-  openWhatsAppWithText(message);
+  function safeOpenWhatsApp() {
+    if (opened) return;
+    opened = true;
+    openWhatsAppWithText(message);
+  }
+
+  if (typeof gtag === "function") {
+    gtag("event", "conversion", {
+      send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
+      event_callback: safeOpenWhatsApp,
+      event_timeout: 1200
+    });
+
+    setTimeout(safeOpenWhatsApp, 1300);
+  } else {
+    safeOpenWhatsApp();
+  }
 }
     function pad2(n){ return String(n).padStart(2,"0"); }
     function fmtDateTimeLocal(dt) {
