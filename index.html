@@ -1097,7 +1097,28 @@ Notes:`,
   const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank", "noopener,noreferrer");
 }
+function isNightCallTime() {
+  const now = new Date();
+  const hour = now.getHours();
+  return hour >= 23 || hour < 5;
+}
 
+function getCurrentCallPhone() {
+  return isNightCallTime() ? NIGHT_CALL_PHONE : DAY_CALL_PHONE;
+}
+
+function openPhoneCall(position = "call_button") {
+  const phone = getCurrentCallPhone();
+
+  trackEvent("phone_call_click", {
+    position,
+    call_type: isNightCallTime() ? "night" : "day",
+    phone_target: phone,
+    lang: LANG
+  });
+
+  window.location.href = `tel:+${phone}`;
+}
 function sendWhatsAppLead(position, extra = {}, mode = "generic") {
   const message = mode === "form"
     ? buildWhatsAppFromForm()
