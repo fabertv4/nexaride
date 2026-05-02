@@ -1358,8 +1358,8 @@ function handlePlaceSelected(autocompleteInstance, inputEl, fieldName) {
       const canonical = document.querySelector('link[rel="canonical"]');
       if (canonical) canonical.setAttribute("href", CANONICAL_URL);
 
-      langIT.classList.toggle("is-active", LANG === "it");
-      langEN.classList.toggle("is-active", LANG === "en");
+     langIT?.classList.toggle("is-active", LANG === "it");
+langEN?.classList.toggle("is-active", LANG === "en");
 
       // header/nav
       setText("t_header_sub", T.headerSub);
