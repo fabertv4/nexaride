@@ -2134,11 +2134,7 @@ function init() {
 LANG = "en";
 localStorage.setItem("nexaride_lang", "en");
 
-// PREFILL MALPENSA LOGIC
-if (!fromEl.value && !toEl.value) {
-  fromEl.value = "Malpensa Airport (MXP)";
-  toEl.value = "Milan city";
-}
+
 
 langIT?.classList.toggle("is-active", LANG === "it");
 langEN?.classList.toggle("is-active", LANG === "en");
