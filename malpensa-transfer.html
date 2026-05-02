@@ -1877,9 +1877,8 @@ function updateContext() {
 // =========================================================
 function bindEvents() {
   // Lang
-  langIT.addEventListener("click", () => setLang("it"));
-  langEN.addEventListener("click", () => setLang("en"));
-
+ langIT?.addEventListener("click", () => setLang("it"));
+langEN?.addEventListener("click", () => setLang("en"));
   // CTA
   const ctaWATop = document.getElementById("ctaWATop");
   const ctaCallHero = document.getElementById("ctaCallHero");
