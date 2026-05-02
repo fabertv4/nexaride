@@ -1601,7 +1601,7 @@ setText("t_faq_a6", T.faq.a6);
         if (!raw) return;
         const p = JSON.parse(raw);
 
-        if (p.lang === "it" || p.lang === "en") LANG = p.lang;
+        LANG = "en";
        meetGreet = p.meetGreet || meetGreet;
 payMode = p.payMode || payMode;
 
