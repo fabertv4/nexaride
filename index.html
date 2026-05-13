@@ -1353,7 +1353,10 @@ function handlePlaceSelected(autocompleteInstance, inputEl, fieldName) {
       if (canonical) canonical.setAttribute("href", CANONICAL_URL);
 
       langIT.classList.toggle("is-active", LANG === "it");
-      langEN.classList.toggle("is-active", LANG === "en");
+langEN.classList.toggle("is-active", LANG === "en");
+
+setText("t_btn_call", T.btn.call);
+setText("t_contact_line", T.contactLine);
 
       // header/nav
       setText("t_header_sub", T.headerSub);
