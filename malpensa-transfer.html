@@ -1125,9 +1125,9 @@ Notes:`,
       if (!el) return;
       el.textContent = value;
     }
-   function openWhatsAppWithText(text) {
+function openWhatsAppWithText(text) {
   const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.location.href = url;
 }
 function isNightCallTime() {
   const now = new Date();
