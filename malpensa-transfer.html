@@ -2098,18 +2098,13 @@ function safeOpenWhatsApp() {
   openWhatsAppWithText(msg);
 }
 
+safeOpenWhatsApp();
+
 if (typeof gtag === "function") {
   gtag("event", "conversion", {
-    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
-    event_callback: safeOpenWhatsApp,
-    event_timeout: 1200
+    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD"
   });
-
-  setTimeout(safeOpenWhatsApp, 1300);
-} else {
-  safeOpenWhatsApp();
 }
-});
 
 resetBtn.addEventListener("click", () => {
   hideAlert();
