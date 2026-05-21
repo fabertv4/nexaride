@@ -2013,15 +2013,25 @@ ctaWATop?.addEventListener("click", () => {
   });
 
   // Fleet selection
-  fleetCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const label = card.getAttribute("data-vehicle-label") || "";
-      if (label) vehicleSelect.value = label;
-      updateContext();
+fleetCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const label = card.getAttribute("data-vehicle-label") || "";
+    if (!label) return;
+
+    vehicleSelect.value = label;
+
+    fleetCards.forEach((c) => c.classList.remove("is-selected"));
+    card.classList.add("is-selected");
+
+    updateSelectedVehicleUI();
+    updateContext();
+    saveToStorageDebounced();
+
+    setTimeout(() => {
       scrollToQuoteAndFocus();
-      saveToStorageDebounced();
-    });
+    }, 150);
   });
+});
 
  // Submit
 const quoteForm = document.getElementById("quoteForm");
