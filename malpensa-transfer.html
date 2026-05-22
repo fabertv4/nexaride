@@ -803,13 +803,13 @@ const NIGHT_CALL_PHONE = "393420427176"; // chiamate notte (invisibile all'utent
     // =========================================================
     const I18N = {
       it: {
-       metaTitle: "Transfer Aeroporti Milano | Malpensa, Linate, Bergamo | NexaRide",
-metaDesc: "Transfer privati da e per gli aeroporti di Milano: Malpensa, Linate e Bergamo Orio al Serio. Comfort, Business e Van. Preventivo rapido su WhatsApp.",
+       metaTitle: "Transfer Malpensa Milano | NCC Privato | NexaRide",
+metaDesc: "Transfer privato da e per l'aeroporto di Malpensa (MXP). Servizio NCC dedicato Milano, hotel e business. Prezzo fisso, preventivo rapido su WhatsApp.",
         headerSub: "NCC • Milano • Transfer",
         nav: { fleet:"Flotta", why:"Perché NexaRide", quote:"Preventivo", faq:"FAQ" },
         badges: { b1:"Disponibili 24/7", b2:"Risposta rapida" },
-       h1: "Transfer NCC Milano, aeroporti e Como",
-sub: "Comfort, Business e Van per transfer privati\nAeroporti, hotel, Lago di Como e richieste urgenti anche last minute su WhatsApp",
+       h1: "Transfer Aeroporto Malpensa • Da e Per Milano",
+sub: "NCC privato tra Malpensa Airport (MXP) e Milano.\nPrezzo fisso, niente surge, nessun ride condiviso.\nPickup hotel, drop-off aeroporto, attesa al gate.",
 microtrust: "Risposta veloce · Persona reale · Servizio su prenotazione",
 b2bsoft: "Privati · business · famiglie · piccoli gruppi",
         responseTime: "Risposta media: 2–5 minuti · operatore reale",
@@ -854,17 +854,6 @@ reset: "Reset"
           c3t:"Van / Gruppi", c3d:"Classe V / Vito · fino a 7 passeggeri.",
           selected:"Selezionato"
         },
-        fleet: {
-  title:"Choose your Malpensa transfer vehicle",
-  sub:"Comfort, Business or Van depending on passengers, route and space needed.",
-  c1t:"Comfort",
-  c1d:"Toyota RAV4 · ideal up to 4 passengers.",
-  c2t:"Business",
-  c2d:"Mercedes E-Class · business and hotel transfers.",
-  c3t:"Van / Groups",
-  c3d:"V-Class / Vito · up to 7 passengers.",
-  selected:"Selected"
-},
         quote: {
           title:"Richiedi preventivo",
           sub:"Compila i dettagli e invia su WhatsApp in 1 click.",
@@ -1238,8 +1227,7 @@ function scrollToQuoteAndFocus() {
   return null;
 }
 
-let LANG = "en";
-localStorage.setItem("nexaride_lang", "en");
+let LANG = getLangFromURL() || localStorage.getItem("nexaride_lang") || (typeof navigator !== "undefined" && navigator.language && navigator.language.toLowerCase().startsWith("it") ? "it" : "en");
    let meetGreet = "yes"; // yes|no
 let payMode = "card";  // card|cash|bank|wallet
     // =========================================================
@@ -1624,7 +1612,7 @@ setText("t_faq_a6", T.faq.a6);
         if (!raw) return;
         const p = JSON.parse(raw);
 
-        LANG = "en";
+        if (p.lang === "it" || p.lang === "en") LANG = p.lang;
        meetGreet = p.meetGreet || meetGreet;
 payMode = p.payMode || payMode;
 
@@ -2158,11 +2146,6 @@ function init() {
 
   loadFromStorage();
 
-LANG = "en";
-localStorage.setItem("nexaride_lang", "en");
-
-
-
 langIT?.classList.toggle("is-active", LANG === "it");
 langEN?.classList.toggle("is-active", LANG === "en");
 
@@ -2195,7 +2178,7 @@ init();
 
 <!-- Google Maps + Places Autocomplete -->
 <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=it&region=IT"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=it&region=IT&loading=async"
   async
   defer
 ></script>

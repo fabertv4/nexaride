@@ -27,13 +27,10 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
- <title>Transfer Aeroporti Milano | Malpensa, Linate, Bergamo | NexaRide</title>
-<meta name="description" content="Transfer privati da e per gli aeroporti di Milano: Malpensa, Linate e Bergamo Orio al Serio. Comfort, Business e Van. Preventivo rapido su WhatsApp." />
+ <title>Linate Airport Transfer | Private Milan Chauffeur | NexaRide</title>
+<meta name="description" content="Private transfer from and to Milan Linate Airport. Direct chauffeur service to Milan city, hotels and business addresses. Fast quote on WhatsApp." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://www.nexaride.it/" />
-  <link rel="alternate" hreflang="it" href="https://www.nexaride.it/" />
-  <link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://www.nexaride.it/" />
+  <link rel="canonical" href="https://www.nexaride.it/linate-transfer.html" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="NexaRide" />
@@ -246,8 +243,10 @@
 
       <div class="flex items-center gap-2">
         <div class="flex items-center gap-2">
-          <button id="langIT" type="button" class="lang-btn is-active">IT</button>
-          <button id="langEN" type="button" class="lang-btn">EN</button>
+         <div class="hidden">
+  <button id="langIT" type="button" class="lang-btn">IT</button>
+  <button id="langEN" type="button" class="lang-btn is-active">EN</button>
+</div>
         </div>
 
         <button id="ctaWATop" type="button"
@@ -273,9 +272,10 @@
             <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-200" id="t_badge_2">Risposta rapida</span>
           </div>
 
-         <h1 class="mt-6 text-4xl font-semibold leading-tight md:text-5xl" id="t_h1">Transfer NCC Milano, aeroporti e Como</h1>
-<p class="mt-4 whitespace-pre-line text-lg text-neutral-300" id="t_sub">Comfort, Business e Van per gruppi
-Preventivo rapido su WhatsApp per aeroporti, città, hotel e aziende</p>
+         <h1 class="mt-6 text-4xl font-semibold leading-tight md:text-5xl" id="t_h1">Linate Airport Transfer • To & From Milan</h1>
+<p class="mt-4 whitespace-pre-line text-lg text-neutral-300" id="t_sub">Private chauffeur service between Linate Airport and Milan city.
+Hotel pickups, airport drop-offs and arrivals.
+Fast WhatsApp quote. Fixed price.</p>
 
 <div class="mt-5 text-sm text-neutral-300">
   <span class="font-semibold text-white" id="t_microtrust">Risposta veloce · Persona reale · Servizio su prenotazione</span>
@@ -300,9 +300,7 @@ Preventivo rapido su WhatsApp per aeroporti, città, hotel e aziende</p>
           </div>
 <div id="t_response_time" class="mt-3 text-sm text-neutral-300 font-medium"></div>
           <div class="mt-7 text-sm text-neutral-400">
-           <span class="text-white font-semibold" id="t_contact_line">
-  WhatsApp 24/7 — chat o chiamata
-</span>
+            <span class="text-white font-semibold">WhatsApp 24/7 — chat o chiamata</span> •
             <span id="t_email_label">Email</span>:
             <a class="smalllink hover:text-white" href="mailto:info@nexaride.it">info@nexaride.it</a>
           </div>
@@ -545,7 +543,7 @@ Preventivo rapido su WhatsApp per aeroporti, città, hotel e aziende</p>
     id="to"
     required
     class="mt-1 w-full field"
-    placeholder="Es. MXP Malpensa"
+    placeholder="Es. LIN Linate"
     autocomplete="off"
     autocapitalize="off"
     spellcheck="false"
@@ -756,7 +754,7 @@ Preventivo rapido su WhatsApp per aeroporti, città, hotel e aziende</p>
  const WA_PHONE = "393520294857"; // WhatsApp sempre
 const DAY_CALL_PHONE = "393520294857"; // chiamate giorno
 const NIGHT_CALL_PHONE = "393420427176"; // chiamate notte (invisibile all'utente)
-  const CANONICAL_URL = "https://www.nexaride.it/";
+  const CANONICAL_URL = "https://www.nexaride.it/linate-transfer.html";
   const STORAGE_KEY = "nexaride_quote_v4_noluggage";
   const ROUNDTRIP_MIN_MINUTES = 30;
 
@@ -805,29 +803,29 @@ const NIGHT_CALL_PHONE = "393420427176"; // chiamate notte (invisibile all'utent
     // =========================================================
     const I18N = {
       it: {
-       metaTitle: "Transfer Aeroporti Milano | Malpensa, Linate, Bergamo | NexaRide",
-metaDesc: "Transfer privati da e per gli aeroporti di Milano: Malpensa, Linate e Bergamo Orio al Serio. Comfort, Business e Van. Preventivo rapido su WhatsApp.",
+       metaTitle: "Transfer Linate Milano | NCC Privato | NexaRide",
+metaDesc: "Transfer privato da e per l'aeroporto di Linate (LIN), l'aeroporto cittadino di Milano. Servizio NCC dedicato, hotel e business. Preventivo rapido su WhatsApp.",
         headerSub: "NCC • Milano • Transfer",
         nav: { fleet:"Flotta", why:"Perché NexaRide", quote:"Preventivo", faq:"FAQ" },
         badges: { b1:"Disponibili 24/7", b2:"Risposta rapida" },
-       h1: "Transfer NCC Milano, aeroporti e Como",
-sub: "Comfort, Business e Van per transfer privati\nAeroporti, hotel, Lago di Como e richieste urgenti anche last minute su WhatsApp",
+       h1: "Transfer Aeroporto Linate • Da e Per Milano",
+sub: "NCC privato tra Linate Airport (LIN) e Milano.\nL'aeroporto cittadino, a circa 7 km dal centro.\nPickup hotel, drop-off aeroporto, attesa al gate.",
 microtrust: "Risposta veloce · Persona reale · Servizio su prenotazione",
 b2bsoft: "Privati · business · famiglie · piccoli gruppi",
         responseTime: "Risposta media: 2–5 minuti · operatore reale",
-contactLine: "WhatsApp 24/7 — chat o chiamata",
-btn: {
-  waTop: "Preventivo rapido su WhatsApp",
-  waHero: "Preventivo rapido su WhatsApp",
-  fill: "Inserisci dettagli corsa",
-  openWa: "Chiedi prezzo subito",
-  call: "Chiama NexaRide",
-  fleetQuote: "Richiedi preventivo",
-  footerQuote: "Richiedi preventivo",
-  footerWa: "Scrivici su WhatsApp",
-  submit: "Invia richiesta su WhatsApp",
-  reset: "Reset"
-},
+        btn: {
+      waTop: "Preventivo rapido su WhatsApp",
+waHero: "Preventivo rapido su WhatsApp",
+fill: "Inserisci dettagli corsa",
+openWa: "Chiedi prezzo subito",
+call: "Chiama",
+          callHero: "Chiama NexaRide",
+fleetQuote: "Richiedi preventivo",
+footerQuote: "Richiedi preventivo",
+footerWa: "Scrivici su WhatsApp",
+submit: "Invia richiesta su WhatsApp",
+reset: "Reset"
+        },
         card: {
           small: "Come funziona",
           title: "Aeroporti • Lavoro • Eventi",
@@ -946,14 +944,14 @@ Note:`,
       },
 
       en: {
-        metaTitle: "Milan Airport Transfer | Fixed Price Private Taxi | NexaRide",
-metaDesc: "Private airport transfers in Milan with fixed price, no hidden fees and English-speaking drivers. Fast WhatsApp quote for Malpensa, Linate and Bergamo.",
+       metaTitle: "Linate Airport Transfer to Milan | Private Chauffeur | NexaRide",
+metaDesc: "Private transfer from Linate Airport (LIN) to Milan city. Fixed price, no surge. Hotel pickup, airport drop-off and arrivals. Fast WhatsApp quote.",
         headerSub: "Chauffeur • Milan • Transfers",
         nav: { fleet:"Fleet", why:"Why NexaRide", quote:"Quote", faq:"FAQ" },
         badges: { b1:"Available 24/7", b2:"Fast reply" },
-       h1: "Milan Airport Transfers with Private Driver",
-sub: "Private transfers to and from Malpensa, Linate and Bergamo airports\nFixed price, no hidden fees, English-speaking drivers and fast WhatsApp quote",
-microtrust: "Fixed price · No hidden fees · Real operator",
+      h1: "Linate Airport Transfer • To & From Milan",
+sub: "Private transfer between Linate Airport (LIN) and Milan.\nFixed price, no surge, no shared rides.\nHotel pickup, airport drop-off and arrivals with driver waiting.",
+microtrust: "Fast reply · Real person · Pre-booked service",
 b2bsoft: "Private clients · business · families · small groups",
         responseTime: "Average reply: 2–5 minutes · real operator",
         btn: {
@@ -961,41 +959,53 @@ b2bsoft: "Private clients · business · families · small groups",
 waHero: "Fast WhatsApp quote",
 fill: "Enter trip details",
 openWa: "Get price now",
-call: "Call NexaRide",
+call: "Call",
+          callHero: "Call NexaRide",
 fleetQuote: "Get a quote",
 footerQuote: "Request a quote",
 footerWa: "Message us on WhatsApp",
 submit: "Send request on WhatsApp",
 reset: "Reset"
         },
-       card: {
-  small: "Fast airport quote",
-  title: "Private taxi alternative",
-  area: "Milan airports",
+        card: {
+  small: "Linate transfer",
+  title: "To & from Milan",
+  area: "LIN Airport",
   n1t:"1) Send your trip details",
-  n1d:"Pickup, drop-off, date/time, passengers",
-  n2t:"2) Get a fixed price",
-  n2d:"No hidden fees, quote on WhatsApp",
+  n1d:"Pickup, destination, date, time, passengers and flight number if available",
+  n2t:"2) Get your price",
+  n2d:"Fast WhatsApp quote from a real person",
   n3t:"3) Confirm your ride",
-  n3d:"Private driver, direct transfer, no shared shuttle",
+  n3d:"Private chauffeur, direct transfer, no shared shuttle",
   note:"Free quote, no commitment."
 },
-why: {
-  title:"Why choose NexaRide",
+        why: {
+  title:"Why book your Linate transfer with NexaRide",
   cta:"Get price on WhatsApp",
-  s1:"Point 1", t1:"Fixed price", d1:"Clear quote before the ride. No hidden fees or surprise charges.",
-  s2:"Point 2", t2:"Fast WhatsApp reply", d2:"Send your route and get a quick answer from a real operator.",
-  s3:"Point 3", t3:"English-speaking drivers", d3:"Ideal for international travellers, hotels, business trips and families.",
-  s4:"Point 4", t4:"Private direct transfer", d4:"No shared shuttle. Direct ride to your hotel, airport or address."
+  s1:"Point 1",
+  t1:"Private transfer",
+  d1:"Direct ride between Linate Airport and Milan. No shared shuttle, no bus stops.",
+  s2:"Point 2",
+  t2:"Fast WhatsApp quote",
+  d2:"Send pickup, destination, date and passengers. We reply quickly with the price.",
+  s3:"Point 3",
+  t3:"Hotel and airport pickups",
+  d3:"Ideal for arrivals, departures, hotels, apartments, business addresses and families.",
+  s4:"Point 4",
+  t4:"Professional drivers",
+  d4:"Pre-booked chauffeur service managed directly by NexaRide."
 },
         fleet: {
-          title:"Vehicle categories",
-          sub:"Select a category to prefill the form. You can choose a Van even for 1–2 passengers if you prefer more space.",
-          c1t:"Comfort / SUV", c1d:"Toyota RAV4 · ideal up to 4 passengers.",
-          c2t:"Executive", c2d:"Mercedes E-Class · business and VIP.",
-          c3t:"Van / Groups", c3d:"V-Class / Vito · up to 7 passengers.",
-          selected:"Selected"
-        },
+  title:"Choose your Linate transfer vehicle",
+  sub:"Comfort, Business or Van depending on passengers, route and space needed.",
+  c1t:"Comfort",
+  c1d:"Toyota RAV4 · ideal up to 4 passengers.",
+  c2t:"Business",
+  c2d:"Mercedes E-Class · business and hotel transfers.",
+  c3t:"Van / Groups",
+  c3d:"V-Class / Vito · up to 7 passengers.",
+  selected:"Selected"
+},
         quote: {
           title:"Get a quote",
           sub:"Fill details and send on WhatsApp in 1 click.",
@@ -1064,14 +1074,14 @@ why: {
   a6:"We accept different payment methods, including card, cash, and bank transfer, depending on the service agreed during booking."
 },
         footer: {
-          sub:"Milan chauffeur · Airports · Business · Groups",
-          email:"Email",
-          privacy:"Privacy",
-          cookie:"Cookie"
-        },
-        sticky: { wa:"Get price", quote:"Trip details" },
-        waTemplates: {
-          base:
+  sub:"Milan chauffeur · Airports · Business · Groups",
+  email:"Email",
+  privacy:"Privacy",
+  cookie:"Cookie"
+},
+sticky: { wa:"Get price", quote:"Trip details" },
+waTemplates: {
+  base:
 `Hi! I'd like a quote for a private transfer with NexaRide.
 
 Pickup:
@@ -1079,12 +1089,12 @@ Drop-off:
 Stops (if any):
 Date/Time:
 Passengers:
-Vehicle (Comfort / Executive / Van):
+Vehicle (Comfort / Business / Van):
 Notes:`,
-          formPrefix:"Hi! I'd like a quote for a private transfer with NexaRide.\n"
-        }
-      }
-    };
+  formPrefix: "Hi! I'd like a quote for a private transfer with NexaRide.\n"
+}
+}
+};
 
     // =========================================================
     // HELPERS
@@ -1102,9 +1112,9 @@ Notes:`,
       if (!el) return;
       el.textContent = value;
     }
-   function openWhatsAppWithText(text) {
+function openWhatsAppWithText(text) {
   const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.location.href = url;
 }
 function isNightCallTime() {
   const now = new Date();
@@ -1358,11 +1368,8 @@ function handlePlaceSelected(autocompleteInstance, inputEl, fieldName) {
       const canonical = document.querySelector('link[rel="canonical"]');
       if (canonical) canonical.setAttribute("href", CANONICAL_URL);
 
-      langIT.classList.toggle("is-active", LANG === "it");
-langEN.classList.toggle("is-active", LANG === "en");
-
-setText("t_btn_call", T.btn.call);
-setText("t_contact_line", T.contactLine);
+     langIT?.classList.toggle("is-active", LANG === "it");
+langEN?.classList.toggle("is-active", LANG === "en");
 
       // header/nav
       setText("t_header_sub", T.headerSub);
@@ -1381,6 +1388,7 @@ setText("t_contact_line", T.contactLine);
       setText("t_response_time", T.responseTime);
       setText("t_btn_wa_top", T.btn.waTop);
       setText("t_btn_wa_hero", T.btn.waHero);
+      setText("t_btn_call", T.btn.callHero);
       setText("t_btn_fill_details", T.btn.fill);
       setText("t_btn_open_wa", T.btn.openWa);
       setText("t_btn_open_wa2", T.btn.openWa);
@@ -1880,9 +1888,8 @@ function updateContext() {
 // =========================================================
 function bindEvents() {
   // Lang
-  langIT.addEventListener("click", () => setLang("it"));
-  langEN.addEventListener("click", () => setLang("en"));
-
+ langIT?.addEventListener("click", () => setLang("it"));
+langEN?.addEventListener("click", () => setLang("en"));
   // CTA
   const ctaWATop = document.getElementById("ctaWATop");
   const ctaCallHero = document.getElementById("ctaCallHero");
@@ -1994,15 +2001,25 @@ ctaWATop?.addEventListener("click", () => {
   });
 
   // Fleet selection
-  fleetCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      const label = card.getAttribute("data-vehicle-label") || "";
-      if (label) vehicleSelect.value = label;
-      updateContext();
+fleetCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const label = card.getAttribute("data-vehicle-label") || "";
+    if (!label) return;
+
+    vehicleSelect.value = label;
+
+    fleetCards.forEach((c) => c.classList.remove("is-selected"));
+    card.classList.add("is-selected");
+
+    updateSelectedVehicleUI();
+    updateContext();
+    saveToStorageDebounced();
+
+    setTimeout(() => {
       scrollToQuoteAndFocus();
-      saveToStorageDebounced();
-    });
+    }, 150);
   });
+});
 
  // Submit
 const quoteForm = document.getElementById("quoteForm");
@@ -2077,17 +2094,14 @@ function safeOpenWhatsApp() {
   openWhatsAppWithText(msg);
 }
 
+safeOpenWhatsApp();
+
 if (typeof gtag === "function") {
   gtag("event", "conversion", {
-    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD",
-    event_callback: safeOpenWhatsApp,
-    event_timeout: 1200
+    send_to: "AW-18088830060/zU46CMmO9ZwcEOzItrFD"
   });
-
-  setTimeout(safeOpenWhatsApp, 1300);
-} else {
-  safeOpenWhatsApp();
 }
+
 });
 
 resetBtn.addEventListener("click", () => {
@@ -2132,8 +2146,8 @@ function init() {
 
   loadFromStorage();
 
-  langIT.classList.toggle("is-active", LANG === "it");
-  langEN.classList.toggle("is-active", LANG === "en");
+langIT?.classList.toggle("is-active", LANG === "it");
+langEN?.classList.toggle("is-active", LANG === "en");
 
   
   setMeetGreet(meetGreet);
