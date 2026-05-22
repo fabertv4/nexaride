@@ -52,6 +52,35 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/prezzi-transfer-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-transfer-prices.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/milan-airports-comparison.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/confronto-aeroporti-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-airports-comparison.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/how-to-get-from-malpensa-to-milan.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/come-arrivare-malpensa-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/how-to-get-from-malpensa-to-milan.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/milan-transfer-prices.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/prezzi-transfer-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-transfer-prices.html"/>
   </url>
 
   <url>
