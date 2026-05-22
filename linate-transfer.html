@@ -2351,6 +2351,7 @@ init();
     } catch(e){ return ''; }
   }
 
+  window.appendGclidToWaUrl = function(url) { return appendGclidToWhatsAppUrl(url); };
   function appendGclidToWhatsAppUrl(url) {
     try {
       if (typeof url !== 'string') return url;

@@ -1165,7 +1165,8 @@ Notes:`,
       el.textContent = value;
     }
 function openWhatsAppWithText(text) {
-  const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
+  let url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
+  if (typeof window.appendGclidToWaUrl === 'function') url = window.appendGclidToWaUrl(url);
   window.location.href = url;
 }
 function isNightCallTime() {
@@ -2356,6 +2357,7 @@ init();
     } catch(e){ return ''; }
   }
 
+  window.appendGclidToWaUrl = function(url) { return appendGclidToWhatsAppUrl(url); };
   function appendGclidToWhatsAppUrl(url) {
     try {
       if (typeof url !== 'string') return url;
