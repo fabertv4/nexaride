@@ -46,6 +46,8 @@ Thumbs.db
 .audit-*.png
 *.legacy
 .convert-*.py
+.lazy-*.py
+.inline-*.py
 
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/

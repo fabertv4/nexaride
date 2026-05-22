@@ -2202,31 +2202,46 @@ langEN?.classList.toggle("is-active", LANG === "en");
   updateContext();
   bindEvents();
 
-  let placesInitAttempts = 0;
-  const placesInitTimer = setInterval(() => {
-    placesInitAttempts++;
-
+  // Lazy load Google Maps Places API only when user focuses on pickup/drop-off
+  // (saves ~200KB of JS download + parse on initial page load)
+  function lazyLoadGoogleMaps() {
+    if (window._mapsLoaded) return;
     if (window.google && google.maps && google.maps.places) {
-      clearInterval(placesInitTimer);
+      window._mapsLoaded = true;
       initPlacesAutocomplete();
+      return;
     }
-
-    if (placesInitAttempts > 40) {
-      clearInterval(placesInitTimer);
-      console.warn("Timeout caricamento Google Places.");
-    }
-  }, 250);
+    if (window._mapsLoading) return;
+    window._mapsLoading = true;
+    const s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=it&region=IT&loading=async';
+    s.async = true;
+    s.defer = true;
+    document.head.appendChild(s);
+    let attempts = 0;
+    const timer = setInterval(() => {
+      attempts++;
+      if (window.google && google.maps && google.maps.places) {
+        clearInterval(timer);
+        window._mapsLoaded = true;
+        initPlacesAutocomplete();
+      }
+      if (attempts > 40) {
+        clearInterval(timer);
+        console.warn("Timeout loading Google Places.");
+      }
+    }, 250);
+  }
+  ['from', 'to'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('focus', lazyLoadGoogleMaps, { once: true });
+  });
 }
 
 init();
 </script>
 
-<!-- Google Maps + Places Autocomplete -->
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=it&region=IT&loading=async"
-  async
-  defer
-></script>
+<!-- Google Maps + Places Autocomplete: caricato lazy on focus su #from/#to (vedi lazyLoadGoogleMaps in init) -->
 
 <script type="text/javascript">
 (function (w,d) {
