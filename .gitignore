@@ -54,6 +54,11 @@ Thumbs.db
 .add-*.py
 .gclid-*.py
 .polish.py
+.pricing-section.py
+.add-reviews.py
+
+# Claude Code project-level context (interno, contiene strategia + pricing reali)
+CLAUDE.md
 
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/
