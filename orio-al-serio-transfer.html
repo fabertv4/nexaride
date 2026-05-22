@@ -2191,6 +2191,21 @@ function init() {
 
   loadFromStorage();
 
+  // URL params prefill for Ads landing: ?from=MXP&to=Duomo&date=2026-06-15T14:00&pax=2
+  (function prefillFromUrl(){
+    try {
+      const p = new URLSearchParams(window.location.search);
+      const fromV = p.get('from');
+      const toV = p.get('to');
+      const dateV = p.get('date');
+      const paxV = p.get('pax');
+      if (fromV) { const el = document.getElementById('from'); if (el) el.value = fromV; }
+      if (toV) { const el = document.getElementById('to'); if (el) el.value = toV; }
+      if (dateV) { const el = document.getElementById('when'); if (el) el.value = dateV; }
+      if (paxV) { const el = document.getElementById('pax'); if (el && el.querySelector('option[value="' + paxV + '"]')) el.value = paxV; }
+    } catch(e) { console.warn('prefillFromUrl failed', e); }
+  })();
+
 langIT?.classList.toggle("is-active", LANG === "it");
 langEN?.classList.toggle("is-active", LANG === "en");
 
@@ -2250,6 +2265,42 @@ init();
   else if(w.attachEvent){w.attachEvent("onload", loader);}
   else{w.onload = loader;}
 })(window, document);
+</script>
+<!-- GA4-EXTRA-EVENTS -->
+<script>
+(function(){
+  // Track every click on a WhatsApp CTA as GA4 custom event 'wa_click' (separato dalla conversion Ads).
+  // Permette di vedere in GA4 quale CTA performa meglio (hero, sticky, footer, etc.)
+  function attach() {
+    const selectors = ['[id^="ctaWA"]', '[id^="stickyWA"]', 'a[href*="wa.me"]', 'a[href*="api.whatsapp.com"]'];
+    document.querySelectorAll(selectors.join(',')).forEach(el => {
+      if (el._waTracked) return;
+      el._waTracked = true;
+      el.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          try {
+            gtag('event', 'wa_click', {
+              cta_id: el.id || (el.tagName === 'A' ? 'wa_link' : 'wa_btn'),
+              page_path: location.pathname,
+              lang: document.documentElement.lang || 'unknown'
+            });
+          } catch(e) {}
+        }
+      }, { passive: true });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attach);
+  else attach();
+  // Re-attach on dynamic content (es. dopo applyLang() che riscrive testi ma non rimuove handlers)
+  setTimeout(attach, 1500);
+
+  // Engagement signal: utente sulla pagina per almeno 15s (proxy di 'qualified visitor')
+  setTimeout(() => {
+    if (typeof gtag === 'function') {
+      try { gtag('event', 'engagement_15s', { page_path: location.pathname }); } catch(e) {}
+    }
+  }, 15000);
+})();
 </script>
 </body>
 </html>

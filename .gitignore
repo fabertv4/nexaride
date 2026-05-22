@@ -48,6 +48,8 @@ Thumbs.db
 .convert-*.py
 .lazy-*.py
 .inline-*.py
+.prefill-*.py
+.ga4-*.py
 
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/

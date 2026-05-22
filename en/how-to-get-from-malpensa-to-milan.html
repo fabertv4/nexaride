@@ -224,5 +224,41 @@
   </a>
 </div>
 
+<!-- GA4-EXTRA-EVENTS -->
+<script>
+(function(){
+  // Track every click on a WhatsApp CTA as GA4 custom event 'wa_click' (separato dalla conversion Ads).
+  // Permette di vedere in GA4 quale CTA performa meglio (hero, sticky, footer, etc.)
+  function attach() {
+    const selectors = ['[id^="ctaWA"]', '[id^="stickyWA"]', 'a[href*="wa.me"]', 'a[href*="api.whatsapp.com"]'];
+    document.querySelectorAll(selectors.join(',')).forEach(el => {
+      if (el._waTracked) return;
+      el._waTracked = true;
+      el.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          try {
+            gtag('event', 'wa_click', {
+              cta_id: el.id || (el.tagName === 'A' ? 'wa_link' : 'wa_btn'),
+              page_path: location.pathname,
+              lang: document.documentElement.lang || 'unknown'
+            });
+          } catch(e) {}
+        }
+      }, { passive: true });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attach);
+  else attach();
+  // Re-attach on dynamic content (es. dopo applyLang() che riscrive testi ma non rimuove handlers)
+  setTimeout(attach, 1500);
+
+  // Engagement signal: utente sulla pagina per almeno 15s (proxy di 'qualified visitor')
+  setTimeout(() => {
+    if (typeof gtag === 'function') {
+      try { gtag('event', 'engagement_15s', { page_path: location.pathname }); } catch(e) {}
+    }
+  }, 15000);
+})();
+</script>
 </body>
 </html>
