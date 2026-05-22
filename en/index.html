@@ -2261,5 +2261,66 @@ init();
   else fixLabels();
 })();
 </script>
+<!-- GCLID-CAPTURE -->
+<script>
+(function(){
+  // Google Ads gclid capture + injection in WhatsApp pre-filled messages
+  // (per Offline Conversion Import — collega vendita chiusa a click Ads originale)
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid') || params.get('GCLID') || params.get('gbraid') || params.get('wbraid');
+    if (gclid) {
+      localStorage.setItem('nexaride_gclid', gclid);
+      localStorage.setItem('nexaride_gclid_at', String(Date.now()));
+      localStorage.setItem('nexaride_gclid_landing', location.pathname);
+    }
+  } catch(e){}
+
+  function getGclidTail() {
+    try {
+      const g = localStorage.getItem('nexaride_gclid');
+      if (!g) return '';
+      // Expiry 30 giorni
+      const at = parseInt(localStorage.getItem('nexaride_gclid_at') || '0', 10);
+      if (Date.now() - at > 30 * 24 * 3600 * 1000) return '';
+      return '\n\nRef: ' + g;
+    } catch(e){ return ''; }
+  }
+
+  function appendGclidToWhatsAppUrl(url) {
+    try {
+      if (typeof url !== 'string') return url;
+      if (!url.includes('wa.me') && !url.includes('whatsapp.com')) return url;
+      const tail = getGclidTail();
+      if (!tail) return url;
+      const u = new URL(url, location.href);
+      const txt = u.searchParams.get('text') || '';
+      if (txt.includes('Ref:')) return url;
+      u.searchParams.set('text', txt + tail);
+      return u.toString();
+    } catch(e){ return url; }
+  }
+
+  // Patch window.open per pattern bottoni
+  const origOpen = window.open;
+  window.open = function(url, ...args) {
+    return origOpen.call(this, appendGclidToWhatsAppUrl(url), ...args);
+  };
+
+  // Patch click su anchor <a href="wa.me/..."> per pattern pillar pages
+  function patchAnchors() {
+    document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(a => {
+      if (a._gclidPatched) return;
+      a._gclidPatched = true;
+      a.addEventListener('click', function() {
+        a.href = appendGclidToWhatsAppUrl(a.href);
+      }, true);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', patchAnchors);
+  else patchAnchors();
+  setTimeout(patchAnchors, 2000);
+})();
+</script>
 </body>
 </html>
