@@ -50,6 +50,7 @@ Thumbs.db
 .inline-*.py
 .prefill-*.py
 .ga4-*.py
+.a11y-*.py
 
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/

@@ -2245,5 +2245,21 @@ init();
   }, 15000);
 })();
 </script>
+<!-- A11Y-LABEL-FIX -->
+<script>
+(function(){
+  // Auto-associate label[id="t_X_label"] to the next input/select/textarea in the same parent
+  // (the static template has labels without for= attribute -> accessibility audit fails)
+  function fixLabels() {
+    document.querySelectorAll('label[id^="t_"][id$="_label"]').forEach(label => {
+      if (label.getAttribute('for')) return;
+      const field = label.parentNode.querySelector('input, select, textarea');
+      if (field && field.id) label.setAttribute('for', field.id);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fixLabels);
+  else fixLabels();
+})();
+</script>
 </body>
 </html>
