@@ -53,6 +53,7 @@ Thumbs.db
 .a11y-*.py
 .add-*.py
 .gclid-*.py
+.polish.py
 
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/
