@@ -74,3 +74,4 @@ package-lock.json
 .mega-nav-v2.py
 .pricing-i18n.py
 .drawer-lang-toggle.py
+.bugfix-batch.py
