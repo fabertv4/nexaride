@@ -322,6 +322,78 @@
   .mega-card:hover { background: rgba(255,255,255,0.05); }
 </style>
   <style id="wa-float-mq">@media (min-width: 768px) { .wa-float-desktop { display: flex !important; } }</style>
+  <!-- SERVICE-SCHEMA-V1 -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Transfer aeroportuale / NCC",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "NexaRide",
+    "url": "https://nexaride.it",
+    "telephone": "+393520294857",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Dante 49",
+      "addressLocality": "Sesto San Giovanni",
+      "postalCode": "20099",
+      "addressCountry": "IT"
+    }
+  },
+  "name": "Transfer privato Milano - Malpensa",
+  "description": "Transfer privato da/per aeroporto Malpensa (MXP) e Milano o area metropolitana. Prezzo fisso, veicoli Mercedes Classe E/V, monitoraggio voli, prenotazione 24/7 su WhatsApp.",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Milano"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Lombardia"
+    },
+    {
+      "@type": "Airport",
+      "name": "Aeroporto di Milano-Malpensa",
+      "iataCode": "MXP"
+    },
+    {
+      "@type": "Airport",
+      "name": "Aeroporto di Milano-Linate",
+      "iataCode": "LIN"
+    },
+    {
+      "@type": "Airport",
+      "name": "Aeroporto di Bergamo-Orio al Serio",
+      "iataCode": "BGY"
+    }
+  ],
+  "availableLanguage": [
+    "it",
+    "en"
+  ],
+  "hoursAvailable": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "url": "https://nexaride.it/malpensa-transfer.html",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": "https://wa.me/393520294857",
+    "description": "Prenota su WhatsApp"
+  }
+}
+  </script>
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-0">

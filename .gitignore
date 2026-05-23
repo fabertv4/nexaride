@@ -75,3 +75,4 @@ package-lock.json
 .pricing-i18n.py
 .drawer-lang-toggle.py
 .bugfix-batch.py
+.service-schema.py
