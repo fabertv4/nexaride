@@ -77,3 +77,4 @@ package-lock.json
 .bugfix-batch.py
 .service-schema.py
 .trustpilot-link.py
+.google-trust-badge.py
