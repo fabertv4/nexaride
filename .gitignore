@@ -67,3 +67,4 @@ package-lock.json
 .breadcrumb-schema.py
 .og-image.py
 .wa-floating.py
+.pricing-simplify.py
