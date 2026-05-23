@@ -44,6 +44,7 @@ Thumbs.db
 
 # Audit / debug artifacts
 .audit-*.png
+.ads-oci-*.csv
 *.legacy
 .convert-*.py
 .lazy-*.py
@@ -63,3 +64,6 @@ CLAUDE.md
 # Tailwind build artifacts (only output CSS is committed)
 .tailwind-build/
 package-lock.json
+.breadcrumb-schema.py
+.og-image.py
+.wa-floating.py

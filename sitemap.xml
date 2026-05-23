@@ -38,6 +38,8 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/confronto-aeroporti-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-airports-comparison.html"/>
   </url>
 
   <url>
@@ -45,6 +47,8 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/come-arrivare-malpensa-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/how-to-get-from-malpensa-to-milan.html"/>
   </url>
 
   <url>
@@ -54,6 +58,70 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/prezzi-transfer-milano.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-transfer-prices.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/transfer-milano-lago-di-como.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-lago-di-como.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-lake-como-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/transfer-milano-bellagio.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-bellagio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-bellagio-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/transfer-milano-cernobbio.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-cernobbio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-cernobbio-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/transfer-milano-varenna.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-varenna.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-varenna-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/ncc-vs-taxi-milano.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/ncc-vs-taxi-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/private-chauffeur-vs-taxi-milan.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/transfer-business-milano-24h.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-business-milano-24h.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-business-transfer-24-7.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nexaride.it/"/>
   </url>
 
   <url>
@@ -84,45 +152,57 @@
   </url>
 
   <url>
-    <loc>https://www.nexaride.it/transfer-milano-lago-di-como.html</loc>
+    <loc>https://www.nexaride.it/en/milan-lake-como-transfer.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-lago-di-como.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-lake-como-transfer.html"/>
   </url>
 
   <url>
-    <loc>https://www.nexaride.it/ncc-vs-taxi-milano.html</loc>
+    <loc>https://www.nexaride.it/en/milan-bellagio-transfer.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-bellagio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-bellagio-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/milan-cernobbio-transfer.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-cernobbio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-cernobbio-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/milan-varenna-transfer.html</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-milano-varenna.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-varenna-transfer.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.nexaride.it/en/private-chauffeur-vs-taxi-milan.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/ncc-vs-taxi-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/private-chauffeur-vs-taxi-milan.html"/>
   </url>
 
   <url>
-    <loc>https://www.nexaride.it/transfer-business-milano-24h.html</loc>
+    <loc>https://www.nexaride.it/en/milan-business-transfer-24-7.html</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.nexaride.it/transfer-milano-bellagio.html</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.nexaride.it/transfer-milano-cernobbio.html</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.nexaride.it/transfer-milano-varenna.html</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/transfer-business-milano-24h.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/milan-business-transfer-24-7.html"/>
   </url>
 
   <url>
@@ -130,16 +210,6 @@
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://www.nexaride.it/en/</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.nexaride.it/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.nexaride.it/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nexaride.it/"/>
   </url>
 
 </urlset>
