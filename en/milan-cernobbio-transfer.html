@@ -249,7 +249,7 @@
 <a href="https://share.google/U0XAcl83amprQw8UG" target="_blank" rel="noopener" aria-label="Read Google reviews" style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:999px;padding:7px 14px;margin-top:16px;margin-bottom:8px;text-decoration:none;transition:background 0.15s;" onmouseover="this.style.background='rgba(255,255,255,0.07)'" onmouseout="this.style.background='rgba(255,255,255,0.04)'">
   <span style="color:#FFD300;font-size:14px;letter-spacing:2px;line-height:1;">★★★★★</span>
   <span style="color:#fff;font-weight:700;font-size:14px;">5,0</span>
-  <span style="color:#9ca3af;font-size:13px;">on Google</span>
+  <span style="color:#9ca3af;font-size:13px;" data-i18n-google-label>su Google</span>
   <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 20 20" fill="#9ca3af" style="margin-left:-2px;"><path fill-rule="evenodd" d="M11.293 4.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
 </a>
   <p class="mt-4 text-neutral-300 text-lg">Cernobbio is the gateway to Lake Como, home to <strong>Villa d'Este</strong>, Mandarin Oriental and other iconic luxury hotels. Only 55 km from Milan (1h via A9), it's the destination of choice for business and VIP clientele. Private chauffeur transfer is the most direct option: no transfers, driver waiting at hotel reception.</p>
@@ -652,5 +652,17 @@
   btnEN.addEventListener('click', function(e){ e.stopPropagation(); switchTo('en'); });
 })();
 </script>
+  <script id="badge-i18n">
+(function(){
+  function apply(){
+    var lang = (document.documentElement.lang || 'it').toLowerCase().startsWith('en') ? 'en' : 'it';
+    var label = (lang === 'en') ? 'on Google' : 'su Google';
+    document.querySelectorAll('[data-i18n-google-label]').forEach(function(el){ el.textContent = label; });
+  }
+  apply();
+  try { new MutationObserver(apply).observe(document.documentElement, {attributes:true, attributeFilter:['lang']}); } catch(e) {}
+})();
+</script>
+  <!-- BADGE-I18N-FIX-V1 -->
 </body>
 </html>
