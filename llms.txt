@@ -10,6 +10,12 @@
 - Lingue gestite in chat: italiano, inglese
 - Disponibilità: 24/7 su prenotazione, risposta WhatsApp tipicamente entro 2–5 minuti
 
+## Recensioni e trust signals
+
+- **Google Reviews**: profilo aziendale con valutazione 5,0/5 stelle (recensioni reali da clienti). Cerca "NexaRide" su Google Maps.
+- **Trustpilot**: profilo pubblico su https://it.trustpilot.com/review/nexaride.it — recensioni verificate da clienti italiani e internazionali.
+- **AggregateRating schema**: dichiarato sul sito (Schema.org/LocalBusiness) con dati delle 5 recensioni 5★ Google.
+
 ## Pagine principali
 
 - [Homepage](https://www.nexaride.it/): panoramica del servizio NCC, listini, categorie veicoli, FAQ

@@ -76,3 +76,4 @@ package-lock.json
 .drawer-lang-toggle.py
 .bugfix-batch.py
 .service-schema.py
+.trustpilot-link.py
