@@ -95,6 +95,13 @@
   <meta property="og:image:height" content="1024" />
   <meta property="og:image:alt" content="NexaRide - Mercedes Classe E - Transfer privato Milano" />
   <meta name="twitter:image" content="https://www.nexaride.it/classeE_industriale.webp" />
+  <style id="mega-nav-style">
+  .mega-dropdown:hover .mega-panel, .mega-dropdown.is-open .mega-panel { display: block; }
+  .mega-toggle:hover { color: #fff; }
+  @media (max-width: 767px) {
+    .mega-nav-desktop { display: none !important; }
+  }
+</style>
 </head>
 
 <body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-6">
@@ -111,6 +118,39 @@
         <div class="text-xs text-neutral-400">NCC • Milano • Transfer</div>
       </div>
     </a>
+    <!-- MEGA-NAV-V1 -->
+    <nav class="mega-nav-desktop hidden items-center gap-5 text-sm text-neutral-300 md:flex">
+  <div class="relative mega-dropdown">
+    <button type="button" class="mega-toggle hover:text-white inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">
+      Trasferimenti<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" class="ml-1"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mega-panel absolute top-full left-0 mt-1 hidden bg-neutral-900 border border-white/10 rounded-xl shadow-2xl p-2 min-w-[240px] z-50">
+        <a href="/malpensa-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Malpensa (MXP)</a>
+        <a href="/linate-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Linate (LIN)</a>
+        <a href="/orio-al-serio-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Orio al Serio (BGY)</a>
+        <a href="/transfer-milano-lago-di-como.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Lago di Como</a>
+        <a href="/transfer-milano-bellagio.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Bellagio</a>
+        <a href="/transfer-milano-cernobbio.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Cernobbio</a>
+        <a href="/transfer-milano-varenna.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Varenna</a>
+        <a href="/transfer-business-milano-24h.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Business 24h</a>
+    </div>
+  </div>
+  <div class="relative mega-dropdown">
+    <button type="button" class="mega-toggle hover:text-white inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">
+      Risorse<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" class="ml-1"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="mega-panel absolute top-full left-0 mt-1 hidden bg-neutral-900 border border-white/10 rounded-xl shadow-2xl p-2 min-w-[240px] z-50">
+        <a href="/confronto-aeroporti-milano.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Confronto aeroporti</a>
+        <a href="/come-arrivare-malpensa-milano.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Come arrivare a Malpensa</a>
+        <a href="/prezzi-transfer-milano.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Prezzi transfer</a>
+        <a href="/ncc-vs-taxi-milano.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">NCC vs Taxi</a>
+    </div>
+  </div>
+  <a href="/#quote" class="hover:text-white">Preventivo</a>
+</nav>
+    <button type="button" id="megaMobileOpen" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl hover:bg-white/5" aria-label="Menu">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+</button>
     <a href="#cta" class="bg-[#25D366] text-neutral-950 font-semibold px-4 py-2 rounded-2xl text-sm">WhatsApp 24/7</a>
   </div>
 </header>
@@ -407,5 +447,62 @@
     }, {passive:true});
   })();
   </script>
+  <!-- MEGA-NAV-MOBILE -->
+<div id="megaMobileDrawer" class="fixed inset-0 z-[100] hidden bg-neutral-950/95 backdrop-blur-sm" role="dialog" aria-modal="true">
+  <div class="max-w-md mx-auto h-full overflow-y-auto p-4">
+    <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+      <div class="font-semibold text-lg">Menu</div>
+      <button type="button" id="megaMobileClose" class="rounded-full w-10 h-10 grid place-items-center bg-white/5 hover:bg-white/10" aria-label="Chiudi">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+    <div class="space-y-1">
+      <div class="text-xs uppercase tracking-wider text-neutral-500 px-4 py-2">Trasferimenti</div>
+      <a href="/malpensa-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Malpensa (MXP)</a>
+      <a href="/linate-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Linate (LIN)</a>
+      <a href="/orio-al-serio-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Orio al Serio (BGY)</a>
+      <a href="/transfer-milano-lago-di-como.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Lago di Como</a>
+      <a href="/transfer-milano-bellagio.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Bellagio</a>
+      <a href="/transfer-milano-cernobbio.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Cernobbio</a>
+      <a href="/transfer-milano-varenna.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Varenna</a>
+      <a href="/transfer-business-milano-24h.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Business 24h</a>
+      <div class="text-xs uppercase tracking-wider text-neutral-500 px-4 py-2 mt-4">Risorse</div>
+      <a href="/confronto-aeroporti-milano.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Confronto aeroporti</a>
+      <a href="/come-arrivare-malpensa-milano.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Come arrivare a Malpensa</a>
+      <a href="/prezzi-transfer-milano.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Prezzi transfer</a>
+      <a href="/ncc-vs-taxi-milano.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">NCC vs Taxi</a>
+      <a href="/#quote" class="block mt-6 px-4 py-3 text-center bg-[#25D366] text-neutral-950 font-semibold rounded-2xl">Preventivo</a>
+    </div>
+  </div>
+</div>
+  <script id="mega-nav-script">
+(function(){
+  // Mobile drawer toggle
+  var openBtn = document.getElementById('megaMobileOpen');
+  var closeBtn = document.getElementById('megaMobileClose');
+  var drawer = document.getElementById('megaMobileDrawer');
+  if (openBtn && drawer) {
+    openBtn.addEventListener('click', function(){ drawer.classList.remove('hidden'); document.body.style.overflow='hidden'; });
+  }
+  if (closeBtn && drawer) {
+    closeBtn.addEventListener('click', function(){ drawer.classList.add('hidden'); document.body.style.overflow=''; });
+  }
+  // Desktop dropdown click-toggle (in addition to hover)
+  document.querySelectorAll('.mega-dropdown .mega-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var parent = btn.closest('.mega-dropdown');
+      var wasOpen = parent.classList.contains('is-open');
+      document.querySelectorAll('.mega-dropdown.is-open').forEach(function(p){ p.classList.remove('is-open'); });
+      if (!wasOpen) parent.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.mega-dropdown')) {
+      document.querySelectorAll('.mega-dropdown.is-open').forEach(function(p){ p.classList.remove('is-open'); });
+    }
+  });
+})();
+</script>
 </body>
 </html>
