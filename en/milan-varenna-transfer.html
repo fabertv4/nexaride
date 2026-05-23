@@ -79,12 +79,13 @@
   <meta property="og:image:height" content="1024" />
   <meta property="og:image:alt" content="NexaRide - Mercedes Classe E - Transfer privato Milano" />
   <meta name="twitter:image" content="https://www.nexaride.it/classeE_industriale.webp" />
-  <style id="mega-nav-style">
-  .mega-dropdown:hover .mega-panel, .mega-dropdown.is-open .mega-panel { display: block; }
-  .mega-toggle:hover { color: #fff; }
-  @media (max-width: 767px) {
-    .mega-nav-desktop { display: none !important; }
-  }
+  
+  <style id="mega-nav-v2-style">
+  @media (min-width: 768px) { .mega-nav-v2 { display: inline-flex !important; align-items: center; gap: 4px; } .mega-hamburger { display: none !important; } }
+  @media (max-width: 767px) { .mega-nav-v2 { display: none !important; } }
+  .mega-trigger:hover, .mega-link:hover { background: rgba(255,255,255,0.06); color: #fff !important; }
+  .mega-trigger.is-open { background: rgba(255,255,255,0.08); color: #fff; }
+  .mega-card:hover { background: rgba(255,255,255,0.05); }
 </style>
 </head>
 <body class="bg-neutral-950 text-neutral-100 pb-24 md:pb-6">
@@ -94,39 +95,147 @@
 <header class="sticky top-0 z-40 bg-neutral-950/90 backdrop-blur border-b border-white/10">
   <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
     <a href="/en/" class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-white/10 grid place-items-center font-bold">NR</div><div><div class="font-semibold">NexaRide</div><div class="text-xs text-neutral-400">Chauffeur • Milan • Lake Como</div></div></a>
-    <!-- MEGA-NAV-V1 -->
-    <nav class="mega-nav-desktop hidden items-center gap-5 text-sm text-neutral-300 md:flex">
-  <div class="relative mega-dropdown">
-    <button type="button" class="mega-toggle hover:text-white inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">
-      Transfers<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" class="ml-1"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-    </button>
-    <div class="mega-panel absolute top-full left-0 mt-1 hidden bg-neutral-900 border border-white/10 rounded-xl shadow-2xl p-2" style="min-width:260px;z-index:50;" data-fix2="MEGA-NAV-WIDTH-FIX-V1">
-        <a href="/en/index.html#quote" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Malpensa (MXP)</a>
-        <a href="/en/index.html#quote" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Linate (LIN)</a>
-        <a href="/en/index.html#quote" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Orio al Serio (BGY)</a>
-        <a href="/en/milan-lake-como-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Lake Como</a>
-        <a href="/en/milan-bellagio-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Bellagio</a>
-        <a href="/en/milan-cernobbio-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Cernobbio</a>
-        <a href="/en/milan-varenna-transfer.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Varenna</a>
-        <a href="/en/milan-business-transfer-24-7.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Business 24/7</a>
-    </div>
+    
+    
+    <!-- MEGA-NAV-V2 -->
+      <nav class="mega-nav-v2" style="display:none;" data-mega-nav>
+        <div style="position:relative;">
+          <button type="button" class="mega-trigger" data-target="transfers" style="background:transparent;border:0;color:#d1d5db;font-size:14px;padding:8px 14px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;transition:background 0.15s,color 0.15s;">Transfers<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 20 20" fill="currentColor" style="margin-left:4px;opacity:0.7;"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg></button>
+          <div class="mega-panel" data-panel="transfers" style="display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;width:780px;max-width:calc(100vw - 32px);background:rgba(15,15,17,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);padding:20px;z-index:90;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+  <div>
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0 12px 8px;">Airports</div>
+    <a href="/en/index.html#quote" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Malpensa</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">MXP — Private transfer, no waiting</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/index.html#quote" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Linate</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">LIN — Private car from €60</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/index.html#quote" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Orio al Serio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">BGY — Private transfer Bergamo</div>
+        </div>
+      </div>
+    </a>
   </div>
-  <div class="relative mega-dropdown">
-    <button type="button" class="mega-toggle hover:text-white inline-flex items-center gap-1 py-2" aria-expanded="false" aria-haspopup="true">
-      Resources<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="currentColor" class="ml-1"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-    </button>
-    <div class="mega-panel absolute top-full left-0 mt-1 hidden bg-neutral-900 border border-white/10 rounded-xl shadow-2xl p-2" style="min-width:260px;z-index:50;" data-fix2="MEGA-NAV-WIDTH-FIX-V1">
-        <a href="/en/milan-airports-comparison.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Milan airports comparison</a>
-        <a href="/en/how-to-get-from-malpensa-to-milan.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">How to get from Malpensa</a>
-        <a href="/en/milan-transfer-prices.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Transfer prices</a>
-        <a href="/en/private-chauffeur-vs-taxi-milan.html" class="block px-4 py-2.5 text-sm text-neutral-200 hover:bg-white/10 hover:text-white rounded-lg transition">Private chauffeur vs Taxi</a>
-    </div>
+  <div>
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0 12px 8px;">Lake Como</div>
+    <a href="/en/milan-lake-como-transfer.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Lake Como</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Destinations overview and prices</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-bellagio-transfer.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Bellagio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Villa Serbelloni · Villa Melzi</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-cernobbio-transfer.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Cernobbio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Villa d'Este · luxury villas</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-varenna-transfer.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Varenna</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">East shore · vs Trenord train</div>
+        </div>
+      </div>
+    </a>
   </div>
-  <a href="/en/#quote" class="hover:text-white">Get Quote</a>
-</nav>
-    <button type="button" id="megaMobileOpen" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl hover:bg-white/5" aria-label="Menu">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
-</button>
+  <div>
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0 12px 8px;">Other services</div>
+    <a href="/en/milan-business-transfer-24-7.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">💼</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Business 24/7</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Corporate service round the clock</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  </div>
+</div>
+        </div>
+        <div style="position:relative;">
+          <button type="button" class="mega-trigger" data-target="resources" style="background:transparent;border:0;color:#d1d5db;font-size:14px;padding:8px 14px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;transition:background 0.15s,color 0.15s;">Resources<svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 20 20" fill="currentColor" style="margin-left:4px;opacity:0.7;"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg></button>
+          <div class="mega-panel" data-panel="resources" style="display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;width:380px;max-width:calc(100vw - 32px);background:rgba(15,15,17,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6);padding:20px;z-index:90;">
+  <div>
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0 12px 8px;">Learn more</div>
+    <a href="/en/milan-airports-comparison.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">🛬</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Airports comparison</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">MXP vs LIN vs BGY</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/how-to-get-from-malpensa-to-milan.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">🚆</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">How to get from Malpensa</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Train · Chauffeur · Taxi · Bus</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-transfer-prices.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">💶</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Transfer prices</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Indicative ranges by route</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/private-chauffeur-vs-taxi-milan.html" class="mega-card" style="display:block;padding:10px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;">
+      <div style="display:flex;align-items:flex-start;gap:10px;">
+        <span style="font-size:16px;flex-shrink:0;line-height:1.2;">🚖</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:14px;line-height:1.3;">Private chauffeur vs Taxi</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Legal and service differences</div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+        </div>
+        <a href="/en/#quote" style="color:#d1d5db;font-size:14px;padding:8px 14px;text-decoration:none;border-radius:8px;transition:background 0.15s,color 0.15s;" class="mega-link">Get Quote</a>
+      </nav>
+      <button type="button" id="megaMobileOpen" aria-label="Open menu" style="background:transparent;border:0;color:#fff;width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;" class="mega-hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+      </button>
     <a href="#cta" class="bg-[#25D366] text-neutral-950 font-semibold px-4 py-2 rounded-2xl text-sm">WhatsApp 24/7</a>
   </div>
 </header>
@@ -320,61 +429,174 @@
     }, {passive:true});
   })();
   </script>
-  <!-- MEGA-NAV-MOBILE -->
-<div id="megaMobileDrawer" class="fixed inset-0 hidden" style="background:rgba(10,10,10,0.97);z-index:100;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);" role="dialog" aria-modal="true" data-fix="MEGA-NAV-DRAWER-FIX-V1">
-  <div class="max-w-md mx-auto h-full overflow-y-auto p-4">
-    <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
-      <div class="font-semibold text-lg">Menu</div>
-      <button type="button" id="megaMobileClose" class="rounded-full w-10 h-10 grid place-items-center bg-white/5 hover:bg-white/10" aria-label="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+  
+  
+  <!-- MEGA-NAV-V2-DRAWER -->
+<div id="megaMobileDrawer" role="dialog" aria-modal="true" style="display:none;position:fixed;inset:0;background:rgba(8,8,10,0.98);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;">
+  <div style="max-width:520px;margin:0 auto;padding:18px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-weight:700;font-size:18px;color:#fff;">Menu</div>
+      <button type="button" id="megaMobileClose" aria-label="Close" style="background:rgba(255,255,255,0.06);border:0;color:#fff;width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
       </button>
     </div>
-    <div class="space-y-1">
-      <div class="text-xs uppercase tracking-wider text-neutral-500 px-4 py-2">Transfers</div>
-      <a href="/en/index.html#quote" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Malpensa (MXP)</a>
-      <a href="/en/index.html#quote" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Linate (LIN)</a>
-      <a href="/en/index.html#quote" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Orio al Serio (BGY)</a>
-      <a href="/en/milan-lake-como-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Lake Como</a>
-      <a href="/en/milan-bellagio-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Bellagio</a>
-      <a href="/en/milan-cernobbio-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Cernobbio</a>
-      <a href="/en/milan-varenna-transfer.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Varenna</a>
-      <a href="/en/milan-business-transfer-24-7.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Business 24/7</a>
-      <div class="text-xs uppercase tracking-wider text-neutral-500 px-4 py-2 mt-4">Resources</div>
-      <a href="/en/milan-airports-comparison.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Milan airports comparison</a>
-      <a href="/en/how-to-get-from-malpensa-to-milan.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">How to get from Malpensa</a>
-      <a href="/en/milan-transfer-prices.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Transfer prices</a>
-      <a href="/en/private-chauffeur-vs-taxi-milan.html" class="block px-4 py-3 text-base text-neutral-200 hover:bg-white/10 rounded-lg">Private chauffeur vs Taxi</a>
-      <a href="/en/#quote" class="block mt-6 px-4 py-3 text-center bg-[#25D366] text-neutral-950 font-semibold rounded-2xl">Get Quote</a>
-    </div>
+  <div style="margin-bottom:8px;">
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:8px 12px 4px;">Airports</div>
+    <a href="/en/index.html#quote" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Malpensa</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">MXP — Private transfer, no waiting</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/index.html#quote" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Linate</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">LIN — Private car from €60</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/index.html#quote" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">✈</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Orio al Serio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">BGY — Private transfer Bergamo</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-bottom:8px;">
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:8px 12px 4px;">Lake Como</div>
+    <a href="/en/milan-lake-como-transfer.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Lake Como</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Destinations overview and prices</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-bellagio-transfer.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Bellagio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Villa Serbelloni · Villa Melzi</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-cernobbio-transfer.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Cernobbio</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Villa d'Este · luxury villas</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-varenna-transfer.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">⛰</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Varenna</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">East shore · vs Trenord train</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-bottom:8px;">
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:8px 12px 4px;">Other services</div>
+    <a href="/en/milan-business-transfer-24-7.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">💼</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Business 24/7</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Corporate service round the clock</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-bottom:8px;">
+    <div style="color:#6b7280;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:8px 12px 4px;">Learn more</div>
+    <a href="/en/milan-airports-comparison.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">🛬</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Airports comparison</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">MXP vs LIN vs BGY</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/how-to-get-from-malpensa-to-milan.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">🚆</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">How to get from Malpensa</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Train · Chauffeur · Taxi · Bus</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/milan-transfer-prices.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">💶</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Transfer prices</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Indicative ranges by route</div>
+        </div>
+      </div>
+    </a>
+    <a href="/en/private-chauffeur-vs-taxi-milan.html" class="block px-3 py-3 rounded-xl hover:bg-white/5 transition" style="text-decoration:none;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:18px;flex-shrink:0;line-height:1.2;">🚖</span>
+        <div style="flex:1;min-width:0;">
+          <div style="color:#fff;font-weight:600;font-size:15px;">Private chauffeur vs Taxi</div>
+          <div style="color:#9ca3af;font-size:12px;margin-top:2px;line-height:1.4;">Legal and service differences</div>
+        </div>
+      </div>
+    </a>
+  </div>
+    <a href="/en/#quote" style="display:block;margin:18px 0 30px;padding:14px;text-align:center;background:#25D366;color:#0a0a0a;font-weight:700;border-radius:14px;text-decoration:none;font-size:15px;">Get Quote</a>
   </div>
 </div>
-  <script id="mega-nav-script">
+  <script id="mega-nav-v2-script">
 (function(){
-  // Mobile drawer toggle
-  var openBtn = document.getElementById('megaMobileOpen');
-  var closeBtn = document.getElementById('megaMobileClose');
-  var drawer = document.getElementById('megaMobileDrawer');
-  if (openBtn && drawer) {
-    openBtn.addEventListener('click', function(){ drawer.classList.remove('hidden'); document.body.style.overflow='hidden'; });
+  // Desktop dropdowns (click + outside-close)
+  var triggers = document.querySelectorAll('.mega-trigger');
+  var panels = document.querySelectorAll('.mega-panel');
+  function closeAll(){
+    triggers.forEach(function(t){ t.classList.remove('is-open'); });
+    panels.forEach(function(p){ p.style.display='none'; });
   }
-  if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', function(){ drawer.classList.add('hidden'); document.body.style.overflow=''; });
-  }
-  // Desktop dropdown click-toggle (in addition to hover)
-  document.querySelectorAll('.mega-dropdown .mega-toggle').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.preventDefault();
-      var parent = btn.closest('.mega-dropdown');
-      var wasOpen = parent.classList.contains('is-open');
-      document.querySelectorAll('.mega-dropdown.is-open').forEach(function(p){ p.classList.remove('is-open'); });
-      if (!wasOpen) parent.classList.add('is-open');
+  triggers.forEach(function(trigger){
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var target = trigger.getAttribute('data-target');
+      var panel = trigger.parentNode.querySelector('.mega-panel[data-panel="'+target+'"]');
+      var willOpen = !trigger.classList.contains('is-open');
+      closeAll();
+      if (willOpen && panel) {
+        trigger.classList.add('is-open');
+        panel.style.display = 'block';
+      }
     });
   });
   document.addEventListener('click', function(e){
-    if (!e.target.closest('.mega-dropdown')) {
-      document.querySelectorAll('.mega-dropdown.is-open').forEach(function(p){ p.classList.remove('is-open'); });
-    }
+    if (!e.target.closest('.mega-nav-v2')) closeAll();
   });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+
+  // Mobile drawer
+  var openBtn = document.getElementById('megaMobileOpen');
+  var closeBtn = document.getElementById('megaMobileClose');
+  var drawer = document.getElementById('megaMobileDrawer');
+  if (openBtn && drawer) openBtn.addEventListener('click', function(){ drawer.style.display='block'; document.body.style.overflow='hidden'; });
+  if (closeBtn && drawer) closeBtn.addEventListener('click', function(){ drawer.style.display='none'; document.body.style.overflow=''; });
+  if (drawer) drawer.addEventListener('click', function(e){ if (e.target === drawer){ drawer.style.display='none'; document.body.style.overflow=''; } });
 })();
 </script>
 </body>
