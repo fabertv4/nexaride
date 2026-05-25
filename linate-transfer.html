@@ -28,7 +28,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
  <title>Linate Airport Transfer | Private Milan Chauffeur | NexaRide</title>
-<meta name="description" content="Private transfer from and to Milan Linate Airport. Direct chauffeur service to Milan city, hotels and business addresses. Fast quote on WhatsApp." />
+<meta name="description" content="Private transfer Linate (LIN) and Linate Prime — charter flights, private jets, hotels, business. Dedicated chauffeur 24/7. Fast WhatsApp quote." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://www.nexaride.it/linate-transfer.html" />
   <!-- Open Graph -->
@@ -128,7 +128,8 @@
       {"@type":"Question","name":"Fate anche transfer per il Lago di Como e tratte lunghe?","acceptedAnswer":{"@type":"Answer","text":"Sì. Effettuiamo transfer da e per aeroporti, città, Lago di Como, hotel, meeting, eventi e anche lunghi viaggi su prenotazione."}},
       {"@type":"Question","name":"Cosa succede se il volo o il treno è in ritardo?","acceptedAnswer":{"@type":"Answer","text":"Se ci comunichi il numero di volo o treno, possiamo monitorare l'arrivo e adeguare il servizio in base all'orario effettivo."}},
       {"@type":"Question","name":"Posso prenotare anche all'ultimo minuto?","acceptedAnswer":{"@type":"Answer","text":"Sì, quando c'è disponibilità. Per richieste urgenti il modo più veloce è scriverci direttamente su WhatsApp."}},
-      {"@type":"Question","name":"Come si paga?","acceptedAnswer":{"@type":"Answer","text":"Accettiamo diverse modalità di pagamento, tra cui carta, contanti e bonifico, in base al servizio concordato in prenotazione."}}
+      {"@type":"Question","name":"Come si paga?","acceptedAnswer":{"@type":"Answer","text":"Accettiamo diverse modalità di pagamento, tra cui carta, contanti e bonifico, in base al servizio concordato in prenotazione."}},
+      {"@type":"Question","name":"Coprite anche Linate Prime per voli charter e jet privati?","acceptedAnswer":{"@type":"Answer","text":"Sì. Operiamo regolarmente su Linate Prime, il terminal dedicato all'aviazione generale, voli charter e jet privati. Pickup direttamente al gate Prime, gestione bagagli e coordinamento con l'handler. Comunicaci il volo su WhatsApp."}}
     ]
   }
   </script>
@@ -700,6 +701,31 @@ Fast WhatsApp quote. Fixed price.</p>
   </div>
 </div>
 </section>
+
+    <!-- LINATE-PRIME-V1 -->
+    <section id="linate-prime" class="mx-auto max-w-6xl px-4 py-12">
+      <div class="rounded-3xl border border-white/10 p-6 md:p-10" style="background:linear-gradient(135deg, rgba(255,255,255,0.04), rgba(16,185,129,0.06));">
+        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div class="md:max-w-2xl">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-200" id="t_lp_badge">Voli charter e jet privati</div>
+            <h2 class="mt-4 text-2xl md:text-3xl font-semibold" id="t_lp_title">Anche Linate Prime — terminal voli privati</h2>
+            <p class="mt-3 text-neutral-300" id="t_lp_p1">Operiamo anche su <strong>Linate Prime</strong>, il terminal dedicato a voli charter, aviazione generale e jet privati. Pickup e drop-off direttamente al gate Prime, con attesa flessibile e gestione discreta dei bagagli.</p>
+            <p class="mt-3 text-neutral-300" id="t_lp_p2">Ideale per equipaggi, passeggeri di voli charter, executive e VIP. Comunicaci il volo e l'orario su WhatsApp: monitoriamo arrivo/partenza e ci coordiniamo con l'handler.</p>
+            <ul class="mt-4 space-y-2 text-sm text-neutral-300">
+              <li id="t_lp_b1">• Servizio dedicato terminal Prime (lato Viale Forlanini)</li>
+              <li id="t_lp_b2">• Mercedes Classe E / Classe V per equipaggi e gruppi</li>
+              <li id="t_lp_b3">• Discrezione, puntualità, fattura per business</li>
+            </ul>
+          </div>
+          <div class="shrink-0">
+            <button id="ctaLPWA" type="button" class="inline-flex items-center justify-center rounded-2xl px-6 py-4 btn-wa">
+              <span id="t_lp_cta">Preventivo Linate Prime su WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FLEET -->
     <section id="fleet" class="mx-auto max-w-6xl px-4 py-12">
       <h2 class="text-3xl font-semibold" id="t_fleet_title">Categorie veicoli</h2>
@@ -1043,6 +1069,11 @@ Fast WhatsApp quote. Fixed price.</p>
       <summary class="cursor-pointer font-semibold" id="t_faq_q6">Come si paga?</summary>
       <p class="mt-3 text-neutral-200" id="t_faq_a6">Accettiamo diverse modalità di pagamento, tra cui carta, contanti e bonifico, in base al servizio concordato in prenotazione.</p>
     </details>
+
+    <details class="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <summary class="cursor-pointer font-semibold" id="t_faq_q7">Coprite anche Linate Prime per voli charter e jet privati?</summary>
+      <p class="mt-3 text-neutral-200" id="t_faq_a7">Sì. Operiamo regolarmente su Linate Prime, il terminal dedicato all'aviazione generale, voli charter e jet privati. Pickup direttamente al gate Prime, gestione bagagli e coordinamento con l'handler. Comunicaci il volo su WhatsApp.</p>
+    </details>
   </div>
 </section>
 
@@ -1166,7 +1197,7 @@ const NIGHT_CALL_PHONE = "393420427176"; // chiamate notte (invisibile all'utent
     const I18N = {
       it: {
        metaTitle: "Transfer Linate Milano | NCC Privato | NexaRide",
-metaDesc: "Transfer privato da e per l'aeroporto di Linate (LIN), l'aeroporto cittadino di Milano. Servizio NCC dedicato, hotel e business. Preventivo rapido su WhatsApp.",
+metaDesc: "Transfer privato Linate (LIN) e Linate Prime — voli charter, jet privati, hotel, business. NCC dedicato 24/7. Preventivo rapido su WhatsApp.",
         headerSub: "NCC • Milano • Transfer",
         nav: { fleet:"Flotta", why:"Perché NexaRide", quote:"Preventivo", faq:"FAQ" },
         badges: { b1:"Disponibili 24/7", b2:"Risposta rapida" },
@@ -1208,6 +1239,16 @@ reset: "Reset"
   s3:"Punto 3", t3:"Comfort e puntualità", d3:"Servizio curato, privacy e affidabilità.",
   s4:"Punto 4", t4:"Autisti professionali abilitati", d4:"Regolarmente iscritti al ruolo conducenti e abilitati alla guida professionale con patente KB."
 },
+        prime: {
+          badge:"Voli charter e jet privati",
+          title:"Anche Linate Prime — terminal voli privati",
+          p1:"Operiamo anche su <strong>Linate Prime</strong>, il terminal dedicato a voli charter, aviazione generale e jet privati. Pickup e drop-off direttamente al gate Prime, con attesa flessibile e gestione discreta dei bagagli.",
+          p2:"Ideale per equipaggi, passeggeri di voli charter, executive e VIP. Comunicaci il volo e l'orario su WhatsApp: monitoriamo arrivo/partenza e ci coordiniamo con l'handler.",
+          b1:"• Servizio dedicato terminal Prime (lato Viale Forlanini)",
+          b2:"• Mercedes Classe E / Classe V per equipaggi e gruppi",
+          b3:"• Discrezione, puntualità, fattura per business",
+          cta:"Preventivo Linate Prime su WhatsApp"
+        },
         fleet: {
           title:"Categorie veicoli",
           sub:"Seleziona una categoria: precompiliamo il form. Se vuoi un VAN anche in 1–2 passeggeri, puoi sceglierlo.",
@@ -1281,7 +1322,9 @@ reset: "Reset"
   q5:"Posso prenotare anche all’ultimo minuto?",
   a5:"Sì, quando c’è disponibilità. Per richieste urgenti il modo più veloce è scriverci direttamente su WhatsApp.",
   q6:"Come si paga?",
-  a6:"Accettiamo diverse modalità di pagamento, tra cui carta, contanti e bonifico, in base al servizio concordato in prenotazione."
+  a6:"Accettiamo diverse modalità di pagamento, tra cui carta, contanti e bonifico, in base al servizio concordato in prenotazione.",
+  q7:"Coprite anche Linate Prime per voli charter e jet privati?",
+  a7:"Sì. Operiamo regolarmente su Linate Prime, il terminal dedicato all'aviazione generale, voli charter e jet privati. Pickup direttamente al gate Prime, gestione bagagli e coordinamento con l'handler. Comunicaci il volo su WhatsApp."
 },
         footer: {
           sub:"NCC Milano · Aeroporti · Business · Gruppi",
@@ -1307,7 +1350,7 @@ Note:`,
 
       en: {
        metaTitle: "Linate Airport Transfer to Milan | Private Chauffeur | NexaRide",
-metaDesc: "Private transfer from Linate Airport (LIN) to Milan city. Fixed price, no surge. Hotel pickup, airport drop-off and arrivals. Fast WhatsApp quote.",
+metaDesc: "Private transfer Linate (LIN) and Linate Prime — charter flights, private jets, hotels, business. Dedicated chauffeur 24/7. Fast WhatsApp quote.",
         headerSub: "Chauffeur • Milan • Transfers",
         nav: { fleet:"Fleet", why:"Why NexaRide", quote:"Quote", faq:"FAQ" },
         badges: { b1:"Available 24/7", b2:"Fast reply" },
@@ -1357,6 +1400,16 @@ reset: "Reset"
   t4:"Professional drivers",
   d4:"Pre-booked chauffeur service managed directly by NexaRide."
 },
+        prime: {
+          badge:"Charter flights & private jets",
+          title:"Also Linate Prime — private aviation terminal",
+          p1:"We also operate at <strong>Linate Prime</strong>, the terminal dedicated to charter flights, general aviation and private jets. Pickup and drop-off directly at the Prime gate, with flexible waiting and discreet luggage handling.",
+          p2:"Ideal for crews, charter passengers, executives and VIP travelers. Send us the flight and time on WhatsApp: we monitor arrival/departure and coordinate with the handler.",
+          b1:"• Dedicated service at the Prime terminal (Viale Forlanini side)",
+          b2:"• Mercedes E-Class / V-Class for crews and groups",
+          b3:"• Discretion, punctuality, business invoice on request",
+          cta:"Linate Prime quote on WhatsApp"
+        },
         fleet: {
   title:"Choose your Linate transfer vehicle",
   sub:"Comfort, Business or Van depending on passengers, route and space needed.",
@@ -1433,7 +1486,9 @@ reset: "Reset"
   q5:"Can I book at the last minute?",
   a5:"Yes, when availability allows. For urgent requests, the fastest way is to message us directly on WhatsApp.",
   q6:"How can I pay?",
-  a6:"We accept different payment methods, including card, cash, and bank transfer, depending on the service agreed during booking."
+  a6:"We accept different payment methods, including card, cash, and bank transfer, depending on the service agreed during booking.",
+  q7:"Do you also cover Linate Prime for charter flights and private jets?",
+  a7:"Yes. We regularly operate at Linate Prime, the terminal dedicated to general aviation, charter flights and private jets. Pickup directly at the Prime gate, luggage handling and coordination with the handler. Just send us the flight on WhatsApp."
 },
         footer: {
   sub:"Milan chauffeur · Airports · Business · Groups",
@@ -1784,6 +1839,18 @@ langEN?.classList.toggle("is-active", LANG === "en");
 setText("t_why_t4", T.why.t4);
 setText("t_why_d4", T.why.d4);
 
+      // linate prime
+      if (T.prime) {
+        setText("t_lp_badge", T.prime.badge);
+        setText("t_lp_title", T.prime.title);
+        var lpP1 = document.getElementById("t_lp_p1"); if (lpP1) lpP1.innerHTML = T.prime.p1;
+        setText("t_lp_p2", T.prime.p2);
+        setText("t_lp_b1", T.prime.b1);
+        setText("t_lp_b2", T.prime.b2);
+        setText("t_lp_b3", T.prime.b3);
+        setText("t_lp_cta", T.prime.cta);
+      }
+
       // fleet
       setText("t_fleet_title", T.fleet.title);
       setText("t_fleet_sub", T.fleet.sub);
@@ -1875,6 +1942,8 @@ setText("t_faq_q5", T.faq.q5);
 setText("t_faq_a5", T.faq.a5);
 setText("t_faq_q6", T.faq.q6);
 setText("t_faq_a6", T.faq.a6);
+setText("t_faq_q7", T.faq.q7);
+setText("t_faq_a7", T.faq.a7);
       // footer
       setText("t_footer_sub", T.footer.sub);
       setText("t_footer_email", T.footer.email);
@@ -2292,6 +2361,10 @@ ctaWATop?.addEventListener("click", () => {
 
   ctaFleetWA?.addEventListener("click", () => {
   sendWhatsAppLead("fleet_section");
+});
+
+  document.getElementById("ctaLPWA")?.addEventListener("click", () => {
+  sendWhatsAppLead("linate_prime");
 });
 
  ctaWAFooter?.addEventListener("click", () => {

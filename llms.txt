@@ -20,7 +20,7 @@
 
 - [Homepage](https://www.nexaride.it/): panoramica del servizio NCC, listini, categorie veicoli, FAQ
 - [Transfer Aeroporto Malpensa (MXP)](https://www.nexaride.it/malpensa-transfer.html): tratte da/per Milano-Malpensa, hotel, business
-- [Transfer Aeroporto Linate (LIN)](https://www.nexaride.it/linate-transfer.html): tratte da/per Milano-Linate, l'aeroporto cittadino a 7 km dal centro
+- [Transfer Aeroporto Linate (LIN)](https://www.nexaride.it/linate-transfer.html): tratte da/per Milano-Linate, l'aeroporto cittadino a 7 km dal centro. Operiamo anche su **Linate Prime** (terminal voli charter, aviazione generale, jet privati) — pickup al gate Prime, gestione equipaggi e clientela executive
 - [Transfer Aeroporto Bergamo Orio al Serio (BGY)](https://www.nexaride.it/orio-al-serio-transfer.html): tratte da/per Orio al Serio, ideali anche per voli low-cost
 - [English version](https://www.nexaride.it/en/): chauffeur and airport transfers for international travellers
 
