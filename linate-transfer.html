@@ -77,7 +77,10 @@
     {"@type":"Question","name":"L'attesa in aeroporto è inclusa?","acceptedAnswer":{"@type":"Answer","text":"Sì. L'autista ti aspetta con un cartello con il tuo nome e il tempo di attesa è incluso nella tariffa, anche con volo in ritardo: monitoriamo l'arrivo in tempo reale."}},
     {"@type":"Question","name":"Fate solo aeroporti?","acceptedAnswer":{"@type":"Answer","text":"No. Facciamo transfer da e per aeroporti, città, Lago di Como, hotel, eventi e tratte lunghe su prenotazione."}},
     {"@type":"Question","name":"Come posso prenotare?","acceptedAnswer":{"@type":"Answer","text":"Scrivici su WhatsApp con i dettagli del viaggio, oppure compila il modulo: apriamo WhatsApp con i dati già pronti."}},
-    {"@type":"Question","name":"Monitorate i voli in ritardo?","acceptedAnswer":{"@type":"Answer","text":"Sì, monitoriamo i voli in tempo reale e adattiamo l'orario di pick-up senza costi aggiuntivi."}}
+    {"@type":"Question","name":"Monitorate i voli in ritardo?","acceptedAnswer":{"@type":"Answer","text":"Sì, monitoriamo i voli in tempo reale e adattiamo l'orario di pick-up senza costi aggiuntivi."}},
+    {"@type":"Question","name":"Quanto costa il transfer da Linate a Milano?","acceptedAnswer":{"@type":"Answer","text":"Il transfer Linate–Milano centro parte da 60€, prezzo fisso concordato prima di partire. Per altre tratte ti diamo un preventivo rapido su WhatsApp."}},
+    {"@type":"Question","name":"Quanto dista Linate dal centro di Milano?","acceptedAnswer":{"@type":"Answer","text":"Circa 7 km: 15–20 minuti in auto. È l'aeroporto più vicino alla città."}},
+    {"@type":"Question","name":"Coprite anche Linate Prime per voli charter e jet privati?","acceptedAnswer":{"@type":"Answer","text":"Sì. Operiamo regolarmente su Linate Prime, il terminal dedicato all'aviazione generale, voli charter e jet privati. Pickup direttamente al gate Prime, gestione bagagli e coordinamento con l'handler. Comunicaci il volo su WhatsApp."}}
   ]
 }
 </script>
@@ -330,6 +333,11 @@ body.motion .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){body.motion .rv{opacity:1!important;transform:none!important;transition:none}*{scroll-behavior:auto!important}}
 .ribbon{position:fixed;bottom:14px;left:14px;z-index:var(--z-drawer);background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:7px 13px;border-radius:999px}
 @media(max-width:860px){.ribbon{bottom:88px}}
+
+/* ---------- INFO sections (airport-specific) ---------- */
+.info-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px;max-width:60ch}
+.info-list li{position:relative;padding-left:30px;font-size:16px;font-weight:600;color:var(--ink)}
+.info-list li::before{content:"";position:absolute;left:0;top:6px;width:9px;height:9px;border-radius:50%;background:var(--green)}
 </style>
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
@@ -520,6 +528,37 @@ body.motion .rv.in{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- LINATE INFO -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Transfer Linate → Milano: l’aeroporto più vicino alla città</h2>
+      <p>Linate (LIN) è l'aeroporto più vicino al centro di Milano: circa 7 km, 15–20 minuti in auto. È lo scalo ideale per voli nazionali ed europei e per chi vuole arrivare in città in pochi minuti. Con NexaRide il transfer Linate–Milano centro parte da 60€, prezzo fisso concordato prima: l'autista ti aspetta agli arrivi col cartello col tuo nome, con monitoraggio del volo e attesa inclusa.</p>
+      <ul class="info-list">
+        <li>~7 km dal centro, 15–20 minuti</li>
+        <li>Da 60€ per Milano centro — prezzo fisso</li>
+        <li>Meet &amp; greet agli arrivi col cartello nome</li>
+        <li>Anche Linate Prime per voli charter e jet privati</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- LINATE PRIME -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Anche Linate Prime — terminal voli privati</h2>
+      <p>Operiamo anche su Linate Prime, il terminal dedicato a voli charter, aviazione generale e jet privati. Pickup e drop-off direttamente al gate Prime, con attesa flessibile e gestione discreta dei bagagli. Ideale per equipaggi, passeggeri di voli charter, executive e VIP. Comunicaci il volo e l'orario su WhatsApp: monitoriamo arrivo/partenza e ci coordiniamo con l'handler.</p>
+      <ul class="info-list">
+        <li>Servizio dedicato terminal Prime (lato Viale Forlanini)</li>
+        <li>Mercedes Classe E / Classe V per equipaggi e gruppi</li>
+        <li>Discrezione, puntualità, fattura per business</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq" class="sec alt">
   <div class="wrap">
@@ -532,6 +571,9 @@ body.motion .rv.in{opacity:1;transform:none}
       <details class="qa rv"><summary>Fate solo aeroporti?<span class="pm">+</span></summary><div class="a">No. Facciamo transfer da e per aeroporti, città, Lago di Como, hotel, eventi e tratte lunghe su prenotazione.</div></details>
       <details class="qa rv"><summary>Come posso prenotare?<span class="pm">+</span></summary><div class="a">Scrivici su WhatsApp con i dettagli del viaggio, oppure compila il modulo qui sopra: apriamo WhatsApp con i dati già pronti.</div></details>
       <details class="qa rv"><summary>Monitorate i voli in ritardo?<span class="pm">+</span></summary><div class="a">Sì, monitoriamo i voli in tempo reale e adattiamo l'orario di pick-up senza costi aggiuntivi.</div></details>
+      <details class="qa rv"><summary>Quanto costa il transfer da Linate a Milano?<span class="pm">+</span></summary><div class="a">Il transfer Linate–Milano centro parte da 60€, prezzo fisso concordato prima di partire. Per altre tratte ti diamo un preventivo rapido su WhatsApp.</div></details>
+      <details class="qa rv"><summary>Quanto dista Linate dal centro di Milano?<span class="pm">+</span></summary><div class="a">Circa 7 km: 15–20 minuti in auto. È l'aeroporto più vicino alla città.</div></details>
+      <details class="qa rv"><summary>Coprite anche Linate Prime per voli charter e jet privati?<span class="pm">+</span></summary><div class="a">Sì. Operiamo regolarmente su Linate Prime, il terminal dedicato all'aviazione generale, voli charter e jet privati. Pickup direttamente al gate Prime, gestione bagagli e coordinamento con l'handler. Comunicaci il volo su WhatsApp.</div></details>
     </div>
   </div>
 </section>
