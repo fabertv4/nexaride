@@ -187,16 +187,23 @@ a.taxi-note:hover{background:var(--surf-2)}
 .greview{display:inline-block;margin-top:14px;font-size:16px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .greview:hover{opacity:.6}
 /* booking card (Uber "where to") */
-.book{background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:18px;
+.book{background:#fff;border:2px solid var(--ink);border-radius:var(--r-card);padding:18px;
   box-shadow:0 20px 50px -30px rgba(0,0,0,.4);margin-top:26px;max-width:440px}
 .route{position:relative;background:var(--surf);border-radius:12px;padding:6px 14px}
-.route .pin{position:absolute;left:16px;top:22px}
+.route .pin{position:absolute;left:16px;top:34px}
 .route .pin .d1{width:9px;height:9px;border-radius:50%;background:var(--ink)}
-.route .pin .ln{width:2px;height:34px;background:var(--mut-2);margin:3px auto}
+.route .pin .ln{width:2px;height:42px;background:var(--mut-2);margin:3px auto}
 .route .pin .d2{width:9px;height:9px;background:var(--ink)}
 .route input{width:100%;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);padding:14px 6px 14px 26px}
 .route input::placeholder{color:var(--mut)}
 .route input:focus{outline:none}
+.route .rf{padding-left:26px}
+.route .rf+.rf{border-top:1px solid var(--line)}
+.route .rf label{display:block;font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;padding-top:9px}
+.route .rf input{width:100%;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);padding:1px 6px 9px 0}
+.route .rf input::placeholder{color:var(--mut)}
+.route .rf input:focus{outline:none}
+.gstars{color:#f5b50a;font-size:22px;letter-spacing:3px;line-height:1;margin-bottom:8px}
 .route .div{height:1px;background:var(--line);margin-left:26px}
 .brow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .brow .f{background:var(--surf);border-radius:12px;padding:8px 12px}
@@ -492,15 +499,17 @@ body.motion .rv.in{opacity:1;transform:none}
     <div style="max-width:540px;margin:0 auto"><div class="book">
           <div class="route">
             <span class="pin"><span class="d1"></span><span class="ln"></span><span class="d2"></span></span>
-            <input id="f-da" type="text" placeholder="Da · Malpensa T1, hotel, indirizzo…">
-            <div class="div"></div>
-            <input id="f-a" type="text" placeholder="A · Milano centro, Como, Linate…">
+            <div class="rf"><label for="f-da">Partenza</label><input id="f-da" type="text" placeholder="Malpensa T1, hotel, indirizzo…"></div>
+            <div class="rf"><label for="f-a">Destinazione</label><input id="f-a" type="text" placeholder="Milano centro, Como, Linate…"></div>
           </div>
           <div class="brow">
-            <div class="f"><label for="f-data">Data e ora</label><input id="f-data" type="datetime-local"></div>
-            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+            <div class="f"><label for="f-data">Data</label><input id="f-data" type="date"></div>
+            <div class="f"><label for="f-ora">Ora</label><input id="f-ora" type="time" step="300"></div>
           </div>
-          <div class="bvf"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
+          <div class="brow">
+            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+            <div class="f"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
+          </div>
           <button type="button" class="btn btn-wa" onclick="sendBoard('form_section')">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
             Vedi il prezzo su WhatsApp
@@ -549,7 +558,7 @@ body.motion .rv.in{opacity:1;transform:none}
 <!-- REVIEWS -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head rv"><h2>5,0 su Google</h2><p>Clienti italiani e internazionali.</p>
+    <div class="sec-head rv"><div class="gstars" aria-hidden="true">★★★★★</div><h2>5,0 su Google</h2><p>Clienti italiani e internazionali.</p>
       <a class="greview google-link" href="https://g.page/r/CQ1o0oYqzXMcEBM" target="_blank" rel="noopener">Leggi le recensioni su Google ›</a>
     </div>
     <div class="revs">
@@ -673,10 +682,17 @@ body.motion .rv.in{opacity:1;transform:none}
   function sendBoard(cta){
     var da=document.getElementById('f-da').value.trim();
     var a=document.getElementById('f-a').value.trim();
-    var dt=document.getElementById('f-data').value;
+    var dval=(document.getElementById('f-data')||{}).value||'';
+    var tval=(document.getElementById('f-ora')||{}).value||'';
     var pax=document.getElementById('f-pax').value;
     var en=(document.documentElement.lang||'it').toLowerCase().startsWith('en');
-    var whenStr=''; if(dt){var d=new Date(dt); if(!isNaN(d))whenStr=d.toLocaleString(en?'en-GB':'it-IT',{dateStyle:'short',timeStyle:'short'});}
+    var whenStr='';
+    if(dval){var d=new Date(dval+'T'+(tval||'00:00'));
+      if(!isNaN(d)){
+        if(d.getTime()<Date.now()-60000){alert(en?'Please pick a date and time in the future.':'Scegli una data e un orario futuri.');return;}
+        whenStr=d.toLocaleString(en?'en-GB':'it-IT', tval?{dateStyle:'short',timeStyle:'short'}:{dateStyle:'short'});
+      }
+    }
     waOpen(cta||'hero_form', waBuildText({from:da,to:a,pax:pax,when:whenStr,veh:window.selectedVeh}));
   }
   window.toggleMenu=function(open){var d=document.getElementById('drawer'),b=document.querySelector('.burger');d.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',open?'true':'false');document.body.style.overflow=open?'hidden':'';};
@@ -786,11 +802,11 @@ body.motion .rv.in{opacity:1;transform:none}
 (function(){
   // prefill da query string (?from=&to=&date=&pax=)
   try{
-    var p=new URLSearchParams(location.search), m={from:'f-da',to:'f-a',date:'f-data',pax:'f-pax'};
+    var p=new URLSearchParams(location.search), m={from:'f-da',to:'f-a',date:'f-data',time:'f-ora',pax:'f-pax'};
     Object.keys(m).forEach(function(k){ var v=p.get(k); var el=document.getElementById(m[k]); if(v&&el){ if(el.tagName==='SELECT'){ if(el.querySelector('option[value="'+v+'"]'))el.value=v; } else el.value=v; } });
   }catch(e){}
   // datetime: non nel passato
-  var dt=document.getElementById('f-data'); if(dt){ var n=new Date(); n.setMinutes(n.getMinutes()-n.getTimezoneOffset()); dt.min=n.toISOString().slice(0,16); }
+  var dt=document.getElementById('f-data'); if(dt){ var n=new Date(); n.setMinutes(n.getMinutes()-n.getTimezoneOffset()); dt.min=n.toISOString().slice(0,10); }
   // Google Places autocomplete, caricato al primo focus
   window.initPlacesAutocomplete=function(){ ['f-da','f-a'].forEach(function(id){ var el=document.getElementById(id); if(!el||el._ac)return; try{ el._ac=new google.maps.places.Autocomplete(el,{fields:['formatted_address','name','geometry'],componentRestrictions:{country:'it'}}); }catch(e){} }); };
   function lazyMaps(){
