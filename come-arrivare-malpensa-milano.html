@@ -436,23 +436,7 @@ body.motion .rv.in{opacity:1;transform:none}
         <a class="taxi-note google-link" href="https://g.page/r/CQ1o0oYqzXMcEBM" target="_blank" rel="noopener">★ 5,0 su Google · transfer privato a prezzo fisso</a>
 
         <div class="book">
-          <div class="route">
-            <span class="pin"><span class="d1"></span><span class="ln"></span><span class="d2"></span></span>
-            <div class="rf"><label for="f-da">Partenza</label><input id="f-da" type="text" placeholder="Malpensa T1, hotel, indirizzo…"></div>
-            <div class="rf"><label for="f-a">Destinazione</label><input id="f-a" type="text" placeholder="Milano centro, Como, Linate…"></div>
-          </div>
-          <div class="brow">
-            <div class="f"><label for="f-data">Data</label><input id="f-data" type="date"></div>
-            <div class="f"><label for="f-ora">Ora</label><input id="f-ora" type="time" step="300"></div>
-          </div>
-          <div class="brow">
-            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
-            <div class="f"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
-          </div>
-          <button type="button" class="btn btn-wa" onclick="sendBoard('hero_form')">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
-            Vedi il prezzo su WhatsApp
-          </button>
+          <button type="button" class="btn btn-wa" style="width:100%" onclick="waOpen('hero_cta')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>Preventivo rapido su WhatsApp</button>
           <div class="resp"><span class="dot"></span>Rispondiamo in <b>&nbsp;2–5 minuti&nbsp;</b> · operatore reale</div>
           <div class="tstrip" aria-label="Garanzie"><span>Cancellazione gratuita</span><span>Voli monitorati</span><span>Attesa inclusa</span><span>Paghi a fine corsa</span></div>
         </div>
@@ -534,6 +518,33 @@ body.motion .rv.in{opacity:1;transform:none}
     <p class="note-sm rv">Costi e tempi indicativi (maggio 2026), soggetti a variazione. La tariffa taxi fissa MXP-Milano è 110 € per delibera comunale, ma può subire supplementi (bagagli, festivi, notturno).</p>
   </div>
 </section>
+
+<!-- FORM (spostato dall'hero) -->
+<section id="form" class="sec alt">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Richiedi il preventivo</h2></div>
+    <div style="max-width:540px;margin:0 auto"><div class="book">
+<div class="route">
+            <span class="pin"><span class="d1"></span><span class="ln"></span><span class="d2"></span></span>
+            <div class="rf"><label for="f-da">Partenza</label><input id="f-da" type="text" placeholder="Malpensa T1, hotel, indirizzo…"></div>
+            <div class="rf"><label for="f-a">Destinazione</label><input id="f-a" type="text" placeholder="Milano centro, Como, Linate…"></div>
+          </div>
+          <div class="brow">
+            <div class="f"><label for="f-data">Data</label><input id="f-data" type="date"></div>
+            <div class="f"><label for="f-ora">Ora</label><input id="f-ora" type="time" step="300"></div>
+          </div>
+          <div class="brow">
+            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+            <div class="f"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
+          </div>
+          <button type="button" class="btn btn-wa" onclick="sendBoard('form_section')">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
+            Vedi il prezzo su WhatsApp
+          </button>
+</div></div>
+  </div>
+</section>
+
 
 <!-- QUANDO CONVIENE NCC -->
 <section id="ncc" class="sec alt">
