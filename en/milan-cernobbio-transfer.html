@@ -218,13 +218,16 @@ a.taxi-note:hover{background:var(--surf-2)}
 .brow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .brow .f{background:var(--surf);border-radius:12px;padding:8px 12px}
 .brow label{display:block;font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
-.brow input,.brow select{width:100%;border:0;background:transparent;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);padding:3px 0 2px}
+.brow input,.brow select{width:100%;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);padding:3px 0 2px}
 .bvf{background:var(--surf);border-radius:12px;padding:8px 12px;margin-top:10px}
 .bvf label{display:block;font-size:11px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
-.bvf select{width:100%;border:0;background:transparent;font-family:inherit;font-size:15px;font-weight:600;color:var(--ink);padding:3px 0 2px}
+.bvf select{width:100%;border:0;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:var(--ink);padding:3px 0 2px}
 .brow input:focus,.brow select:focus{outline:none}
 .book .btn{width:100%;margin-top:14px;font-size:17px;padding:16px}
 .book .resp{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--mut)}
+.tstrip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px;margin-top:10px;font-size:12px;font-weight:700;color:var(--ink);opacity:.78}
+.tstrip span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.tstrip span::before{content:"";width:5px;height:5px;border-radius:50%;background:#19b95a;flex:none}
 .book .resp .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(25,185,90,.6);animation:pulse 2.4s infinite}
 .book .resp b{color:var(--ink)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(25,185,90,.5)}70%{box-shadow:0 0 0 8px rgba(25,185,90,0)}100%{box-shadow:0 0 0 0 rgba(25,185,90,0)}}
@@ -428,6 +431,7 @@ body.motion .rv.in{opacity:1;transform:none}
             See the price on WhatsApp
           </button>
           <div class="resp"><span class="dot"></span>We reply in <b>&nbsp;2–5 minutes&nbsp;</b> · real operator</div>
+          <div class="tstrip" aria-label="Guarantees"><span>Free cancellation</span><span>Flight tracking</span><span>English support</span><span>Pay at the end</span></div>
         </div>
       </div>
       <div class="map" aria-hidden="true">
@@ -560,7 +564,7 @@ body.motion .rv.in{opacity:1;transform:none}
         <li><a href="/en/private-chauffeur-vs-taxi-milan.html">Chauffeur or taxi?</a></li>
       </ul></div>
       <div><h4>Contacts</h4><ul>
-        <li><a href="https://wa.me/393520294857">WhatsApp</a></li>
+        <li><a href="https://wa.me/393520294857" onclick="return waOpen('footer_cta')">WhatsApp</a></li>
         <li><a href="mailto:info@nexaride.it">info@nexaride.it</a></li>
         <li>Milan · Lombardy</li>
       </ul></div>
