@@ -682,6 +682,26 @@ body.motion .rv.in{opacity:1;transform:none}
     window.selectedVeh=v;
     document.querySelectorAll('#rides .ride').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-veh')===v);});
   };
+  // --- vincolo capienza veicolo in base ai passeggeri (Comfort/Business 4, Van 7, Lux 3) ---
+  (function(){
+    var CAP={Comfort:4,Business:4,Van:7,Lux:3};
+    function paxN(){var el=document.getElementById('f-pax');var n=parseInt(el?el.value:'1',10);return isNaN(n)?1:n;}
+    window.nxApplyCap=function(){
+      var n=paxN(),sel=document.getElementById('f-veh-sel'),i,o;
+      if(sel){for(i=0;i<sel.options.length;i++){o=sel.options[i];o.disabled=(CAP[o.value]||99)<n;}}
+      document.querySelectorAll('#rides .ride').forEach(function(b){
+        var v=b.getAttribute('data-veh'),bad=(CAP[v]||99)<n,cap=b.querySelector('.cap');
+        b.disabled=bad;b.style.opacity=bad?'.45':'';b.style.filter=bad?'grayscale(.55)':'';b.style.cursor=bad?'not-allowed':'';
+        if(cap)cap.style.color=bad?'#c0392b':'';
+      });
+      if((CAP[window.selectedVeh]||99)<n){
+        var best=null;['Comfort','Business','Van','Lux'].forEach(function(v){if(CAP[v]>=n&&(best===null||CAP[v]<CAP[best]))best=v;});
+        if(best){window.selectedVeh=best;if(sel)sel.value=best;document.querySelectorAll('#rides .ride').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-veh')===best);});}
+      }
+    };
+    function wire(){var px=document.getElementById('f-pax');if(px&&!px._nxcap){px._nxcap=1;px.addEventListener('change',window.nxApplyCap);}window.nxApplyCap();}
+    if(document.readyState!=='loading')wire();else document.addEventListener('DOMContentLoaded',wire);
+  })();
   function sendBoard(cta){
     var da=document.getElementById('f-da').value.trim();
     var a=document.getElementById('f-a').value.trim();
