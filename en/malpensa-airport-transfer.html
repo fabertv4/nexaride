@@ -26,16 +26,16 @@
   gtag('config', 'AW-18088830060');
 </script>
 <!-- Canonical + hreflang -->
-<link href="https://www.nexaride.it/en/malpensa-airport-transfer.html" rel="canonical"/>
-<link href="https://www.nexaride.it/malpensa-transfer.html" hreflang="it" rel="alternate"/>
-<link href="https://www.nexaride.it/en/malpensa-airport-transfer.html" hreflang="en" rel="alternate"/>
-<link href="https://www.nexaride.it/malpensa-transfer.html" hreflang="x-default" rel="alternate"/>
+<link href="https://nexaride.it/en/malpensa-airport-transfer.html" rel="canonical"/>
+<link href="https://nexaride.it/malpensa-transfer.html" hreflang="it" rel="alternate"/>
+<link href="https://nexaride.it/en/malpensa-airport-transfer.html" hreflang="en" rel="alternate"/>
+<link href="https://nexaride.it/malpensa-transfer.html" hreflang="x-default" rel="alternate"/>
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="NexaRide" property="og:site_name"/>
 <meta content="Malpensa Airport Transfer (MXP) | NexaRide — Fixed price, the alternative to a taxi" property="og:title"/>
 <meta content="Private transfer to and from Milan Malpensa airport (MXP): fixed price, car with driver, the alternative to a taxi. Quote on WhatsApp in 2-5 minutes." property="og:description"/>
-<meta content="https://www.nexaride.it/en/malpensa-airport-transfer.html" property="og:url"/>
+<meta content="https://nexaride.it/en/malpensa-airport-transfer.html" property="og:url"/>
 <meta content="https://nexaride.it/classeE_apple.webp" property="og:image"/>
 <meta content="1536" property="og:image:width"/>
 <meta content="1024" property="og:image:height"/>
@@ -48,13 +48,13 @@
 <!-- JSON-LD: LocalBusiness + AggregateRating + Review -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"LocalBusiness","name":"NexaRide","url":"https://www.nexaride.it/",
+  "@context":"https://schema.org","@type":"LocalBusiness","name":"NexaRide","url":"https://nexaride.it/",
   "telephone":"+39 352 029 4857","email":"info@nexaride.it","vatID":"IT13589310963","priceRange":"€€",
-  "image":["https://www.nexaride.it/classeE_apple.png","https://www.nexaride.it/classeV_apple.png","https://www.nexaride.it/rav4_apple.png"],
+  "image":["https://nexaride.it/classeE_apple.png","https://nexaride.it/classeV_apple.png","https://nexaride.it/rav4_apple.png"],
   "address":{"@type":"PostalAddress","streetAddress":"Via Dante 49","addressLocality":"Sesto San Giovanni","addressRegion":"Lombardia","postalCode":"20099","addressCountry":"IT"},
   "areaServed":[{"@type":"AdministrativeArea","name":"Milano"},{"@type":"AdministrativeArea","name":"Lombardia"}],
   "serviceType":"NCC / Chauffeur / Private Transfers",
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5","bestRating":"5","worstRating":"1"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18","bestRating":"5","worstRating":"1"},
   "review":[
     {"@type":"Review","author":{"@type":"Person","name":"Francesca Lorena"},"datePublished":"2026-05-08","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Ottimo servizio, puntuali, puliti e precisi. Consigliato."},
     {"@type":"Review","author":{"@type":"Person","name":"Nils Ides"},"datePublished":"2026-05-16","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"We had 2 big bike boxes to transfer from Milano to Bergamo airport and everything went perfect. Thank you very much to the driver."},
@@ -86,7 +86,7 @@
 {
   "@context":"https://schema.org","@type":"TaxiService","name":"NexaRide — Malpensa Airport Transfer (MXP)",
   "description":"Private NCC chauffeur service in Milan and Lombardy: airport transfers to Malpensa, Linate and Bergamo, city transfers, business, Lake Como, events. Booking on WhatsApp.",
-  "provider":{"@type":"LocalBusiness","name":"NexaRide","url":"https://www.nexaride.it/","telephone":"+39 352 029 4857"},
+  "provider":{"@type":"LocalBusiness","name":"NexaRide","url":"https://nexaride.it/","telephone":"+39 352 029 4857"},
   "areaServed":[{"@type":"City","name":"Milano"},{"@type":"AdministrativeArea","name":"Lombardia"},{"@type":"Airport","name":"Milan Malpensa Airport","iataCode":"MXP"},{"@type":"Airport","name":"Milan Linate Airport","iataCode":"LIN"},{"@type":"Airport","name":"Milan Bergamo Orio al Serio Airport","iataCode":"BGY"}],
   "offers":{"@type":"Offer","priceCurrency":"EUR","priceRange":"€€","availability":"https://schema.org/InStock"}
 }
@@ -639,11 +639,10 @@ body.motion .rv.in{opacity:1;transform:none}
   window.waOpen=function(ctaId,customText){
     trackWa(ctaId||'wa_cta');
     var url='https://wa.me/393520294857?text='+encodeURIComponent(customText||waBuildText());
-    var opened=false; function go(){ if(opened)return; opened=true; window.open(url,'_blank'); }
-    if(typeof gtag==='function'){
-      try{ gtag('event','conversion',{send_to:'AW-18088830060/zU46CMmO9ZwcEOzItrFD',event_callback:go,event_timeout:1200}); setTimeout(go,1300); }
-      catch(e){ go(); }
-    } else { go(); }
+    // conversione fire-and-forget: apriamo _blank, la pagina non si scarica -> il beacon parte comunque
+    if(typeof gtag==='function'){ try{ gtag('event','conversion',{send_to:'AW-18088830060/zU46CMmO9ZwcEOzItrFD'}); }catch(e){} }
+    // apertura SINCRONA dentro il gesto-click (anti popup-blocker iOS); window.open e' monkey-patchato per iniettare il Ref gclid
+    window.open(url,'_blank');
     return false;
   };
   window.pickRide=function(btn){
@@ -743,7 +742,7 @@ body.motion .rv.in{opacity:1;transform:none}
     if(g){ localStorage.setItem('nexaride_gclid',g); localStorage.setItem('nexaride_gclid_at',String(Date.now())); localStorage.setItem('nexaride_gclid_landing',location.pathname); }
   }catch(e){}
   function tail(){ try{ var g=localStorage.getItem('nexaride_gclid'); if(!g)return ''; var at=parseInt(localStorage.getItem('nexaride_gclid_at')||'0',10); if(Date.now()-at>30*24*3600*1000)return ''; return '\n\nRef: '+g; }catch(e){return '';} }
-  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var u=new URL(url,location.href); var x=u.searchParams.get('text')||''; if(x.indexOf('Ref:')>=0)return url; u.searchParams.set('text',x+t); return u.toString(); }catch(e){return url;} }
+  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var dec; try{dec=decodeURIComponent(url);}catch(e){dec=url;} if(dec.indexOf('Ref:')>=0)return url; return url+encodeURIComponent(t); }catch(e){return url;} }
   window.appendGclidToWaUrl=add;
   var o=window.open; window.open=function(url){ return o.call(this, add(url), arguments[1], arguments[2]); };
 })();
