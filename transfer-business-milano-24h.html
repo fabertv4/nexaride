@@ -41,8 +41,8 @@
 <meta property="og:description" content="Servizio NCC business 24h: meeting, eventi, aeroporti. Mercedes Classe E, autisti professionali, fatturazione completa.">
 <meta property="og:url" content="https://nexaride.it/transfer-business-milano-24h.html">
 <meta property="og:image" content="https://nexaride.it/classeE_apple.webp">
-<meta property="og:image:width" content="1536">
-<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
 <meta property="og:image:alt" content="NexaRide - Mercedes Classe E - Transfer privato Milano">
 
 <!-- Twitter -->
@@ -56,7 +56,7 @@
 {
   "@context":"https://schema.org","@type":"LocalBusiness","name":"NexaRide","url":"https://nexaride.it/",
   "telephone":"+39 352 029 4857","email":"info@nexaride.it","vatID":"IT13589310963","priceRange":"€€","sameAs":["https://g.page/r/CQ1o0oYqzXMcEBM"],
-  "image":["https://nexaride.it/classeE_apple.png","https://nexaride.it/classeV_apple.png","https://nexaride.it/rav4_apple.png"],
+  "image":["https://nexaride.it/classeE_apple.webp","https://nexaride.it/classeV_apple.webp","https://nexaride.it/rav4_apple.webp"],
   "address":{"@type":"PostalAddress","streetAddress":"Via Dante 49","addressLocality":"Sesto San Giovanni","addressRegion":"Lombardia","postalCode":"20099","addressCountry":"IT"},
   "areaServed":[{"@type":"AdministrativeArea","name":"Milano"},{"@type":"AdministrativeArea","name":"Lombardia"}],
   "serviceType":"NCC / Chauffeur / Private Transfers",
@@ -151,7 +151,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta{font-size:14px;font-weight:700;color:#fff;background:var(--ink);padding:9px 16px;border-radius:var(--r);display:inline-flex;align-items:center;gap:7px;transition:background .2s}
 .nav-cta:hover{background:#262626}
 .nav-cta svg{width:15px;height:15px}
-.burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
+.burger{display:none;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
 @media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
 
@@ -315,11 +315,20 @@ footer a:hover{color:#fff}
 body.motion .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 body.motion .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){body.motion .rv{opacity:1!important;transform:none!important;transition:none}*{scroll-behavior:auto!important}}
+
+/* a11y-focus + desktop polish (audit 2026-06-07) */
+a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:4px}
+.route input:focus-visible,.route .rf input:focus-visible,.brow input:focus-visible,.brow select:focus-visible,.bvf select:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn-wa:focus-visible,.band .btn:focus-visible{outline-color:#0b6b33}
+.skip{position:absolute;left:-9999px;top:0;z-index:500;background:var(--ink);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-weight:700}
+.skip:focus{left:0}
+.ride .price .v{font-weight:700;color:var(--mut)}
 </style>
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
 </head>
 <body>
+<a href="#main" class="skip">Salta al contenuto</a>
 
 <!-- SKIP LINK -->
 <a href="#main" class="btn btn-dark" style="position:absolute;left:8px;top:-60px;z-index:300;transition:top .2s" onfocus="this.style.top='8px'" onblur="this.style.top='-60px'">Salta al contenuto</a>
@@ -383,6 +392,7 @@ body.motion .rv.in{opacity:1;transform:none}
 </div>
 
 <!-- HERO -->
+<main id="main">
 <section id="top" class="hero">
   <div class="wrap">
     <div class="hero-grid">
@@ -393,7 +403,7 @@ body.motion .rv.in{opacity:1;transform:none}
         <a class="greview google-link" href="https://g.page/r/CQ1o0oYqzXMcEBM" target="_blank" rel="noopener" aria-label="Leggi recensioni Google"><span class="st">★★★★★</span> 5,0 su Google</a>
 
         <div class="book">
-          <button type="button" class="btn btn-wa" style="width:100%" onclick="waOpen('hero_cta')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>Preventivo rapido su WhatsApp</button>
+          <a href="https://wa.me/393520294857" role="button" class="btn btn-wa" style="width:100%" onclick="return waOpen('hero_cta')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>Preventivo rapido su WhatsApp</a>
           <div class="resp"><span class="dot"></span>Rispondiamo in <b>&nbsp;2–5 minuti&nbsp;</b> · operatore reale</div>
           <div class="tstrip" aria-label="Garanzie"><span>Cancellazione gratuita</span><span>Voli monitorati</span><span>Attesa inclusa</span><span>Paghi a fine corsa</span></div>
         </div>
@@ -401,8 +411,8 @@ body.motion .rv.in{opacity:1;transform:none}
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice">
           <path d="M70 90 C 150 120, 160 230, 250 250 S 340 300, 330 330" stroke="#19b95a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
-          <circle cx="70" cy="90" r="9" fill="#000"/>
-          <rect x="322" y="322" width="16" height="16" rx="3" fill="#000"/>
+          
+          
         </svg>
         <div class="chip c-from"><span class="g"></span>Hotel Milano</div>
         <div class="chip c-to">Fiera Rho-Pero</div>
@@ -526,6 +536,7 @@ body.motion .rv.in{opacity:1;transform:none}
 </section>
 
 <!-- FOOTER -->
+</main>
 <footer>
   <div class="wrap">
     <div class="fgrid">
