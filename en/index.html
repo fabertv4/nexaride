@@ -809,7 +809,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     if(window._mapsLoaded)return;
     if(window.google&&google.maps&&google.maps.places){window._mapsLoaded=true;initPlacesAutocomplete();return;}
     if(window._mapsLoading)return; window._mapsLoading=true;
-    var s=document.createElement('script'); s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=it&region=IT&loading=async'; s.async=true;s.defer=true; document.head.appendChild(s);
+    var s=document.createElement('script'); s.src='https://maps.googleapis.com/maps/api/js?key=AIzaSyB3BdjgE5ZDVAyoGdHv9W0ARgFrC-gRoso&libraries=places&language=en&region=IT&loading=async'; s.async=true;s.defer=true; document.head.appendChild(s);
     var n=0,t=setInterval(function(){n++; if(window.google&&google.maps&&google.maps.places){clearInterval(t);window._mapsLoaded=true;initPlacesAutocomplete();} if(n>40)clearInterval(t);},250);
   }
   ['f-da','f-a'].forEach(function(id){ var el=document.getElementById(id); if(el)el.addEventListener('focus',lazyMaps,{once:true}); });

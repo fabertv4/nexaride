@@ -788,7 +788,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     if(g){ localStorage.setItem('nexaride_gclid',g); localStorage.setItem('nexaride_gclid_at',String(Date.now())); localStorage.setItem('nexaride_gclid_landing',location.pathname); }
   }catch(e){}
   function tail(){ try{ var g=localStorage.getItem('nexaride_gclid'); if(!g)return ''; var at=parseInt(localStorage.getItem('nexaride_gclid_at')||'0',10); if(Date.now()-at>30*24*3600*1000)return ''; return '\n\nRef: '+g; }catch(e){return '';} }
-  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var dec; try{dec=decodeURIComponent(url);}catch(e){dec=url;} if(dec.indexOf('Ref:')>=0)return url; return url+encodeURIComponent(t); }catch(e){return url;} }
+  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var dec; try{dec=decodeURIComponent(url);}catch(e){dec=url;} if(dec.indexOf('Ref:')>=0)return url; if(dec.indexOf('text=')<0)return url+(url.indexOf('?')<0?'?':'&')+'text='+encodeURIComponent(t.trim()); return url+encodeURIComponent(t); }catch(e){return url;} }
   window.appendGclidToWaUrl=add;
   var o=window.open; window.open=function(url){ return o.call(this, add(url), arguments[1], arguments[2]); };
   // Patch anchor clicks (CTA <a href="wa.me/...">)
