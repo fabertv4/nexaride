@@ -22,6 +22,9 @@
 - [Transfer Aeroporto Linate (LIN)](https://nexaride.it/linate-transfer.html): tratte da/per Milano-Linate, l'aeroporto cittadino a 7 km dal centro. Operiamo anche su **Linate Prime** (terminal voli charter, aviazione generale, jet privati) — pickup al gate Prime, gestione equipaggi e clientela executive
 - [Transfer Aeroporto Bergamo Orio al Serio (BGY)](https://nexaride.it/orio-al-serio-transfer.html): tratte da/per Orio al Serio, ideali anche per voli low-cost
 - [English version](https://nexaride.it/en/): chauffeur and airport transfers for international travellers
+- [Malpensa Airport Transfer (EN)](https://nexaride.it/en/malpensa-airport-transfer.html): private Malpensa-Milan transfers for international travellers
+- [Linate Airport Transfer (EN)](https://nexaride.it/en/linate-airport-transfer.html): Milan city airport (LIN) private transfers, fixed quote agreed in advance
+- [Bergamo Airport Transfer (EN)](https://nexaride.it/en/bergamo-airport-transfer.html): Bergamo Orio al Serio (BGY) transfers, ideal for Ryanair travellers
 
 ## Guide informative (per chi sta scegliendo)
 
@@ -37,6 +40,8 @@
 - [Transfer Milano - Varenna](https://nexaride.it/transfer-milano-varenna.html): NCC per Varenna (lato est lago) — alternativa al treno Trenord
 - [NCC vs Taxi a Milano](https://nexaride.it/ncc-vs-taxi-milano.html): differenze, quando conviene cosa
 - [Transfer Business Milano 24/7](https://nexaride.it/transfer-business-milano-24h.html): servizio NCC business 24h, meeting, eventi, fatturazione
+- [Transfer Milano - Serravalle Designer Outlet](https://nexaride.it/transfer-milano-serravalle-outlet.html): NCC privato per l'outlet di Serravalle Scrivia, andata e ritorno
+- [Transfer Milano - FoxTown Mendrisio](https://nexaride.it/transfer-milano-foxtown-mendrisio.html): NCC privato per l'outlet FoxTown di Mendrisio (Svizzera), tratta cross-border
 
 ## Guides in English (for international travellers)
 
@@ -49,6 +54,8 @@
 - [Milan to Varenna transfer](https://nexaride.it/en/milan-varenna-transfer.html): Lake Como east shore — alternative to Trenord train
 - [Private chauffeur vs taxi in Milan](https://nexaride.it/en/private-chauffeur-vs-taxi-milan.html): NCC explained for international travellers, when to choose what
 - [Milan Business Transfer 24/7](https://nexaride.it/en/milan-business-transfer-24-7.html): dedicated chauffeur for companies, invoicing, English-speaking drivers
+- [Milan to Serravalle Outlet transfer](https://nexaride.it/en/milan-serravalle-outlet-transfer.html): private transfer to Serravalle Designer Outlet
+- [Milan to FoxTown Mendrisio transfer](https://nexaride.it/en/milan-foxtown-mendrisio-outlet-transfer.html): cross-border private transfer to FoxTown outlet (Switzerland)
 
 ## Tratte tra aeroporti e interurbane
 
@@ -58,6 +65,15 @@
 - [Linate to Malpensa transfer (EN)](https://nexaride.it/en/linate-malpensa-transfer.html): direct private transfer between Milan's two airports
 - [Turin to Malpensa transfer (EN)](https://nexaride.it/en/turin-malpensa-transfer.html): private Turin<->Malpensa airport connection
 - [Malpensa to Bergamo airport transfer (EN)](https://nexaride.it/en/malpensa-bergamo-airport-transfer.html): inter-airport transfer Malpensa<->Bergamo Orio al Serio
+
+## Quanto costa il taxi a Milano (tariffe ufficiali + alternativa NCC)
+
+- [Quanto costa il taxi Malpensa-Milano](https://nexaride.it/quanto-costa-taxi-malpensa-milano.html): tariffa fissa ufficiale 114 € a vettura (Comune di Milano), cosa include, alternativa NCC su preventivo WhatsApp
+- [Quanto costa il taxi Linate-Milano](https://nexaride.it/quanto-costa-taxi-linate-milano.html): Linate è a tassametro, nessuna tariffa fissa (~20-30 € variabili), alternativa NCC a prezzo concordato prima
+- [Quanto costa il taxi Orio al Serio-Milano](https://nexaride.it/quanto-costa-taxi-orio-al-serio-milano.html): tariffa fissa ufficiale 128 € a vettura, alternativa NCC su preventivo WhatsApp
+- [Malpensa taxi cost to Milan (EN)](https://nexaride.it/en/malpensa-taxi-cost-to-milan.html): official €114 fixed taxi fare explained + private chauffeur alternative
+- [Linate taxi cost to Milan (EN)](https://nexaride.it/en/linate-taxi-cost-to-milan.html): metered taxi (~€20-30, no fixed fare) + private chauffeur alternative with price agreed upfront
+- [Orio/Bergamo taxi cost to Milan (EN)](https://nexaride.it/en/orio-bergamo-taxi-cost-to-milan.html): official €128 fixed taxi fare + private chauffeur alternative
 
 ## Servizi offerti
 
