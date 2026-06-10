@@ -229,6 +229,7 @@ a.taxi-note:hover{background:var(--surf-2)}
 .map .chip .g{width:8px;height:8px;border-radius:50%;background:var(--green)}
 .map .c-from{top:18%;left:10%}
 .map .c-to{bottom:16%;right:8%}
+.route-mini{display:none}
 
 /* ---------- RIDE OPTIONS (Uber selector) ---------- */
 .sec{padding:clamp(58px,8vw,96px) 0}
@@ -323,6 +324,11 @@ footer a:hover{color:#fff}
 @media(max-width:860px){
   .hero-grid{grid-template-columns:1fr;gap:30px;padding:36px 0 48px}
   .hero .map{display:none}
+  .route-mini{display:flex;align-items:center;gap:9px;margin-top:16px}
+  .route-mini svg{width:50px;height:27px;flex:0 0 auto}
+  .route-mini .rm-dash{flex:1;height:0;border-top:2px dashed var(--green)}
+  .route-mini .rm-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .route-mini .rm-chip .g{width:7px;height:7px;border-radius:50%;background:var(--green)}
   .book{max-width:none}
   .steps,.revs{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr 1fr;gap:24px}
@@ -427,12 +433,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
           <div class="resp"><span class="dot"></span>Rispondiamo in <b>&nbsp;2–5 minuti&nbsp;</b> · operatore reale</div>
           <div class="tstrip" aria-label="Garanzie"><span>Cancellazione gratuita</span><span>Voli monitorati</span><span>Attesa inclusa</span><span>Paghi a fine corsa</span></div>
         </div>
+        <div class="route-mini" aria-hidden="true">
+          <span class="rm-chip"><span class="g"></span>Malpensa</span>
+          <span class="rm-dash"></span>
+          <svg viewBox="0 0 104 68"><path fill="#000" d="M14.5 49.2 C12.4 48.9 11.3 47 11.7 44.4 C12 42.4 13.4 41.2 15.8 40.9 L18.4 40.6 L18.8 31.6 C18.9 29.4 20.3 28.1 22.7 28 L55 27.6 C59.8 27.7 63.9 29.4 67.4 32.6 L70.6 35.4 L81.3 36.7 C87.4 37.5 91.1 39.5 91.8 42.7 C92.4 45.4 91.1 47.6 88.3 48.1 L85 48.4 A9 9 0 0 1 66.9 48.7 L43.7 48.7 A9 9 0 0 1 25.6 48.7 Z"/><path fill="var(--bg)" d="M22 38.4 L22.2 31.2 C22.2 30.5 22.7 30.1 23.5 30.1 L33.8 30 L33.8 38.3 Z"/><path fill="var(--bg)" d="M36.3 30 L49.5 29.9 L49.5 38.2 L36.3 38.3 Z"/><path fill="var(--bg)" d="M52 29.9 L52 38.1 L68.1 37.5 C65 33.7 60.9 30.3 55.9 29.9 Z"/><circle cx="34.7" cy="49" r="7.4" fill="#000"/><circle cx="34.7" cy="49" r="3.3" fill="var(--bg)"/><circle cx="34.7" cy="49" r="0.9" fill="#000"/><circle cx="76" cy="49" r="7.4" fill="#000"/><circle cx="76" cy="49" r="3.3" fill="var(--bg)"/><circle cx="76" cy="49" r="0.9" fill="#000"/></svg>
+          <span class="rm-dash"></span>
+          <span class="rm-chip">Milano</span>
+        </div>
       </div>
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice">
           <path d="M70 90 C 150 120, 160 230, 250 250 S 340 300, 330 330" stroke="#19b95a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
-          
-          
+          <g transform="translate(255 252) rotate(102)"><rect x="-14.5" y="-26" width="29" height="52" rx="10" fill="#fff"/><rect x="-12" y="-23.5" width="24" height="47" rx="8.5" fill="#000"/><path d="M-8.5 -10.5 Q0 -15.5 8.5 -10.5 L8.5 -4.5 Q0 -9 -8.5 -4.5 Z" fill="#fff"/><path d="M-7.5 13 Q0 16.5 7.5 13 L7.5 17.5 Q0 20 -7.5 17.5 Z" fill="#fff" opacity=".75"/></g>
         </svg>
         <div class="chip c-from"><span class="g"></span>Malpensa T1</div>
         <div class="chip c-to">Milano centro</div>
