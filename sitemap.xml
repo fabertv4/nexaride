@@ -511,4 +511,40 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-lake-maggiore-transfer.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-lago-maggiore.html"/>
   </url>
+  <url>
+    <loc>https://nexaride.it/transfer-milano-montecarlo.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-milano-montecarlo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-monaco-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-montecarlo.html"/>
+  </url>
+  <url>
+    <loc>https://nexaride.it/en/milan-monaco-transfer.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-milano-montecarlo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-monaco-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-montecarlo.html"/>
+  </url>
+  <url>
+    <loc>https://nexaride.it/transfer-milano-nizza.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-milano-nizza.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-nice-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-nizza.html"/>
+  </url>
+  <url>
+    <loc>https://nexaride.it/en/milan-nice-transfer.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-milano-nizza.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-nice-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-nizza.html"/>
+  </url>
 </urlset>
