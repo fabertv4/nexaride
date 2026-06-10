@@ -157,6 +157,10 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta svg{width:15px;height:15px}
 .burger{display:none;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
+.rel{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:900px}
+.rel a{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--r-card);padding:18px 20px;font-weight:800;font-size:16px;transition:border-color .18s,transform .12s var(--ease)}
+.rel a:hover{border-color:var(--ink)}
+.rel a:active{transform:scale(.99)}
 @media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
 
 /* drawer */
@@ -611,6 +615,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     <div class="contact rv">+39 352 029 4857 · <a href="mailto:info@nexaride.it">info@nexaride.it</a></div>
   </div>
 </section>
+
+<!-- RELATED -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Plan your trip</h2></div>
+    <div class="rel rv">
+      <a href="/en/milan-bellagio-transfer.html">→ Bellagio transfer</a>
+      <a href="/en/milan-varenna-transfer.html">→ Varenna transfer</a>
+      <a href="/en/milan-lake-garda-transfer.html">→ Lake Garda transfer</a>
+      <a href="/en/bergamo-airport-transfer.html">→ Bergamo Airport transfer</a>
+    </div>
+  </div>
+</section>
+
 
 </main>
 
