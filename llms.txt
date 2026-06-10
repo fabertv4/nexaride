@@ -40,6 +40,9 @@
 - [Transfer Milano - Varenna](https://nexaride.it/transfer-milano-varenna.html): NCC per Varenna (lato est lago) — alternativa al treno Trenord
 - [Transfer Milano - Portofino](https://nexaride.it/transfer-milano-portofino.html): NCC privato per Portofino e Santa Margherita Ligure — treno vs transfer, accesso al borgo (ZTL) e hotel della Riviera
 - [Transfer Milano - Lago di Garda](https://nexaride.it/transfer-milano-lago-di-garda.html): NCC privato per Sirmione, Desenzano, Peschiera e tutto il Garda — treno vs transfer privato, entrambe le sponde, famiglie
+- [Transfer Milano - Lago Maggiore](https://nexaride.it/transfer-milano-lago-maggiore.html): NCC privato per Stresa, Baveno, Verbania, Arona e le Isole Borromee — Stresa a ~45-50 min da Malpensa
+- [Transfer Milano - Zermatt](https://nexaride.it/transfer-milano-zermatt.html): transfer privato fino al Matterhorn Terminal di Tasch (Zermatt e' car-free) — sci, Cervino, treno vs auto
+- [Transfer Milano - St. Moritz](https://nexaride.it/transfer-milano-st-moritz.html): NCC privato per l'Engadina via passo Maloja — Bernina Express vs transfer diretto, hotel storici
 - [NCC vs Taxi a Milano](https://nexaride.it/ncc-vs-taxi-milano.html): differenze, quando conviene cosa
 - [Transfer Business Milano 24/7](https://nexaride.it/transfer-business-milano-24h.html): servizio NCC business 24h, meeting, eventi, fatturazione
 - [Transfer Milano - Serravalle Designer Outlet](https://nexaride.it/transfer-milano-serravalle-outlet.html): NCC privato per l'outlet di Serravalle Scrivia, andata e ritorno
@@ -56,6 +59,9 @@
 - [Milan to Varenna transfer](https://nexaride.it/en/milan-varenna-transfer.html): Lake Como east shore — alternative to Trenord train
 - [Milan to Portofino transfer](https://nexaride.it/en/milan-portofino-transfer.html): private chauffeur to Portofino and Santa Margherita Ligure (Italian Riviera), train vs private compared
 - [Milan to Lake Garda transfer](https://nexaride.it/en/milan-lake-garda-transfer.html): private chauffeur from Milan or Bergamo Airport to Sirmione, Desenzano, Peschiera and both shores of Lake Garda, train vs private compared
+- [Milan to Lake Maggiore transfer](https://nexaride.it/en/milan-lake-maggiore-transfer.html): private chauffeur to Stresa, Baveno, Verbania, Arona and the Borromean Islands — Stresa is ~45-50 min from Malpensa
+- [Milan to Zermatt transfer](https://nexaride.it/en/milan-zermatt-transfer.html): private transfer to the Matterhorn Terminal in Tasch (Zermatt is car-free), ski luggage welcome
+- [Milan to St. Moritz transfer](https://nexaride.it/en/milan-st-moritz-transfer.html): private chauffeur to the Engadin via Maloja Pass — Bernina Express vs direct transfer compared
 - [Private chauffeur vs taxi in Milan](https://nexaride.it/en/private-chauffeur-vs-taxi-milan.html): NCC explained for international travellers, when to choose what
 - [Milan Business Transfer 24/7](https://nexaride.it/en/milan-business-transfer-24-7.html): dedicated chauffeur for companies, invoicing, English-speaking drivers
 - [Milan to Serravalle Outlet transfer](https://nexaride.it/en/milan-serravalle-outlet-transfer.html): private transfer to Serravalle Designer Outlet
@@ -65,9 +71,11 @@
 
 - [Transfer Linate - Malpensa](https://nexaride.it/transfer-linate-malpensa.html): tratta diretta tra i due scali milanesi (LIN<->MXP), bidirezionale, per coincidenze e cambio aeroporto
 - [Transfer Torino - Malpensa](https://nexaride.it/transfer-torino-malpensa.html): collegamento privato Torino<->Malpensa (andata e ritorno), alternativa a treno e pullman SADEM
+- [Transfer Lugano - Malpensa](https://nexaride.it/transfer-lugano-malpensa.html): collegamento privato Lugano<->Malpensa via Gaggiolo, business transfrontaliero, alternativa al treno TILO S50
 - [Transfer Malpensa - Orio al Serio](https://nexaride.it/transfer-malpensa-orio-al-serio.html): tratta inter-aeroporto Malpensa<->Bergamo Orio al Serio (MXP<->BGY), bidirezionale
 - [Linate to Malpensa transfer (EN)](https://nexaride.it/en/linate-malpensa-transfer.html): direct private transfer between Milan's two airports
 - [Turin to Malpensa transfer (EN)](https://nexaride.it/en/turin-malpensa-transfer.html): private Turin<->Malpensa airport connection
+- [Lugano to Malpensa transfer (EN)](https://nexaride.it/en/lugano-malpensa-transfer.html): private Lugano<->Malpensa airport connection, recurring business service, TILO S50 train compared
 - [Malpensa to Bergamo airport transfer (EN)](https://nexaride.it/en/malpensa-bergamo-airport-transfer.html): inter-airport transfer Malpensa<->Bergamo Orio al Serio
 
 ## Quanto costa il taxi a Milano (tariffe ufficiali + alternativa NCC)
