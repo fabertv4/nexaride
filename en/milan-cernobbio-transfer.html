@@ -165,7 +165,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta{font-size:14px;font-weight:700;color:#fff;background:var(--ink);padding:9px 16px;border-radius:var(--r);display:inline-flex;align-items:center;gap:7px;transition:background .2s}
 .nav-cta:hover{background:#262626}
 .nav-cta svg{width:15px;height:15px}
-.burger{display:none;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
+.burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
 @media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
 
@@ -364,6 +364,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   <div class="nav">
     <a href="/en/" class="brand">NexaRide</a>
     <nav class="nav-links">
+      <a href="#" aria-haspopup="dialog" onclick="toggleMenu(true);return false">Destinations</a>
       <a href="/en/milan-lake-como-transfer.html">Lake Como</a>
       <a href="/en/milan-airports-comparison.html">Airports</a>
       <a href="#hotels">Villa d'Este</a>
@@ -393,11 +394,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <a href="/en/bergamo-airport-transfer.html">Bergamo <span class="iata">BGY</span></a>
 <a href="/en/milan-business-transfer-24-7.html">Business 24/7</a>
 </div>
-<div class="dgroup"><h4>Lake Como</h4>
+<div class="dgroup"><h4>Lakes</h4>
 <a href="/en/milan-lake-como-transfer.html">Lake Como</a>
 <a href="/en/milan-bellagio-transfer.html">Bellagio</a>
 <a href="/en/milan-cernobbio-transfer.html">Cernobbio</a>
 <a href="/en/milan-varenna-transfer.html">Varenna</a>
+<a href="/en/milan-lake-garda-transfer.html">Lake Garda</a>
+<a href="/en/milan-lake-maggiore-transfer.html">Lake Maggiore</a>
+</div>
+<div class="dgroup"><h4>Alps &amp; Switzerland</h4>
+<a href="/en/milan-zermatt-transfer.html">Zermatt</a>
+<a href="/en/milan-st-moritz-transfer.html">St. Moritz</a>
+<a href="/en/lugano-malpensa-transfer.html">Lugano</a>
+</div>
+<div class="dgroup"><h4>Riviera</h4>
+<a href="/en/milan-portofino-transfer.html">Portofino</a>
+<a href="/en/milan-monaco-transfer.html">Monte Carlo</a>
+<a href="/en/milan-nice-transfer.html">Nice</a>
 </div>
 <div class="dgroup"><h4>Shopping</h4>
 <a href="/en/milan-serravalle-outlet-transfer.html">Serravalle Outlet</a>

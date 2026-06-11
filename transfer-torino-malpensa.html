@@ -165,7 +165,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta{font-size:14px;font-weight:700;color:#fff;background:var(--ink);padding:9px 16px;border-radius:var(--r);display:inline-flex;align-items:center;gap:7px;transition:background .2s}
 .nav-cta:hover{background:#262626}
 .nav-cta svg{width:15px;height:15px}
-.burger{display:none;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
+.burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
 @media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
 
@@ -405,6 +405,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   <div class="nav">
     <a href="/" class="brand">NexaRide</a>
     <nav class="nav-links">
+      <a href="#" aria-haspopup="dialog" onclick="toggleMenu(true);return false">Destinazioni</a>
       <a href="#distanze">Distanze</a>
       <a href="#tratta">Tratta</a>
       <a href="#veicoli">Veicoli</a>
@@ -435,13 +436,25 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       <a href="/transfer-torino-malpensa.html">Torino - Malpensa</a>
       <a href="confronto-aeroporti-milano.html">Confronto aeroporti</a>
     </div>
-    <div class="dgroup"><h4>Lago di Como</h4>
-      <a href="transfer-milano-lago-di-como.html">Lago di Como</a>
-      <a href="transfer-milano-bellagio.html">Bellagio</a>
-      <a href="transfer-milano-cernobbio.html">Cernobbio</a>
-      <a href="transfer-milano-varenna.html">Varenna</a>
-    </div>
-    <div class="dgroup"><h4>Shopping</h4>
+    <div class="dgroup"><h4>Laghi</h4>
+<a href="/transfer-milano-lago-di-como.html">Lago di Como</a>
+<a href="/transfer-milano-bellagio.html">Bellagio</a>
+<a href="/transfer-milano-cernobbio.html">Cernobbio</a>
+<a href="/transfer-milano-varenna.html">Varenna</a>
+<a href="/transfer-milano-lago-di-garda.html">Lago di Garda</a>
+<a href="/transfer-milano-lago-maggiore.html">Lago Maggiore</a>
+</div>
+<div class="dgroup"><h4>Alpi e Svizzera</h4>
+<a href="/transfer-milano-zermatt.html">Zermatt</a>
+<a href="/transfer-milano-st-moritz.html">St. Moritz</a>
+<a href="/transfer-lugano-malpensa.html">Lugano</a>
+</div>
+<div class="dgroup"><h4>Riviera</h4>
+<a href="/transfer-milano-portofino.html">Portofino</a>
+<a href="/transfer-milano-montecarlo.html">Montecarlo</a>
+<a href="/transfer-milano-nizza.html">Nizza</a>
+</div>
+<div class="dgroup"><h4>Shopping</h4>
 <a href="/transfer-milano-serravalle-outlet.html">Serravalle Outlet</a>
 <a href="/transfer-milano-foxtown-mendrisio.html">FoxTown Mendrisio</a>
 </div>
