@@ -62,7 +62,7 @@
   "address":{"@type":"PostalAddress","streetAddress":"Via Dante 49","addressLocality":"Sesto San Giovanni","addressRegion":"Lombardia","postalCode":"20099","addressCountry":"IT"},
   "areaServed":[{"@type":"AdministrativeArea","name":"Milano"},{"@type":"AdministrativeArea","name":"Lombardia"}],
   "serviceType":"NCC / Chauffeur / Private Transfers",
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"18","bestRating":"5","worstRating":"1"},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"24","bestRating":"5","worstRating":"1"},
   "review":[
     {"@type":"Review","author":{"@type":"Person","name":"Francesca Lorena"},"datePublished":"2026-05-08","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Ottimo servizio, puntuali, puliti e precisi. Consigliato."},
     {"@type":"Review","author":{"@type":"Person","name":"Nils Ides"},"datePublished":"2026-05-16","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"We had 2 big bike boxes to transfer from Milano to Bergamo airport and everything went perfect. Thank you very much to the driver."},
@@ -657,7 +657,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 </div>
 
 <script>
-  function trackWa(id){ if(typeof gtag==='function'){try{gtag('event','wa_click',{cta_id:id});}catch(e){}} }
+  function trackWa(id){ if(typeof gtag==='function'){try{gtag('event','wa_click',{cta_id:id,page_path:location.pathname,lang:'it'});}catch(e){}} }
   window.selectedVeh='Comfort';
   window.waBuildText=function(data){
     data=data||{};
@@ -677,7 +677,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     trackWa(ctaId||'wa_cta');
     var url='https://wa.me/393520294857?text='+encodeURIComponent(customText||waBuildText());
     // conversione fire-and-forget: apriamo _blank, la pagina non si scarica -> il beacon parte comunque
-    if(typeof gtag==='function'){ try{ gtag('event','conversion',{send_to:'AW-18088830060/zU46CMmO9ZwcEOzItrFD'}); }catch(e){} }
+    if(typeof gtag==='function'){ var nxc=false; try{nxc=!!sessionStorage.getItem('nx_conv');}catch(e){} if(!nxc){ try{sessionStorage.setItem('nx_conv','1');}catch(e){} try{ gtag('event','conversion',{send_to:'AW-18088830060/zU46CMmO9ZwcEOzItrFD'}); }catch(e){} } }
     // apertura SINCRONA dentro il gesto-click (anti popup-blocker iOS); window.open e' monkey-patchato per iniettare il Ref gclid
     window.open(url,'_blank');
     return false;
