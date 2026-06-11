@@ -6,6 +6,13 @@
 <title>Pagina non trovata · NexaRide</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
+try{ if(localStorage.getItem('nx_consent')==='granted'){ gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'}); } }catch(e){}
+gtag('js',new Date());gtag('config','G-H29QWWJ7MV');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H29QWWJ7MV"></script>
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format("woff2")}
@@ -30,22 +37,22 @@ h1{font-size:clamp(28px,7vw,40px);font-weight:800;letter-spacing:-.02em;margin:1
 </style>
 </head>
 <body>
-<div class="wrap">
+<main class="wrap">
   <div class="brand">NexaRide</div>
   <div class="code">Errore 404</div>
   <h1>Pagina non trovata</h1>
   <p class="sub">La pagina che cerchi non esiste o è stata spostata.</p>
-  <p class="sub en">This page doesn’t exist or has moved.</p>
-  <a class="btn" href="https://wa.me/393520294857">
+  <p class="sub en" lang="en">This page doesn’t exist or has moved.</p>
+  <a class="btn" href="https://wa.me/393520294857" onclick="try{gtag('event','wa_click',{cta_id:'404_cta',page_path:location.pathname,lang:'it'});}catch(e){}">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
     Scrivici su WhatsApp
   </a>
-  <div class="links">
+  <nav class="links" aria-label="Pagine principali">
     <a href="/malpensa-transfer.html">Transfer Malpensa</a>
     <a href="/linate-transfer.html">Transfer Linate</a>
     <a href="/orio-al-serio-transfer.html">Transfer Orio al Serio</a>
-  </div>
-  <div class="home"><a href="/">← Torna alla home</a> · <a href="/en/">English version</a></div>
-</div>
+  </nav>
+  <div class="home"><a href="/">← Torna alla home</a> · <a href="/en/" hreflang="en">English version</a></div>
+</main>
 </body>
 </html>

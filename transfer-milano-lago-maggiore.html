@@ -40,7 +40,7 @@
 <meta property="og:title" content="Transfer Milano - Lago Maggiore con autista privato">
 <meta property="og:description" content="NCC privato da Milano e Malpensa verso Stresa, Verbania, Arona e le Isole Borromee. Porta-a-porta, preventivo fisso su WhatsApp.">
 <meta property="og:url" content="https://nexaride.it/transfer-milano-lago-maggiore.html">
-<meta property="og:image" content="https://nexaride.it/classeE_apple.webp">
+<meta property="og:image" content="https://nexaride.it/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
 <meta property="og:image:alt" content="NexaRide - Mercedes Classe E - Transfer privato Milano">
@@ -51,14 +51,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Transfer Milano - Lago Maggiore con autista privato | NexaRide">
 <meta name="twitter:description" content="NCC privato per Stresa, Verbania, Arona e le Isole Borromee da Milano e Malpensa. Preventivo fisso su WhatsApp.">
-<meta name="twitter:image" content="https://nexaride.it/classeE_apple.webp">
+<meta name="twitter:image" content="https://nexaride.it/og-cover.jpg">
 
 <!-- JSON-LD: LocalBusiness + AggregateRating + Review -->
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"LocalBusiness","name":"NexaRide","url":"https://nexaride.it/",
+  "@context":"https://schema.org","@type":"LocalBusiness","@id":"https://nexaride.it/#business","name":"NexaRide","url":"https://nexaride.it/",
   "telephone":"+39 352 029 4857","email":"info@nexaride.it","vatID":"IT13589310963","priceRange":"€€","sameAs":["https://g.page/r/CQ1o0oYqzXMcEBM"],
-  "image":["https://nexaride.it/classeE_apple.webp","https://nexaride.it/classeV_apple.webp","https://nexaride.it/rav4_apple.webp"],
+  "image":["https://nexaride.it/og-cover.jpg","https://nexaride.it/classeV_apple.webp","https://nexaride.it/rav4_apple.webp"],
   "address":{"@type":"PostalAddress","streetAddress":"Via Dante 49","addressLocality":"Sesto San Giovanni","addressRegion":"Lombardia","postalCode":"20099","addressCountry":"IT"},
   "areaServed":[{"@type":"AdministrativeArea","name":"Milano"},{"@type":"AdministrativeArea","name":"Lombardia"},{"@type":"Place","name":"Stresa"},{"@type":"Place","name":"Verbania"},{"@type":"Place","name":"Arona"}],
   "serviceType":"NCC / Chauffeur / Private Transfers",
@@ -101,9 +101,8 @@
 {
   "@context":"https://schema.org","@type":"TaxiService","name":"NexaRide — Transfer NCC Milano - Lago Maggiore",
   "description":"Servizio NCC privato da Milano e dagli aeroporti verso Stresa, Baveno, Verbania, Arona e Angera. Servizio porta-a-porta, monitoraggio voli, a disposizione orario. Prenotazione su WhatsApp.",
-  "provider":{"@type":"LocalBusiness","name":"NexaRide","url":"https://nexaride.it/","telephone":"+39 352 029 4857"},
-  "areaServed":[{"@type":"City","name":"Milano"},{"@type":"Place","name":"Stresa"},{"@type":"Place","name":"Baveno"},{"@type":"Place","name":"Verbania"},{"@type":"Place","name":"Arona"},{"@type":"Place","name":"Angera"},{"@type":"Airport","name":"Aeroporto di Milano-Malpensa","iataCode":"MXP"},{"@type":"Airport","name":"Aeroporto di Milano-Linate","iataCode":"LIN"},{"@type":"Airport","name":"Aeroporto di Milano-Bergamo Orio al Serio","iataCode":"BGY"}],
-  "offers":{"@type":"Offer","priceCurrency":"EUR","availability":"https://schema.org/InStock"}
+  "provider":{"@id":"https://nexaride.it/#business"},
+  "areaServed":[{"@type":"City","name":"Milano"},{"@type":"Place","name":"Stresa"},{"@type":"Place","name":"Baveno"},{"@type":"Place","name":"Verbania"},{"@type":"Place","name":"Arona"},{"@type":"Place","name":"Angera"},{"@type":"Airport","name":"Aeroporto di Milano-Malpensa","iataCode":"MXP"},{"@type":"Airport","name":"Aeroporto di Milano-Linate","iataCode":"LIN"},{"@type":"Airport","name":"Aeroporto di Milano-Bergamo Orio al Serio","iataCode":"BGY"}]
 }
 </script>
 
@@ -179,7 +178,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .drawer-x{background:var(--surf);border:0;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;line-height:1}
 .dgroup{padding:16px 0;border-bottom:1px solid var(--line)}
-.dgroup h4{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.dgroup .h4t{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .dgroup a{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:19px;font-weight:700}
 .dgroup a:hover{opacity:.6}
 .dgroup a .iata{font-size:12px;font-weight:700;color:var(--mut)}
@@ -343,7 +342,7 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
 footer{background:var(--ink);color:#a7a7a7;font-size:14px;padding:54px 0 36px;border-top:1px solid #1c1c1c}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:26px;padding-bottom:30px;border-bottom:1px solid #232323}
 footer .brand{color:#fff;font-size:22px;margin-bottom:10px}
-footer h4{color:#fff;font-size:13px;font-weight:700;margin:0 0 12px}
+footer .h4t{color:#fff;font-size:13px;font-weight:700;margin:0 0 12px}
 footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
 footer a:hover{color:#fff}
 .fbot{padding-top:22px}
@@ -417,7 +416,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
         WhatsApp
       </a>
-      <button type="button" class="burger" aria-label="Apri menu" aria-expanded="false" onclick="toggleMenu(true)"><span></span><span></span><span></span></button>
+      <button type="button" class="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="drawer" onclick="toggleMenu(true)"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -426,13 +425,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <div class="drawer-ov" id="drawer" onclick="if(event.target===this)toggleMenu(false)">
   <aside class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer-head"><span class="brand">NexaRide</span><button type="button" class="drawer-x" aria-label="Chiudi" onclick="toggleMenu(false)">&times;</button></div>
-    <div class="dgroup"><h4>Aeroporti</h4>
+    <div class="dgroup"><p class="h4t">Aeroporti</p>
       <a href="malpensa-transfer.html">Malpensa <span class="iata">MXP</span></a>
       <a href="linate-transfer.html">Linate <span class="iata">LIN</span></a>
       <a href="orio-al-serio-transfer.html">Orio al Serio <span class="iata">BGY</span></a>
       <a href="transfer-business-milano-24h.html">Business 24h</a>
     </div>
-    <div class="dgroup"><h4>Laghi</h4>
+    <div class="dgroup"><p class="h4t">Laghi</p>
 <a href="/transfer-milano-lago-di-como.html">Lago di Como</a>
 <a href="/transfer-milano-bellagio.html">Bellagio</a>
 <a href="/transfer-milano-cernobbio.html">Cernobbio</a>
@@ -440,27 +439,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <a href="/transfer-milano-lago-di-garda.html">Lago di Garda</a>
 <a href="/transfer-milano-lago-maggiore.html">Lago Maggiore</a>
 </div>
-<div class="dgroup"><h4>Alpi e Svizzera</h4>
+<div class="dgroup"><p class="h4t">Alpi e Svizzera</p>
 <a href="/transfer-milano-zermatt.html">Zermatt</a>
 <a href="/transfer-milano-st-moritz.html">St. Moritz</a>
 <a href="/transfer-lugano-malpensa.html">Lugano</a>
 </div>
-<div class="dgroup"><h4>Riviera</h4>
+<div class="dgroup"><p class="h4t">Riviera</p>
 <a href="/transfer-milano-portofino.html">Portofino</a>
 <a href="/transfer-milano-montecarlo.html">Montecarlo</a>
 <a href="/transfer-milano-nizza.html">Nizza</a>
 </div>
-<div class="dgroup"><h4>Shopping</h4>
+<div class="dgroup"><p class="h4t">Shopping</p>
 <a href="/transfer-milano-serravalle-outlet.html">Serravalle Outlet</a>
 <a href="/transfer-milano-foxtown-mendrisio.html">FoxTown Mendrisio</a>
 </div>
-<div class="dgroup"><h4>Guide</h4>
+<div class="dgroup"><p class="h4t">Guide</p>
       <a href="confronto-aeroporti-milano.html">Confronto aeroporti</a>
       <a href="come-arrivare-malpensa-milano.html">Come arrivare a Malpensa</a>
       <a href="prezzi-transfer-milano.html">Prezzi transfer</a>
       <a href="ncc-vs-taxi-milano.html">NCC o taxi?</a>
     </div>
-    <div class="dgroup"><h4>Lingua</h4>
+    <div class="dgroup"><p class="h4t">Lingua</p>
       <a href="/en/milan-lake-maggiore-transfer.html" hreflang="en">English version</a>
     </div>
     <a href="https://wa.me/393520294857" class="btn btn-dark drawer-cta" onclick="return waOpen('drawer_cta')">Scrivici su WhatsApp</a>
@@ -668,7 +667,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
             <div class="f"><label for="f-ora">Ora</label><input id="f-ora" type="time" step="300"></div>
           </div>
           <div class="brow">
-            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6+">6+</option></select></div>
             <div class="f"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
           </div>
           <button type="button" class="btn btn-wa" onclick="sendBoard('form_section')">
@@ -701,7 +700,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     <div class="revs">
       <div class="rev rv"><div class="st">★★★★★</div><p>“Ottimo servizio, puntuali, puliti e precisi. Consigliato.”</p><div class="who"><b>Francesca Lorena</b>Recensione Google</div></div>
       <div class="rev rv"><div class="st">★★★★★</div><p>“We had 2 big bike boxes to transfer from Milano to Bergamo airport and everything went perfect.”</p><div class="who"><b>Nils Ides</b>Google review</div></div>
-      <div class="rev rv"><div class="st">★★★★★</div><p>“Prenotato un transfer tramite il sito, tutto perfetto dall'inizio alla fine.”</p><div class="who"><b>Megghi</b>Recensione Google</div></div>
+      <div class="rev rv"><div class="st">★★★★★</div><p>“Complimenti. Prenotato un servizio transfer tramite il sito, e il driver era puntuale e preciso.”</p><div class="who"><b>Megghi</b>Recensione Google</div></div>
     </div>
   </div>
 </section>
@@ -748,19 +747,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div><div class="brand">NexaRide</div><p>Servizio NCC a Milano. Transfer aeroporti, business e turismo con autista privato. Specialisti del Lago di Como.</p></div>
-      <div><h4>Aeroporti</h4><ul>
+      <div><div class="brand">NexaRide</div><p>Servizio NCC a Milano. Transfer aeroporti, business e turismo con autista privato.</p></div>
+      <div><p class="h4t">Aeroporti</p><ul>
         <li><a href="malpensa-transfer.html">Malpensa</a></li>
         <li><a href="linate-transfer.html">Linate</a></li>
         <li><a href="orio-al-serio-transfer.html">Orio al Serio</a></li>
       </ul></div>
-      <div><h4>Lago di Como</h4><ul>
+      <div><p class="h4t">Lago di Como</p><ul>
         <li><a href="transfer-milano-lago-di-como.html">Lago di Como</a></li>
         <li><a href="transfer-milano-bellagio.html">Bellagio</a></li>
         <li><a href="transfer-milano-cernobbio.html">Cernobbio</a></li>
         <li><a href="transfer-milano-varenna.html">Varenna</a></li>
       </ul></div>
-      <div><h4>Contatti</h4><ul>
+      <div><p class="h4t">Contatti</p><ul>
         <li><a href="https://wa.me/393520294857" onclick="return waOpen('footer_cta')">WhatsApp</a></li>
         <li><a href="mailto:info@nexaride.it">info@nexaride.it</a></li>
         <li><a href="/en/milan-lake-maggiore-transfer.html" hreflang="en">🇬🇧 English</a></li>
@@ -814,13 +813,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   };
   window.pickRide=function(btn){
     window.selectedVeh=btn.getAttribute('data-veh');
-    document.querySelectorAll('#rides .ride').forEach(function(b){b.classList.toggle('on',b===btn);});
+    document.querySelectorAll('#rides .ride').forEach(function(b){b.classList.toggle('on',b===btn);b.setAttribute('aria-pressed',b===btn?'true':'false');});
     var sel=document.getElementById('f-veh-sel'); if(sel)sel.value=window.selectedVeh;
   };
   window.syncVehFromForm=function(v){
     window.selectedVeh=v;
-    document.querySelectorAll('#rides .ride').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-veh')===v);});
+    document.querySelectorAll('#rides .ride').forEach(function(b){var on=b.getAttribute('data-veh')===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');});
   };
+  document.querySelectorAll('#rides .ride').forEach(function(b){b.setAttribute('aria-pressed',b.classList.contains('on')?'true':'false');});
   // --- vincolo capienza veicolo in base ai passeggeri (Comfort/Business 4, Van 7, Lux 3) ---
   (function(){
     var CAP={Comfort:4,Business:4,Van:7,Lux:3};
@@ -857,7 +857,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     }
     waOpen(cta||'hero_form', waBuildText({from:da,to:a,pax:pax,when:whenStr,veh:window.selectedVeh}));
   }
-  window.toggleMenu=function(open){var d=document.getElementById('drawer'),b=document.querySelector('.burger');d.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',open?'true':'false');document.body.style.overflow=open?'hidden':'';};
+  window.toggleMenu=function(open){var d=document.getElementById('drawer'),b=document.querySelector('.burger');d.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',open?'true':'false');document.body.style.overflow=open?'hidden':'';if(open){window.__nxFoc=document.activeElement;setTimeout(function(){var x=d.querySelector('.drawer-x');if(x)x.focus();},120);}else if(window.__nxFoc){try{window.__nxFoc.focus();}catch(e){}window.__nxFoc=null;}};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
   if(location.search.indexOf('menu=open')>=0){try{toggleMenu(true);}catch(e){}}
 
@@ -888,7 +888,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     if(g){ localStorage.setItem('nexaride_gclid',g); localStorage.setItem('nexaride_gclid_at',String(Date.now())); localStorage.setItem('nexaride_gclid_landing',location.pathname); }
   }catch(e){}
   function tail(){ try{ var g=localStorage.getItem('nexaride_gclid'); if(!g)return ''; var at=parseInt(localStorage.getItem('nexaride_gclid_at')||'0',10); if(Date.now()-at>30*24*3600*1000)return ''; return '\n\nRef: '+g; }catch(e){return '';} }
-  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var dec; try{dec=decodeURIComponent(url);}catch(e){dec=url;} if(dec.indexOf('Ref:')>=0)return url; return url+encodeURIComponent(t); }catch(e){return url;} }
+  function add(url){ try{ if(typeof url!=='string')return url; if(url.indexOf('wa.me')<0&&url.indexOf('whatsapp.com')<0)return url; var t=tail(); if(!t)return url; var dec; try{dec=decodeURIComponent(url);}catch(e){dec=url;} if(dec.indexOf('Ref:')>=0)return url; if(dec.indexOf('text=')<0)return url+(url.indexOf('?')<0?'?':'&')+'text='+encodeURIComponent(t.trim()); return url+encodeURIComponent(t); }catch(e){return url;} }
   window.appendGclidToWaUrl=add;
   var o=window.open; window.open=function(url){ return o.call(this, add(url), arguments[1], arguments[2]); };
 })();

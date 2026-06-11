@@ -12,8 +12,8 @@
 
 ## Recensioni e trust signals
 
-- **Google Reviews**: profilo aziendale con valutazione 5,0/5 su 18 recensioni reali. Cerca "NexaRide" su Google Maps.
-- **AggregateRating schema**: dichiarato sul sito (Schema.org/LocalBusiness) con dati delle 18 recensioni 5★ Google.
+- **Google Reviews**: profilo aziendale con valutazione 5,0/5 su 24 recensioni reali. Cerca "NexaRide" su Google Maps.
+- **AggregateRating schema**: dichiarato sul sito (Schema.org/LocalBusiness) con dati delle 24 recensioni 5★ Google.
 
 ## Pagine principali
 
