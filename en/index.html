@@ -221,7 +221,25 @@ a.taxi-note:hover{background:var(--surf-2)}
   font-size:13px;font-weight:700;box-shadow:0 8px 22px -10px rgba(0,0,0,.3);display:flex;align-items:center;gap:7px}
 .map .chip .g{width:8px;height:8px;border-radius:50%;background:var(--green)}
 .map .c-from{top:18%;left:10%}
-.map .c-to{bottom:16%;right:8%}
+.map .c-bgy{top:15%;right:5%}
+.map .c-lin{top:62%;right:5%}
+.map .c-to{left:50%;top:53.75%;transform:translate(-50%,-135%)}
+/* hub-and-spoke car: rounds MXP/BGY/LIN <-> Milan centre */
+.map .nx-car{transform:translate(152px,165px) rotate(146deg)}
+@supports (offset-path:path('M0 0 H1')){
+  @media (prefers-reduced-motion:no-preference){
+    .map .nx-car{transform:none;offset-rotate:auto;offset-path:path('M92 108 C148 118,160 188,200 215 C236 231,278 248,302 252 C278 248,236 231,200 215 C250 190,294 150,310 116 C294 150,250 190,200 215 C160 188,148 118,92 108');animation:nx-mapdrive 26s ease-in-out infinite}
+  }
+}
+@keyframes nx-mapdrive{
+  0%,3.5%{offset-distance:0%}
+  18.3%,21.8%{offset-distance:18.7%}
+  32.2%,35.7%{offset-distance:31.8%}
+  46.1%,49.6%{offset-distance:44.9%}
+  64%,67.5%{offset-distance:63.1%}
+  81.8%,85.3%{offset-distance:81.2%}
+  100%{offset-distance:100%}
+}
 .route-mini{display:none}
 
 /* ---------- RIDE OPTIONS (Uber selector) ---------- */
@@ -318,8 +336,9 @@ footer a:hover{color:#fff}
   .hero-grid{grid-template-columns:1fr;gap:30px;padding:36px 0 48px}
   .hero .map{display:none}
   .route-mini{display:flex;align-items:center;gap:9px;margin-top:16px}
-  .route-mini svg{width:50px;height:27px;flex:0 0 auto}
-  .route-mini .rm-dash{flex:1;height:0;border-top:2px dashed var(--green)}
+  .route-mini .rm-track{flex:1;position:relative;height:27px}
+  .route-mini .rm-track::before{content:"";position:absolute;left:4px;right:4px;top:13px;border-top:2px dashed var(--green)}
+  .route-mini svg{width:50px;height:27px;position:absolute;top:0;left:calc(50% - 25px)}
   .route-mini .rm-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
   .route-mini .rm-chip .g{width:7px;height:7px;border-radius:50%;background:var(--green)}
   .book{max-width:none}
@@ -329,6 +348,17 @@ footer a:hover{color:#fff}
   body{padding-bottom:80px}
   .ride .thumb{width:82px;height:56px}
   .ride .price{display:none}
+}
+/* route-mini car: shuttles MXP <-> Milan (both directions) */
+@media(max-width:860px) and (prefers-reduced-motion:no-preference){
+  .route-mini svg{animation:rm-drive 8s ease-in-out infinite}
+}
+@keyframes rm-drive{
+  0%,6%{left:0;transform:scaleX(1)}
+  44%{left:calc(100% - 50px);transform:scaleX(1)}
+  50%,56%{left:calc(100% - 50px);transform:scaleX(-1)}
+  94%{left:0;transform:scaleX(-1)}
+  100%{left:0;transform:scaleX(1)}
 }
 @media(max-width:520px){
   .brow{grid-template-columns:1fr}
@@ -415,7 +445,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <div class="hero-grid">
 <div>
 <h1>Milan airport transfers,<br/>at a fixed price.</h1>
-<p class="sub">Airports, the city and Lake Como. Private car with driver, price agreed before you set off. The alternative to a taxi, without the meter.</p>
+<p class="sub">Airports, the city and Lake Como. Private chauffeur, price agreed before you set off. The alternative to a taxi, without the meter.</p>
 <a class="taxi-note google-link" href="https://g.page/r/CQ1o0oYqzXMcEBM" rel="noopener" target="_blank"><span style="color:#f5b50a">★</span> 5.0 on Google · the private alternative to a taxi</a>
 <div class="book">
 <a href="https://wa.me/393520294857" role="button" class="btn btn-wa" style="width:100%" onclick="return waOpen('hero_cta')"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"></path></svg>See the price on WhatsApp</a>
@@ -424,20 +454,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 </div>
 <div class="route-mini" aria-hidden="true">
 <span class="rm-chip"><span class="g"></span>Malpensa</span>
-<span class="rm-dash"></span>
+<span class="rm-track">
 <svg viewBox="0 0 104 68"><path fill="#000" d="M14.5 49.2 C12.4 48.9 11.3 47 11.7 44.4 C12 42.4 13.4 41.2 15.8 40.9 L18.4 40.6 L18.8 31.6 C18.9 29.4 20.3 28.1 22.7 28 L55 27.6 C59.8 27.7 63.9 29.4 67.4 32.6 L70.6 35.4 L81.3 36.7 C87.4 37.5 91.1 39.5 91.8 42.7 C92.4 45.4 91.1 47.6 88.3 48.1 L85 48.4 A9 9 0 0 1 66.9 48.7 L43.7 48.7 A9 9 0 0 1 25.6 48.7 Z"/><path fill="var(--bg)" d="M22 38.4 L22.2 31.2 C22.2 30.5 22.7 30.1 23.5 30.1 L33.8 30 L33.8 38.3 Z"/><path fill="var(--bg)" d="M36.3 30 L49.5 29.9 L49.5 38.2 L36.3 38.3 Z"/><path fill="var(--bg)" d="M52 29.9 L52 38.1 L68.1 37.5 C65 33.7 60.9 30.3 55.9 29.9 Z"/><circle cx="34.7" cy="49" r="7.4" fill="#000"/><circle cx="34.7" cy="49" r="3.3" fill="var(--bg)"/><circle cx="34.7" cy="49" r="0.9" fill="#000"/><circle cx="76" cy="49" r="7.4" fill="#000"/><circle cx="76" cy="49" r="3.3" fill="var(--bg)"/><circle cx="76" cy="49" r="0.9" fill="#000"/></svg>
-<span class="rm-dash"></span>
-<span class="rm-chip">Milan</span>
+</span>
+<span class="rm-chip"><span class="g"></span>Milan</span>
 </div>
 </div>
 <div aria-hidden="true" class="map">
 <svg fill="none" preserveaspectratio="xMidYMid slice" viewbox="0 0 400 400">
-<path d="M70 90 C 150 120, 160 230, 250 250 S 340 300, 330 330" stroke="#19b95a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="5"></path>
-<circle cx="70" cy="90" fill="#000" r="9"></circle>
-<rect fill="#000" height="16" rx="3" width="16" x="322" y="322"></rect>
-<g transform="translate(255 252) rotate(102)"><rect x="-14.5" y="-26" width="29" height="52" rx="10" fill="#fff"></rect><rect x="-12" y="-23.5" width="24" height="47" rx="8.5" fill="#000"></rect><path d="M-8.5 -10.5 Q0 -15.5 8.5 -10.5 L8.5 -4.5 Q0 -9 -8.5 -4.5 Z" fill="#fff"></path><path d="M-7.5 13 Q0 16.5 7.5 13 L7.5 17.5 Q0 20 -7.5 17.5 Z" fill="#fff" opacity=".75"></path></g>
+<path d="M70 90 C140 105,155 185,200 215" stroke="#19b95a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="5"></path>
+<path d="M330 85 C305 145,255 190,200 215" stroke="#19b95a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="5"></path>
+<path d="M330 265 C290 255,240 235,200 215" stroke="#19b95a" stroke-dasharray="2 14" stroke-linecap="round" stroke-width="5"></path>
+<rect fill="#000" height="14" rx="4" width="14" x="193" y="208"></rect>
+<g class="nx-car"><g transform="rotate(90)"><rect x="-14.5" y="-26" width="29" height="52" rx="10" fill="#fff"></rect><rect x="-12" y="-23.5" width="24" height="47" rx="8.5" fill="#000"></rect><path d="M-8.5 -10.5 Q0 -15.5 8.5 -10.5 L8.5 -4.5 Q0 -9 -8.5 -4.5 Z" fill="#fff"></path><path d="M-7.5 13 Q0 16.5 7.5 13 L7.5 17.5 Q0 20 -7.5 17.5 Z" fill="#fff" opacity=".75"></path></g></g>
 </svg>
 <div class="chip c-from"><span class="g"></span>Malpensa T1</div>
+<div class="chip c-bgy"><span class="g"></span>Bergamo BGY</div>
+<div class="chip c-lin"><span class="g"></span>Linate</div>
 <div class="chip c-to">Milan centre</div>
 </div>
 </div>
@@ -724,11 +757,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     var DICT={
       "Veicoli":"Vehicles","Come funziona":"How it works","Perché noi":"Why us","WhatsApp":"WhatsApp",
       "Transfer aeroporti di Milano,":"Milan airport transfers,","a prezzo fisso.":"at a fixed price.",
-      "Aeroporti, città e Lago di Como. Auto privata con autista, prezzo concordato prima di partire. L'alternativa al taxi, senza tassametro.":"Airports, the city and Lake Como. Private car with driver, price agreed before you set off. The alternative to a taxi, without the meter.",
+      "Aeroporti, città e Lago di Como. Auto con autista privato, prezzo concordato prima di partire. L'alternativa al taxi, senza tassametro.":"Airports, the city and Lake Como. Private chauffeur, price agreed before you set off. The alternative to a taxi, without the meter.",
       "★ 5,0 su Google · l'alternativa privata al taxi":"★ 5.0 on Google · the private alternative to a taxi",
       "Data e ora":"Date & time","Passeggeri":"Passengers","Veicolo":"Vehicle","Van":"Van","Vedi il prezzo su WhatsApp":"See the price on WhatsApp",
       "Rispondiamo in":"We reply in","2–5 minuti":"2–5 minutes","· operatore reale":"· real operator",
-      "Malpensa T1":"Malpensa T1","Milano centro":"Milan centre",
+      "Malpensa T1":"Malpensa T1","Milano centro":"Milan centre","Orio al Serio":"Bergamo BGY",
       "Scegli il veicolo":"Choose your vehicle",
       "Dal comfort per la famiglia all'ammiraglia executive. Selezionalo e richiedi il prezzo su WhatsApp.":"From family comfort to the executive flagship. Select it and ask the price on WhatsApp.",
       "fino a 4":"up to 4","fino a 7":"up to 7","fino a 3":"up to 3",
@@ -758,7 +791,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       "Monitorate i voli in ritardo?":"Do you track delayed flights?","Sì, monitoriamo i voli in tempo reale e adattiamo l'orario di pick-up senza costi aggiuntivi.":"Yes, we track flights in real time and adjust pick-up time at no extra cost.",
       "Pronto a partire?":"Ready to go?","Preventivo gratuito e senza impegno. Ti rispondiamo subito su WhatsApp.":"Free quote, no obligation. We reply right away on WhatsApp.",
       "Scrivici su WhatsApp":"Message us on WhatsApp",
-      "Servizio NCC a Milano. Transfer aeroporti, business e turismo con auto private e autista.":"Private chauffeur service in Milan. Airport, business and tourism transfers with private cars and a driver.",
+      "Servizio NCC a Milano. Transfer aeroporti, business e turismo con autista privato.":"Private chauffeur service in Milan. Airport, business and tourism transfers with private cars and a driver.",
       "Aeroporti":"Airports","Destinazioni":"Destinations","Contatti":"Contacts","Lago di Como":"Lake Como","Business 24h":"Business 24h","NCC o taxi?":"Chauffeur or taxi?","Milano · Lombardia":"Milan · Lombardy",
       "Guide":"Guides","Confronto aeroporti":"Airport comparison","Come arrivare a Malpensa":"How to reach Malpensa","Prezzi transfer":"Transfer prices",
       "Usiamo cookie tecnici e, con il tuo consenso, cookie di Google (Analytics e Ads) per misurare le campagne.":"We use technical cookies and, with your consent, Google cookies (Analytics and Ads) to measure our campaigns.","Rifiuta":"Decline","Accetta":"Accept"
