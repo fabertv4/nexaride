@@ -859,7 +859,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     if(f){try{f.scrollIntoView({behavior:red?'auto':'smooth',block:'start'});}catch(e){f.scrollIntoView();}}
     var bk=f?f.querySelector('.book'):null,h=document.getElementById('nx-gate-hint');
     if(!h&&bk){h=document.createElement('p');h.id='nx-gate-hint';h.setAttribute('role','alert');bk.insertBefore(h,bk.firstChild);}
-    if(h)h.textContent=en?'Almost there: add pickup, destination, date and time, then tap the WhatsApp button — your message arrives complete and your quote comes faster.':'Ci siamo quasi: indica partenza, destinazione, data e ora, poi tocca il bottone WhatsApp — il messaggio parte già completo e ti rispondiamo prima.';
+    if(h)h.textContent=en?'Almost there: add pickup, destination, date and time, then tap the WhatsApp button — your message arrives complete and a real person replies in 2–5 minutes.':'Ci siamo quasi: indica partenza, destinazione, data e ora, poi tocca il bottone WhatsApp — il messaggio parte già completo e un operatore reale ti risponde in 2–5 minuti.';
     for(var i=0;i<miss.length;i++)(function(el){if(!el)return;el.classList.add('miss');if(!el._nxg){el._nxg=1;var off=function(){el.classList.remove('miss');};el.addEventListener('input',off);el.addEventListener('change',off);}})(document.getElementById(miss[i]));
     setTimeout(function(){try{var el=document.getElementById(miss[0]);if(el)el.focus({preventScroll:true});}catch(e){}},red?80:450);
     return false;
