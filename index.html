@@ -390,6 +390,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
 <style id="nx-gate-css">.book .miss{background:rgba(192,57,43,.07);box-shadow:inset 0 -2px 0 #c0392b;border-radius:6px}#nx-gate-hint{margin:0 0 14px;padding:10px 14px;border-radius:10px;background:#fdf1ef;border:1px solid #efc4bc;color:#8a2a1d;font-size:14px;font-weight:600;line-height:1.45}</style>
+<style id="nx-veh-css">.ride .thumb{background:var(--surf)}.ride .thumb .vimg{width:100%;height:100%;object-fit:contain;display:block}#flotta .flotta{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}#flotta .fcar{margin:0}#flotta .fcar img{width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:14px;display:block;background:var(--surf)}#flotta .fcar figcaption{padding:11px 2px 0}#flotta .fcar figcaption b{display:block;font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.02em}#flotta .fcar figcaption span{display:block;font-size:13px;color:var(--mut);margin-top:3px}@media(max-width:760px){#flotta .flotta{grid-template-columns:repeat(2,1fr);gap:12px}}</style>
 </head>
 <body>
 <a href="#main" class="skip">Salta al contenuto</a>
@@ -527,25 +528,25 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     </div>
     <div class="rides" id="rides">
       <button type="button" class="ride on rv" data-veh="Comfort" onclick="pickRide(this)">
-        <div class="thumb"><picture><source type="image/webp" srcset="rav4_apple.webp"><img loading="lazy" decoding="async" src="rav4_apple.png" alt="Toyota RAV4 Comfort"></picture></div>
+        <div class="thumb"><img class="vimg" loading="lazy" decoding="async" src="rav4_cut.webp" alt="Toyota RAV4 Comfort"></div>
         <div class="info"><div class="top"><h3>Comfort</h3><span class="cap">fino a 4</span></div><p>Toyota RAV4 · ideale per coppie e famiglie</p></div>
         <div class="price"><div class="v">Preventivo</div><div class="l">rapido su WhatsApp</div></div>
         <span class="radio"></span>
       </button>
       <button type="button" class="ride rv" data-veh="Business" onclick="pickRide(this)">
-        <div class="thumb"><picture><source type="image/webp" srcset="classeE_apple.webp"><img loading="lazy" decoding="async" src="classeE_apple.png" alt="Mercedes Classe E Business"></picture></div>
+        <div class="thumb"><img class="vimg" loading="lazy" decoding="async" src="classeE_cut.webp" alt="Mercedes Classe E Business"></div>
         <div class="info"><div class="top"><h3>Business</h3><span class="cap">fino a 4</span></div><p>Mercedes Classe E · viaggi di lavoro</p></div>
         <div class="price"><div class="v">Preventivo</div><div class="l">rapido su WhatsApp</div></div>
         <span class="radio"></span>
       </button>
       <button type="button" class="ride rv" data-veh="Van" onclick="pickRide(this)">
-        <div class="thumb"><picture><source type="image/webp" srcset="classeV_apple.webp"><img loading="lazy" decoding="async" src="classeV_apple.png" alt="Mercedes Classe V Van"></picture></div>
+        <div class="thumb"><img class="vimg" loading="lazy" decoding="async" src="classeV_cut.webp" alt="Mercedes Classe V Van"></div>
         <div class="info"><div class="top"><h3>Van</h3><span class="cap">fino a 7</span></div><p>Mercedes Classe V · gruppi ed eventi</p></div>
         <div class="price"><div class="v">Preventivo</div><div class="l">rapido su WhatsApp</div></div>
         <span class="radio"></span>
       </button>
       <button type="button" class="ride rv" data-veh="Lux" onclick="pickRide(this)">
-        <div class="thumb"><picture><source type="image/webp" srcset="classeS_apple.webp"><img loading="lazy" decoding="async" src="classeS_apple.png" alt="Mercedes Classe S Lux"></picture></div>
+        <div class="thumb"><img class="vimg" loading="lazy" decoding="async" src="classeS_cut.webp" alt="Mercedes Classe S Lux"></div>
         <div class="info"><div class="top"><h3>Lux</h3><span class="cap">fino a 3</span></div><p>Mercedes Classe S · l'ammiraglia executive</p></div>
         <div class="price"><div class="v">Preventivo</div><div class="l">rapido su WhatsApp</div></div>
         <span class="radio"></span>
@@ -556,6 +557,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.488-.999z"/></svg>
         Richiedi il prezzo su WhatsApp
       </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- FLOTTA (foto reali) -->
+<section class="sec" id="flotta">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>La nostra flotta</h2><p>Auto vere, possedute e mantenute da noi: quella che vedi è quella che arriva.</p></div>
+    <div class="flotta rv">
+      <figure class="fcar"><img loading="lazy" decoding="async" src="det_rav4_main.webp" alt="Toyota RAV4, classe Comfort"><figcaption><b>Comfort</b><span>Toyota RAV4 · fino a 4</span></figcaption></figure>
+      <figure class="fcar"><img loading="lazy" decoding="async" src="det_classeE_main.webp" alt="Mercedes Classe E, classe Business"><figcaption><b>Business</b><span>Mercedes Classe E · fino a 4</span></figcaption></figure>
+      <figure class="fcar"><img loading="lazy" decoding="async" src="det_classeV_main.webp" alt="Mercedes Classe V, classe Van"><figcaption><b>Van</b><span>Mercedes Classe V · fino a 7</span></figcaption></figure>
+      <figure class="fcar"><img loading="lazy" decoding="async" src="det_classeS_main.webp" alt="Mercedes Classe S, classe Lux"><figcaption><b>Lux</b><span>Mercedes Classe S · executive</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -832,7 +847,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       "Data e ora":"Date & time","Data":"Date","Ora":"Time","Partenza":"Pickup","Destinazione":"Destination","Passeggeri":"Passengers","Veicolo":"Vehicle","Van":"Van","Vedi il prezzo su WhatsApp":"See the price on WhatsApp",
       "Rispondiamo in":"We reply in","2–5 minuti":"2–5 minutes","· operatore reale":"· real operator","Cancellazione gratuita":"Free cancellation","Voli monitorati":"Flight tracking","Attesa inclusa":"English support","Paghi a fine corsa":"Pay at the end",
       "Malpensa T1":"Malpensa T1","Milano centro":"Milan centre","Orio al Serio":"Bergamo BGY",
-      "Scegli il veicolo":"Choose your vehicle",
+      "Scegli il veicolo":"Choose your vehicle","La nostra flotta":"Our fleet","Auto vere, possedute e mantenute da noi: quella che vedi è quella che arriva.":"Real cars, owned and maintained by us — the one you see is the one that turns up.","Toyota RAV4 · fino a 4":"Toyota RAV4 · up to 4","Mercedes Classe E · fino a 4":"Mercedes E-Class · up to 4","Mercedes Classe V · fino a 7":"Mercedes V-Class · up to 7","Mercedes Classe S · executive":"Mercedes S-Class · executive",
       "Dal comfort per la famiglia all'ammiraglia executive. Selezionalo e richiedi il prezzo su WhatsApp.":"From family comfort to the executive flagship. Select it and ask the price on WhatsApp.",
       "fino a 4":"up to 4","fino a 7":"up to 7","fino a 3":"up to 3",
       "Toyota RAV4 · ideale per coppie e famiglie":"Toyota RAV4 · ideal for couples and families",
