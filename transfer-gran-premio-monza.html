@@ -84,7 +84,8 @@
   {"@type":"Question","name":"Come funziona il ritorno dopo la gara?","acceptedAnswer":{"@type":"Answer","text":"Concordiamo prima un punto di ritrovo fuori dall'area più congestionata: l'autista ti aspetta lì e monitoriamo i tuoi tempi via WhatsApp. Nessuna attesa in coda per un taxi."}},
   {"@type":"Question","name":"Fate pickup dagli aeroporti direttamente al circuito?","acceptedAnswer":{"@type":"Answer","text":"Sì: Malpensa, Linate e Bergamo Orio al Serio, anche con bagagli al seguito. Possiamo passare dal tuo hotel per il check-in prima di proseguire per Monza."}},
   {"@type":"Question","name":"Siamo un gruppo: avete un van?","acceptedAnswer":{"@type":"Answer","text":"Sì, oltre alle berline abbiamo la Classe V e, su richiesta, il Van VIP in allestimento 4 posti. Indica il numero di passeggeri su WhatsApp e ti proponiamo l'auto giusta."}},
-  {"@type":"Question","name":"Quanto costa il transfer per il GP?","acceptedAnswer":{"@type":"Answer","text":"Dipende da partenza, giorno e orario (i giorni di gara hanno logistica dedicata). Compila il modulo e ricevi un preventivo rapido su WhatsApp, senza impegno."}}
+  {"@type":"Question","name":"Quanto costa il transfer per il GP?","acceptedAnswer":{"@type":"Answer","text":"Dipende da partenza, giorno e orario (i giorni di gara hanno logistica dedicata). Compila il modulo e ricevi un preventivo rapido su WhatsApp, senza impegno."}},
+  {"@type":"Question","name":"Avete un van VIP con sedili reclinabili per Autodromo di Monza?","acceptedAnswer":{"@type":"Answer","text":"Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 4 poltrone singole reclinabili, ideale per il weekend di gara. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti."}}
 ]}
 </script>
 <!-- JSON-LD: BreadcrumbList -->
@@ -560,6 +561,25 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   </div>
 </section>
 
+<!-- VAN VIP (nx-vanvip) -->
+<section id="vanvip" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Viaggia disteso: Van VIP 4 posti</h2>
+      <p>Per il weekend di gara il Van VIP muove il gruppo al completo: quattro poltrone singole, spazio vero e un unico autista per tutti.</p>
+    </div>
+    <div class="flist">
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>4 poltrone singole reclinabili</strong> — sedili lussuosi che si distendono e spazio vero tra le file: il viaggio lungo diventa tempo per riposare o lavorare.</p></div>
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>Spazio bagagli completo</strong> — valigie e attrezzatura a bordo, con tutti e 4 i passeggeri comodi.</p></div>
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>Stesso servizio porta-a-porta</strong> — autista dedicato e preventivo fisso concordato prima. Disponibile su richiesta: chiedi il Van VIP nel messaggio.</p></div>
+    </div>
+    <div class="rides-cta rv">
+      <a href="https://wa.me/393520294857" class="btn btn-dark" onclick="return nxVanVip('vanvip_cta',{to:'Autodromo di Monza'})">💬 Chiedi il Van VIP su WhatsApp</a>
+    </div>
+    <script>window.nxVanVip=function(cta,pre){try{var vb=document.querySelector('#rides .ride[data-veh="Van"]');if(vb&&typeof pickRide==='function'){pickRide(vb);}else if(typeof syncVehFromForm==='function'){syncVehFromForm('Van');var s=document.getElementById('f-veh-sel');if(s)s.value='Van';}}catch(e){}window.selectedVeh='Van VIP 4 posti';return nxGate(cta,pre);};</script>
+  </div>
+</section>
+
 <!-- FORM (spostato dall'hero) -->
 <section id="form" class="sec alt">
   <div class="wrap">
@@ -624,6 +644,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       <details class="qa rv"><summary>Fate pickup dagli aeroporti direttamente al circuito?<span class="pm">+</span></summary><div class="a">Sì: Malpensa, Linate e Bergamo Orio al Serio, anche con bagagli al seguito. Possiamo passare dal tuo hotel per il check-in prima di proseguire per Monza.</div></details>
       <details class="qa rv"><summary>Siamo un gruppo: avete un van?<span class="pm">+</span></summary><div class="a">Sì, oltre alle berline abbiamo la Classe V e, su richiesta, il Van VIP in allestimento 4 posti. Indica il numero di passeggeri su WhatsApp e ti proponiamo l'auto giusta.</div></details>
       <details class="qa rv"><summary>Quanto costa il transfer per il GP?<span class="pm">+</span></summary><div class="a">Dipende da partenza, giorno e orario (i giorni di gara hanno logistica dedicata). Compila il modulo e ricevi un preventivo rapido su WhatsApp, senza impegno.</div></details>
+      <details class="qa rv"><summary>Avete un van VIP con sedili reclinabili per Autodromo di Monza?<span class="pm">+</span></summary><div class="a">Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 4 poltrone singole reclinabili, ideale per il weekend di gara. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti.</div></details>
     </div>
   </div>
 </section>
