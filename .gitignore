@@ -41,6 +41,7 @@ Thumbs.db
 
 # Claude Code metadata
 .claude/
+.agents/
 
 # Audit / debug artifacts
 .audit-*.png
@@ -79,3 +80,8 @@ package-lock.json
 .trustpilot-link.py
 .google-trust-badge.py
 .badge-i18n-fix.py
+
+# Handoff di sessione (nexaride-os e altri): contengono credenziali + dati
+# business -> MAI nel repo pubblico. La chain prevedeva "restano gitignored":
+# qui lo si applica davvero (protegge anche da un git add -A accidentale).
+plans/handoffs/
