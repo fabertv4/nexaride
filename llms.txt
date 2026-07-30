@@ -97,6 +97,19 @@
 - [Linate taxi cost to Milan (EN)](https://nexaride.it/en/linate-taxi-cost-to-milan.html): metered taxi (~€20-30, no fixed fare) + private chauffeur alternative with price agreed upfront
 - [Orio/Bergamo taxi cost to Milan (EN)](https://nexaride.it/en/orio-bergamo-taxi-cost-to-milan.html): official €128 fixed taxi fare + private chauffeur alternative
 
+## Luxury
+
+- [NexaRide Luxury Milano](https://nexaride.it/luxury-milano.html): hub servizi di lusso a Milano — un solo contatto WhatsApp per transfer con autista, jet privato, elicottero e supercar, servizi diretti e tramite partner selezionati
+- [Transfer di lusso a Milano](https://nexaride.it/transfer-lusso-milano.html): berline e van premium con autista privato per aeroporti, business ed eventi, prima ora d'attesa inclusa, volo monitorato, autisti English-speaking
+- [Jet privato da Milano](https://nexaride.it/jet-privato-milano.html): charter aereo su richiesta da Linate Prime e Malpensa, operato da compagnie certificate (AOC) tramite broker partner, auto con autista inclusa
+- [Noleggio elicottero Milano](https://nexaride.it/noleggio-elicottero-milano.html): voli in elicottero verso Lago di Como, St. Moritz e Portofino con operatori certificati partner, auto con autista come piano B se il meteo blocca il volo
+- [Noleggio supercar Milano](https://nexaride.it/noleggio-supercar-milano.html): guida Ferrari e Lamborghini a Milano tramite noleggiatori partner selezionati, consegna in hotel o aeroporto, condizioni chiare prima della conferma
+- [Luxury services in Milan (EN)](https://nexaride.it/en/milan-luxury-services.html): one WhatsApp contact for chauffeur transfers, private jet, helicopter and supercar in Milan — direct services and vetted partners
+- [Luxury chauffeur service in Milan (EN)](https://nexaride.it/en/luxury-chauffeur-milan.html): premium sedans and vans with private chauffeur for airports, business and events, first hour of waiting included, flight tracked
+- [Private jet from Milan (EN)](https://nexaride.it/en/private-jet-milan.html): on-demand charter from Milan Linate Prime and Malpensa, operated by certified airlines via partner brokers, chauffeured car included
+- [Helicopter charter from Milan (EN)](https://nexaride.it/en/helicopter-charter-milan.html): flights to Lake Como, St. Moritz and Portofino with certified partner operators, chauffeured car as backup if weather grounds the flight
+- [Supercar rental in Milan (EN)](https://nexaride.it/en/supercar-rental-milan.html): drive a Ferrari or Lamborghini in Milan through vetted partners, delivery to hotel or airport
+
 ## Servizi offerti
 
 - Transfer aeroportuali Milano (Malpensa, Linate, Bergamo Orio al Serio)
