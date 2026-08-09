@@ -350,6 +350,24 @@
       <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-malpensa-orio-al-serio.html"/>
   </url>
   <url>
+    <loc>https://nexaride.it/transfer-linate-orio-al-serio.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-linate-orio-al-serio.html"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/linate-bergamo-airport-transfer.html"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-linate-orio-al-serio.html"/>
+  </url>
+  <url>
+    <loc>https://nexaride.it/en/linate-bergamo-airport-transfer.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-linate-orio-al-serio.html"/>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/linate-bergamo-airport-transfer.html"/>
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-linate-orio-al-serio.html"/>
+  </url>
+  <url>
     <loc>https://nexaride.it/quanto-costa-taxi-malpensa-milano.html</loc>
     <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>

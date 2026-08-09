@@ -83,10 +83,12 @@
 - [Transfer Torino - Malpensa](https://nexaride.it/transfer-torino-malpensa.html): collegamento privato Torino<->Malpensa (andata e ritorno), alternativa a treno e pullman SADEM
 - [Transfer Lugano - Malpensa](https://nexaride.it/transfer-lugano-malpensa.html): collegamento privato Lugano<->Malpensa via Gaggiolo, business transfrontaliero, alternativa al treno TILO S50
 - [Transfer Malpensa - Orio al Serio](https://nexaride.it/transfer-malpensa-orio-al-serio.html): tratta inter-aeroporto Malpensa<->Bergamo Orio al Serio (MXP<->BGY), bidirezionale
+- [Transfer Linate - Orio al Serio](https://nexaride.it/transfer-linate-orio-al-serio.html): tratta inter-aeroporto Linate<->Bergamo Orio al Serio (LIN<->BGY), bidirezionale, ~50 km via tangenziale e A4
 - [Linate to Malpensa transfer (EN)](https://nexaride.it/en/linate-malpensa-transfer.html): direct private transfer between Milan's two airports
 - [Turin to Malpensa transfer (EN)](https://nexaride.it/en/turin-malpensa-transfer.html): private Turin<->Malpensa airport connection
 - [Lugano to Malpensa transfer (EN)](https://nexaride.it/en/lugano-malpensa-transfer.html): private Lugano<->Malpensa airport connection, recurring business service, TILO S50 train compared
 - [Malpensa to Bergamo airport transfer (EN)](https://nexaride.it/en/malpensa-bergamo-airport-transfer.html): inter-airport transfer Malpensa<->Bergamo Orio al Serio
+- [Linate to Bergamo airport transfer (EN)](https://nexaride.it/en/linate-bergamo-airport-transfer.html): inter-airport transfer Linate<->Bergamo Orio al Serio
 
 ## Quanto costa il taxi a Milano (tariffe ufficiali + alternativa NCC)
 
