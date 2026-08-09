@@ -502,10 +502,34 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       </div>
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice">
-          <path d="M70 90 C 150 120, 160 230, 250 250 S 340 300, 330 330" stroke="#19b95a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 90 200, 108 110, 150 62" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 170 240, 240 160, 303 120" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 180 292, 258 252, 328 216" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 180 330, 240 344, 303 331" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <circle cx="110" cy="305" r="6" fill="#19b95a"/>
+          <circle cx="150" cy="62" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="303" cy="120" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="328" cy="216" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="303" cy="331" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <g>
+            <animateMotion dur="8s" repeatCount="indefinite" calcMode="paced" path="M110 305 C 180 292, 258 252, 328 216"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.88;1" dur="8s" repeatCount="indefinite"/>
+            <g fill="#000000" fill-opacity=".85" transform="scale(1.25)">
+              <rect x="-13" y="-10.5" width="26" height="2.4" rx="1.2"/>
+              <rect x="-1.2" y="-8.4" width="2.4" height="3.6"/>
+              <ellipse cx="1.5" cy="-1" rx="7.2" ry="4.6"/>
+              <rect x="-16.5" y="-2.2" width="10" height="2.4" rx="1.2"/>
+              <rect x="-18.2" y="-6.8" width="2.4" height="7" rx="1.2"/>
+              <rect x="-4.5" y="4.6" width="13" height="1.8" rx="0.9"/>
+            </g>
+          </g>
         </svg>
-        <div class="chip c-from"><span class="g"></span>Milan</div>
-        <div class="chip c-to">Como · St. Moritz</div>
+        <div class="chip c-from" style="top:auto;bottom:11%;left:8%"><span class="g"></span>Milan</div>
+        <div class="chip" style="top:9%;left:31%">Courmayeur</div>
+        <div class="chip" style="top:24%;right:9%">St. Moritz</div>
+        <div class="chip" style="top:50%;right:5%">Como</div>
+        <div class="chip" style="bottom:11%;right:12%">Portofino</div>
+        <script>/* nx-map-motion */try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.map svg').forEach(function(s){if(s.pauseAnimations)s.pauseAnimations();});}}catch(e){}</script>
       </div>
     </div>
   </div>

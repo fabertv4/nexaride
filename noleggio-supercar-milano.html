@@ -493,10 +493,31 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       </div>
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice">
-          <path d="M70 90 C 150 120, 160 230, 250 250 S 340 300, 330 330" stroke="#19b95a" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 90 200, 108 110, 150 62" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 170 240, 240 160, 303 120" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 180 292, 258 252, 328 216" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M110 305 C 180 330, 240 344, 303 331" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <circle cx="110" cy="305" r="6" fill="#19b95a"/>
+          <circle cx="150" cy="62" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="303" cy="120" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="328" cy="216" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="303" cy="331" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <g>
+            <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" calcMode="paced" path="M110 305 C 180 292, 258 252, 328 216"/>
+            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.88;1" dur="6s" repeatCount="indefinite"/>
+            <g fill="#000000" fill-opacity=".85" transform="scale(1.25)">
+              <path d="M-14 2.5 C -9 -1.5, -5 -4.5, 1 -4.5 C 7 -4.5, 11.5 -2, 14 1.5 L 14 3.6 L -14 3.6 Z"/>
+              <circle cx="-7.5" cy="4" r="2.9"/>
+              <circle cx="7.5" cy="4" r="2.9"/>
+            </g>
+          </g>
         </svg>
-        <div class="chip c-from"><span class="g"></span>Milano</div>
-        <div class="chip c-to">Como</div>
+        <div class="chip c-from" style="top:auto;bottom:11%;left:8%"><span class="g"></span>Milano</div>
+        <div class="chip" style="top:9%;left:31%">St. Moritz</div>
+        <div class="chip" style="top:24%;right:9%">Como</div>
+        <div class="chip" style="top:50%;right:5%">Portofino</div>
+        <div class="chip" style="bottom:11%;right:12%">Forte dei Marmi</div>
+        <script>/* nx-map-motion */try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.map svg').forEach(function(s){if(s.pauseAnimations)s.pauseAnimations();});}}catch(e){}</script>
       </div>
     </div>
   </div>
