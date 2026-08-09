@@ -111,7 +111,8 @@
   {"@type":"Question","name":"Can I reach Cernobbio by train?","acceptedAnswer":{"@type":"Answer","text":"No direct station. Como San Giovanni (5 km, 15 minutes by car) is the closest. A private transfer is faster and more direct, with no changes."}},
   {"@type":"Question","name":"Direct transfer from the airport?","acceptedAnswer":{"@type":"Answer","text":"Yes. Malpensa-Cernobbio ~1h, Linate-Cernobbio ~1h05, Orio-Cernobbio ~1h25. Door-to-door service, chauffeur waiting at the gate."}},
   {"@type":"Question","name":"Service for Concorso d'Eleganza or Ambrosetti Forum?","acceptedAnswer":{"@type":"Answer","text":"Yes — we offer dedicated Business-class service. Advance booking is strongly recommended for event days."}},
-  {"@type":"Question","name":"English-speaking drivers?","acceptedAnswer":{"@type":"Answer","text":"Yes, our chauffeurs speak English. Other languages on request when booking."}}
+  {"@type":"Question","name":"English-speaking drivers?","acceptedAnswer":{"@type":"Answer","text":"Yes, our chauffeurs speak English. Other languages on request when booking."}},
+  {"@type":"Question","name":"Do you have a VIP van with reclining seats for Cernobbio?","acceptedAnswer":{"@type":"Answer","text":"Yes, on request: a Mercedes V-Class in VIP configuration with 2 reclining business seats and up to 5 seats in the back, ideal for a day on the lake. Ask for the VIP Van in your WhatsApp message along with pickup point, date and time: you get availability and a fixed quote in 2–5 minutes."}}
 ]}
 </script>
 
@@ -481,6 +482,35 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   </div>
 </section>
 
+<!-- VAN VIP (nx-vanvip) -->
+<section id="vanvip" class="sec">
+<style data-nx="vanvip-css">#vanvip .prose ul{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}#vanvip .prose ul li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;color:var(--ink);line-height:1.45}#vanvip .prose ul li .ck{flex:0 0 auto;color:var(--green-d);font-weight:800;font-size:17px;line-height:1.4}</style>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Travel reclined: the 5-seat VIP Van</h2>
+      <p>For a day on the lake the VIP Van moves the whole party: two reclining business seats, up to 5 seats in the back and one driver for everyone.</p>
+    </div>
+<div class="vvgal rv" data-nx="vanvip-photos">
+<style>.vvgal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 26px}.vvgal figure{margin:0}.vvgal img{width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:14px;display:block;background:var(--surf)}.vvgal figcaption{padding:8px 2px 0;font-size:13px;color:var(--mut)}@media(max-width:820px){.vvgal{grid-template-columns:repeat(2,1fr);gap:12px}}</style>
+<figure><img loading="lazy" decoding="async" src="/vanvip_esterno.webp" alt="Black Mercedes V-Class Luxury in front of Bosco Verticale, Milan"><figcaption>Mercedes V-Class Luxury</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="/vanvip_poltrone.webp" alt="VIP Van interior: 2 reclining business seats in light leather"><figcaption>2 reclining business seats</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="/vanvip_relax.webp" alt="VIP Van seats fully reclined with leg rests up"><figcaption>Relax mode with leg rests</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="/vanvip_posti.webp" alt="VIP Van cabin: up to five seats in the back in light leather"><figcaption>Up to 5 seats in the back</figcaption></figure>
+</div>
+    <div class="prose rv">
+      <ul>
+        <li><span class="ck">✓</span> <span class="t"><strong>2 reclining business seats</strong> — they stretch right out, with real space between rows: a long drive becomes time to rest or work.</span></li>
+        <li><span class="ck">✓</span> <span class="t"><strong>Full luggage space</strong> — suitcases and gear on board, with everyone travelling comfortably: up to 5 seats in the back.</span></li>
+        <li><span class="ck">✓</span> <span class="t"><strong>Same door-to-door service</strong> — dedicated chauffeur and a fixed quote agreed in advance. Available on request: ask for the VIP Van in your message.</span></li>
+      </ul>
+    </div>
+    <div class="rides-cta rv">
+      <a href="https://wa.me/393520294857" class="btn btn-dark" onclick="return nxVanVip('vanvip_cta',{to:'Cernobbio'})">💬 Ask for the VIP Van on WhatsApp</a>
+    </div>
+    <script>window.nxVanVip=function(cta,pre){try{var vb=document.querySelector('#rides .ride[data-veh="Van"]');if(vb&&typeof pickRide==='function'){pickRide(vb);}else if(typeof syncVehFromForm==='function'){syncVehFromForm('Van');var s=document.getElementById('f-veh-sel');if(s)s.value='Van';}}catch(e){}window.selectedVeh='VIP Van (5 seats)';return nxGate(cta,pre);};</script>
+  </div>
+</section>
+
 <!-- FORM (spostato dall'hero) -->
 <section id="form" class="sec alt">
   <div class="wrap">
@@ -573,6 +603,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       <details class="qa rv"><summary>Direct transfer from the airport?<span class="pm">+</span></summary><div class="a">Yes. Malpensa-Cernobbio ~1h, Linate-Cernobbio ~1h05, Orio-Cernobbio ~1h25. Door-to-door service, chauffeur waiting at the gate.</div></details>
       <details class="qa rv"><summary>Service for Concorso d'Eleganza or Ambrosetti Forum?<span class="pm">+</span></summary><div class="a">Yes — we offer dedicated Business-class service. Advance booking is strongly recommended for event days.</div></details>
       <details class="qa rv"><summary>English-speaking drivers?<span class="pm">+</span></summary><div class="a">Yes, our chauffeurs speak English. Other languages on request when booking.</div></details>
+      <details class="qa rv"><summary>Do you have a VIP van with reclining seats for Cernobbio?<span class="pm">+</span></summary><div class="a">Yes, on request: a Mercedes V-Class in VIP configuration with 2 reclining business seats and up to 5 seats in the back, ideal for a day on the lake. Ask for the VIP Van in your WhatsApp message along with pickup point, date and time: you get availability and a fixed quote in 2–5 minutes.</div></details>
     </div>
   </div>
 </section>

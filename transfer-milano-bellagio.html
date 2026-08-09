@@ -83,7 +83,8 @@
   {"@type":"Question","name":"Bellagio è raggiungibile in treno o in barca?","acceptedAnswer":{"@type":"Answer","text":"Bellagio non ha stazione ferroviaria. Si raggiunge in auto via SS583 (Lariana), o in battello da Como/Varenna/Menaggio. Per arrivare al lago in treno si scende a Como o a Varenna-Esino, poi si prosegue in battello, autobus o transfer NCC. Il transfer privato porta direttamente a destinazione."}},
   {"@type":"Question","name":"Quali hotel di lusso servite a Bellagio?","acceptedAnswer":{"@type":"Answer","text":"Operiamo per tutti gli hotel di Bellagio: Grand Hotel Villa Serbelloni, Hotel Florence, Hotel Du Lac, Hotel Belvedere, Hotel Metropole, ville private. Servizio Meet & Greet alla reception per accoglienza ospiti VIP."}},
   {"@type":"Question","name":"Si può prenotare un transfer dall'aeroporto direttamente a Bellagio?","acceptedAnswer":{"@type":"Answer","text":"Sì. Malpensa-Bellagio circa 1h45. Linate-Bellagio circa 1h35. Bergamo Orio al Serio-Bellagio circa 1h50. Servizio diretto porta-a-porta, monitoraggio volo incluso, prezzo fisso preventivato."}},
-  {"@type":"Question","name":"Posso noleggiare l'autista per la giornata a Bellagio?","acceptedAnswer":{"@type":"Answer","text":"Sì, offriamo servizio a disposizione orario (mezza giornata o intera) per visitare Bellagio e i dintorni (Tremezzo, Villa Carlotta, Varenna in battello). Preventivo su misura."}}
+  {"@type":"Question","name":"Posso noleggiare l'autista per la giornata a Bellagio?","acceptedAnswer":{"@type":"Answer","text":"Sì, offriamo servizio a disposizione orario (mezza giornata o intera) per visitare Bellagio e i dintorni (Tremezzo, Villa Carlotta, Varenna in battello). Preventivo su misura."}},
+  {"@type":"Question","name":"Avete un van VIP con sedili reclinabili per Bellagio?","acceptedAnswer":{"@type":"Answer","text":"Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 2 poltrone business reclinabili e fino a 5 posti dietro, ideale per una giornata sul lago. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti."}}
 ]}
 </script>
 <!-- JSON-LD: BreadcrumbList -->
@@ -600,6 +601,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
   </div>
 </section>
 
+<!-- VAN VIP (nx-vanvip) -->
+<section id="vanvip" class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Viaggia disteso: Van VIP 5 posti</h2>
+      <p>Per una giornata sul lago il Van VIP muove il gruppo al completo: due poltrone business reclinabili, fino a 5 posti dietro e un unico autista per tutti.</p>
+    </div>
+<div class="vvgal rv" data-nx="vanvip-photos">
+<style>.vvgal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 26px}.vvgal figure{margin:0}.vvgal img{width:100%;aspect-ratio:5/3;object-fit:cover;border-radius:14px;display:block;background:var(--surf)}.vvgal figcaption{padding:8px 2px 0;font-size:13px;color:var(--mut)}@media(max-width:820px){.vvgal{grid-template-columns:repeat(2,1fr);gap:12px}}</style>
+<figure><img loading="lazy" decoding="async" src="vanvip_esterno.webp" alt="Mercedes Classe V Luxury nera davanti al Bosco Verticale a Milano"><figcaption>Mercedes Classe V Luxury</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="vanvip_poltrone.webp" alt="Interno del Van VIP: 2 poltrone business reclinabili in pelle chiara"><figcaption>2 poltrone business reclinabili</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="vanvip_relax.webp" alt="Poltrone del Van VIP reclinate con poggiagambe alzato"><figcaption>Modalità relax con poggiagambe</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="vanvip_posti.webp" alt="Cabina del Van VIP: fino a cinque posti dietro in pelle chiara"><figcaption>Fino a 5 posti dietro</figcaption></figure>
+</div>
+    <div class="flist">
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>2 poltrone business reclinabili</strong> — si distendono davvero, con spazio vero tra le file: il viaggio lungo diventa tempo per riposare o lavorare.</p></div>
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>Spazio bagagli completo</strong> — valigie e attrezzatura a bordo, con tutti i passeggeri comodi: fino a 5 posti dietro.</p></div>
+      <div class="fitem rv"><span class="ck">✓</span><p><strong>Stesso servizio porta-a-porta</strong> — autista dedicato e preventivo fisso concordato prima. Disponibile su richiesta: chiedi il Van VIP nel messaggio.</p></div>
+    </div>
+    <div class="rides-cta rv">
+      <a href="https://wa.me/393520294857" class="btn btn-dark" onclick="return nxVanVip('vanvip_cta',{to:'Bellagio (Lago di Como)'})">💬 Chiedi il Van VIP su WhatsApp</a>
+    </div>
+    <script>window.nxVanVip=function(cta,pre){try{var vb=document.querySelector('#rides .ride[data-veh="Van"]');if(vb&&typeof pickRide==='function'){pickRide(vb);}else if(typeof syncVehFromForm==='function'){syncVehFromForm('Van');var s=document.getElementById('f-veh-sel');if(s)s.value='Van';}}catch(e){}window.selectedVeh='Van VIP 5 posti';return nxGate(cta,pre);};</script>
+  </div>
+</section>
+
 <!-- FORM (spostato dall'hero) -->
 <section id="form" class="sec alt">
   <div class="wrap">
@@ -663,6 +690,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       <details class="qa rv"><summary>Quali hotel di lusso servite a Bellagio?<span class="pm">+</span></summary><div class="a">Operiamo per tutti gli hotel di Bellagio: Grand Hotel Villa Serbelloni, Hotel Florence, Hotel Du Lac, Hotel Belvedere, Hotel Metropole, ville private. Servizio Meet &amp; Greet alla reception per accoglienza ospiti VIP.</div></details>
       <details class="qa rv"><summary>Si può prenotare un transfer dall'aeroporto direttamente a Bellagio?<span class="pm">+</span></summary><div class="a">Sì. Malpensa-Bellagio circa 1h45. Linate-Bellagio circa 1h35. Bergamo Orio al Serio-Bellagio circa 1h50. Servizio diretto porta-a-porta, monitoraggio volo incluso, prezzo fisso preventivato.</div></details>
       <details class="qa rv"><summary>Posso noleggiare l'autista per la giornata a Bellagio?<span class="pm">+</span></summary><div class="a">Sì, offriamo servizio a disposizione orario (mezza giornata o intera) per visitare Bellagio e i dintorni (Tremezzo, Villa Carlotta, Varenna in battello). Preventivo su misura.</div></details>
+      <details class="qa rv"><summary>Avete un van VIP con sedili reclinabili per Bellagio?<span class="pm">+</span></summary><div class="a">Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 2 poltrone business reclinabili e fino a 5 posti dietro, ideale per una giornata sul lago. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti.</div></details>
     </div>
   </div>
 </section>
