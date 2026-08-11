@@ -620,6 +620,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-settimana-moda-milano.html"/>
   </url>
   <url>
+    <loc>https://nexaride.it/transfer-salone-del-mobile.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-salone-del-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-design-week-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-salone-del-mobile.html"/>
+  </url>
+  <url>
+    <loc>https://nexaride.it/en/milan-design-week-transfer.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-salone-del-mobile.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-design-week-transfer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-salone-del-mobile.html"/>
+  </url>
+  <url>
     <loc>https://nexaride.it/luxury-milano.html</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>monthly</changefreq>
