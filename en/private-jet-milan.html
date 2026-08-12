@@ -397,6 +397,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
 <style id="nx-gate-css">.book .miss{background:rgba(192,57,43,.07);box-shadow:inset 0 -2px 0 #c0392b;border-radius:6px}#nx-gate-hint{margin:0 0 14px;padding:10px 14px;border-radius:10px;background:#fdf1ef;border:1px solid #efc4bc;color:#8a2a1d;font-size:14px;font-weight:600;line-height:1.45}</style>
 <style id="nx-veh-css">.ride .thumb .vimg{width:100%;height:100%;object-fit:contain;display:block;background:var(--surf)}</style>
+<style data-nx="luxair-rm">
+.route-mini{display:none}
+@media(max-width:860px){
+  .route-mini{display:flex;align-items:center;gap:9px;margin-top:16px}
+  .route-mini .rm-track{flex:1;position:relative;height:27px}
+  .route-mini .rm-track::before{content:"";position:absolute;left:4px;right:4px;top:13px;border-top:2px dashed var(--green)}
+  .route-mini svg{width:50px;height:27px;position:absolute;top:0;left:calc(50% - 25px)}
+  .route-mini .rm-chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .route-mini .rm-chip .g{width:7px;height:7px;border-radius:50%;background:var(--green)}
+}
+@media(max-width:860px) and (prefers-reduced-motion:no-preference){
+  .route-mini svg{animation:rm-drive 8s ease-in-out infinite}
+}
+@keyframes rm-drive{
+  0%,6%{left:0;transform:scaleX(1)}
+  44%{left:calc(100% - 50px);transform:scaleX(1)}
+  50%,56%{left:calc(100% - 50px);transform:scaleX(-1)}
+  94%{left:0;transform:scaleX(-1)}
+  100%{left:0;transform:scaleX(1)}
+}
+</style>
 </head>
 <body>
 <!-- A11Y-SKIPLINK -->
@@ -503,29 +524,36 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
           <div class="resp"><span class="dot"></span>We reply in <b>&nbsp;2–5 minutes&nbsp;</b> · real operator</div>
           <div class="tstrip" aria-label="Key points"><span>AOC-certified airlines</span><span>Chauffeured car included</span><span>Private quote</span></div>
         </div>
+      <div class="route-mini" aria-hidden="true">
+          <span class="rm-chip"><span class="g"></span>Linate Prime</span>
+          <span class="rm-track">
+          <svg viewBox="0 0 104 68"><g fill="#000"><path d="M12 27 L19 27 L23 38 L14 38 Z"/><rect x="6" y="25.5" width="16" height="3" rx="1.5"/><path d="M14 44.5 C 30 40.5, 46 39, 90 39 C 95 39.3, 96.5 41, 94 43.5 C 86 48.5, 42 49.5, 23 48.3 C 16.5 47.8, 14 46.5, 14 44.5 Z"/><path d="M46 46.5 L62 46.5 L55 55 L44 53 Z"/><ellipse cx="34" cy="41.5" rx="5" ry="2.6"/></g><circle cx="78" cy="42" r="1.6" fill="var(--bg)"/><circle cx="70" cy="42.3" r="1.6" fill="var(--bg)"/><circle cx="62" cy="42.6" r="1.6" fill="var(--bg)"/><path fill="var(--bg)" d="M86 40.5 L91 40.7 C 92.5 41, 92.5 42, 91.5 42.6 L86 42.4 Z"/></svg>
+          </span>
+          <span class="rm-chip"><span class="g"></span>London · Nice</span>
+        </div>
       </div>
       <div class="map" aria-hidden="true">
-        <svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice">
-          <path d="M110 305 C 90 200, 108 110, 150 62" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
-          <path d="M110 305 C 170 240, 240 160, 303 120" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
-          <path d="M110 305 C 180 292, 258 252, 328 216" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
-          <path d="M110 305 C 180 330, 240 344, 303 331" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
-          <circle cx="110" cy="305" r="6" fill="#19b95a"/>
-          <circle cx="150" cy="62" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
-          <circle cx="303" cy="120" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
-          <circle cx="328" cy="216" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
-          <circle cx="303" cy="331" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
-          <g>
-            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" calcMode="paced" path="M110 305 C 180 292, 258 252, 328 216"/>
-            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.88;1" dur="7s" repeatCount="indefinite"/>
-            <path d="M21.5 15.5v-2l-8-5V3.06c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V8.5l-8 5v2l8-2.5v5.5l-2 1.5V21l3.5-1 3.5 1v-1.5l-2-1.5V13l8 2.5z" fill="#000000" fill-opacity=".85" transform="rotate(90) scale(1.6) translate(-12 -12)"/>
+<svg viewBox="0 0 400 400" fill="none" preserveAspectRatio="xMidYMid slice" data-nx="luxair">
+          <path d="M265 150 C 241.9 102.7, 205.2 67.2, 157.1 45.8" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M265 150 C 222.5 151.9, 183.9 138.6, 151.5 110.9" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M265 150 C 250.4 193.7, 222 227.6, 181.4 249.6" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <path d="M265 150 C 284.7 198.8, 286.5 249.8, 270.2 299.9" stroke="#19b95a" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <circle cx="265" cy="150" r="6" fill="#19b95a"/>
+          <circle cx="157.1" cy="45.8" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="151.5" cy="110.9" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="181.4" cy="249.6" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <circle cx="270.2" cy="299.9" r="4" fill="#ffffff" stroke="#19b95a" stroke-width="3"/>
+          <g opacity="0">
+            <animateMotion dur="24s" repeatCount="indefinite" calcMode="paced" rotate="auto" path="M265 150 C 241.9 102.7, 205.2 67.2, 157.1 45.8 M265 150 C 222.5 151.9, 183.9 138.6, 151.5 110.9 M265 150 C 250.4 193.7, 222 227.6, 181.4 249.6 M265 150 C 284.7 198.8, 286.5 249.8, 270.2 299.9"/>
+            <animate attributeName="opacity" dur="24s" repeatCount="indefinite" values="0;1;1;0;1;1;0;1;1;0;1;1;0" keyTimes="0;0.021;0.251;0.272;0.293;0.47;0.491;0.512;0.707;0.728;0.749;0.979;1"/>
+            <g class="nx-veh"><g transform="rotate(90)"><g fill="#000" stroke="#fff" stroke-width="2.5" stroke-linejoin="round" paint-order="stroke"><path d="M0 -26 C2.4 -26 3.2 -22 3.2 -17 L3.2 19 C3.2 22.5 2.2 25 0 25 C-2.2 25 -3.2 22.5 -3.2 19 L-3.2 -17 C-3.2 -22 -2.4 -26 0 -26 Z"/><path d="M-3 -7 L-17 5 L-17 9.5 L-3 4 Z"/><path d="M3 -7 L17 5 L17 9.5 L3 4 Z"/><path d="M-2.2 16 L-9 22 L-9 25.5 L-2.2 22.5 Z"/><path d="M2.2 16 L9 22 L9 25.5 L2.2 22.5 Z"/></g><rect x="-1.1" y="-21" width="2.2" height="9" rx="1.1" fill="#fff" opacity=".85"/></g></g>
           </g>
         </svg>
-        <div class="chip c-from" style="top:auto;bottom:11%;left:8%"><span class="g"></span>Milan · Linate Prime</div>
-        <div class="chip" style="top:9%;left:31%">London</div>
-        <div class="chip" style="top:24%;right:9%">Geneva</div>
-        <div class="chip" style="top:50%;right:5%">Nice</div>
-        <div class="chip" style="bottom:11%;right:12%">Olbia</div>
+        <div class="chip c-from" style="white-space:nowrap;left:70%;top:37.5%;transform:translateY(-50%)"><span class="g"></span>Milan · Linate Prime</div>
+        <div class="chip" style="white-space:nowrap;left:36%;top:11.5%;transform:translate(-100%,-50%)">London</div>
+        <div class="chip" style="white-space:nowrap;left:35%;top:27.7%;transform:translate(-100%,-50%)">Geneva</div>
+        <div class="chip" style="white-space:nowrap;left:42%;top:62.5%;transform:translate(-100%,-50%)">Nice</div>
+        <div class="chip" style="white-space:nowrap;left:71%;top:75%;transform:translateY(-50%)">Olbia</div>
         <script>/* nx-map-motion */try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.map svg').forEach(function(s){if(s.pauseAnimations)s.pauseAnimations();});}}catch(e){}</script>
       </div>
     </div>
