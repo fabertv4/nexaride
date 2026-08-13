@@ -1,6 +1,6 @@
 # NexaRide
 
-> Servizio NCC (Noleggio Con Conducente) professionale a Milano e Lombardia. Transfer privati da e per gli aeroporti di Milano-Malpensa (MXP), Milano-Linate (LIN) e Bergamo Orio al Serio (BGY). Servizio dedicato, prezzo fisso, prenotazione rapida via WhatsApp.
+> Servizio NCC (Noleggio Con Conducente) professionale con base a Milano. Transfer privati da e per gli aeroporti di Milano-Malpensa (MXP), Milano-Linate (LIN) e Bergamo Orio al Serio (BGY), più tratte lunga percorrenza verso Svizzera (Lugano, St. Moritz, Zermatt), Liguria (Portofino), Piemonte (Torino, outlet Serravalle) e Costa Azzurra (Nizza, Montecarlo). Servizio dedicato, prezzo fisso, prenotazione rapida via WhatsApp.
 
 ## Contatti
 
@@ -119,8 +119,8 @@
 - Transfer aeroportuali Milano (Malpensa, Linate, Bergamo Orio al Serio)
 - Trasferimenti urbani Milano e Lombardia
 - Servizio per business, eventi, hotel
-- Tratte verso il Lago di Como e altre destinazioni della Lombardia
-- Tratte lunga distanza su prenotazione
+- Tratte verso i laghi: Como (Bellagio, Cernobbio, Varenna), Garda e Maggiore
+- Tratte internazionali e lunga percorrenza: Svizzera (Lugano, St. Moritz, Zermatt, FoxTown Mendrisio), Costa Azzurra (Nizza), Principato di Monaco (Montecarlo), Liguria (Portofino), Piemonte (Torino, outlet Serravalle)
 - Servizio "Meet & Greet" all'aeroporto con autista in attesa al gate/arrivi
 - Monitoraggio voli/treni per adeguare orario in caso di ritardo
 
@@ -144,7 +144,7 @@ Carta, contanti, bonifico, Apple/Google Pay. Fattura disponibile su richiesta.
 
 ## Aree servite
 
-Milano città, area metropolitana di Milano, tutta la regione Lombardia, Lago di Como, tratte interregionali su prenotazione.
+Milano città e area metropolitana, tutta la Lombardia (laghi di Como, Garda e Maggiore inclusi), Piemonte (Torino, outlet Serravalle Scrivia), Liguria (Portofino e Riviera), Svizzera (Lugano, FoxTown Mendrisio, St. Moritz, Zermatt), Costa Azzurra (Nizza) e Principato di Monaco (Montecarlo). Partenze principali da Milano e dagli aeroporti MXP/LIN/BGY; ogni destinazione ha una pagina dedicata con prezzi e FAQ.
 
 ## Perché scegliere NexaRide vs alternative
 
