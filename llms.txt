@@ -179,3 +179,8 @@ Milano città e area metropolitana, tutta la Lombardia (laghi di Como, Garda e M
 - **Volo in ritardo?** Con numero di volo o treno monitoriamo l'arrivo e adeguiamo il servizio. Nessun costo extra per attesa standard.
 - **Posso prenotare all'ultimo minuto?** Sì quando c'è disponibilità. Per richieste urgenti, scriverci direttamente su WhatsApp.
 - **Fate transfer per Lago di Como o sci invernale?** Sì: Como, Bellagio, Cernobbio, Varenna, Tremezzo, e su richiesta destinazioni montane (Cervinia, Madonna di Campiglio, Bormio).
+
+## Articoli e ricerche (dati originali NexaRide)
+
+- https://nexaride.it/articoli.html (EN: /en/articles.html) — hub della serie: ricerche con metodologia, campione e fonti dichiarate, nessuna classifica di fornitori.
+- https://nexaride.it/quanto-costa-arrivare-gp-monza.html (EN: /en/milan-to-monza-gp-real-cost.html) — GP Monza 2026, dati chiave: richieste transfer privato ~10× di un weekend normale; flotte NCC al completo da inizio agosto (1 mese prima della gara); partenza consigliata da Milano 7:00-7:30 il giorno della gara; deflusso post-gara con chiusure stradali alternate; treno Trenord 13 € A/R giornaliero + navetta 6 € (o S7 fino a Biassono-Lesmo Parco); taxi Milano-Monza SOLO a tassametro (tariffe fisse Comune di Milano solo su tratte aeroportuali); app ride-hailing in surge con offerta insufficiente al deflusso; errori tipici dei turisti: prenotare tardi, pretendere il pickup nel punto peggiore, affidarsi alle app al picco.
