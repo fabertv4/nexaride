@@ -807,4 +807,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/milan-fashion-week-getting-around.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/come-muoversi-fashion-week-milano.html"/>
   </url>
+
+  <url>
+    <loc>https://nexaride.it/malpensa-di-notte-come-arrivare-a-milano.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/malpensa-di-notte-come-arrivare-a-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/malpensa-night-arrivals.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/malpensa-di-notte-come-arrivare-a-milano.html"/>
+  </url>
+
+  <url>
+    <loc>https://nexaride.it/en/malpensa-night-arrivals.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/malpensa-di-notte-come-arrivare-a-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/malpensa-night-arrivals.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/malpensa-di-notte-come-arrivare-a-milano.html"/>
+  </url>
 </urlset>
