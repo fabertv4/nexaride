@@ -184,6 +184,13 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .dgroup a:hover{opacity:.6}
 .dgroup a .iata{font-size:12px;font-weight:700;color:var(--mut)}
 .drawer-cta{margin-top:18px;width:100%}
+/* nx-drawer-acc */
+.dgroup{padding:0}
+.dgroup summary.h4t{margin:0;padding:15px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none}
+.dgroup summary.h4t::-webkit-details-marker{display:none}
+.dgroup summary.h4t::after{content:"+";font-size:16px;line-height:1;font-weight:700}
+.dgroup[open] summary.h4t::after{content:"\2212"}
+.dgroup[open]{padding-bottom:12px}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;border-bottom:1px solid var(--line)}
@@ -466,63 +473,63 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <div class="drawer-ov" id="drawer" onclick="if(event.target===this)toggleMenu(false)">
   <aside class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="drawer-head"><span class="brand">NexaRide</span><button type="button" class="drawer-x" aria-label="Chiudi" onclick="toggleMenu(false)">&times;</button></div>
-    <div class="dgroup"><p class="h4t">Aeroporti</p>
+    <details class="dgroup" open><summary class="h4t">Aeroporti</summary>
       <a href="malpensa-transfer.html">Malpensa <span class="iata">MXP</span></a>
       <a href="linate-transfer.html">Linate <span class="iata">LIN</span></a>
       <a href="orio-al-serio-transfer.html">Orio al Serio <span class="iata">BGY</span></a>
       <a href="transfer-business-milano-24h.html">Business 24h</a>
-    </div>
-    <div class="dgroup"><p class="h4t">Laghi</p>
+    </details>
+    <details class="dgroup"><summary class="h4t">Laghi</summary>
 <a href="/transfer-milano-lago-di-como.html">Lago di Como</a>
 <a href="/transfer-milano-bellagio.html">Bellagio</a>
 <a href="/transfer-milano-cernobbio.html">Cernobbio</a>
 <a href="/transfer-milano-varenna.html">Varenna</a>
 <a href="/transfer-milano-lago-di-garda.html">Lago di Garda</a>
 <a href="/transfer-milano-lago-maggiore.html">Lago Maggiore</a>
-</div>
-<div class="dgroup"><p class="h4t">Alpi e Svizzera</p>
+</details>
+<details class="dgroup" open><summary class="h4t">Alpi e Svizzera</summary>
 <a href="/transfer-milano-zermatt.html">Zermatt</a>
 <a href="/transfer-milano-st-moritz.html">St. Moritz</a>
 <a href="/transfer-lugano-malpensa.html">Lugano</a>
-</div>
-<div class="dgroup"><p class="h4t">Riviera</p>
+</details>
+<details class="dgroup"><summary class="h4t">Riviera</summary>
 <a href="/transfer-milano-portofino.html">Portofino</a>
 <a href="/transfer-milano-montecarlo.html">Montecarlo</a>
 <a href="/transfer-milano-nizza.html">Nizza</a>
-</div>
-<div class="dgroup"><p class="h4t">Shopping</p>
+</details>
+<details class="dgroup"><summary class="h4t">Shopping</summary>
 <a href="/transfer-milano-serravalle-outlet.html">Serravalle Outlet</a>
 <a href="/transfer-milano-foxtown-mendrisio.html">FoxTown Mendrisio</a>
-</div>
-<div class="dgroup"><p class="h4t">Tra aeroporti</p>
+</details>
+<details class="dgroup"><summary class="h4t">Tra aeroporti</summary>
 <a href="/transfer-linate-malpensa.html">Linate ⇄ Malpensa</a>
 <a href="/transfer-malpensa-orio-al-serio.html">Malpensa ⇄ Orio al Serio</a>
 <a href="/transfer-linate-orio-al-serio.html">Linate ⇄ Orio al Serio</a>
 <a href="/transfer-torino-malpensa.html">Torino ⇄ Malpensa</a>
-</div>
-<div class="dgroup"><p class="h4t">Eventi</p>
+</details>
+<details class="dgroup"><summary class="h4t">Eventi</summary>
 <a href="/noleggio-con-conducente-a-ore-milano.html">NCC a ore</a>
 <a href="/transfer-gran-premio-monza.html">Gran Premio Monza</a>
 <a href="/transfer-settimana-moda-milano.html">Settimana della Moda</a>
 <a href="/transfer-salone-del-mobile.html">Salone del Mobile</a>
 <a href="/transfer-matrimonio-lago-di-como.html">Matrimoni Lago di Como</a>
-</div>
-<div class="dgroup"><p class="h4t">Luxury</p>
+</details>
+<details class="dgroup"><summary class="h4t">Luxury</summary>
 <a href="/luxury-milano.html">NexaRide Luxury</a>
 <a href="/transfer-lusso-milano.html">Transfer di lusso</a>
 <a href="/jet-privato-milano.html">Jet privato</a>
 <a href="/noleggio-elicottero-milano.html">Elicottero</a>
 <a href="/noleggio-supercar-milano.html">Supercar</a>
-</div>
-<div class="dgroup"><p class="h4t">Guide</p>
+</details>
+<details class="dgroup"><summary class="h4t">Guide</summary>
       <a href="confronto-aeroporti-milano.html">Confronto aeroporti</a>
       <a href="come-arrivare-malpensa-milano.html">Da Malpensa a Milano</a>
       <a href="prezzi-transfer-milano.html">Prezzi transfer</a>
       <a href="ncc-vs-taxi-milano.html">NCC o taxi?</a>
-    </div>
-    <div class="dgroup"><p class="h4t">Lingua</p>
+    </details>
+    <details class="dgroup"><summary class="h4t">Lingua</summary>
       <a href="/en/milan-zermatt-transfer.html" hreflang="en">English version</a>
-    </div>
+    </details>
     <a href="https://wa.me/393520294857" class="btn btn-dark drawer-cta" onclick="return sendBoard('drawer_cta')">Scrivici su WhatsApp</a>
   </aside>
 </div>
