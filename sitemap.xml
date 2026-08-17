@@ -592,6 +592,15 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/monza-grand-prix-transfer.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-gran-premio-monza.html"/>
   </url>
+<url>
+    <loc>https://nexaride.it/ncc-monza.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/ncc-monza.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/monza-chauffeur-service.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/ncc-monza.html"/>
+  </url>
   <url>
     <loc>https://nexaride.it/en/monza-grand-prix-transfer.html</loc>
     <lastmod>2026-08-09</lastmod>
@@ -600,6 +609,15 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/transfer-gran-premio-monza.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/monza-grand-prix-transfer.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-gran-premio-monza.html"/>
+  </url>
+<url>
+    <loc>https://nexaride.it/en/monza-chauffeur-service.html</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/ncc-monza.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/monza-chauffeur-service.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/ncc-monza.html"/>
   </url>
   <url>
     <loc>https://nexaride.it/transfer-settimana-moda-milano.html</loc>
