@@ -90,11 +90,13 @@
 - [Transfer Linate - Malpensa](https://nexaride.it/transfer-linate-malpensa.html): tratta diretta tra i due scali milanesi (LIN<->MXP), bidirezionale, per coincidenze e cambio aeroporto
 - [Transfer Torino - Malpensa](https://nexaride.it/transfer-torino-malpensa.html): collegamento privato Torino<->Malpensa (andata e ritorno), alternativa a treno e pullman SADEM
 - [Transfer Lugano - Malpensa](https://nexaride.it/transfer-lugano-malpensa.html): collegamento privato Lugano<->Malpensa via Gaggiolo, business transfrontaliero, alternativa al treno TILO S50
+- [Transfer Milano - Cinque Terre](https://nexaride.it/transfer-milano-cinque-terre.html): NCC Milano->Monterosso/La Spezia ~230 km ~3h; borghi pedonali (ZTL da Vernazza), drop a Monterosso Fegina o La Spezia + Cinque Terre Express ogni ~15 min in stagione (5-10 EUR Trenitalia); IC diretto ~3h da ~16 EUR ~ogni 2h a confronto
 - [Transfer Malpensa - Orio al Serio](https://nexaride.it/transfer-malpensa-orio-al-serio.html): tratta inter-aeroporto Malpensa<->Bergamo Orio al Serio (MXP<->BGY), bidirezionale
 - [Transfer Linate - Orio al Serio](https://nexaride.it/transfer-linate-orio-al-serio.html): tratta inter-aeroporto Linate<->Bergamo Orio al Serio (LIN<->BGY), bidirezionale, ~50 km via tangenziale e A4
 - [Linate to Malpensa transfer (EN)](https://nexaride.it/en/linate-malpensa-transfer.html): direct private transfer between Milan's two airports
 - [Turin to Malpensa transfer (EN)](https://nexaride.it/en/turin-malpensa-transfer.html): private Turin<->Malpensa airport connection
 - [Lugano to Malpensa transfer (EN)](https://nexaride.it/en/lugano-malpensa-transfer.html): private Lugano<->Malpensa airport connection, recurring business service, TILO S50 train compared
+- [Milan to Cinque Terre transfer (EN)](https://nexaride.it/en/milan-cinque-terre-transfer.html): private transfer Milan->Monterosso/La Spezia ~3h door-to-door; car-free villages, drop at the right spot for the Cinque Terre Express; direct Intercity ~3h compared
 - [Malpensa to Bergamo airport transfer (EN)](https://nexaride.it/en/malpensa-bergamo-airport-transfer.html): inter-airport transfer Malpensa<->Bergamo Orio al Serio
 - [Linate to Bergamo airport transfer (EN)](https://nexaride.it/en/linate-bergamo-airport-transfer.html): inter-airport transfer Linate<->Bergamo Orio al Serio
 
