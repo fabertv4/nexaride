@@ -783,6 +783,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     }catch(e){}
     return sendBoard(cta);
   };
+  /*nx-ora-5min*/(function(){var t=document.getElementById('f-ora');if(!t)return;t.addEventListener('change',function(){var v=t.value;if(!v)return;var p=v.split(':');var h=parseInt(p[0],10),m=parseInt(p[1],10);if(isNaN(h)||isNaN(m))return;var r=Math.round(m/5)*5;if(r===m)return;if(r===60){r=0;h=(h+1)%24;}t.value=(h<10?'0':'')+h+':'+(r<10?'0':'')+r;});})();
   window.toggleMenu=function(open){var d=document.getElementById('drawer'),b=document.querySelector('.burger');d.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',open?'true':'false');document.body.style.overflow=open?'hidden':'';if(open){window.__nxFoc=document.activeElement;setTimeout(function(){var x=d.querySelector('.drawer-x');if(x)x.focus();},120);}else if(window.__nxFoc){try{window.__nxFoc.focus();}catch(e){}window.__nxFoc=null;}};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
   if(location.search.indexOf('menu=open')>=0){try{toggleMenu(true);}catch(e){}}

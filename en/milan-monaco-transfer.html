@@ -717,7 +717,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
             <span class="pin"><span class="d1"></span><span class="ln"></span><span class="d2"></span></span>
             <div class="rf"><label for="f-da">Pickup</label><input id="f-da" type="text" placeholder="Milan, hotel, address…"></div>
             <div class="rf"><label for="f-a">Destination</label><input id="f-a" type="text" value="Monte Carlo" placeholder="Monte Carlo, Monaco…"></div>
+            <div class="rf" id="f-stop-row" hidden><label for="f-stop">Stop (optional)</label><input id="f-stop" type="text" placeholder="e.g. a stop at via Roma 1, Milan"></div>
           </div>
+          <button type="button" id="f-stop-add" style="background:none;border:0;color:var(--mut);font-family:inherit;font-size:13px;font-weight:700;padding:8px 0 0 26px;cursor:pointer;text-align:left" onclick="nxStopShow()">+ Add a stop</button>
           <div class="brow">
             <div class="f"><label for="f-data">Date</label><input id="f-data" type="date"></div>
             <div class="f"><label for="f-ora">Time</label><input id="f-ora" type="time" step="300"></div>
@@ -832,6 +834,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     var l=[L.intro,''];
     if(data.name) l.push('*'+L.name+':* '+data.name);
     if(data.from) l.push('*'+L.from+':* '+data.from);
+    if(data.stop) l.push('*'+(L.stop||((document.documentElement.lang||'it').toLowerCase().startsWith('en')?'Stop':'Fermata'))+':* '+data.stop);
     l.push('*'+L.to+':* '+(data.to||'Monte Carlo'));
     if(data.pax) l.push('*'+L.pax+':* '+data.pax);
     if(data.when) l.push('*'+L.when+':* '+data.when);
@@ -884,6 +887,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     var dval=(document.getElementById('f-data')||{}).value||'';
     var tval=(document.getElementById('f-ora')||{}).value||'';
     var pax=document.getElementById('f-pax').value;
+    var st=((document.getElementById('f-stop')||{}).value||'').trim();
     var en=(document.documentElement.lang||'it').toLowerCase().startsWith('en');
     var miss=[];
     if(!da)miss.push('f-da');
@@ -898,7 +902,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       if(d.getTime()<Date.now()-60000){alert(en?'Please pick a date and time in the future.':'Scegli una data e un orario futuri.');return false;}
       whenStr=d.toLocaleString(en?'en-GB':'it-IT',{dateStyle:'short',timeStyle:'short'});
     }
-    return waOpen(cta||'monaco_hero_form', waBuildText({from:da,to:a,pax:pax,when:whenStr,veh:window.selectedVeh}));
+    return waOpen(cta||'monaco_hero_form', waBuildText({from:da,to:a,stop:st,pax:pax,when:whenStr,veh:window.selectedVeh}));
   }
   window.nxNudge=function(cta,miss){
     try{if(typeof gtag==='function')gtag('event','wa_gate',{cta_id:cta||'wa_cta',page_path:location.pathname,lang:document.documentElement.lang||'it',missing:miss.join(',')});}catch(e){}
@@ -923,6 +927,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     }catch(e){}
     return sendBoard(cta);
   };
+  window.nxStopShow=function(){var r=document.getElementById('f-stop-row'),b=document.getElementById('f-stop-add');if(r)r.hidden=false;if(b)b.style.display='none';var i=document.getElementById('f-stop');if(i){try{i.focus({preventScroll:true});}catch(e){}}};
+  /*nx-ora-5min*/(function(){var t=document.getElementById('f-ora');if(!t)return;t.addEventListener('change',function(){var v=t.value;if(!v)return;var p=v.split(':');var h=parseInt(p[0],10),m=parseInt(p[1],10);if(isNaN(h)||isNaN(m))return;var r=Math.round(m/5)*5;if(r===m)return;if(r===60){r=0;h=(h+1)%24;}t.value=(h<10?'0':'')+h+':'+(r<10?'0':'')+r;});})();
   window.toggleMenu=function(open){var d=document.getElementById('drawer'),b=document.querySelector('.burger');d.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',open?'true':'false');document.body.style.overflow=open?'hidden':'';if(open){window.__nxFoc=document.activeElement;setTimeout(function(){var x=d.querySelector('.drawer-x');if(x)x.focus();},120);}else if(window.__nxFoc){try{window.__nxFoc.focus();}catch(e){}window.__nxFoc=null;}};
   document.addEventListener('keydown',function(e){if(e.key==='Escape')toggleMenu(false);});
   if(location.search.indexOf('menu=open')>=0){try{toggleMenu(true);}catch(e){}}
