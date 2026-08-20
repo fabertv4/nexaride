@@ -330,6 +330,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
 <style id="nx-gate-css">.book .miss{background:rgba(192,57,43,.07);box-shadow:inset 0 -2px 0 #c0392b;border-radius:6px}#nx-gate-hint{margin:0 0 14px;padding:10px 14px;border-radius:10px;background:#fdf1ef;border:1px solid #efc4bc;color:#8a2a1d;font-size:14px;font-weight:600;line-height:1.45}</style>
 <style data-nx="cardrive" data-geo="3">
+/* map motif (fix donor EN senza blocco) */
+.map{position:relative;aspect-ratio:1/1;border-radius:var(--r-card);overflow:hidden;background:
+  linear-gradient(0deg,rgba(0,0,0,.04) 1px,transparent 1px) 0 0/100% 38px,
+  linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px) 0 0/38px 100%,var(--surf)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .chip{position:absolute;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;
+  font-size:13px;font-weight:700;box-shadow:0 8px 22px -10px rgba(0,0,0,.3);display:flex;align-items:center;gap:7px}
+.map .chip .g{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.map .c-from{top:18%;left:10%}
+.map .c-to{bottom:16%;right:8%}
+@media(max-width:860px){.hero .map{display:none}}
+
 /* mappa geografica reale: nord in alto, destinazione sul bearing vero (117° ESE) */
 .map .chip{white-space:nowrap}
 .map .c-from{left:27.7%;top:26.6%;right:auto;bottom:auto;transform:translateX(-50%)}

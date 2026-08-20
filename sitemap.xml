@@ -942,4 +942,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/transfer-milano-cinque-terre.html"/>
   </url>
 
+
+  <url>
+    <loc>https://nexaride.it/come-arrivare-linate-milano.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/come-arrivare-linate-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/how-to-get-from-linate-to-milan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/come-arrivare-linate-milano.html"/>
+  </url>
+
+  <url>
+    <loc>https://nexaride.it/en/how-to-get-from-linate-to-milan.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://nexaride.it/come-arrivare-linate-milano.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nexaride.it/en/how-to-get-from-linate-to-milan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nexaride.it/come-arrivare-linate-milano.html"/>
+  </url>
 </urlset>
