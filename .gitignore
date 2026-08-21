@@ -85,3 +85,7 @@ package-lock.json
 # business -> MAI nel repo pubblico. La chain prevedeva "restano gitignored":
 # qui lo si applica davvero (protegge anche da un git add -A accidentale).
 plans/handoffs/
+
+# Profili Chrome per automazione CDP: contengono sessioni/cookie -> MAI nel
+# repo pubblico (protegge da git add -A / pathspec ricorsivi accidentali).
+.chrome-*/
