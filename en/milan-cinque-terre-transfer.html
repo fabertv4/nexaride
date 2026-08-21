@@ -395,6 +395,9 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
 .fitem p{font-size:16px;color:var(--mut)}
 .fitem p strong{color:var(--ink)}
 @media(max-width:860px){.tbl-wrap{overflow-x:auto}}
+
+/* fix css-gap da clone (sweep 21/08): regole copiate dalle pagine di riferimento */
+.band .meta{margin-top:18px;font-size:13px;color:#8a8a8a}
 </style>
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style id="nx-fonts">@font-face{font-family:'Manrope';font-style:normal;font-weight:200 800;font-display:swap;src:url(/fonts/manrope.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}</style>
@@ -573,7 +576,7 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
 </section>
 
 <!-- DISTANCES & TIMES -->
-<section id="distanze" class="sec">
+<section id="route" class="sec">
     <div class="wrap">
       <div class="sec-head rv">
         <h2>Distances and times from Milan</h2>
@@ -594,7 +597,7 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
   </section>
 
 <!-- TRAIN VS PRIVATE TRANSFER -->
-<section id="treno" class="sec alt">
+<section id="train" class="sec alt">
     <div class="wrap">
       <div class="sec-head rv">
         <h2>Milan to Cinque Terre by train — and where it falls short</h2>
@@ -632,7 +635,7 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
   </section>
 
 <!-- WHY PRIVATE TRANSFER -->
-<section class="sec">
+<section id="why" class="sec">
     <div class="wrap">
       <div class="sec-head rv">
         <h2>Why a private transfer works best for the Cinque Terre</h2>
