@@ -86,7 +86,7 @@
   {"@type":"Question","name":"Siamo un gruppo: avete un van?","acceptedAnswer":{"@type":"Answer","text":"Sì, oltre alle berline abbiamo la Classe V e, su richiesta, il Van VIP 5 posti (2 poltrone business reclinabili, fino a 5 posti dietro). Indica il numero di passeggeri su WhatsApp e ti proponiamo l'auto giusta."}},
   {"@type":"Question","name":"Quanto costa il transfer per il GP?","acceptedAnswer":{"@type":"Answer","text":"Dipende da partenza, giorno e orario (i giorni di gara hanno logistica dedicata). Compila il modulo e ricevi un preventivo rapido su WhatsApp, senza impegno."}},
   {"@type":"Question","name":"Avete un van VIP con sedili reclinabili per l'Autodromo di Monza?","acceptedAnswer":{"@type":"Answer","text":"Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 2 poltrone business reclinabili e fino a 5 posti dietro, ideale per il weekend di gara. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti."}},
-  {"@type":"Question","name":"Posso pagare in criptovalute?","acceptedAnswer":{"@type":"Answer","text":"Sì, su richiesta: accettiamo Bitcoin (BTC), Ethereum (ETH) e stablecoin USDT/USDC, oltre a carta e contanti. Concordi il preventivo su WhatsApp come sempre e ricevi il link di pagamento; l'importo resta quello concordato in euro."}}
+  {"@type":"Question","name":"Posso pagare in criptovalute?","acceptedAnswer":{"@type":"Answer","text":"Sì, su richiesta: accettiamo Bitcoin (BTC), Ethereum (ETH) e stablecoin USDT/USDC, oltre a carta e contanti. Concordi il preventivo su WhatsApp come sempre e ricevi il link di pagamento; l'importo resta quello concordato in euro."}},{"@type":"Question","name":"Serve un pagamento anticipato?","acceptedAnswer":{"@type":"Answer","text":"Sì, può essere richiesto: nei periodi di alta richiesta come Fashion Week, Salone del Mobile, GP di Formula 1 e Capodanno, e per le corse con partenza lontano dall'area di Milano, confermiamo la prenotazione con un acconto o il pagamento anticipato tramite link sicuro. Il prezzo resta quello concordato su WhatsApp."}},{"@type":"Question","name":"Posso cancellare la prenotazione?","acceptedAnswer":{"@type":"Answer","text":"Sì: la cancellazione è gratuita fino a 24 ore prima della corsa. Per le prenotazioni con pagamento anticipato, tra 24 e 6 ore prima tratteniamo il 50%, sotto le 6 ore o in caso di mancata presentazione il 100%. Se il volo viene cancellato dalla compagnia non c'è nessuna penale."}}
 ]}
 </script>
 <!-- JSON-LD: BreadcrumbList -->
@@ -684,7 +684,7 @@ a.greview:hover{background:var(--surf-2)}
             <div class="f"><label for="f-ora">Ora</label><input id="f-ora" type="time" step="300"></div>
           </div>
           <div class="brow">
-            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6+">6+</option></select></div>
+            <div class="f"><label for="f-pax">Passeggeri</label><select id="f-pax"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="" disabled>Più di 7? Scrivici su WhatsApp</option></select></div>
             <div class="f"><label for="f-veh-sel">Veicolo</label><select id="f-veh-sel" onchange="syncVehFromForm(this.value)"><option value="Comfort">Comfort</option><option value="Business">Business</option><option value="Van">Van</option><option value="Lux">Lux</option></select></div>
           </div>
           <button type="button" class="btn btn-wa" onclick="sendBoard('form_section')">
@@ -827,6 +827,8 @@ a.greview:hover{background:var(--surf-2)}
     var l=[L.intro,''];
     if(data.name) l.push('*'+L.name+':* '+data.name);
     if(data.from) l.push('*'+L.from+':* '+data.from);
+      <details class="qa rv" data-nx="anticipofaq"><summary>Serve un pagamento anticipato?<span class="pm">+</span></summary><div class="a">Sì, può essere richiesto: nei periodi di alta richiesta come Fashion Week, Salone del Mobile, GP di Formula 1 e Capodanno, e per le corse con partenza lontano dall'area di Milano, confermiamo la prenotazione con un acconto o il pagamento anticipato tramite link sicuro. Il prezzo resta quello concordato su WhatsApp.</div></details>
+      <details class="qa rv" data-nx="cancelfaq"><summary>Posso cancellare la prenotazione?<span class="pm">+</span></summary><div class="a">Sì: la cancellazione è gratuita fino a 24 ore prima della corsa. Per le prenotazioni con pagamento anticipato, tra 24 e 6 ore prima tratteniamo il 50%, sotto le 6 ore o in caso di mancata presentazione il 100%. Se il volo viene cancellato dalla compagnia non c'è nessuna penale.</div></details>
     if(data.stop) l.push('*'+(L.stop||((document.documentElement.lang||'it').toLowerCase().startsWith('en')?'Stop':'Fermata'))+':* '+data.stop);
     l.push('*'+L.to+':* '+(data.to||'Autodromo di Monza'));
     if(data.pax) l.push('*'+L.pax+':* '+data.pax);
