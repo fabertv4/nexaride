@@ -164,7 +164,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta svg{width:15px;height:15px}
 .burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
-@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
+@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}/*nx-navfit*/@media(max-width:430px){.nav{gap:8px;padding:0 14px}.nav-right{gap:6px}.nav-cta{padding:9px 11px}.brand{font-size:21px}}@media(max-width:380px){.nav{padding:0 12px}.nav-cta{font-size:13px;padding:8px 9px;gap:5px}.lang button{padding-left:9px;padding-right:9px}.brand{font-size:20px}}@media(max-width:340px){.nav-cta{font-size:0;gap:0;padding:10px}.lang button{padding-left:7px;padding-right:7px}.brand{font-size:18px}}
 
 /* drawer */
 .drawer-ov{position:fixed;inset:0;z-index:var(--z-drawer);background:rgba(0,0,0,.4);
@@ -333,7 +333,7 @@ a.taxi-note:hover{background:var(--surf-2)}
 .qa{border-bottom:1px solid var(--line)}
 .qa summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;gap:18px;font-size:19px;font-weight:800;letter-spacing:-.01em}
 .qa summary::-webkit-details-marker{display:none}
-.qa .pm{flex:0 0 auto;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
+.qa .pm{flex:0 0 auto;align-self:flex-start;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
 .qa[open] .pm{transform:rotate(45deg)}
 .qa .a{font-size:16px;color:var(--mut);padding:0 0 22px;max-width:66ch}
 

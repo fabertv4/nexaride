@@ -168,7 +168,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta svg{width:15px;height:15px}
 .burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
-@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
+@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}/*nx-navfit*/@media(max-width:430px){.nav{gap:8px;padding:0 14px}.nav-right{gap:6px}.nav-cta{padding:9px 11px}.brand{font-size:21px}}@media(max-width:380px){.nav{padding:0 12px}.nav-cta{font-size:13px;padding:8px 9px;gap:5px}.lang button{padding-left:9px;padding-right:9px}.brand{font-size:20px}}@media(max-width:340px){.nav-cta{font-size:0;gap:0;padding:10px}.lang button{padding-left:7px;padding-right:7px}.brand{font-size:18px}}
 
 /* drawer */
 .drawer-ov{position:fixed;inset:0;z-index:var(--z-drawer);background:rgba(0,0,0,.4);
@@ -328,7 +328,7 @@ table.tbl tbody tr:nth-child(even){background:#fafafa}
 .qa{border-bottom:1px solid var(--line)}
 .qa summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;gap:18px;font-size:19px;font-weight:800;letter-spacing:-.01em}
 .qa summary::-webkit-details-marker{display:none}
-.qa .pm{flex:0 0 auto;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
+.qa .pm{flex:0 0 auto;align-self:flex-start;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
 .qa[open] .pm{transform:rotate(45deg)}
 .qa .a{font-size:16px;color:var(--mut);padding:0 0 22px;max-width:66ch}
 
@@ -744,6 +744,8 @@ a.greview:hover{background:var(--surf-2)}
       <details class="qa rv"><summary>Quanto costa il servizio durante la Fashion Week?<span class="pm">+</span></summary><div class="a">Dipende da tratte, ore e giorni: nei giorni di sfilata la domanda è alta e conviene bloccare presto. Preventivo rapido e senza impegno su WhatsApp.</div></details>
       <details class="qa rv"><summary>Avete un van VIP con sedili reclinabili per la Settimana della Moda?<span class="pm">+</span></summary><div class="a">Sì, su richiesta: un Mercedes Classe V in allestimento VIP con 2 poltrone business reclinabili e fino a 5 posti dietro, ideale per le giornate di sfilate. Chiedi il Van VIP nel messaggio WhatsApp insieme a partenza, data e ora: ricevi disponibilità e preventivo fisso in 2-5 minuti.</div></details>
       <details class="qa rv" data-nx="cryptofaq"><summary>Posso pagare in criptovalute?<span class="pm">+</span></summary><div class="a">Sì, su richiesta: accettiamo Bitcoin (BTC), Ethereum (ETH) e stablecoin USDT/USDC, oltre a carta e contanti. Concordi il preventivo su WhatsApp come sempre e ricevi il link di pagamento; l'importo resta quello concordato in euro.</div></details>
+      <details class="qa rv" data-nx="anticipofaq"><summary>Serve un pagamento anticipato?<span class="pm">+</span></summary><div class="a">Sì, può essere richiesto: nei periodi di alta richiesta come Fashion Week, Salone del Mobile, GP di Formula 1 e Capodanno, e per le corse con partenza lontano dall'area di Milano, confermiamo la prenotazione con un acconto o il pagamento anticipato tramite link sicuro. Il prezzo resta quello concordato su WhatsApp.</div></details>
+      <details class="qa rv" data-nx="cancelfaq"><summary>Posso cancellare la prenotazione?<span class="pm">+</span></summary><div class="a">Sì: la cancellazione è gratuita fino a 24 ore prima della corsa. Per le prenotazioni con pagamento anticipato, tra 24 e 6 ore prima tratteniamo il 50%, sotto le 6 ore o in caso di mancata presentazione il 100%. Se il volo viene cancellato dalla compagnia non c'è nessuna penale.</div></details>
     </div>
   </div>
 </section>
@@ -826,8 +828,6 @@ a.greview:hover{background:var(--surf-2)}
     var l=[L.intro,''];
     if(data.name) l.push('*'+L.name+':* '+data.name);
     if(data.from) l.push('*'+L.from+':* '+data.from);
-      <details class="qa rv" data-nx="anticipofaq"><summary>Serve un pagamento anticipato?<span class="pm">+</span></summary><div class="a">Sì, può essere richiesto: nei periodi di alta richiesta come Fashion Week, Salone del Mobile, GP di Formula 1 e Capodanno, e per le corse con partenza lontano dall'area di Milano, confermiamo la prenotazione con un acconto o il pagamento anticipato tramite link sicuro. Il prezzo resta quello concordato su WhatsApp.</div></details>
-      <details class="qa rv" data-nx="cancelfaq"><summary>Posso cancellare la prenotazione?<span class="pm">+</span></summary><div class="a">Sì: la cancellazione è gratuita fino a 24 ore prima della corsa. Per le prenotazioni con pagamento anticipato, tra 24 e 6 ore prima tratteniamo il 50%, sotto le 6 ore o in caso di mancata presentazione il 100%. Se il volo viene cancellato dalla compagnia non c'è nessuna penale.</div></details>
     if(data.stop) l.push('*'+(L.stop||((document.documentElement.lang||'it').toLowerCase().startsWith('en')?'Stop':'Fermata'))+':* '+data.stop);
     l.push('*'+L.to+':* '+(data.to||'Settimana della Moda Milano'));
     if(data.pax) l.push('*'+L.pax+':* '+data.pax);

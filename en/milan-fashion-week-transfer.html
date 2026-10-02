@@ -171,7 +171,7 @@ header{position:sticky;top:0;z-index:var(--z-nav);background:rgba(255,255,255,.9
 .nav-cta svg{width:15px;height:15px}
 .burger{display:flex;flex-direction:column;gap:5px;width:40px;height:40px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px}
-@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}
+@media(max-width:860px){.nav-links{display:none}.burger{display:flex}}/*nx-navfit*/@media(max-width:430px){.nav{gap:8px;padding:0 14px}.nav-right{gap:6px}.nav-cta{padding:9px 11px}.brand{font-size:21px}}@media(max-width:380px){.nav{padding:0 12px}.nav-cta{font-size:13px;padding:8px 9px;gap:5px}.lang button{padding-left:9px;padding-right:9px}.brand{font-size:20px}}@media(max-width:340px){.nav-cta{font-size:0;gap:0;padding:10px}.lang button{padding-left:7px;padding-right:7px}.brand{font-size:18px}}
 
 /* drawer */
 .drawer-ov{position:fixed;inset:0;z-index:var(--z-drawer);background:rgba(0,0,0,.4);
@@ -340,7 +340,7 @@ a.taxi-note:hover{background:var(--surf-2)}
 .qa{border-bottom:1px solid var(--line)}
 .qa summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;gap:18px;font-size:19px;font-weight:800;letter-spacing:-.01em}
 .qa summary::-webkit-details-marker{display:none}
-.qa .pm{flex:0 0 auto;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
+.qa .pm{flex:0 0 auto;align-self:flex-start;font-size:24px;font-weight:400;transition:transform .3s var(--ease)}
 .qa[open] .pm{transform:rotate(45deg)}
 .qa .a{font-size:16px;color:var(--mut);padding:0 0 22px;max-width:66ch}
 
@@ -746,6 +746,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
       <details class="qa rv"><summary>How much does the service cost during Fashion Week?<span class="pm">+</span></summary><div class="a">It depends on routes, hours and days: demand is high on show days, so it pays to book early. Fast, no-obligation quote on WhatsApp.</div></details>
       <details class="qa rv"><summary>Do you have a VIP van with reclining seats for Milan Fashion Week?<span class="pm">+</span></summary><div class="a">Yes, on request: a Mercedes V-Class in VIP configuration with 2 reclining business seats and up to 5 seats in the back, ideal for show days. Ask for the VIP Van in your WhatsApp message along with pickup point, date and time: you get availability and a fixed quote in 2–5 minutes.</div></details>
       <details class="qa rv" data-nx="cryptofaq"><summary>Can I pay in crypto?<span class="pm">+</span></summary><div class="a">Yes, on request: we accept Bitcoin (BTC), Ethereum (ETH) and USDT/USDC stablecoins, alongside card and cash. Agree your quote on WhatsApp as usual and you'll receive a payment link; the amount stays the euro price agreed.</div></details>
+      <details class="qa rv" data-nx="anticipofaq"><summary>Is advance payment required?<span class="pm">+</span></summary><div class="a">It may be: during peak periods such as Fashion Week, Salone del Mobile, the Formula 1 Grand Prix and New Year's Eve, and for rides starting far from the Milan area, we confirm the booking with a deposit or advance payment via secure link. The price stays as agreed on WhatsApp.</div></details>
+      <details class="qa rv" data-nx="cancelfaq"><summary>Can I cancel the booking?<span class="pm">+</span></summary><div class="a">Yes: cancellation is free up to 24 hours before the ride. For prepaid bookings, between 24 and 6 hours before we retain 50%, and under 6 hours or in case of no-show 100%. If your flight is cancelled by the airline there is no fee.</div></details>
     </div>
   </div>
 </section>
@@ -831,8 +833,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
     var l=[L.intro,''];
     if(data.name) l.push('*'+L.name+':* '+data.name);
     if(data.from) l.push('*'+L.from+':* '+data.from);
-      <details class="qa rv" data-nx="anticipofaq"><summary>Is advance payment required?<span class="pm">+</span></summary><div class="a">It may be: during peak periods such as Fashion Week, Salone del Mobile, the Formula 1 Grand Prix and New Year's Eve, and for rides starting far from the Milan area, we confirm the booking with a deposit or advance payment via secure link. The price stays as agreed on WhatsApp.</div></details>
-      <details class="qa rv" data-nx="cancelfaq"><summary>Can I cancel the booking?<span class="pm">+</span></summary><div class="a">Yes: cancellation is free up to 24 hours before the ride. For prepaid bookings, between 24 and 6 hours before we retain 50%, and under 6 hours or in case of no-show 100%. If your flight is cancelled by the airline there is no fee.</div></details>
     if(data.stop) l.push('*'+(L.stop||((document.documentElement.lang||'it').toLowerCase().startsWith('en')?'Stop':'Fermata'))+':* '+data.stop);
     l.push('*'+L.to+':* '+(data.to||'Milan Fashion Week'));
     if(data.pax) l.push('*'+L.pax+':* '+data.pax);
